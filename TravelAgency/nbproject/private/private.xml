@@ -12,11 +12,14 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/jshar/OneDrive/Documents/AED/TravelAgency/src/UserInterface/ManageAirliner/CreateAirlinerJPanel.java</file>
-            <file>file:/C:/Users/jshar/OneDrive/Documents/AED/TravelAgency/src/Business/AirlinerDirectory.java</file>
-            <file>file:/C:/Users/jshar/OneDrive/Documents/AED/TravelAgency/src/Business/Airliner.java</file>
-            <file>file:/C:/Users/jshar/OneDrive/Documents/AED/TravelAgency/src/UserInterface/TravelAgencyMain.java</file>
-            <file>file:/C:/Users/jshar/OneDrive/Documents/AED/TravelAgency/src/UserInterface/ManageAirliner/ManageAirlineJPanel.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/UserInterface/ManageAirliner/ViewAirlinerJPanel.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/Business/FlightDirectory.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/Business/Airliner.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/Business/AirlinerDirectory.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/Business/Flight.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/UserInterface/ManageAirliner/UpdateAirlinerJPanel.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/UserInterface/ManageAirliner/CreateAirlinerJPanel.java</file>
+            <file>file:/C:/Users/jshar/OneDrive/Desktop/Group%20Project/Team-28/TravelAgency/src/UserInterface/ManageAirliner/RegisterAirlinerJPanel.java</file>
         </group>
     </open-files>
 </project-private>

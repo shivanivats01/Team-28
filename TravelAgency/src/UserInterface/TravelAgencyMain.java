@@ -6,7 +6,7 @@
 package UserInterface;
 
 import Business.AirlinerDirectory;
-import UserInterface.ManageAirliner.ManageAirlineJPanel;
+import UserInterface.ManageAirliner.RegisterAirlinerJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -95,7 +95,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
     private void btnRegisterAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAirlineActionPerformed
         // TODO add your handling code here:
-        ManageAirlineJPanel managePanel = new ManageAirlineJPanel(CardSequenceJPanel, airlinerDirectory);
+        RegisterAirlinerJPanel managePanel = new RegisterAirlinerJPanel(CardSequenceJPanel, airlinerDirectory);
         CardSequenceJPanel.add("ManageAirlineJPanel", managePanel);
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);

@@ -24,6 +24,10 @@ public class Airliner {
         this.internationalAirplane = internationalAirplane;
         this.numberOfEmployees = numberOfEmployee;
     }
+    
+    public Airliner() {
+        
+    }
 
     public String getAirlineName() {
         return airlineName;

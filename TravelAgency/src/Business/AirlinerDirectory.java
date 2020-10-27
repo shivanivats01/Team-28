@@ -35,7 +35,8 @@ public class AirlinerDirectory {
         this.airlineList = airlineList;
     }
     
-     public Airliner addAirline(Airliner airline){
+     public Airliner newAirliner(){
+        Airliner airline = new Airliner();
         airlineList.add(airline);
         return airline;
     }
