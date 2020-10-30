@@ -6,7 +6,7 @@
 package Business;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.HashSet;
 
 
 /**
@@ -14,13 +14,27 @@ import java.util.HashMap;
  * @author jshar
  */
 public class Seat {
-    private Flight flight;
-    HashMap<Integer,ArrayList<Integer>> map;
+    private int flightNumber;
+    HashSet<String> set;
     
-    public Seat(Flight flight) {
-        this.flight = flight;
-        map = new HashMap<>();
+    public Seat(int flight) {
+        this.flightNumber = flight;
+        set = new HashSet<>();
     }
+
+    public HashSet<String> getSet() {
+        return set;
+    }
+
+    public void setSet(HashSet<String> set) {
+        this.set = set;
+    }
+
+
+    public void addHashValue(String str) {
+       set.add(str);
+    }
+
     
     
 }
