@@ -7,7 +7,8 @@ package UserInterface;
 
 import Business.AirlinerDirectory;
 import Business.FlightDirectory;
-import UserInterface.ManageAirliner.RegisterAirlinerJPanel;
+import UserInterface.RegisterAirliner.RegisterAirlinerJPanel;
+import UserInterface.ManageAirlinerTA.ManageTAJPanel;
 import UserInterface.SearchFlights.FindFlights;
 import java.awt.CardLayout;
 
@@ -44,6 +45,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         controlJPanel = new javax.swing.JPanel();
         btnRegisterAirline = new javax.swing.JButton();
         btnManageCustomers = new javax.swing.JButton();
+        btnManageAirliner = new javax.swing.JButton();
         CardSequenceJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -69,6 +71,13 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             }
         });
 
+        btnManageAirliner.setText("Manage");
+        btnManageAirliner.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageAirlinerActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlJPanelLayout = new javax.swing.GroupLayout(controlJPanel);
         controlJPanel.setLayout(controlJPanelLayout);
         controlJPanelLayout.setHorizontalGroup(
@@ -76,6 +85,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             .addGroup(controlJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnManageAirliner, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnRegisterAirline, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
                     .addComponent(btnManageCustomers, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                 .addContainerGap())
@@ -83,7 +93,9 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         controlJPanelLayout.setVerticalGroup(
             controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(controlJPanelLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
+                .addGap(170, 170, 170)
+                .addComponent(btnManageAirliner)
+                .addGap(18, 18, 18)
                 .addComponent(btnRegisterAirline)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageCustomers)
@@ -126,6 +138,15 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_btnManageCustomersActionPerformed
 
+    private void btnManageAirlinerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageAirlinerActionPerformed
+        // TODO add your handling code here:
+        
+        ManageTAJPanel managePanel = new ManageTAJPanel(CardSequenceJPanel, airlinerDirectory);
+        CardSequenceJPanel.add("RegisterAirlinerJPanel", managePanel);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.next(CardSequenceJPanel);
+    }//GEN-LAST:event_btnManageAirlinerActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -164,6 +185,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardSequenceJPanel;
     private javax.swing.JSplitPane SplitPane;
+    private javax.swing.JButton btnManageAirliner;
     private javax.swing.JButton btnManageCustomers;
     private javax.swing.JButton btnRegisterAirline;
     private javax.swing.JPanel controlJPanel;

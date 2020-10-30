@@ -14,15 +14,37 @@ import java.util.ArrayList;
 public class FlightDirectory {
     
     private ArrayList<Flight> flightList;
+
+    public ArrayList<Flight> getFlightList() {
+        return flightList;
+    }
+
+    public void setFlightList(ArrayList<Flight> flightList) {
+        this.flightList = flightList;
+    }
     
     public FlightDirectory() {
         
         flightList = new ArrayList<>();
     }
     
-    public Flight addFlight(Flight flight){
-        flightList.add(flight);
-        return flight;
+    public Flight addFlight(){
+        Flight f = new Flight();
+        flightList.add(f);
+        return f;
+        
+    }
+    public Flight searchFlight(String keyword){
+        for (Flight flight : flightList) {
+            if(Integer.toString(flight.getFlightNumber()).equals(keyword) ){
+                return flight;
+            }
+        }
+        return null;
+    }
+    
+    public void removeFlight(Flight f){
+        flightList.remove(f);
     }
     
 }

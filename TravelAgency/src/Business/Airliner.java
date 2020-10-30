@@ -16,6 +16,7 @@ public class Airliner {
     private int domesticAirplane;
     private int internationalAirplane;
     private int numberOfEmployees;
+    private FlightDirectory flightDirectory;
     
     public Airliner(String airlineName, int numberOfAirplane, int domesticAirplane, int internationalAirplane, int numberOfEmployee) {
         this.airlineName = airlineName;
@@ -23,12 +24,21 @@ public class Airliner {
         this.domesticAirplane = domesticAirplane;
         this.internationalAirplane = internationalAirplane;
         this.numberOfEmployees = numberOfEmployee;
+        flightDirectory = new FlightDirectory();  
     }
     
-    public Airliner() {
-        
+    public Airliner(){
+        flightDirectory = new FlightDirectory();
     }
 
+    public FlightDirectory getFlightDirectory() {
+        return flightDirectory;
+    }
+
+    public void setFlightDirectory(FlightDirectory flightDirectory) {
+        this.flightDirectory = flightDirectory;
+    }
+    
     public String getAirlineName() {
         return airlineName;
     }
@@ -72,7 +82,7 @@ public class Airliner {
     @Override
     public String toString()
     {
-        return this.airlineName;
+        return airlineName;
     }
     
     
