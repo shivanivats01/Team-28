@@ -6,7 +6,10 @@
 package UserInterface;
 
 import Business.AirlinerDirectory;
-import UserInterface.ManageAirliner.RegisterAirlinerJPanel;
+import Business.FlightDirectory;
+import UserInterface.ManageAirlinerTA.ManageTAJPanel;
+import UserInterface.RegisterAirliner.RegisterAirlinerJPanel;
+//import UserInterface.SearchFlights.SearchJPanel;
 import java.awt.CardLayout;
 
 /**
@@ -17,6 +20,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     
     
     private AirlinerDirectory airlinerDirectory;
+    private FlightDirectory flightDirectory;
 
     /**
      * Creates new form TravelAgencyMain
@@ -24,6 +28,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     public TravelAgencyMain() {
         initComponents();
         airlinerDirectory = new AirlinerDirectory();
+        flightDirectory = new FlightDirectory();
     }
 
     /**
@@ -37,7 +42,9 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         SplitPane = new javax.swing.JSplitPane();
         controlJPanel = new javax.swing.JPanel();
+        btnManage = new javax.swing.JButton();
         btnRegisterAirline = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         CardSequenceJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,6 +55,15 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         SplitPane.setEnabled(false);
 
         controlJPanel.setBackground(new java.awt.Color(255, 255, 255));
+        controlJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        btnManage.setText("Manage");
+        btnManage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageActionPerformed(evt);
+            }
+        });
+        controlJPanel.add(btnManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 164, 186, -1));
 
         btnRegisterAirline.setText("Register Airliners ");
         btnRegisterAirline.addActionListener(new java.awt.event.ActionListener() {
@@ -55,23 +71,15 @@ public class TravelAgencyMain extends javax.swing.JFrame {
                 btnRegisterAirlineActionPerformed(evt);
             }
         });
+        controlJPanel.add(btnRegisterAirline, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 227, 186, -1));
 
-        javax.swing.GroupLayout controlJPanelLayout = new javax.swing.GroupLayout(controlJPanel);
-        controlJPanel.setLayout(controlJPanelLayout);
-        controlJPanelLayout.setHorizontalGroup(
-            controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlJPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(btnRegisterAirline, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        controlJPanelLayout.setVerticalGroup(
-            controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(controlJPanelLayout.createSequentialGroup()
-                .addGap(217, 217, 217)
-                .addComponent(btnRegisterAirline)
-                .addContainerGap(402, Short.MAX_VALUE))
-        );
+        btnSearch.setText("Search / Book");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
+        controlJPanel.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 286, 186, -1));
 
         SplitPane.setLeftComponent(controlJPanel);
 
@@ -93,13 +101,34 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnRegisterAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAirlineActionPerformed
+    private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
         // TODO add your handling code here:
-        RegisterAirlinerJPanel managePanel = new RegisterAirlinerJPanel(CardSequenceJPanel, airlinerDirectory);
-        CardSequenceJPanel.add("ManageAirlineJPanel", managePanel);
+        ManageTAJPanel managePanel = new ManageTAJPanel(CardSequenceJPanel, airlinerDirectory);
+        CardSequenceJPanel.add("RegisterAirlinerJPanel", managePanel);
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);
+        
+        
+        
+    }//GEN-LAST:event_btnManageActionPerformed
+
+    private void btnRegisterAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAirlineActionPerformed
+        // TODO add your handling code here:
+        RegisterAirlinerJPanel registerPanel = new RegisterAirlinerJPanel(CardSequenceJPanel, airlinerDirectory);
+        CardSequenceJPanel.add("RegisterAirlinerJPanel", registerPanel);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.next(CardSequenceJPanel);
+        
     }//GEN-LAST:event_btnRegisterAirlineActionPerformed
+
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+    //    SearchJPanel managePanel = new SearchJPanel(CardSequenceJPanel, flightDirectory);
+    //    CardSequenceJPanel.add("SearchJPanel", managePanel);
+    //    CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+    //    layout.next(CardSequenceJPanel);
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +168,9 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardSequenceJPanel;
     private javax.swing.JSplitPane SplitPane;
+    private javax.swing.JButton btnManage;
     private javax.swing.JButton btnRegisterAirline;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JPanel controlJPanel;
     // End of variables declaration//GEN-END:variables
 }

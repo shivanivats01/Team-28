@@ -20,13 +20,17 @@ public class Flight {
     private Date startDate;
     private Date endDate;
     
-    public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
+   /** public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
         this.flightNumber = flightNumber;
         this.airlineName = airlineName;
         this.source = source;
         this.destination = destination;
         this.startDate = startDate;
         this.endDate = endDate;
+    }
+*/
+    public Flight() {
+        
     }
 
     public int getFlightNumber() {
@@ -82,6 +86,7 @@ public class Flight {
     @Override
     public String toString()
     {
-        return this.airlineName;
+        String s= Integer.toString(flightNumber);
+        return s;
     }
 }
