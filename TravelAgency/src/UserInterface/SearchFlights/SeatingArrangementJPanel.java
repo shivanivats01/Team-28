@@ -27,7 +27,7 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
         initComponents();
         this.CardSequenceJPanel = CardSequenceJPanel;
         this.flight = flight;
-        this.seat = new Seat(flight);
+        this.seat = new Seat(flight.getFlightNumber());
     }
 
     /**
@@ -277,7 +277,34 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
             return;
         }
         
+        String str = "";
+        if(leftWindowRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "A";
+        }
+        else if(leftMiddleRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "B";
+        }
+        else if(leftAisleRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "C";
+        }
+        else if(rightAisleRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "D";
+        }
+        else if(rightMiddleRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "E";
+        }
+        else if(rightWindowRadioButton.isSelected()) {
+            str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "F";
+        }
         
+        if(seat.getSet().contains(str)) {
+            JOptionPane.showMessageDialog(null,"Seat Already Selected by another customer");
+            return;
+        }
+        else {
+            seat.addHashValue(str);
+            
+        }
         
     }//GEN-LAST:event_btnNextActionPerformed
 
