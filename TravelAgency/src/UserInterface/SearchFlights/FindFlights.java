@@ -6,7 +6,10 @@
 package UserInterface.SearchFlights;
 
 import Business.AirlinerDirectory;
+import Business.Flight;
 import Business.FlightDirectory;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,21 +17,22 @@ import javax.swing.JPanel;
  * @author shivanivats
  */
 public class FindFlights extends javax.swing.JPanel {
+    
+    private JPanel CardSequenceJPanel;
+    private FlightDirectory flightDirectory;
+    private AirlinerDirectory airlineDirectory;
 
     /**
      * Creates new form FindFlights
      */
-    public FindFlights(JPanel panel,AirlinerDirectory airlineDirectory,FlightDirectory flightDirectory ) {
-        this.cardLayoutJPanel = panel;
+    public FindFlights(JPanel CardSequenceJPanel,AirlinerDirectory airlineDirectory,FlightDirectory flightDirectory ) {
+        this.CardSequenceJPanel = CardSequenceJPanel;
         this.airlineDirectory = airlineDirectory;
         this.flightDirectory = flightDirectory;
         
         initComponents();
         populateAirlineCombo();
     }
-    private JPanel cardLayoutJPanel;
-    private FlightDirectory flightDirectory;
-    private AirlinerDirectory airlineDirectory;
     
     
     public void populateAirlineCombo()
@@ -50,11 +54,12 @@ public class FindFlights extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jTextField2 = new javax.swing.JTextField();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTable4 = new javax.swing.JTable();
+        tblFlightDetails = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
         jComboBox3 = new javax.swing.JComboBox<>();
@@ -66,6 +71,9 @@ public class FindFlights extends javax.swing.JPanel {
         jTextField7 = new javax.swing.JTextField();
         jTextField8 = new javax.swing.JTextField();
         airlineCombobox = new javax.swing.JComboBox<>();
+        btnBookNow = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -85,8 +93,8 @@ public class FindFlights extends javax.swing.JPanel {
 
         jButton2.setText("View Flight Details");
 
-        jTable4.setForeground(new java.awt.Color(0, 51, 102));
-        jTable4.setModel(new javax.swing.table.DefaultTableModel(
+        tblFlightDetails.setForeground(new java.awt.Color(0, 51, 102));
+        tblFlightDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -97,7 +105,7 @@ public class FindFlights extends javax.swing.JPanel {
                 "Flight No.", "Flying From", "Flying To", "Departing", "Returning"
             }
         ));
-        jScrollPane4.setViewportView(jTable4);
+        jScrollPane4.setViewportView(tblFlightDetails);
 
         jTextField3.setText("Select Airline:");
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
@@ -147,6 +155,13 @@ public class FindFlights extends javax.swing.JPanel {
             }
         });
 
+        btnBookNow.setText("Book Now");
+        btnBookNow.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBookNowActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -172,10 +187,14 @@ public class FindFlights extends javax.swing.JPanel {
                             .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButton2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3))))
+                            .addComponent(jButton3)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(260, 260, 260)
+                                .addComponent(btnBookNow, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(jButton2)))))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -213,7 +232,9 @@ public class FindFlights extends javax.swing.JPanel {
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
-                .addComponent(jButton2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(btnBookNow))
                 .addContainerGap(313, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -251,16 +272,32 @@ public class FindFlights extends javax.swing.JPanel {
         
     }//GEN-LAST:event_airlineComboboxActionPerformed
 
+    private void btnBookNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookNowActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblFlightDetails.getSelectedRow();
+        if(selectedRow < 0) {
+            JOptionPane.showMessageDialog(null,"Please Select a row from table first to Book flight", "Warining", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        Flight flight = (Flight) tblFlightDetails.getValueAt(selectedRow, 0);
+        SeatingArrangementJPanel bookPanel = new SeatingArrangementJPanel(CardSequenceJPanel, flight);
+        CardSequenceJPanel.add("BookingJPanel", bookPanel);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.next(CardSequenceJPanel);
+    }//GEN-LAST:event_btnBookNowActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> airlineCombobox;
+    private javax.swing.JButton btnBookNow;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
@@ -269,5 +306,6 @@ public class FindFlights extends javax.swing.JPanel {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     private javax.swing.JTextField jTextField8;
+    private javax.swing.JTable tblFlightDetails;
     // End of variables declaration//GEN-END:variables
 }

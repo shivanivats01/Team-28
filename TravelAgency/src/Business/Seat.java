@@ -6,23 +6,21 @@
 package Business;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+
 
 /**
  *
  * @author jshar
  */
-public class FlightDirectory {
+public class Seat {
+    private Flight flight;
+    HashMap<Integer,ArrayList<Integer>> map;
     
-    private ArrayList<Flight> flightList;
-    
-    public FlightDirectory() {
-        
-        flightList = new ArrayList<>();
+    public Seat(Flight flight) {
+        this.flight = flight;
+        map = new HashMap<>();
     }
     
-    public Flight addFlight(Flight flight){
-        flightList.add(flight);
-        return flight;
-    }
     
 }
