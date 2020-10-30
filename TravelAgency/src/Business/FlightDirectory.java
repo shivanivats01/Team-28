@@ -26,8 +26,6 @@ public class FlightDirectory {
     public FlightDirectory() {
         
         flightList = new ArrayList<>();
-        
-        
     }
     
     public Flight addFlight(){

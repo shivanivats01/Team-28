@@ -6,6 +6,7 @@
 package Business;
 
 import java.util.Date;
+import java.util.HashSet;
 
 /**
  *
@@ -19,6 +20,9 @@ public class Flight {
     private String destination;
     private Date startDate;
     private Date endDate;
+
+    public Flight() {
+    }
     
 
    /** public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
@@ -31,9 +35,7 @@ public class Flight {
         this.endDate = endDate;
     }
 */
-    public Flight() {
-        
-    }
+   
 
     public int getFlightNumber() {
         return flightNumber;
