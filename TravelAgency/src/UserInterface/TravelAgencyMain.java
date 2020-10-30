@@ -42,7 +42,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         SplitPane = new javax.swing.JSplitPane();
         controlJPanel = new javax.swing.JPanel();
-        btnManage = new javax.swing.JButton();
         btnRegisterAirline = new javax.swing.JButton();
         CardSequenceJPanel = new javax.swing.JPanel();
 
@@ -55,14 +54,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         controlJPanel.setBackground(new java.awt.Color(255, 255, 255));
         controlJPanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        btnManage.setText("Manage");
-        btnManage.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageActionPerformed(evt);
-            }
-        });
-        controlJPanel.add(btnManage, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 164, 186, -1));
 
         btnRegisterAirline.setText("Register Airliners ");
         btnRegisterAirline.addActionListener(new java.awt.event.ActionListener() {
@@ -91,17 +82,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnManageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageActionPerformed
-        // TODO add your handling code here:
-        ManageTAJPanel managePanel = new ManageTAJPanel(CardSequenceJPanel, airlinerDirectory);
-        CardSequenceJPanel.add("RegisterAirlinerJPanel", managePanel);
-        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
-        layout.next(CardSequenceJPanel);
-        
-        
-        
-    }//GEN-LAST:event_btnManageActionPerformed
 
     private void btnRegisterAirlineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRegisterAirlineActionPerformed
         // TODO add your handling code here:
@@ -150,7 +130,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardSequenceJPanel;
     private javax.swing.JSplitPane SplitPane;
-    private javax.swing.JButton btnManage;
     private javax.swing.JButton btnRegisterAirline;
     private javax.swing.JPanel controlJPanel;
     // End of variables declaration//GEN-END:variables
