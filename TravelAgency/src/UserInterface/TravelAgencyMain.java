@@ -9,7 +9,7 @@ import Business.AirlinerDirectory;
 import Business.FlightDirectory;
 import UserInterface.ManageAirlinerTA.ManageTAJPanel;
 import UserInterface.RegisterAirliner.RegisterAirlinerJPanel;
-//import UserInterface.SearchFlights.SearchJPanel;
+
 import java.awt.CardLayout;
 
 /**
@@ -44,7 +44,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         controlJPanel = new javax.swing.JPanel();
         btnManage = new javax.swing.JButton();
         btnRegisterAirline = new javax.swing.JButton();
-        btnSearch = new javax.swing.JButton();
         CardSequenceJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,14 +71,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             }
         });
         controlJPanel.add(btnRegisterAirline, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 227, 186, -1));
-
-        btnSearch.setText("Search / Book");
-        btnSearch.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSearchActionPerformed(evt);
-            }
-        });
-        controlJPanel.add(btnSearch, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 286, 186, -1));
 
         SplitPane.setLeftComponent(controlJPanel);
 
@@ -121,15 +112,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnRegisterAirlineActionPerformed
 
-    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
-        // TODO add your handling code here:
-    //    SearchJPanel managePanel = new SearchJPanel(CardSequenceJPanel, flightDirectory);
-    //    CardSequenceJPanel.add("SearchJPanel", managePanel);
-    //    CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
-    //    layout.next(CardSequenceJPanel);
-        
-    }//GEN-LAST:event_btnSearchActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -170,7 +152,6 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     private javax.swing.JSplitPane SplitPane;
     private javax.swing.JButton btnManage;
     private javax.swing.JButton btnRegisterAirline;
-    private javax.swing.JButton btnSearch;
     private javax.swing.JPanel controlJPanel;
     // End of variables declaration//GEN-END:variables
 }
