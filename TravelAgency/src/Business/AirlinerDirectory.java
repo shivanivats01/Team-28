@@ -45,4 +45,13 @@ public class AirlinerDirectory {
         airlineList.remove(airline);
     }
     
+    public ArrayList<String> getAirlineNames() {
+        ArrayList<String> airlineNames = new ArrayList<String>();
+        for(int i= 0; i <= airlineList.size() - 1; i++){
+            Airliner currentAirliner = airlineList.get(i);
+            airlineNames.add(currentAirliner.getAirlineName());
+        }
+        
+        return airlineNames;
+    }
 }

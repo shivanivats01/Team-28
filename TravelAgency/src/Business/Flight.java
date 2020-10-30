@@ -20,6 +20,7 @@ public class Flight {
     private Date startDate;
     private Date endDate;
     
+    
     public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
         this.flightNumber = flightNumber;
         this.airlineName = airlineName;

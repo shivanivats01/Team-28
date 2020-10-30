@@ -6,7 +6,9 @@
 package UserInterface;
 
 import Business.AirlinerDirectory;
+import Business.FlightDirectory;
 import UserInterface.ManageAirliner.RegisterAirlinerJPanel;
+import UserInterface.SearchFlights.FindFlights;
 import java.awt.CardLayout;
 
 /**
@@ -15,7 +17,7 @@ import java.awt.CardLayout;
  */
 public class TravelAgencyMain extends javax.swing.JFrame {
     
-    
+    private FlightDirectory flightDirectory;
     private AirlinerDirectory airlinerDirectory;
 
     /**
@@ -24,8 +26,11 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     public TravelAgencyMain() {
         initComponents();
         airlinerDirectory = new AirlinerDirectory();
+        flightDirectory = new FlightDirectory();
     }
-
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -38,6 +43,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         SplitPane = new javax.swing.JSplitPane();
         controlJPanel = new javax.swing.JPanel();
         btnRegisterAirline = new javax.swing.JButton();
+        btnManageCustomers = new javax.swing.JButton();
         CardSequenceJPanel = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,13 +62,22 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             }
         });
 
+        btnManageCustomers.setText("Manage Customers");
+        btnManageCustomers.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageCustomersActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout controlJPanelLayout = new javax.swing.GroupLayout(controlJPanel);
         controlJPanel.setLayout(controlJPanelLayout);
         controlJPanelLayout.setHorizontalGroup(
             controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, controlJPanelLayout.createSequentialGroup()
+            .addGroup(controlJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btnRegisterAirline, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
+                .addGroup(controlJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnRegisterAirline, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
+                    .addComponent(btnManageCustomers, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE))
                 .addContainerGap())
         );
         controlJPanelLayout.setVerticalGroup(
@@ -70,7 +85,9 @@ public class TravelAgencyMain extends javax.swing.JFrame {
             .addGroup(controlJPanelLayout.createSequentialGroup()
                 .addGap(217, 217, 217)
                 .addComponent(btnRegisterAirline)
-                .addContainerGap(402, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnManageCustomers)
+                .addContainerGap(355, Short.MAX_VALUE))
         );
 
         SplitPane.setLeftComponent(controlJPanel);
@@ -100,6 +117,14 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_btnRegisterAirlineActionPerformed
+
+    private void btnManageCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomersActionPerformed
+        // TODO add your handling code here:
+        FindFlights managePanel = new FindFlights (CardSequenceJPanel,airlinerDirectory, flightDirectory );
+        CardSequenceJPanel.add("FindFlights", managePanel);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.next(CardSequenceJPanel);
+    }//GEN-LAST:event_btnManageCustomersActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +164,7 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardSequenceJPanel;
     private javax.swing.JSplitPane SplitPane;
+    private javax.swing.JButton btnManageCustomers;
     private javax.swing.JButton btnRegisterAirline;
     private javax.swing.JPanel controlJPanel;
     // End of variables declaration//GEN-END:variables
