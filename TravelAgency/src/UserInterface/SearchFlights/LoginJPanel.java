@@ -11,6 +11,7 @@ import Business.CustomerDirectory;
 import Business.FlightDirectory;
 import Business.Seat;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -146,10 +147,18 @@ public class LoginJPanel extends javax.swing.JPanel {
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
+        CardSequenceJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.previous(CardSequenceJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoginActionPerformed
         // TODO add your handling code here:
+        if(txtEmail.getText().isEmpty() || txtPassword.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All fields must be filled");
+            return;
+        }
+        
         for(Customer c : customerDirectory.getCustomerDirectory()) {
             System.out.println(c.getFirstNmae() + "  " + c.getPassword());
             System.out.println(txtEmail.getText() + "  " + txtPassword.getText());

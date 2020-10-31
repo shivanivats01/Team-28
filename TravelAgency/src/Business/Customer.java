@@ -88,7 +88,10 @@ public class Customer {
     }
     public String getGender() {
         return gender; 
-    }    
+    } 
+    public ArrayList<Pair<Flight, String>> getFlightInfo() {
+        return bookedFlights;
+    }
     
 }
 
