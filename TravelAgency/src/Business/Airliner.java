@@ -24,7 +24,7 @@ public class Airliner {
         this.domesticAirplane = domesticAirplane;
         this.internationalAirplane = internationalAirplane;
         this.numberOfEmployees = numberOfEmployee;
-        flightDirectory = new FlightDirectory();  
+        this.flightDirectory = new FlightDirectory();  
     }
     
     public Airliner(){

@@ -302,8 +302,7 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
             return;
         }
         else {
-            seat.addHashValue(str);
-            
+            seat.addHashValue(str); 
         }
         
     }//GEN-LAST:event_btnNextActionPerformed

@@ -25,16 +25,15 @@ public class Flight {
     }
     
 
-   /** public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
-
-        this.flightNumber = flightNumber;
-        this.airlineName = airlineName;
-        this.source = source;
-        this.destination = destination;
-        this.startDate = startDate;
-        this.endDate = endDate;
-    }
-*/
+//    public Flight(int flightNumber, String airlineName, String source, String destination, Date startDate, Date endDate) {
+//
+//        this.flightNumber = flightNumber;
+//        this.airlineName = airlineName;
+//        this.source = source;
+//        this.destination = destination;
+//        this.startDate = startDate;
+//        this.endDate = endDate;
+//    }
    
 
     public int getFlightNumber() {

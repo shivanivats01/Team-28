@@ -46,7 +46,6 @@ public class ManageTAJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         AirlinerComboBox = new javax.swing.JComboBox<>();
-        txtAirlinerName = new javax.swing.JTextField();
         btnFind = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -70,9 +69,7 @@ public class ManageTAJPanel extends javax.swing.JPanel {
                 .addGap(83, 83, 83)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(txtAirlinerName)
-                    .addComponent(AirlinerComboBox, 0, 165, Short.MAX_VALUE))
+                .addComponent(AirlinerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(btnFind)
                 .addContainerGap(79, Short.MAX_VALUE))
@@ -85,9 +82,7 @@ public class ManageTAJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(AirlinerComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnFind))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(txtAirlinerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -106,6 +101,5 @@ public class ManageTAJPanel extends javax.swing.JPanel {
     private javax.swing.JComboBox<Object> AirlinerComboBox;
     private javax.swing.JButton btnFind;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField txtAirlinerName;
     // End of variables declaration//GEN-END:variables
 }

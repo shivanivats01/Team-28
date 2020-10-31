@@ -47,7 +47,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
             row[1] = f.getSource();
             row[2] = f.getDestination();
             row[3] = f.getStartDate();
-            //row[4] = f.getEndDate();
+//            row[4] = f.getEndDate();
             model.addRow(row);
         }
     }
@@ -79,6 +79,8 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
         jButton6.setText("jButton6");
 
         jButton7.setText("jButton7");
+
+        txtAirliner.setEditable(false);
 
         jLabel1.setText("Airliner:");
 
@@ -156,7 +158,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
                         .addComponent(txtAirliner, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(242, 242, 242)
                         .addComponent(btnSearch)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(496, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
@@ -165,14 +167,14 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
                             .addComponent(btnBack)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnDeleteFlight)
-                                .addGap(87, 87, 87)
-                                .addComponent(btnAddFlight)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnAddFlight)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnViewFlight))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGap(28, 28, 28)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 471, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 452, Short.MAX_VALUE))
+                .addGap(0, 471, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,6 +236,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
         int row = flightDirectory.getSelectedRow();
         if(row<0){
             JOptionPane.showMessageDialog(null, "Pls select a row!!", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
         }
         Flight f = (Flight)flightDirectory.getValueAt(row, 0);
         SearchResultJPanel vpdjp = new SearchResultJPanel(CardSequenceJPanel, f);
@@ -246,7 +249,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
     private void btnAddFlightActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddFlightActionPerformed
         // TODO add your handling code here:
         
-         CreateNewFlightJPanel cnpjp = new CreateNewFlightJPanel(CardSequenceJPanel, airliner);
+        CreateNewFlightJPanel cnpjp = new CreateNewFlightJPanel(CardSequenceJPanel, airliner);
         CardSequenceJPanel.add("CreateNewFlightJPanel", cnpjp);
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);

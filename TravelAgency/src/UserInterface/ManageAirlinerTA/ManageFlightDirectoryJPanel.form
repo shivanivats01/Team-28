@@ -43,7 +43,7 @@
                       <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="496" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
               <Group type="103" groupAlignment="1" attributes="0">
@@ -53,9 +53,9 @@
                           <Component id="btnBack" min="-2" max="-2" attributes="0"/>
                           <Group type="102" attributes="0">
                               <Component id="btnDeleteFlight" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="87" max="-2" attributes="0"/>
-                              <Component id="btnAddFlight" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
+                              <Component id="btnAddFlight" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Component id="btnViewFlight" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
@@ -65,7 +65,7 @@
                       <Component id="jScrollPane1" min="-2" pref="471" max="-2" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="452" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="471" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -96,6 +96,9 @@
   </Layout>
   <SubComponents>
     <Component class="javax.swing.JTextField" name="txtAirliner">
+      <Properties>
+        <Property name="editable" type="boolean" value="false"/>
+      </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
