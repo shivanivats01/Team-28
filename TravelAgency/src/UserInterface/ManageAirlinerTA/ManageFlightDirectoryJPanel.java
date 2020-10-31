@@ -43,7 +43,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
         
         for(Flight f : airliner.getFlightDirectory().getFlightList()) {
             Object row[] = new Object[4];
-            row[0] = f.getFlightNumber();
+            row[0] = f;
             row[1] = f.getSource();
             row[2] = f.getDestination();
             row[3] = f.getStartDate();
@@ -223,6 +223,7 @@ public class ManageFlightDirectoryJPanel extends javax.swing.JPanel {
             return;
         }
         Flight f = (Flight)flightDirectory.getValueAt(row, 0);
+        System.out.println(f.getFlightNumber() + "  " + f.getAirlineName());
         airliner.getFlightDirectory().removeFlight(f);
         refreshTable();
         

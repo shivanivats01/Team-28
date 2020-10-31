@@ -5,6 +5,7 @@
  */
 package UserInterface.SearchFlights;
 
+import Business.Customer;
 import Business.Flight;
 import Business.Seat;
 import java.awt.CardLayout;
@@ -20,14 +21,16 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
     private Seat seat;
     private JPanel CardSequenceJPanel;
     private Flight flight;
+    private Customer customer;
     /**
      * Creates new form BookingJPanel
      */
-    public SeatingArrangementJPanel(JPanel CardSequenceJPanel, Flight flight) {
+    public SeatingArrangementJPanel(JPanel CardSequenceJPanel, Flight flight, Customer customer, Seat seat) {
         initComponents();
         this.CardSequenceJPanel = CardSequenceJPanel;
         this.flight = flight;
-        this.seat = new Seat(flight.getFlightNumber());
+        this.customer = customer;
+        this.seat = seat;
     }
 
     /**
@@ -108,7 +111,7 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnNext.setText("Next");
+        btnNext.setText("Confirm");
         btnNext.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNextActionPerformed(evt);
@@ -153,8 +156,8 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(356, 356, 356)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE)
-                            .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(btnBack, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnNext, javax.swing.GroupLayout.DEFAULT_SIZE, 133, Short.MAX_VALUE))))
                 .addContainerGap(414, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -297,12 +300,15 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
             str = String.valueOf(boxSeatNumber.getSelectedIndex()) + "F";
         }
         
-        if(seat.getSet().contains(str)) {
+        System.out.println(flight.getFlightNumber());
+        if(seat.getSeats(flight.getFlightNumber()).contains(str)) {
             JOptionPane.showMessageDialog(null,"Seat Already Selected by another customer");
             return;
         }
         else {
-            seat.addHashValue(str); 
+            seat.setSeat(flight.getFlightNumber(), str); 
+            customer.addFlightInfo(flight, str);
+            JOptionPane.showMessageDialog(null,"Flight Booked");
         }
         
     }//GEN-LAST:event_btnNextActionPerformed

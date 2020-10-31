@@ -92,6 +92,10 @@ public class RegisterAirlinerJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblAirline);
+        if (tblAirline.getColumnModel().getColumnCount() > 0) {
+            tblAirline.getColumnModel().getColumn(1).setResizable(false);
+            tblAirline.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         btnView.setText("View");
         btnView.addActionListener(new java.awt.event.ActionListener() {
