@@ -106,6 +106,7 @@ public class FindFlights extends javax.swing.JPanel {
         txtSource = new javax.swing.JTextField();
         txtDestination = new javax.swing.JTextField();
         txtAirliner = new javax.swing.JTextField();
+        btnViewBookedTickets = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -188,6 +189,13 @@ public class FindFlights extends javax.swing.JPanel {
             }
         });
 
+        btnViewBookedTickets.setText("View Booked Tickets");
+        btnViewBookedTickets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnViewBookedTicketsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,7 +223,9 @@ public class FindFlights extends javax.swing.JPanel {
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearch)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(260, 260, 260)
+                                .addGap(24, 24, 24)
+                                .addComponent(btnViewBookedTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(49, 49, 49)
                                 .addComponent(btnBookNow, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2)))))
@@ -254,7 +264,8 @@ public class FindFlights extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
-                    .addComponent(btnBookNow))
+                    .addComponent(btnBookNow)
+                    .addComponent(btnViewBookedTickets))
                 .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -390,10 +401,20 @@ public class FindFlights extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDateActionPerformed
 
+    private void btnViewBookedTicketsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnViewBookedTicketsActionPerformed
+        // TODO add your handling code here:
+        ViewTicketJPanel viewPanel = new ViewTicketJPanel(CardSequenceJPanel ,customer,seat);
+        CardSequenceJPanel.add("ViewTicketsJPanel", viewPanel);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.next(CardSequenceJPanel);
+        
+    }//GEN-LAST:event_btnViewBookedTicketsActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBookNow;
     private javax.swing.JButton btnSearch;
+    private javax.swing.JButton btnViewBookedTickets;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane4;

@@ -267,6 +267,7 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+
         // TODO add your handling code here:
         if(boxSeatNumber.getSelectedIndex() == 0) {
             JOptionPane.showMessageDialog(null,"Please select a row");
@@ -309,6 +310,10 @@ public class SeatingArrangementJPanel extends javax.swing.JPanel {
             seat.setSeat(flight.getFlightNumber(), str); 
             customer.addFlightInfo(flight, str);
             JOptionPane.showMessageDialog(null,"Flight Booked");
+            CardSequenceJPanel.remove(this);
+            CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+            layout.previous(CardSequenceJPanel);
+            
         }
         
     }//GEN-LAST:event_btnNextActionPerformed
