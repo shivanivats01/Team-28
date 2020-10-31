@@ -6,9 +6,12 @@
 package UserInterface;
 
 import Business.AirlinerDirectory;
+import Business.CustomerDirectory;
 import Business.FlightDirectory;
+import Business.Seat;
 import UserInterface.RegisterAirliner.RegisterAirlinerJPanel;
 import UserInterface.ManageAirlinerTA.ManageTAJPanel;
+import UserInterface.SearchFlights.CustomerLogin;
 import UserInterface.SearchFlights.FindFlights;
 import java.awt.CardLayout;
 
@@ -20,6 +23,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
     
     private FlightDirectory flightDirectory;
     private AirlinerDirectory airlinerDirectory;
+    private CustomerDirectory customerDirectory;
+    private Seat seat;
 
     /**
      * Creates new form TravelAgencyMain
@@ -28,6 +33,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
         initComponents();
         airlinerDirectory = new AirlinerDirectory();
         flightDirectory = new FlightDirectory();
+        customerDirectory = new CustomerDirectory();
+        seat = new Seat();
     }
     
     
@@ -132,8 +139,8 @@ public class TravelAgencyMain extends javax.swing.JFrame {
 
     private void btnManageCustomersActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageCustomersActionPerformed
         // TODO add your handling code here:
-        FindFlights managePanel = new FindFlights (CardSequenceJPanel,airlinerDirectory, flightDirectory );
-        CardSequenceJPanel.add("FindFlights", managePanel);
+        CustomerLogin customerPanel = new CustomerLogin (CardSequenceJPanel,airlinerDirectory, flightDirectory, customerDirectory, seat );
+        CardSequenceJPanel.add("CustomerLogin", customerPanel);
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_btnManageCustomersActionPerformed

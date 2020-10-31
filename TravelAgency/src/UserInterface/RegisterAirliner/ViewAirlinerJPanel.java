@@ -27,8 +27,8 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         this.airliner = airliner;
         txtAirlinerName.setText(airliner.getAirlineName());
         txtTotalFlights.setText(String.valueOf(airliner.getNumberOfAirplane()));
-        txtDomesticFligths.setText(String.valueOf(airliner.getDomesticAirplane()));
-        txtInternationalFligths.setText(String.valueOf(airliner.getInternationalAirplane()));
+//        txtDomesticFligths.setText(String.valueOf(airliner.getDomesticAirplane()));
+//        txtInternationalFligths.setText(String.valueOf(airliner.getInternationalAirplane()));
         txtTotalEmployees.setText(String.valueOf(airliner.getNumberOfEmployees()));
     }
 
@@ -46,10 +46,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
         txtAirlinerName = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         txtTotalFlights = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        txtDomesticFligths = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
-        txtInternationalFligths = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtTotalEmployees = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
@@ -79,26 +75,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Domestic Flights:");
-
-        txtDomesticFligths.setEditable(false);
-        txtDomesticFligths.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDomesticFligthsActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("International Flights:");
-
-        txtInternationalFligths.setEditable(false);
-        txtInternationalFligths.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInternationalFligthsActionPerformed(evt);
-            }
-        });
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Total Employees:");
 
@@ -125,17 +101,13 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtAirlinerName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTotalEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtInternationalFligths, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtDomesticFligths, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(txtTotalFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnBack)))
                     .addGroup(layout.createSequentialGroup()
@@ -156,21 +128,13 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(txtTotalFlights, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDomesticFligths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtInternationalFligths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtTotalEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addComponent(btnBack)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addContainerGap(320, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -181,14 +145,6 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
     private void txtTotalFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalFlightsActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTotalFlightsActionPerformed
-
-    private void txtDomesticFligthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDomesticFligthsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDomesticFligthsActionPerformed
-
-    private void txtInternationalFligthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInternationalFligthsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInternationalFligthsActionPerformed
 
     private void txtTotalEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalEmployeesActionPerformed
         // TODO add your handling code here:
@@ -206,13 +162,9 @@ public class ViewAirlinerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtAirlinerName;
-    private javax.swing.JTextField txtDomesticFligths;
-    private javax.swing.JTextField txtInternationalFligths;
     private javax.swing.JTextField txtTotalEmployees;
     private javax.swing.JTextField txtTotalFlights;
     // End of variables declaration//GEN-END:variables

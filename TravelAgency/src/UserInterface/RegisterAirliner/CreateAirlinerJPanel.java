@@ -39,14 +39,8 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         txtAirlinerName = new javax.swing.JTextField();
-        txtTotalFlights = new javax.swing.JTextField();
-        txtInternationalFligths = new javax.swing.JTextField();
-        txtDomesticFligths = new javax.swing.JTextField();
         txtTotalEmployees = new javax.swing.JTextField();
         btnCreate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
@@ -57,39 +51,12 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel1.setText("Airliner Name:");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Total Flights:");
-
-        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel3.setText("Domestic Flights:");
-
-        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel4.setText("International Flights:");
-
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabel5.setText("Total Employees:");
 
         txtAirlinerName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtAirlinerNameActionPerformed(evt);
-            }
-        });
-
-        txtTotalFlights.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTotalFlightsActionPerformed(evt);
-            }
-        });
-
-        txtInternationalFligths.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtInternationalFligthsActionPerformed(evt);
-            }
-        });
-
-        txtDomesticFligths.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDomesticFligthsActionPerformed(evt);
             }
         });
 
@@ -125,27 +92,22 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(171, 171, 171)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 147, Short.MAX_VALUE)
                             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(btnBack, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(69, 69, 69)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtAirlinerName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTotalEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtInternationalFligths, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtDomesticFligths, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(txtTotalFlights, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(txtTotalEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(138, 138, 138)
+                                .addGap(100, 100, 100)
                                 .addComponent(btnCreate, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(265, 265, 265)
-                        .addComponent(jLabel6)))
+                        .addComponent(jLabel6))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(387, 387, 387)
+                        .addComponent(txtAirlinerName, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(489, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -157,45 +119,21 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtAirlinerName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtTotalFlights, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtDomesticFligths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(txtInternationalFligths, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
                     .addComponent(txtTotalEmployees, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnCreate)
-                    .addComponent(btnBack))
-                .addContainerGap(189, Short.MAX_VALUE))
+                    .addComponent(btnBack)
+                    .addComponent(btnCreate))
+                .addContainerGap(346, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtAirlinerNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtAirlinerNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtAirlinerNameActionPerformed
-
-    private void txtTotalFlightsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalFlightsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTotalFlightsActionPerformed
-
-    private void txtInternationalFligthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInternationalFligthsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtInternationalFligthsActionPerformed
-
-    private void txtDomesticFligthsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDomesticFligthsActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtDomesticFligthsActionPerformed
 
     private void txtTotalEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTotalEmployeesActionPerformed
         // TODO add your handling code here:
@@ -230,62 +168,62 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
             }
         }
         
-        try {
-            if(txtTotalFlights.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null,"Total flights text field cannot be empty");
-                return;
-            }
-            totalFlights = Integer.parseInt(txtTotalFlights.getText());
-            if(totalFlights < 0) {
-                JOptionPane.showMessageDialog(null,"Total Flights text field cannot have negative value");
-                return;
-            }
-            else if(totalFlights % 1 != 0) {
-                JOptionPane.showMessageDialog(null, "Total Flights text field must have integer value only");
-                return;
-            }  
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Total Flights must be an integer");
-            return;
-        }
+//        try {
+//            if(txtTotalFlights.getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(null,"Total flights text field cannot be empty");
+//                return;
+//            }
+//            totalFlights = Integer.parseInt(txtTotalFlights.getText());
+//            if(totalFlights < 0) {
+//                JOptionPane.showMessageDialog(null,"Total Flights text field cannot have negative value");
+//                return;
+//            }
+//            else if(totalFlights % 1 != 0) {
+//                JOptionPane.showMessageDialog(null, "Total Flights text field must have integer value only");
+//                return;
+//            }  
+//        } catch(Exception e) {
+//            JOptionPane.showMessageDialog(null,"Total Flights must be an integer");
+//            return;
+//        }
         
-        try {
-            if(txtDomesticFligths.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null,"Domestic Flight text field cannot be empty");
-                return;
-            }
-            domesticFlights = Integer.parseInt(txtDomesticFligths.getText());
-            if(domesticFlights < 0) {
-                JOptionPane.showMessageDialog(null,"Domestic Flights text field cannot have negative value");
-                return;
-            }
-            else if(domesticFlights % 1 != 0) {
-                JOptionPane.showMessageDialog(null, "Domestic Flights text field must have integer value only");
-                return;
-            }
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"Domestic Flights text field must have integer value only");
-            return;
-        }
-        
-        try {
-            if(txtInternationalFligths.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(null,"International Flights text field cannot be empty");
-                return;
-            }
-            internationalFlights = Integer.parseInt(txtInternationalFligths.getText());
-            if(internationalFlights < 0) {
-                JOptionPane.showMessageDialog(null,"International Flights text field cannot have negative value");
-                return;
-            }
-            else if(internationalFlights % 1 != 0) {
-                JOptionPane.showMessageDialog(null, "International Flights text field must have integer value only");
-                return;
-            } 
-        } catch(Exception e) {
-            JOptionPane.showMessageDialog(null,"International Flights text field must have integer value only");
-            return;
-        }
+//        try {
+//            if(txtDomesticFligths.getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(null,"Domestic Flight text field cannot be empty");
+//                return;
+//            }
+//            domesticFlights = Integer.parseInt(txtDomesticFligths.getText());
+//            if(domesticFlights < 0) {
+//                JOptionPane.showMessageDialog(null,"Domestic Flights text field cannot have negative value");
+//                return;
+//            }
+//            else if(domesticFlights % 1 != 0) {
+//                JOptionPane.showMessageDialog(null, "Domestic Flights text field must have integer value only");
+//                return;
+//            }
+//        } catch(Exception e) {
+//            JOptionPane.showMessageDialog(null,"Domestic Flights text field must have integer value only");
+//            return;
+//        }
+//        
+//        try {
+//            if(txtInternationalFligths.getText().isEmpty()) {
+//                JOptionPane.showMessageDialog(null,"International Flights text field cannot be empty");
+//                return;
+//            }
+//            internationalFlights = Integer.parseInt(txtInternationalFligths.getText());
+//            if(internationalFlights < 0) {
+//                JOptionPane.showMessageDialog(null,"International Flights text field cannot have negative value");
+//                return;
+//            }
+//            else if(internationalFlights % 1 != 0) {
+//                JOptionPane.showMessageDialog(null, "International Flights text field must have integer value only");
+//                return;
+//            } 
+//        } catch(Exception e) {
+//            JOptionPane.showMessageDialog(null,"International Flights text field must have integer value only");
+//            return;
+//        }
         
         try {
             if(txtTotalEmployees.getText().isEmpty()) {
@@ -306,17 +244,17 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
             return;
         }
         
-        if(totalFlights != domesticFlights + internationalFlights) {
-            JOptionPane.showMessageDialog(null, "Total Flight must be equal to Domestic Flights and International Flights");
-            return;
-        }
+//        if(totalFlights != domesticFlights + internationalFlights) {
+//            JOptionPane.showMessageDialog(null, "Total Flight must be equal to Domestic Flights and International Flights");
+//            return;
+//        }
         
-        airliner.setAirlineName(txtAirlinerName.getText());
-        airliner.setNumberOfAirplane(totalFlights);
-        airliner.setDomesticAirplane(domesticFlights);
-        airliner.setInternationalAirplane(internationalFlights);
-        airliner.setNumberOfEmployees(totalEmployees);
-        JOptionPane.showMessageDialog(null, "Airliner Added!!!!!", "Info", JOptionPane.INFORMATION_MESSAGE);
+          airliner.setAirlineName(txtAirlinerName.getText());
+//        airliner.setNumberOfAirplane(totalFlights);
+//        airliner.setDomesticAirplane(domesticFlights);
+//        airliner.setInternationalAirplane(internationalFlights);
+          airliner.setNumberOfEmployees(totalEmployees);
+          JOptionPane.showMessageDialog(null, "Airliner Added!!!!!", "Info", JOptionPane.INFORMATION_MESSAGE);
         
         
     }//GEN-LAST:event_btnCreateActionPerformed
@@ -326,15 +264,9 @@ public class CreateAirlinerJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnCreate;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField txtAirlinerName;
-    private javax.swing.JTextField txtDomesticFligths;
-    private javax.swing.JTextField txtInternationalFligths;
     private javax.swing.JTextField txtTotalEmployees;
-    private javax.swing.JTextField txtTotalFlights;
     // End of variables declaration//GEN-END:variables
 }

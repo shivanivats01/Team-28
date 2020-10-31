@@ -6,35 +6,37 @@
 package Business;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
-
 
 /**
  *
  * @author jshar
  */
 public class Seat {
-    private int flightNumber;
-    HashSet<String> set;
+    HashMap<Integer, HashSet<String>> seats_map;
     
-    public Seat(int flight) {
-        this.flightNumber = flight;
-        set = new HashSet<>();
+    public Seat() {
+        seats_map = new HashMap<>();
     }
 
-    public HashSet<String> getSet() {
-        return set;
+    public HashSet<String> getSeats(int flight) {
+        return seats_map.getOrDefault(flight, new HashSet<String>());
     }
 
-    public void setSet(HashSet<String> set) {
-        this.set = set;
+    public void setSeat(int flight, String seat) {
+        HashSet<String> set = seats_map.getOrDefault(flight, new HashSet<String>());
+        set.add(seat);
+        seats_map.put(flight,set);
+    }    
+
+    public HashMap<Integer, HashSet<String>> getSeats_map() {
+        return seats_map;
     }
 
-
-    public void addHashValue(String str) {
-       set.add(str);
+    public void setSeats_map(HashMap<Integer, HashSet<String>> seats_map) {
+        this.seats_map = seats_map;
     }
-
     
     
 }

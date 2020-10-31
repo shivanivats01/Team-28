@@ -7,8 +7,10 @@ package UserInterface.SearchFlights;
 
 import Business.Airliner;
 import Business.AirlinerDirectory;
+import Business.Customer;
 import Business.Flight;
 import Business.FlightDirectory;
+import Business.Seat;
 import java.awt.CardLayout;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -27,14 +29,18 @@ public class FindFlights extends javax.swing.JPanel {
     private FlightDirectory flightDirectory;
     private AirlinerDirectory airlineDirectory;
     private Airliner airliner;
+    private Customer customer;
+    private Seat seat;
 
     /**
      * Creates new form FindFlights
      */
-    public FindFlights(JPanel CardSequenceJPanel,AirlinerDirectory airlineDirectory,FlightDirectory flightDirectory ) {
+    public FindFlights(JPanel CardSequenceJPanel,AirlinerDirectory airlineDirectory,FlightDirectory flightDirectory, Customer customer, Seat seat ) {
         this.CardSequenceJPanel = CardSequenceJPanel;
         this.airlineDirectory = airlineDirectory;
         this.flightDirectory = flightDirectory;
+        this.customer = customer;
+        this.seat = seat;
         
         initComponents();
         // Commented as not required anymore.
@@ -282,7 +288,7 @@ public class FindFlights extends javax.swing.JPanel {
         }
         
         Flight flight = (Flight) tblFlightDetails.getValueAt(selectedRow, 0);
-        SeatingArrangementJPanel bookPanel = new SeatingArrangementJPanel(CardSequenceJPanel, flight);
+        SeatingArrangementJPanel bookPanel = new SeatingArrangementJPanel(CardSequenceJPanel, flight,customer,seat);
         CardSequenceJPanel.add("BookingJPanel", bookPanel);
         CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
         layout.next(CardSequenceJPanel);

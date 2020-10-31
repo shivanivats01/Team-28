@@ -13,16 +13,12 @@ public class Airliner {
     
     private String airlineName;
     private int numberOfAirplane;
-    private int domesticAirplane;
-    private int internationalAirplane;
     private int numberOfEmployees;
     private FlightDirectory flightDirectory;
     
-    public Airliner(String airlineName, int numberOfAirplane, int domesticAirplane, int internationalAirplane, int numberOfEmployee) {
+    public Airliner(String airlineName, int numberOfAirplane, int numberOfEmployee) {
         this.airlineName = airlineName;
         this.numberOfAirplane = numberOfAirplane;
-        this.domesticAirplane = domesticAirplane;
-        this.internationalAirplane = internationalAirplane;
         this.numberOfEmployees = numberOfEmployee;
         this.flightDirectory = new FlightDirectory();  
     }
@@ -48,28 +44,12 @@ public class Airliner {
     }
 
     public int getNumberOfAirplane() {
-        return numberOfAirplane;
+        return flightDirectory.getFlightList().size();
     }
 
-    public void setNumberOfAirplane(int numberOfAirplane) {
-        this.numberOfAirplane = numberOfAirplane;
-    }
-
-    public int getDomesticAirplane() {
-        return domesticAirplane;
-    }
-
-    public void setDomesticAirplane(int domesticAirplane) {
-        this.domesticAirplane = domesticAirplane;
-    }
-
-    public int getInternationalAirplane() {
-        return internationalAirplane;
-    }
-
-    public void setInternationalAirplane(int internationalAirplane) {
-        this.internationalAirplane = internationalAirplane;
-    }
+//    public void setNumberOfAirplane(int numberOfAirplane) {
+//        this.numberOfAirplane = numberOfAirplane;
+//    }
 
     public int getNumberOfEmployees() {
         return numberOfEmployees;

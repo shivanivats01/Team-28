@@ -54,8 +54,8 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="356" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btnBack" pref="133" max="32767" attributes="0"/>
-                          <Component id="btnNext" max="32767" attributes="0"/>
+                          <Component id="btnBack" max="32767" attributes="0"/>
+                          <Component id="btnNext" pref="133" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -213,7 +213,7 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnNext">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Next"/>
+        <Property name="text" type="java.lang.String" value="Confirm"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnNextActionPerformed"/>

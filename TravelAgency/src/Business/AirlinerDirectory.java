@@ -15,10 +15,10 @@ import java.util.ArrayList;
 public class AirlinerDirectory {
     private ArrayList<Airliner> airlineList;
     
-    Airliner airline1 = new Airliner("JetBlue", 120, 65, 55, 800);
-    Airliner airline2 = new Airliner("Delta", 98, 50, 48, 689);
-    Airliner airline3 = new Airliner("AirAmerica", 116, 79, 37, 499);
-    Airliner airline4 = new Airliner("SpiceJet", 67, 67, 0, 389);
+    Airliner airline1 = new Airliner("JetBlue", 0, 100);
+    Airliner airline2 = new Airliner("Delta", 0 , 89);
+    Airliner airline3 = new Airliner("AirAmerica", 0, 99);
+    Airliner airline4 = new Airliner("SpiceJet", 0, 39);
     
     public AirlinerDirectory() {
         airlineList = new ArrayList<>();
