@@ -238,6 +238,7 @@ public class SignUpJPanel extends javax.swing.JPanel {
         customer.setEmailID(txtEmail.getText());
         customer.setPassword(txtPassword.getText());
         
+        
         JOptionPane.showMessageDialog(null,"Signup Successfully. Go back to Customer Login Page");
     }//GEN-LAST:event_btnSignUpActionPerformed
 
