@@ -58,6 +58,8 @@ public class FindFlights extends javax.swing.JPanel {
             row[2] = f.getSource();
             row[3] = f.getDestination();
             row[4] = f.getStartDate();
+            
+            row[5] = f.getPrice();
 //            row[5] = f.getEndDate();
             dtm.addRow(row);
         }
@@ -91,7 +93,6 @@ public class FindFlights extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblFlightDetails = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
@@ -112,18 +113,16 @@ public class FindFlights extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
-        jButton2.setText("View Flight Details");
-
         tblFlightDetails.setForeground(new java.awt.Color(0, 51, 102));
         tblFlightDetails.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Flight No.", "Airliner Name", "Flying From", "Flying To", "Departing"
+                "Flight No.", "Airliner Name", "Flying From", "Flying To", "Departing", "Price"
             }
         ));
         jScrollPane4.setViewportView(tblFlightDetails);
@@ -219,16 +218,14 @@ public class FindFlights extends javax.swing.JPanel {
                             .addComponent(txtAirliner, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnSearch)
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGap(24, 24, 24)
                                 .addComponent(btnViewBookedTickets, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(49, 49, 49)
-                                .addComponent(btnBookNow, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2)))))
+                                .addComponent(btnBookNow, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(326, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -263,7 +260,6 @@ public class FindFlights extends javax.swing.JPanel {
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
                     .addComponent(btnBookNow)
                     .addComponent(btnViewBookedTickets))
                 .addContainerGap(237, Short.MAX_VALUE))
@@ -416,7 +412,6 @@ public class FindFlights extends javax.swing.JPanel {
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnViewBookedTickets;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;

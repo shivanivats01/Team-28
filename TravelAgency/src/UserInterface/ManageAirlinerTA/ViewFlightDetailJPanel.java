@@ -180,8 +180,8 @@ public class ViewFlightDetailJPanel extends javax.swing.JPanel {
         txtSource.setEditable(true);
         txtDestination.setEditable(true);
         txtStartDate.setEditable(true);
-       // txtPrice.setEditable(true);
-       // txtAvailableSeats.setEditable(true);
+//        txtPrice.setEditable(true);
+//        txtAvailableSeats.setEditable(true);
         btnSave.setEnabled(true);
     }//GEN-LAST:event_btnUpdateActionPerformed
 

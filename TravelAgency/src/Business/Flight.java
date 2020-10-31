@@ -20,6 +20,7 @@ public class Flight {
     private String destination;
     private Date startDate;
     private Date endDate;
+    private Double price;
 
     public Flight() {
     }
@@ -82,6 +83,14 @@ public class Flight {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+    
+    public void setPrice(Double Price) {
+        this.price = Price;
+    }
+    
+    public Double getPrice() {
+        return this.price;
     }
     
     
