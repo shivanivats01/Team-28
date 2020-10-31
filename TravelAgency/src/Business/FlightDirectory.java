@@ -6,6 +6,7 @@
 package Business;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  *
@@ -14,18 +15,18 @@ import java.util.ArrayList;
 public class FlightDirectory {
     
     private ArrayList<Flight> flightList;
-
+   
+    public FlightDirectory() {
+        
+        flightList = new ArrayList<>();
+    }
+    
     public ArrayList<Flight> getFlightList() {
         return flightList;
     }
 
     public void setFlightList(ArrayList<Flight> flightList) {
         this.flightList = flightList;
-    }
-    
-    public FlightDirectory() {
-        
-        flightList = new ArrayList<>();
     }
     
     public Flight addFlight(){

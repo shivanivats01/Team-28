@@ -5,12 +5,17 @@
  */
 package UserInterface.SearchFlights;
 
+import Business.Airliner;
 import Business.AirlinerDirectory;
 import Business.Flight;
 import Business.FlightDirectory;
 import java.awt.CardLayout;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -21,6 +26,7 @@ public class FindFlights extends javax.swing.JPanel {
     private JPanel CardSequenceJPanel;
     private FlightDirectory flightDirectory;
     private AirlinerDirectory airlineDirectory;
+    private Airliner airliner;
 
     /**
      * Creates new form FindFlights
@@ -31,19 +37,43 @@ public class FindFlights extends javax.swing.JPanel {
         this.flightDirectory = flightDirectory;
         
         initComponents();
-        populateAirlineCombo();
+        // Commented as not required anymore.
+//        populateAirlineCombo();
     }
     
-    
-    public void populateAirlineCombo()
-    {
-        airlineCombobox.removeAllItems();
+    public void populateTable(ArrayList<Flight> a) {
+        DefaultTableModel dtm = (DefaultTableModel) tblFlightDetails.getModel();
+        dtm.setRowCount(0);
         
-        for (String s : airlineDirectory.getAirlineNames())
-                {
-                   airlineCombobox.addItem(s);
-                }
+        for(Flight f : a){
+            Object [] row = new Object[5];
+            row[0] = f;
+            row[1] = f.getAirlineName();
+            row[2] = f.getSource();
+            row[3] = f.getDestination();
+            row[4] = f.getStartDate();
+//            row[5] = f.getEndDate();
+            dtm.addRow(row);
+        }
     }
+    // COmmented as not required anymore.
+//    public void populateSourceCombo() {
+//        comboBoxSource.removeAllItems();
+//        
+//        for(String ) {
+//            
+////        }
+//    }
+    
+//    public void populateAirlineCombo()
+//    {
+//        airlineCombobox.removeAllItems();
+//        
+//        for (String s : airlineDirectory.getAirlineNames())
+//                {
+//                   airlineCombobox.addItem(s);
+//                }
+//    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,41 +85,25 @@ public class FindFlights extends javax.swing.JPanel {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jTextField2 = new javax.swing.JTextField();
-        jComboBox2 = new javax.swing.JComboBox<>();
         jButton2 = new javax.swing.JButton();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblFlightDetails = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton3 = new javax.swing.JButton();
+        btnSearch = new javax.swing.JButton();
         jTextField5 = new javax.swing.JTextField();
-        jComboBox4 = new javax.swing.JComboBox<>();
         jTextField6 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        txtFlightNumber = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        airlineCombobox = new javax.swing.JComboBox<>();
+        txtDate = new javax.swing.JTextField();
         btnBookNow = new javax.swing.JButton();
+        txtSource = new javax.swing.JTextField();
+        txtDestination = new javax.swing.JTextField();
+        txtAirliner = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jTextField2.setText("Select Time of the Day:");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
-
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Morning", "Afternoon", "Evening" }));
-        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox2ActionPerformed(evt);
-            }
-        });
 
         jButton2.setText("View Flight Details");
 
@@ -102,7 +116,7 @@ public class FindFlights extends javax.swing.JPanel {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Flight No.", "Flying From", "Flying To", "Departing", "Returning"
+                "Flight No.", "Airliner Name", "Flying From", "Flying To", "Departing"
             }
         ));
         jScrollPane4.setViewportView(tblFlightDetails);
@@ -121,9 +135,12 @@ public class FindFlights extends javax.swing.JPanel {
             }
         });
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jButton3.setText("Search");
+        btnSearch.setText("Search");
+        btnSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSearchActionPerformed(evt);
+            }
+        });
 
         jTextField5.setText("To:");
         jTextField5.addActionListener(new java.awt.event.ActionListener() {
@@ -131,8 +148,6 @@ public class FindFlights extends javax.swing.JPanel {
                 jTextField5ActionPerformed(evt);
             }
         });
-
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jTextField6.setText("Flight Number:");
         jTextField6.addActionListener(new java.awt.event.ActionListener() {
@@ -148,10 +163,9 @@ public class FindFlights extends javax.swing.JPanel {
             }
         });
 
-        airlineCombobox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        airlineCombobox.addActionListener(new java.awt.event.ActionListener() {
+        txtDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                airlineComboboxActionPerformed(evt);
+                txtDateActionPerformed(evt);
             }
         });
 
@@ -159,6 +173,12 @@ public class FindFlights extends javax.swing.JPanel {
         btnBookNow.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBookNowActionPerformed(evt);
+            }
+        });
+
+        txtDestination.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDestinationActionPerformed(evt);
             }
         });
 
@@ -172,24 +192,22 @@ public class FindFlights extends javax.swing.JPanel {
                         .addGap(118, 118, 118)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(45, 45, 45)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airlineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(103, 103, 103)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtFlightNumber, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(txtDate, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE)
+                            .addComponent(txtSource)
+                            .addComponent(txtDestination, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtAirliner, javax.swing.GroupLayout.Alignment.LEADING)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(55, 55, 55)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 650, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3)
+                            .addComponent(btnSearch)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(260, 260, 260)
                                 .addComponent(btnBookNow, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -200,48 +218,40 @@ public class FindFlights extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(104, 104, 104)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(airlineCombobox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(8, 8, 8)
-                .addComponent(jButton3)
+                        .addGap(104, 104, 104)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(txtAirliner, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtSource, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDestination, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtFlightNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(43, 43, 43)
+                .addComponent(btnSearch)
                 .addGap(28, 28, 28)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(btnBookNow))
-                .addContainerGap(313, Short.MAX_VALUE))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
@@ -250,10 +260,6 @@ public class FindFlights extends javax.swing.JPanel {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
-
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -266,11 +272,6 @@ public class FindFlights extends javax.swing.JPanel {
     private void jTextField7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField7ActionPerformed
-
-    private void airlineComboboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_airlineComboboxActionPerformed
-        // TODO add your handling code here:
-        
-    }//GEN-LAST:event_airlineComboboxActionPerformed
 
     private void btnBookNowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBookNowActionPerformed
         // TODO add your handling code here:
@@ -287,25 +288,119 @@ public class FindFlights extends javax.swing.JPanel {
         layout.next(CardSequenceJPanel);
     }//GEN-LAST:event_btnBookNowActionPerformed
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        
+        ArrayList<Flight> temp = new ArrayList<>();
+        ArrayList<Flight> flightList = new ArrayList<>();
+        
+        
+        for (Airliner a : airlineDirectory.getAirlineList()){
+            flightList.addAll(a.getFlightDirectory().getFlightList());
+        }
+        
+        String airlinerName = txtAirliner.getText();
+        if (!airlinerName.isEmpty()) {
+            System.out.println(airlinerName);
+            for(Flight a : flightList) {
+                System.out.println(a.getAirlineName());
+                if(a.getAirlineName().equals(airlinerName)) {
+                    temp.add(a);
+                }
+            }
+            flightList = temp;
+        }
+        String source = txtSource.getText();
+        if (!source.isEmpty()) {
+            temp = new ArrayList<>();
+            for(Flight f : flightList) {
+                if(f.getSource().equals(source)) {
+                    temp.add(f);
+                }
+            }
+            flightList = temp;
+            
+        }
+        
+        String destination = txtDestination.getText();
+        if (!destination.isEmpty()) {
+        temp = new ArrayList<>();
+            for(Flight f : flightList) {
+                if(f.getDestination().equals(destination)) {
+                    temp.add(f);
+                }
+            }
+            flightList = temp;
+        }
+
+        
+        temp = new ArrayList<>();
+        try {
+            if(!txtFlightNumber.getText().isEmpty()) {
+                int flightNumber = Integer.parseInt(txtFlightNumber.getText());
+                for(Flight f : flightList) {
+                    if(f.getFlightNumber() == flightNumber) {
+                        temp.add(f);
+                    }
+                }
+                flightList = temp;
+            }
+        } catch(Exception e) {
+            JOptionPane.showMessageDialog(null,"Flight Number should have integer value only");
+            return;
+        }
+        
+        temp = new ArrayList<>();
+        if(!txtDate.getText().isEmpty()) {
+            try {
+                Date date = new SimpleDateFormat("dd/MM/yyyy").parse(txtDate.getText());
+                for(Flight f : flightList) {
+                    if(f.getStartDate().equals(date)) {
+                        temp.add(f);
+                    }
+                }
+                flightList = temp;
+            } catch (Exception e) {
+                System.out.println("Wrong format for Date");
+                return;
+            }
+        }
+        
+        
+        if(flightList.isEmpty()) {
+            JOptionPane.showMessageDialog(null,"No Flight Availabale");
+            
+        } 
+        populateTable(flightList);
+        
+        
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void txtDestinationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDestinationActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDestinationActionPerformed
+
+    private void txtDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDateActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> airlineCombobox;
     private javax.swing.JButton btnBookNow;
+    private javax.swing.JButton btnSearch;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JComboBox<String> jComboBox3;
-    private javax.swing.JComboBox<String> jComboBox4;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
     private javax.swing.JTable tblFlightDetails;
+    private javax.swing.JTextField txtAirliner;
+    private javax.swing.JTextField txtDate;
+    private javax.swing.JTextField txtDestination;
+    private javax.swing.JTextField txtFlightNumber;
+    private javax.swing.JTextField txtSource;
     // End of variables declaration//GEN-END:variables
 }
