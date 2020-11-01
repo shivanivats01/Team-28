@@ -40,7 +40,7 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         txtSource.setText(flight.getSource());
         txtDestination.setText(flight.getDestination());
         txtStartDate.setText(String.valueOf(flight.getStartDate()));
-       // txtPrice.setText(flight.getPrice);
+        txtPrice.setText(String.valueOf(flight.getPrice()));
        // txtAvailableSeats.setText(flight.getAvailableSeats);
        
 

@@ -34,32 +34,34 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
+              <Component id="jLabel2" min="-2" pref="399" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="619" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="143" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="jLabel7" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel3" alignment="0" min="-2" pref="143" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="0" min="-2" pref="95" max="-2" attributes="0"/>
                           <Component id="btnBack" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtStartDate" min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="txtDestination" min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="txtSource" min="-2" pref="115" max="-2" attributes="0"/>
-                          <Component id="txtFlightNumber" min="-2" pref="115" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="txtStartDate" pref="115" max="32767" attributes="0"/>
+                          <Component id="txtDestination" pref="115" max="32767" attributes="0"/>
+                          <Component id="txtSource" pref="115" max="32767" attributes="0"/>
+                          <Component id="txtFlightNumber" pref="115" max="32767" attributes="0"/>
                           <Component id="btnCreate" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPrice" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="182" max="-2" attributes="0"/>
-              <Component id="jLabel2" min="-2" pref="399" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="619" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -90,12 +92,17 @@
                   <Component id="jLabel9" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
                   <Component id="txtStartDate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnCreate" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
-                  <Component id="btnBack" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtPrice" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="374" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="btnBack" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="btnCreate" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="335" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -152,6 +159,13 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnBackActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel4">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Price"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="txtPrice">
     </Component>
   </SubComponents>
 </Form>
