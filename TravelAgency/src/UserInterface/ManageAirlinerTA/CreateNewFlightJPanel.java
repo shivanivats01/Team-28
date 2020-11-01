@@ -167,7 +167,7 @@ public class CreateNewFlightJPanel extends javax.swing.JPanel {
         f.setSource(txtSource.getText());
         f.setDestination(txtDestination.getText());
         
-        JOptionPane.showMessageDialog(null, "Product added!", "Info", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Flight added!", "Info", JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_btnCreateActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
