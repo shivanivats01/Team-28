@@ -7,6 +7,7 @@ package UserInterface.ManageAirlinerTA;
 
 import Business.Airliner;
 import Business.Flight;
+import java.awt.CardLayout;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,6 +84,11 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         jLabel10.setText("Price");
 
         jButton1.setText("<<Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText(" Update Flight");
         btnUpdate.addActionListener(new java.awt.event.ActionListener() {
@@ -203,6 +209,13 @@ public class SearchResultJPanel extends javax.swing.JPanel {
         
         
     }//GEN-LAST:event_btnSaveActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        CardSequenceJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
+        layout.previous(CardSequenceJPanel);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
