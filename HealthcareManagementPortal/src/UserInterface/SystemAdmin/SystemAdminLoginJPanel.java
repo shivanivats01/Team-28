@@ -14,14 +14,14 @@ import javax.swing.JPanel;
  */
 public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     
-    private JPanel CardSequenceJPanel;
+    private JPanel CardLayoutJPanel;
 
     /**
      * Creates new form LoginJPanel
      */
-    public SystemAdminLoginJPanel(JPanel CardSequenceJPanel) {
+    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel) {
         initComponents();
-        this.CardSequenceJPanel = CardSequenceJPanel;
+        this.CardLayoutJPanel = CardLayoutJPanel;
     }
 
     /**
@@ -38,8 +38,8 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        loginBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -50,12 +50,17 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Password:");
 
-        jButton1.setText("Login");
-
-        jButton2.setText("< Back");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        loginBtn.setText("Login");
+        loginBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                loginBtnActionPerformed(evt);
+            }
+        });
+
+        backBtn.setText("< Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -72,11 +77,11 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton2)))
+                        .addComponent(backBtn)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(jButton1)
+                    .addComponent(loginBtn)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                         .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
                         .addComponent(jTextField4)))
@@ -88,7 +93,7 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jButton2))
+                    .addComponent(backBtn))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
@@ -98,26 +103,36 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel2)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
-                .addComponent(jButton1)
+                .addComponent(loginBtn)
                 .addContainerGap(119, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        CardSequenceJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardSequenceJPanel.getLayout();
-        layout.previous(CardSequenceJPanel);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backBtnActionPerformed
+
+    private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
+        // TODO add your handling code here:
+        
+        // TODO: Add login validations
+        SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_loginBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton loginBtn;
     // End of variables declaration//GEN-END:variables
 }
