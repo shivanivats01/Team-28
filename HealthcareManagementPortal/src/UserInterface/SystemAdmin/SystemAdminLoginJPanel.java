@@ -5,7 +5,9 @@
  */
 package UserInterface.SystemAdmin;
 
+import Business.Ecosytem;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -15,13 +17,15 @@ import javax.swing.JPanel;
 public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
+    private Ecosytem ecosystem;
 
     /**
      * Creates new form LoginJPanel
      */
-    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel) {
+    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, Ecosytem ecosystem) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.ecosystem = ecosystem;
     }
 
     /**
@@ -36,10 +40,10 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        usernameTxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        passwordTxt = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -82,9 +86,9 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(loginBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jTextField4)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(passwordTxt, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(usernameTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -97,11 +101,11 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(loginBtn)
                 .addContainerGap(119, Short.MAX_VALUE))
@@ -118,8 +122,18 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         
-        // TODO: Add login validations
-        SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
+        if(usernameTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the username");
+            return;
+        }
+        
+        if(passwordTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the password");
+            return;
+        }
+        
+        
+        SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel, ecosystem);
         CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -131,8 +145,8 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }
