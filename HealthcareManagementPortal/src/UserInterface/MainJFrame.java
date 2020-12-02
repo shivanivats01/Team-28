@@ -5,7 +5,10 @@
  */
 package UserInterface;
 
-import Business.Ecosytem;
+import Business.Doctor.DoctorDirectory;
+import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.PatientDirectory;
 import UserInterface.HospitalAdmin.HospitalLoginJPanel;
 import UserInterface.Patient.PatientLoginJPanel;
 import UserInterface.Physician.PhysicianLoginJPanel;
@@ -22,7 +25,7 @@ import javax.swing.ImageIcon;
  */
 public class MainJFrame extends javax.swing.JFrame {
     
-    private Ecosytem ecosystem;
+    private Ecosystem ecosystem;
 
     /**
      * Creates new form MainJFrame
@@ -33,7 +36,7 @@ public class MainJFrame extends javax.swing.JFrame {
         Image scaledImage = img.getScaledInstance(500, 225 , Image.SCALE_SMOOTH);
         imageLabel.setIcon(new ImageIcon(scaledImage));
         
-        ecosystem = new Ecosytem();
+        ecosystem = new Ecosystem(new HospitalDirectory(), new PatientDirectory(), new DoctorDirectory());
 
     }
 

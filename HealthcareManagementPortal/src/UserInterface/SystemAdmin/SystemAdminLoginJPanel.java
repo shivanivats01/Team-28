@@ -22,12 +22,12 @@ import javax.swing.JPanel;
 public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
-    private Ecosytem ecosystem;
+    private Ecosystem ecosystem;
 
     /**
      * Creates new form LoginJPanel
      */
-    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, Ecosytem ecosystem) {
+    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.ecosystem = ecosystem;

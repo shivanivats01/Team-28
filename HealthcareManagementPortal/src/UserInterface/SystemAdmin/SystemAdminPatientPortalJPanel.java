@@ -5,7 +5,7 @@
  */
 package UserInterface.SystemAdmin;
 
-import Business.Ecosytem;
+import Business.Ecosystem;
 import Business.Patient.Patient;
 import UserInterface.Patient.PatientInfoJPanel;
 import java.awt.CardLayout;
@@ -20,12 +20,12 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
-    private Ecosytem ecosystem;
+    private Ecosystem ecosystem;
     private JPanel CardLayoutJPanel;
     /**
      * Creates new form SystemAdminPatientPortalJPanel
      */
-    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel, Ecosytem ecosystem) {
+    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.ecosystem = ecosystem;
@@ -35,7 +35,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
     
     public void populateTable() {
         // populate all patients in patient directory
-        ArrayList<Patient> patientList = ecosystem.patientDirectory.getPatientList();
+        ArrayList<Patient> patientList = ecosystem.getPatientDirectory().getPatientList();
     
         int rowCount = patientTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel)patientTable.getModel();
@@ -183,7 +183,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
     private void signUpPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpPatientBtnActionPerformed
         // TODO add your handling code here:
-        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, ecosystem.patientDirectory.getPatientList());
+        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, ecosystem.getPatientDirectory().getPatientList());
         CardLayoutJPanel.add("CreatePatientJPanel", createPatientJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -202,7 +202,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         
         Patient viewPatient = null;
         
-        for(Patient p : ecosystem.patientDirectory.getPatientList()) {
+        for(Patient p : ecosystem.getPatientDirectory().getPatientList()) {
             if(p.getId().equals(patientTable.getValueAt(row, 1))) {
                 viewPatient = p;
             }
@@ -230,7 +230,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
             return;
         }
         
-        ArrayList<Patient> patientList = ecosystem.patientDirectory.getPatientList();
+        ArrayList<Patient> patientList = ecosystem.getPatientDirectory().getPatientList();
         
         for(int i = 0; i < patientList.size(); i ++) {
             

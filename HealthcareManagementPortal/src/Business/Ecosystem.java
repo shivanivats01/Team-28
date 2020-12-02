@@ -20,6 +20,18 @@ import java.util.ArrayList;
 public class Ecosystem extends HealthCarePortal {
     
     private static Ecosystem business;
+
+    public HospitalDirectory getHospitalDirectory() {
+        return hospitalDirectory;
+    }
+
+    public PatientDirectory getPatientDirectory() {
+        return patientDirectory;
+    }
+
+    public DoctorDirectory getDoctorDirectory() {
+        return doctorDirectory;
+    }
     private HospitalDirectory hospitalDirectory;
     private PatientDirectory patientDirectory;
     private DoctorDirectory doctorDirectory;

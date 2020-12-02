@@ -5,7 +5,7 @@
  */
 package UserInterface.SystemAdmin;
 
-import Business.Ecosytem;
+import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.Patient.Patient;
 
@@ -23,11 +23,11 @@ import javax.swing.table.DefaultTableModel;
 public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
-    private Ecosytem ecosystem;
+    private Ecosystem ecosystem;
     /**
      * Creates new form SystemAdminHospitalPortalJPanel
      */
-    public SystemAdminHospitalPortalJPanel(JPanel CardLayoutJPanel, Ecosytem ecosystem) {
+    public SystemAdminHospitalPortalJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.ecosystem = ecosystem;
@@ -37,7 +37,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
     
     public void populateTable() {
         // populate all hospitals in hospital directory
-        ArrayList<Hospital> hospitalList = ecosystem.hospitalDirectory.getHospitalList();
+        ArrayList<Hospital> hospitalList = ecosystem.getHospitalDirectory().getHospitalList();
     
         int rowCount = hospitalTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel)hospitalTable.getModel();
@@ -231,7 +231,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
     private void signUpNewHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpNewHospitalBtnActionPerformed
         // TODO add your handling code here:
        
-        CreateHospitalJPanel createHospitalJPanel = new CreateHospitalJPanel(CardLayoutJPanel, ecosystem.hospitalDirectory.getHospitalList());
+        CreateHospitalJPanel createHospitalJPanel = new CreateHospitalJPanel(CardLayoutJPanel, ecosystem.getHospitalDirectory().getHospitalList());
         CardLayoutJPanel.add("CreateHospitalJPanel", createHospitalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -249,7 +249,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         
         Hospital viewHospital = null;
         
-        for(Hospital h : ecosystem.hospitalDirectory.getHospitalList()) {
+        for(Hospital h : ecosystem.getHospitalDirectory().getHospitalList()) {
             if(h.getId().equals(hospitalTable.getValueAt(row, 1))) {
                 viewHospital = h;
             }
@@ -276,7 +276,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
             return;
         }
         
-        ArrayList<Hospital> hospitalList = ecosystem.hospitalDirectory.getHospitalList();
+        ArrayList<Hospital> hospitalList = ecosystem.getHospitalDirectory().getHospitalList();
         
         for(int i = 0; i < hospitalList.size(); i ++) {
             

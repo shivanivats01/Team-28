@@ -5,7 +5,7 @@
  */
 package UserInterface.SystemAdmin;
 
-import Business.Ecosytem;
+import Business.Ecosystem;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -16,13 +16,13 @@ import javax.swing.JPanel;
  */
 public class SystemAdminPortalJPanel extends javax.swing.JPanel {
     
-    private Ecosytem ecosystem;
+    private Ecosystem ecosystem;
     JPanel CardLayoutJPanel;
 
     /**
      * Creates new form SystemAdminPortalJPanel
      */
-    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, Ecosytem ecosystem) {
+    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
