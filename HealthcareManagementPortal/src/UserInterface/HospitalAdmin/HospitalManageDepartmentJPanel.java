@@ -1,5 +1,8 @@
 package UserInterface.HospitalAdmin;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -11,12 +14,16 @@ package UserInterface.HospitalAdmin;
  * @author riyamoitra
  */
 public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
+    
+    
 
+    JPanel CardLayoutJPanel;
     /**
      * Creates new form HospitalManageDepartmentJPanel
      */
-    public HospitalManageDepartmentJPanel() {
+    public HospitalManageDepartmentJPanel(JPanel CardLayoutJPanel) {
         initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
     }
 
     /**
@@ -47,6 +54,11 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
         jScrollPane1.setViewportView(jTable1);
 
         btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("View Department Details");
 
@@ -99,6 +111,13 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

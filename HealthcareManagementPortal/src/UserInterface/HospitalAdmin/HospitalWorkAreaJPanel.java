@@ -1,5 +1,8 @@
 package UserInterface.HospitalAdmin;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,11 +15,13 @@ package UserInterface.HospitalAdmin;
  */
 public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
+    JPanel CardLayoutJPanel;
     /**
      * Creates new form HospitalWorkAreaJPanel
      */
-    public HospitalWorkAreaJPanel() {
+    public HospitalWorkAreaJPanel(JPanel CardLayoutJPanel) {
         initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
     }
 
     /**
@@ -48,8 +53,18 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         btnManageDoctors.setText("Manage Doctors");
 
         btnManageHospitalInfo.setText("Manage Hospital Information");
+        btnManageHospitalInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageHospitalInfoActionPerformed(evt);
+            }
+        });
 
         btnManageDepartments.setText("Manage Departments");
+        btnManageDepartments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDepartmentsActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,6 +123,23 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnManageHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalInfoActionPerformed
+        // TODO add your handling code here:
+        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+        
+    }//GEN-LAST:event_btnManageHospitalInfoActionPerformed
+
+    private void btnManageDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDepartmentsActionPerformed
+        // TODO add your handling code here:
+        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("HospitalManageDepartmentJPanel", hospitalManageDepartmentJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_btnManageDepartmentsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

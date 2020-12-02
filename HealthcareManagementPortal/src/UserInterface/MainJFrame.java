@@ -5,6 +5,10 @@
  */
 package UserInterface;
 
+import UserInterface.HospitalAdmin.HospitalLoginJPanel;
+import UserInterface.Patient.PatientLoginJPanel;
+import UserInterface.Physician.PhysicianLoginJPanel;
+
 import UserInterface.SystemAdmin.SystemAdminLoginJPanel;
 import java.awt.CardLayout;
 import java.awt.Image;
@@ -70,12 +74,27 @@ public class MainJFrame extends javax.swing.JFrame {
 
         hospitalAdminBtn.setBackground(new java.awt.Color(51, 153, 255));
         hospitalAdminBtn.setText("Hospital Admin");
+        hospitalAdminBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospitalAdminBtnActionPerformed(evt);
+            }
+        });
 
         physicianBtn.setBackground(new java.awt.Color(51, 153, 255));
         physicianBtn.setText("Physician");
+        physicianBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                physicianBtnActionPerformed(evt);
+            }
+        });
 
         patientBtn.setBackground(new java.awt.Color(51, 153, 255));
         patientBtn.setText("Patient");
+        patientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                patientBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -168,6 +187,30 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_sysAdminBtnActionPerformed
+
+    private void physicianBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicianBtnActionPerformed
+        // TODO add your handling code here:
+        PhysicianLoginJPanel physicianAdminLoginJPanel = new PhysicianLoginJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("PhysicianLoginJPanel", physicianAdminLoginJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_physicianBtnActionPerformed
+
+    private void hospitalAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalAdminBtnActionPerformed
+        // TODO add your handling code here:
+        HospitalLoginJPanel hospitalLoginJPanel = new HospitalLoginJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("HospitalLoginJPanel", hospitalLoginJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_hospitalAdminBtnActionPerformed
+
+    private void patientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientBtnActionPerformed
+        // TODO add your handling code here:
+        PatientLoginJPanel patientLoginJPanel = new PatientLoginJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("PatientLoginJPanel", patientLoginJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_patientBtnActionPerformed
 
     /**
      * @param args the command line arguments
