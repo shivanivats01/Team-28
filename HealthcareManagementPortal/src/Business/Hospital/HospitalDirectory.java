@@ -5,10 +5,29 @@
  */
 package Business.Hospital;
 
+
+import java.util.ArrayList;
+
 /**
  *
  * @author riyamoitra
  */
 public class HospitalDirectory {
+    private ArrayList<Hospital> hospitalList;
+
+    public ArrayList<Hospital> getHospitalList() {
+        return hospitalList;
+    }
+
+    public void setHospitalList(ArrayList<Hospital> hospitalList) {
+        this.hospitalList = hospitalList;
+    }
+    
+    public HospitalDirectory() {
+        hospitalList = new ArrayList();
+    }
+
+    
+    
     
 }

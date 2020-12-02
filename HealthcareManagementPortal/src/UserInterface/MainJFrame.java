@@ -5,6 +5,10 @@
  */
 package UserInterface;
 
+import Business.Doctor.DoctorDirectory;
+import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.PatientDirectory;
 import UserInterface.HospitalAdmin.HospitalLoginJPanel;
 import UserInterface.Patient.PatientLoginJPanel;
 import UserInterface.Physician.PhysicianLoginJPanel;
@@ -20,6 +24,8 @@ import javax.swing.ImageIcon;
  * @author shivanivats
  */
 public class MainJFrame extends javax.swing.JFrame {
+    
+    private Ecosystem ecosystem;
 
     /**
      * Creates new form MainJFrame
@@ -29,6 +35,8 @@ public class MainJFrame extends javax.swing.JFrame {
         Image img = Toolkit.getDefaultToolkit().getImage("/Users/shivanivats/AED_GROUP/Team-28/HealthcareManagementPortal/src/UserInterface/Images/loginPage.jpg");
         Image scaledImage = img.getScaledInstance(500, 225 , Image.SCALE_SMOOTH);
         imageLabel.setIcon(new ImageIcon(scaledImage));
+        
+        ecosystem = new Ecosystem(new HospitalDirectory(), new PatientDirectory(), new DoctorDirectory());
 
     }
 
@@ -182,7 +190,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminBtnActionPerformed
         // TODO add your handling code here:
-        SystemAdminLoginJPanel systemAdminLoginJPanel = new SystemAdminLoginJPanel(CardLayoutJPanel);
+        SystemAdminLoginJPanel systemAdminLoginJPanel = new SystemAdminLoginJPanel(CardLayoutJPanel, ecosystem);
         CardLayoutJPanel.add("SystemAdminLoginJPanel", systemAdminLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);

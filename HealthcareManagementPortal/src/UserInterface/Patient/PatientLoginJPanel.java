@@ -5,7 +5,10 @@
  */
 package UserInterface.Patient;
 
+import UserInterface.HospitalAdmin.*;
+import UserInterface.SystemAdmin.SystemAdminPortalJPanel;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -14,9 +17,9 @@ import javax.swing.JPanel;
  */
 public class PatientLoginJPanel extends javax.swing.JPanel {
 
-    private JPanel CardLayoutJPanel;
+     private JPanel CardLayoutJPanel;
     /**
-     * Creates new form PatientLoginJPanel
+     * Creates new form HospitalLoginJPanel
      */
     public PatientLoginJPanel(JPanel CardLayoutJPanel) {
         initComponents();
@@ -32,15 +35,19 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        usernameTxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        passwordTxt = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
+
+        jLabel1.setText("Username:");
+
+        jLabel2.setText("Password:");
 
         loginBtn.setText("Login");
         loginBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -59,10 +66,6 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
         jLabel3.setText("Patient Login");
 
-        jLabel1.setText("Username:");
-
-        jLabel2.setText("Password:");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -78,12 +81,11 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
                         .addContainerGap()
                         .addComponent(backBtn)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel3)
                     .addComponent(loginBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jTextField4)))
+                    .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                    .addComponent(passwordTxt))
                 .addContainerGap(79, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -96,11 +98,11 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(loginBtn)
                 .addContainerGap(64, Short.MAX_VALUE))
@@ -109,7 +111,22 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
 
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
-
+        if(usernameTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the username");
+            return;
+        }
+        
+        if(passwordTxt.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Please enter the password");
+            return;
+        }
+        
+        
+        
+        PatientInfoJPanel patientInfoJPanel = new PatientInfoJPanel(CardLayoutJPanel, null);
+        CardLayoutJPanel.add("PatientInfoJPanel", patientInfoJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
        
     }//GEN-LAST:event_loginBtnActionPerformed
 
@@ -126,8 +143,8 @@ public class PatientLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField passwordTxt;
+    private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
 }
