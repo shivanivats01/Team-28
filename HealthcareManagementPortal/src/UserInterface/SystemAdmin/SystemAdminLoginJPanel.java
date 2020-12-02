@@ -5,7 +5,12 @@
  */
 package UserInterface.SystemAdmin;
 
-import Business.Ecosytem;
+import Business.Appointment.AppointmentSchedule;
+import Business.Doctor.DoctorDirectory;
+import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.PatientDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -26,6 +31,12 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.ecosystem = ecosystem;
+    }
+
+    public SystemAdminLoginJPanel(JPanel userProcessContainer, UserAccount account, Ecosystem business, PatientDirectory patientDirectory, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
     }
 
     /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Business;
+package Business.Appointment;
 
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
@@ -12,7 +12,7 @@ import Business.Patient.PatientDirectory;
  *
  * @author riyamoitra
  */
-public class Ecosytem {
+public class Appointment {
     
     public PatientDirectory patientDirectory = new PatientDirectory();
     public HospitalDirectory hospitalDirectory = new HospitalDirectory();
