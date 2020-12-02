@@ -6,6 +6,7 @@
 package UserInterface.SystemAdmin;
 
 import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JPanel;
 
 /**

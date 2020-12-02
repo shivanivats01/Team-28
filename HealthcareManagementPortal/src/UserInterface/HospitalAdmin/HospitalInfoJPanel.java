@@ -1,5 +1,8 @@
 package UserInterface.HospitalAdmin;
 
+import java.awt.CardLayout;
+import javax.swing.JPanel;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -12,11 +15,13 @@ package UserInterface.HospitalAdmin;
  */
 public class HospitalInfoJPanel extends javax.swing.JPanel {
 
+    JPanel CardLayoutJPanel;
     /**
      * Creates new form HospitalInfoJPanel
      */
-    public HospitalInfoJPanel() {
+    public HospitalInfoJPanel(JPanel CardLayoutJPanel) {
         initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
     }
 
     /**
@@ -70,6 +75,11 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
         jLabel7.setText("License Number");
 
         btnBack.setText("< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         btnUpdate.setText("Update");
 
@@ -134,8 +144,8 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel4)
@@ -186,6 +196,13 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_btnBackActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
