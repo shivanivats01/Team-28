@@ -7,8 +7,6 @@ package Business.Doctor;
 
 import java.util.List;
 
-
-
 /**
  *
  * @author riyamoitra
@@ -17,7 +15,7 @@ public class Doctor {
     
     private String name;
     private String licenseNo;
-    private int NumberOfHospitalsAssociated;
+    //private int NumberOfHospitalsAssociated;
     private List <String> HospitalName;
     private int id;
     private static int count = 1;
@@ -43,13 +41,7 @@ public class Doctor {
         this.licenseNo = licenseNo;
     }
 
-    public int getNumberOfHospitalsAssociated() {
-        return NumberOfHospitalsAssociated;
-    }
-
-    public void setNumberOfHospitalsAssociated(int NumberOfHospitalsAssociated) {
-        this.NumberOfHospitalsAssociated = NumberOfHospitalsAssociated;
-    }
+    
 
     public List<String> getHospitalName() {
         return HospitalName;

@@ -5,8 +5,16 @@
  */
 package UserInterface.SystemAdmin;
 
+import Business.Appointment.AppointmentSchedule;
+import Business.Doctor.DoctorDirectory;
+import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,6 +23,10 @@ import javax.swing.JPanel;
 public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
+   // private UserAccount account;
+    private Ecosystem business;
+    private PatientDirectory patientDirectory;
+    
     /**
      * Creates new form SystemAdminPatientPortalJPanel
      */
@@ -22,7 +34,24 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
     }
+public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
+        model.setRowCount(0);
+        for (UserAccount ua : business.getUserAccountDirectory().getUserAccountList()) {
+            for (Patient patient : patientDirectory.getPatientDirectory()) {
+                
+                    Object[] row = new Object[5];
+                    row[0] = patient.getPatientID();
+                    row[1] = patient.getName();
+                    row[2] = patient.getPhoneNo();
+                    row[3] = patient.getAddress();
+                    row[4] = ua.getUsername();
+                    model.addRow(row);
+                
+            }
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -34,9 +63,9 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        viewbtn = new javax.swing.JButton();
+        addNewPatientbtn = new javax.swing.JButton();
+        Deletebtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
 
@@ -55,19 +84,24 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("View Details");
+        viewbtn.setBackground(new java.awt.Color(204, 204, 255));
+        viewbtn.setText("View Details");
 
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("Sign Up New Patient");
+        addNewPatientbtn.setBackground(new java.awt.Color(204, 204, 255));
+        addNewPatientbtn.setText("Sign Up New Patient");
+        addNewPatientbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNewPatientbtnActionPerformed(evt);
+            }
+        });
 
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setText("Delete Existing Patient");
+        Deletebtn.setBackground(new java.awt.Color(204, 204, 255));
+        Deletebtn.setText("Delete Existing Patient");
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Patient Portal");
 
-        backBtn.setText("<back");
+        backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -88,10 +122,10 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(addNewPatientbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Deletebtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(162, 162, 162)
-                        .addComponent(jButton1)))
+                        .addComponent(viewbtn)))
                 .addGap(0, 46, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -106,12 +140,12 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(52, 52, 52)
-                        .addComponent(jButton1))
+                        .addComponent(viewbtn))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
+                        .addComponent(addNewPatientbtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                .addComponent(Deletebtn)
                 .addContainerGap(115, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -123,14 +157,24 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void addNewPatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPatientbtnActionPerformed
+        // TODO add your handling code here:
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business, patientDirectory);
+        CardLayoutJPanel.add(createPatientJPanel);
+        layout.next(CardLayoutJPanel);
+        
+        
+    }//GEN-LAST:event_addNewPatientbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deletebtn;
+    private javax.swing.JButton addNewPatientbtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
 }

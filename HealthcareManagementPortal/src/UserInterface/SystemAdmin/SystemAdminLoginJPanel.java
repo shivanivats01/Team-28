@@ -12,6 +12,7 @@ import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -21,21 +22,37 @@ import javax.swing.JPanel;
 public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
+    private UserAccount account;
+    private Ecosystem business;
+    private PatientDirectory patientDirectory;
+    private HospitalDirectory hospitalDirectory;
+    private DoctorDirectory doctorDirectory;
+    private AppointmentSchedule appointmentSchedule;
 
     /**
      * Creates new form LoginJPanel
      */
-    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel) {
+    /**
+     * public SystemAdminLoginJPanel(JPanel CardLayoutJPanel) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
     }
+*/
+    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business, PatientDirectory patientDirectory, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
 
-    public SystemAdminLoginJPanel(JPanel userProcessContainer, UserAccount account, Ecosystem business, PatientDirectory patientDirectory, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+        initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
+        this.account=account;
+        this.business = business;
+        this.patientDirectory = patientDirectory;
+        this.doctorDirectory= doctorDirectory;
+        this.hospitalDirectory=hospitalDirectory;
+        this.appointmentSchedule = appointmentSchedule;
+        
     
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -48,10 +65,10 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        userNametxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        passwordtxt = new javax.swing.JPasswordField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -94,9 +111,8 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(loginBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                        .addComponent(jTextField4)))
+                    .addComponent(userNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(164, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -109,11 +125,11 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userNametxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passwordtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(28, 28, 28)
                 .addComponent(loginBtn)
                 .addContainerGap(119, Short.MAX_VALUE))
@@ -130,11 +146,39 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         
+        String userName = userNametxt.getText();
+       // Get Password
+       char[] passwordCharArray = passwordtxt.getPassword();
+       
+       String password = String.valueOf(passwordCharArray);
+       
+       //Step1: Check in the system admin user account directory if you have the user
+       UserAccount account=business.getUserAccountDirectory().authenticateUser(userName, password);
+       //JOptionPane.showMessageDialog(null, "Username"+userAccount.getRole().toString());
+       if(account != null){
+          /**CardLayout layout=(CardLayout)CardLayoutJPanel.getLayout();
+            CardLayoutJPanel.add("workArea",userAccount.getRole().createWorkArea(CardLayoutJPanel, account, business,patientDirectory,hospitalDirectory,doctorDirectory,appointmentSchedule));
+            layout.next(CardLayoutJPanel);
+            */
+          
+            SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
+            CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
+            CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+            layout.next(CardLayoutJPanel);
+    }                                  
+       
+       else{
+           JOptionPane.showMessageDialog(null, "Username or password incorrect. Please try again.");
+       }
+        
         // TODO: Add login validations
-        SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
+      /*  SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
         CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
+*/
+
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
 
@@ -143,8 +187,8 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JButton loginBtn;
+    private javax.swing.JPasswordField passwordtxt;
+    private javax.swing.JTextField userNametxt;
     // End of variables declaration//GEN-END:variables
 }

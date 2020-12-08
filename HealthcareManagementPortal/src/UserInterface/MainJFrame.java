@@ -5,6 +5,13 @@
  */
 package UserInterface;
 
+import Business.Appointment.AppointmentSchedule;
+import Business.DB4OUtil.DB4OUtil;
+import Business.Doctor.DoctorDirectory;
+import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.PatientDirectory;
+import Business.UserAccount.UserAccount;
 import UserInterface.HospitalAdmin.HospitalLoginJPanel;
 import UserInterface.Patient.PatientLoginJPanel;
 import UserInterface.Physician.PhysicianLoginJPanel;
@@ -14,6 +21,7 @@ import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,8 +32,27 @@ public class MainJFrame extends javax.swing.JFrame {
     /**
      * Creates new form MainJFrame
      */
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
+    private Ecosystem business;
+    
+   // private JPanel CardLayoutJPanel;
+    private UserAccount account;
+   
+    private PatientDirectory patientDirectory;
+    private HospitalDirectory hospitalDirectory;
+    private DoctorDirectory doctorDirectory;
+    private AppointmentSchedule appointmentSchedule;
+    
+    
     public MainJFrame() {
         initComponents();
+        business = dB4OUtil.retrieveSystem();
+        
+        patientDirectory = new PatientDirectory();
+      //  hospitalDirectory = new HospitalDirectory();
+        doctorDirectory = new DoctorDirectory();
+        appointmentSchedule = new AppointmentSchedule();
+        
         Image img = Toolkit.getDefaultToolkit().getImage("/Users/shivanivats/AED_GROUP/Team-28/HealthcareManagementPortal/src/UserInterface/Images/loginPage.jpg");
         Image scaledImage = img.getScaledInstance(500, 225 , Image.SCALE_SMOOTH);
         imageLabel.setIcon(new ImageIcon(scaledImage));
@@ -182,7 +209,7 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminBtnActionPerformed
         // TODO add your handling code here:
-        SystemAdminLoginJPanel systemAdminLoginJPanel = new SystemAdminLoginJPanel(CardLayoutJPanel);
+        SystemAdminLoginJPanel systemAdminLoginJPanel = new SystemAdminLoginJPanel(CardLayoutJPanel,account,business,patientDirectory,hospitalDirectory,doctorDirectory,appointmentSchedule);
         CardLayoutJPanel.add("SystemAdminLoginJPanel", systemAdminLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
