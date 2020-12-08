@@ -52,135 +52,117 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         addressTxt = new javax.swing.JTextField();
         saveBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        ageTxt = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        genderComboBox = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        bloodGroupTxt = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
+        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1969, 800));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Sign Up New Patient");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(483, 173, -1, -1));
+        jPanel1.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 252, 221, -1));
+        jPanel1.add(idTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 284, 221, -1));
+        jPanel1.add(contactNumberTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 316, 221, -1));
 
         emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTxtActionPerformed(evt);
             }
         });
+        jPanel1.add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 348, 221, -1));
 
         jLabel2.setText("Patient Name:");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(511, 252, -1, 26));
 
         jLabel3.setText("Patient Id:");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(535, 289, -1, -1));
 
         jLabel4.setText("Email id:");
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(544, 353, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(168, 147, -1, -1));
 
         jLabel6.setText("Contact number:");
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(493, 321, -1, -1));
 
         jLabel7.setText("Address:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(543, 385, -1, -1));
 
         addressTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressTxtActionPerformed(evt);
             }
         });
+        jPanel1.add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 380, 221, -1));
 
+        saveBtn.setBackground(new java.awt.Color(0, 204, 204));
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 saveBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(744, 535, 93, 39));
 
+        backBtn.setBackground(new java.awt.Color(0, 204, 204));
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        jPanel1.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 65, 133, 43));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(90, 90, 90)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(63, 63, 63)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel7))
-                        .addGap(52, 52, 52)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(contactNumberTxt)
-                            .addComponent(idTxt)
-                            .addComponent(emailTxt)
-                            .addComponent(nameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
-                            .addComponent(addressTxt))))
-                .addContainerGap(53, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(43, 43, 43))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(28, 28, 28)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(3, 3, 3)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(11, 11, 11)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jLabel4)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(saveBtn)
-                    .addComponent(backBtn))
-                .addContainerGap(38, Short.MAX_VALUE))
-        );
+        jLabel8.setText("Age:");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 413, -1, 25));
+
+        ageTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ageTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(ageTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 412, 221, -1));
+
+        jLabel9.setText("Gender:");
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 444, -1, 25));
+
+        genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "female", "male", "other" }));
+        jPanel1.add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 444, 221, -1));
+
+        jLabel10.setText("Blood Group:");
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(517, 478, -1, 25));
+
+        bloodGroupTxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bloodGroupTxtActionPerformed(evt);
+            }
+        });
+        jPanel1.add(bloodGroupTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(616, 477, 221, -1));
+
+        jLabel11.setBackground(new java.awt.Color(0, 0, 0));
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/SystemAdmin/—Pngtree—blockchain big data mobile phone_920097.jpg"))); // NOI18N
+        jLabel11.setText("jLabel11");
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(-240, -130, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -209,26 +191,46 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         newPatient.setPhoneNumber(contactNumberTxt.getText());
         newPatient.setEmailId(emailTxt.getText());
         newPatient.setAddress(addressTxt.getText());
+        newPatient.setAddress(ageTxt.getText());
+        newPatient.setAddress(genderComboBox.getSelectedItem().toString());
+        newPatient.setAddress(bloodGroupTxt.getText());
+        
+        
         
         patientList.add(newPatient);
         
         JOptionPane.showMessageDialog(null, "New patient signed up");
     }//GEN-LAST:event_saveBtnActionPerformed
 
+    private void ageTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ageTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ageTxtActionPerformed
+
+    private void bloodGroupTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bloodGroupTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bloodGroupTxtActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addressTxt;
+    private javax.swing.JTextField ageTxt;
     private javax.swing.JButton backBtn;
+    private javax.swing.JTextField bloodGroupTxt;
     private javax.swing.JTextField contactNumberTxt;
     private javax.swing.JTextField emailTxt;
+    private javax.swing.JComboBox<String> genderComboBox;
     private javax.swing.JTextField idTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JButton saveBtn;

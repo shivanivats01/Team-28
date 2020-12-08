@@ -25,7 +25,7 @@ public class PatientDirectory {
     public PatientDirectory() {
         patientList = new ArrayList();
     }
-    public void removeFlight(Patient p){
+    public void removePatient(Patient p){
         patientList.remove(p);
     }
     
