@@ -29,10 +29,10 @@ public class PatientInfoJPanel extends javax.swing.JPanel {
         this.patient = patient;
         
         this.addressTxt.setText(patient.getAddress());
-        this.emailTxt.setText(patient.getEmailId());
-        this.idTxt.setText(patient.getId());
+//        this.emailTxt.setText(patient.get);
+        this.idTxt.setText(patient.getPatientID());
         this.nameTxt.setText(patient.getName());
-        this.numberTxt.setText(patient.getPhoneNumber());
+        this.numberTxt.setText(patient.getPhoneNo());
         
         
        this.addressTxt.setEnabled(false);
@@ -221,9 +221,9 @@ public class PatientInfoJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         patient.setAddress(addressTxt.getText());
-        patient.setEmailId(emailTxt.getText());
+//        patient.setEmailId(emailTxt.getText());
         patient.setName(nameTxt.getText());
-        patient.setPhoneNumber(numberTxt.getText());
+        patient.setPhoneNo(numberTxt.getText());
         
        this.addressTxt.setEnabled(false);
        this.emailTxt.setEnabled(false);

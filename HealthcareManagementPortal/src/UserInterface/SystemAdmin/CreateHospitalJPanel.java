@@ -214,16 +214,16 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         // TODO: add validations
-        Hospital newHospital = new Hospital();
+//        Hospital newHospital = new Hospital();
+//        
+//        newHospital.setName(nameTxt.getText());
+//        newHospital.setId(idTxt.getText());
+//        newHospital.setPhoneNumber(contactNumberTxt.getText());
+//        newHospital.setAddress(addressTxt.getText());
+//        newHospital.setAdminName(adminTxt.getText());
+//        newHospital.setLicenseNumber(licenseTxt.getText());
         
-        newHospital.setName(nameTxt.getText());
-        newHospital.setId(idTxt.getText());
-        newHospital.setPhoneNumber(contactNumberTxt.getText());
-        newHospital.setAddress(addressTxt.getText());
-        newHospital.setAdminName(adminTxt.getText());
-        newHospital.setLicenseNumber(licenseTxt.getText());
-        
-        hospitalList.add(newHospital);
+//        hospitalList.add(newHospital);
         
     }//GEN-LAST:event_btnSaveActionPerformed
 
