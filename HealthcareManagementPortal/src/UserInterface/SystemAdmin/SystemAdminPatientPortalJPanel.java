@@ -156,10 +156,10 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
     private void addNewPatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPatientbtnActionPerformed
         // TODO add your handling code here:
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
-        CardLayoutJPanel.add(createPatientJPanel);
-        layout.next(CardLayoutJPanel);
+//        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+//        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
+//        CardLayoutJPanel.add(createPatientJPanel);
+//        layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_addNewPatientbtnActionPerformed
 
 
