@@ -5,7 +5,10 @@
  */
 package Business.Hospital;
 
+import Business.Appointment.Appointment;
+import Business.Appointment.AppointmentSchedule;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 
 /**
  *
@@ -20,6 +23,8 @@ public class Hospital {
    
     private String adminName;
     private String licenseNo;
+    
+    private AppointmentSchedule appointmentSchedule;
 
     public Hospital(String hospitalId,String adminName,String name,String phoneNo, String address,String licenseNo){
         this.adminName = adminName;
@@ -29,6 +34,14 @@ public class Hospital {
         this.address = address;
       
         this.licenseNo = licenseNo;
+    }
+
+    public AppointmentSchedule getAppointmentSchedule() {
+        return appointmentSchedule;
+    }
+
+    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
+        this.appointmentSchedule = appointmentSchedule;
     }
 
     public String getHospitalId() {

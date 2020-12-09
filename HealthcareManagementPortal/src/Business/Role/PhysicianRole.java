@@ -7,7 +7,7 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
-import UserInterface.HospitalAdmin.HospitalWorkAreaJPanel;
+import UserInterface.Physician.PhysicianWorkAreaJPanel;
 import UserInterface.SystemAdmin.SystemAdminPortalJPanel;
 import javax.swing.JPanel;
 
@@ -15,12 +15,12 @@ import javax.swing.JPanel;
  *
  * @author riyamoitra
  */
-public class HospitalRole extends Role{
+public class PhysicianRole extends Role {
 
     @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
 
-        return new HospitalWorkAreaJPanel(userProcessContainer,account, business);
+        return new PhysicianWorkAreaJPanel(userProcessContainer,account, business);
 
     }
     

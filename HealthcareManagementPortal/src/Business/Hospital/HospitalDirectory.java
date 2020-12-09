@@ -19,13 +19,16 @@ public class HospitalDirectory {
    
     
      private ArrayList<Hospital> hospitalDirectory;
+     
 
+     
+     
     public HospitalDirectory(){
         hospitalDirectory = new ArrayList<Hospital>();
        
     }
     
-    public ArrayList<Hospital> getRestaurantDirectory() {
+    public ArrayList<Hospital> getHospitalDirectory() {
         return this.hospitalDirectory;
     }
 

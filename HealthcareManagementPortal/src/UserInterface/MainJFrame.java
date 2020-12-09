@@ -12,9 +12,7 @@ import Business.Ecosystem;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
-import UserInterface.HospitalAdmin.HospitalLoginJPanel;
-import UserInterface.Patient.PatientLoginJPanel;
-import UserInterface.Physician.PhysicianLoginJPanel;
+import UserInterface.Physician.PhysicianWorkAreaJPanel;
 
 import UserInterface.SystemAdmin.SystemAdminLoginJPanel;
 import java.awt.CardLayout;
@@ -204,24 +202,28 @@ public class MainJFrame extends javax.swing.JFrame {
 
     private void physicianBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicianBtnActionPerformed
         // TODO add your handling code here:
-        PhysicianLoginJPanel physicianAdminLoginJPanel = new PhysicianLoginJPanel(CardLayoutJPanel);
-        CardLayoutJPanel.add("PhysicianLoginJPanel", physicianAdminLoginJPanel);
+        
+        
+        LoginJPanel physicianAdminLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Physician");
+        CardLayoutJPanel.add("physicianAdminLoginJPanel", physicianAdminLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_physicianBtnActionPerformed
 
     private void hospitalAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalAdminBtnActionPerformed
         // TODO add your handling code here:
-        HospitalLoginJPanel hospitalLoginJPanel = new HospitalLoginJPanel(CardLayoutJPanel);
-        CardLayoutJPanel.add("HospitalLoginJPanel", hospitalLoginJPanel);
+        
+        
+        LoginJPanel hospitalLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Hospital");
+        CardLayoutJPanel.add("hospitalLoginJPanel", hospitalLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_hospitalAdminBtnActionPerformed
 
     private void patientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientBtnActionPerformed
         // TODO add your handling code here:
-        PatientLoginJPanel patientLoginJPanel = new PatientLoginJPanel(CardLayoutJPanel);
-        CardLayoutJPanel.add("PatientLoginJPanel", patientLoginJPanel);
+        LoginJPanel hospitalLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Hospital");
+        CardLayoutJPanel.add("hospitalLoginJPanel", hospitalLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_patientBtnActionPerformed

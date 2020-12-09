@@ -11,7 +11,7 @@ import Business.Ecosystem;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
-import UserInterface.Patient.PatientLoginJPanel;
+
 import UserInterface.Patient.PatientWorkAreaJPanel;
 import javax.swing.JPanel;
 
