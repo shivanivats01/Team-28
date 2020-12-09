@@ -5,24 +5,50 @@
  */
 package Business.Hospital;
 
+import Business.Appointment.Appointment;
+import Business.Appointment.AppointmentSchedule;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+
 /**
  *
  * @author riyamoitra
  */
 public class Hospital {
-    private String id;
+   
+    private String hospitalId;
     private String name;
-    private String phoneNumber;
-    private String licenseNumber;
+    private String phoneNo;
     private String address;
     private String adminName;
+    private String licenseNo;
+    
+    private AppointmentSchedule appointmentSchedule;
 
-    public String getId() {
-        return id;
+    public Hospital(String hospitalId,String adminName,String name,String phoneNo, String address,String licenseNo){
+        this.adminName = adminName;
+        this.hospitalId =hospitalId;
+        this.name = name;
+        this.phoneNo = phoneNo;
+        this.address = address;
+      
+        this.licenseNo = licenseNo;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public AppointmentSchedule getAppointmentSchedule() {
+        return appointmentSchedule;
+    }
+
+    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
+        this.appointmentSchedule = appointmentSchedule;
+    }
+
+    public String getHospitalId() {
+        return hospitalId;
+    }
+
+    public void setHospitalId(String hospitalId) {
+        this.hospitalId = hospitalId;
     }
 
     public String getName() {
@@ -33,20 +59,12 @@ public class Hospital {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getLicenseNumber() {
-        return licenseNumber;
-    }
-
-    public void setLicenseNumber(String licenseNumber) {
-        this.licenseNumber = licenseNumber;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public String getAddress() {
@@ -64,6 +82,15 @@ public class Hospital {
     public void setAdminName(String adminName) {
         this.adminName = adminName;
     }
+
+    public String getLicenseNo() {
+        return licenseNo;
+    }
+
+    public void setLicenseNo(String licenseNo) {
+        this.licenseNo = licenseNo;
+    }
+
     
     
 }

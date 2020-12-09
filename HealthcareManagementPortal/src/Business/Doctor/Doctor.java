@@ -7,8 +7,6 @@ package Business.Doctor;
 
 import java.util.List;
 
-
-
 /**
  *
  * @author riyamoitra
@@ -17,14 +15,13 @@ public class Doctor {
     
     private String name;
     private String licenseNo;
-    private int NumberOfHospitalsAssociated;
+    //private int NumberOfHospitalsAssociated;
     private List <String> HospitalName;
-    private int id;
+    private int doctorId;
     private static int count = 1;
 
     public Doctor() {
-        id = count;
-        count++;
+       
     }
     
     public String getName() {
@@ -43,13 +40,7 @@ public class Doctor {
         this.licenseNo = licenseNo;
     }
 
-    public int getNumberOfHospitalsAssociated() {
-        return NumberOfHospitalsAssociated;
-    }
-
-    public void setNumberOfHospitalsAssociated(int NumberOfHospitalsAssociated) {
-        this.NumberOfHospitalsAssociated = NumberOfHospitalsAssociated;
-    }
+    
 
     public List<String> getHospitalName() {
         return HospitalName;
@@ -57,6 +48,14 @@ public class Doctor {
 
     public void setHospitalName(List<String> HospitalName) {
         this.HospitalName = HospitalName;
+    }
+
+    public int getDoctorId() {
+        return doctorId;
+    }
+
+    public void setDoctorId(int doctorId) {
+        this.doctorId = doctorId;
     }
     
     

@@ -29,10 +29,10 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
         
         this.addressTxt.setText(hospital.getAddress());
         this.nameTxt.setText(hospital.getName());
-        this.idTxt.setText(hospital.getId());
+        this.idTxt.setText(hospital.getHospitalId());
         this.adminTxt.setText(hospital.getAdminName());
-        this.contactNumberTxt.setText(hospital.getPhoneNumber());
-        this.licenseTxt.setText(hospital.getLicenseNumber());
+        this.contactNumberTxt.setText(hospital.getPhoneNo());
+        this.licenseTxt.setText(hospital.getLicenseNo());
         
        this.addressTxt.setEnabled(false);
        this.nameTxt.setEnabled(false);
@@ -241,8 +241,8 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
        hospital.setAddress(addressTxt.getText());
        hospital.setName(nameTxt.getText());
        hospital.setAdminName(adminTxt.getText());
-       hospital.setPhoneNumber(contactNumberTxt.getText());
-       hospital.setLicenseNumber(licenseTxt.getText());
+       hospital.setPhoneNo(contactNumberTxt.getText());
+       hospital.setLicenseNo(licenseTxt.getText());
        
        
        this.addressTxt.setEnabled(false);

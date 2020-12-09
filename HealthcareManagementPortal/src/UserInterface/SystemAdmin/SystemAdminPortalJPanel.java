@@ -6,6 +6,7 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -16,17 +17,19 @@ import javax.swing.JPanel;
  */
 public class SystemAdminPortalJPanel extends javax.swing.JPanel {
     
-    private Ecosystem ecosystem;
     JPanel CardLayoutJPanel;
+    UserAccount account;
+    Ecosystem business;
 
     /**
      * Creates new form SystemAdminPortalJPanel
      */
-    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
+    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem ecosystem) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
-        this.ecosystem = ecosystem;
+        this.account = account;
+        this.business = ecosystem;
     }
 
     /**
@@ -81,7 +84,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        SystemAdminPatientPortalJPanel systemAdminPatientPortalJPanel = new SystemAdminPatientPortalJPanel(CardLayoutJPanel, ecosystem);
+        SystemAdminPatientPortalJPanel systemAdminPatientPortalJPanel = new SystemAdminPatientPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminPatientPortalJPanel", systemAdminPatientPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -89,24 +92,11 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = new SystemAdminHospitalPortalJPanel(CardLayoutJPanel, ecosystem);
+        SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = new SystemAdminHospitalPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminHospitalPortalJPanel", systemAdminHospitalPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);  
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

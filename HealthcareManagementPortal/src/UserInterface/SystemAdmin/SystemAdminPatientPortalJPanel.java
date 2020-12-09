@@ -5,12 +5,14 @@
  */
 package UserInterface.SystemAdmin;
 
+import Business.Appointment.AppointmentSchedule;
+import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
+import Business.Hospital.HospitalDirectory;
 import Business.Patient.Patient;
-import UserInterface.Patient.PatientInfoJPanel;
+import Business.Patient.PatientDirectory;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -20,43 +22,33 @@ import javax.swing.table.DefaultTableModel;
  */
 public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
-    private Ecosystem ecosystem;
     private JPanel CardLayoutJPanel;
+    private Ecosystem business;
+    
     /**
      * Creates new form SystemAdminPatientPortalJPanel
      */
-    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
+    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
-        this.ecosystem = ecosystem;
-        
-        populateTable();
-    }
-    
-    public void populateTable() {
-        // populate all patients in patient directory
-        ArrayList<Patient> patientList = ecosystem.getPatientDirectory().getPatientList();
-    
-        int rowCount = patientTable.getRowCount();
-        DefaultTableModel model = (DefaultTableModel)patientTable.getModel();
-        for(int i=rowCount-1;i>=0;i--) {
-            model.removeRow(i);
-        }
-        
-        for(Patient p : patientList) {
-            Object row[] = new Object[8];
-            row[0] = p.getName();
-            row[1] = p.getId();
-            row[2] = p.getPhoneNumber();
-            row[3] = p.getEmailId();
-            row[4] = p.getAddress();
-            row[5] = p.getAge();
-            row[6] = p.getGender();
-            row[7] = p.getBloodGroup();
-            model.addRow(row);
-        }
+        this.business = business;
     }
 
+    public void populateTable() {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+
+        model.setRowCount(0);
+        for (Patient patient : business.getPatientDirectory().getPatientDirectory()) {
+                
+            Object[] row = new Object[5];
+            row[0] = patient.getPatientID();
+            row[1] = patient.getName();
+            row[2] = patient.getPhoneNo();
+            row[3] = patient.getAddress();
+            model.addRow(row);
+                
+        }   
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -67,68 +59,47 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        patientTable = new javax.swing.JTable();
-        viewPatientDetailsBtn = new javax.swing.JButton();
-        signUpPatientBtn = new javax.swing.JButton();
-        deleteTxt = new javax.swing.JButton();
+        jTable1 = new javax.swing.JTable();
+        viewbtn = new javax.swing.JButton();
+        addNewPatientbtn = new javax.swing.JButton();
+        Deletebtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
-        refreshBtn = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 0, 0));
         setPreferredSize(new java.awt.Dimension(1969, 800));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        patientTable.setBackground(new java.awt.Color(204, 255, 255));
-        patientTable.setModel(new javax.swing.table.DefaultTableModel(
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Patient Name", "Patient id", "Contact Number", "email id", "Address", "Age", "Gender", "Blood Group"
+                "Patient Name", "Patient id"
             }
         ));
-        jScrollPane1.setViewportView(patientTable);
+        jScrollPane1.setViewportView(jTable1);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 270, 1150, 180));
-
-        viewPatientDetailsBtn.setBackground(new java.awt.Color(0, 204, 204));
-        viewPatientDetailsBtn.setText("View Details");
-        viewPatientDetailsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPatientDetailsBtnActionPerformed(evt);
-            }
-        });
-        add(viewPatientDetailsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 460, 175, 50));
-
-        signUpPatientBtn.setBackground(new java.awt.Color(0, 204, 204));
-        signUpPatientBtn.setText("Sign Up New Patient");
-        signUpPatientBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                signUpPatientBtnActionPerformed(evt);
+                addNewPatientbtnActionPerformed(evt);
             }
         });
         add(signUpPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 490, 250, 44));
 
-        deleteTxt.setBackground(new java.awt.Color(0, 204, 204));
-        deleteTxt.setText("Delete Existing Patient");
-        deleteTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteTxtActionPerformed(evt);
-            }
-        });
-        add(deleteTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 540, 250, 49));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Patient Portal");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 200, -1, -1));
 
-        backBtn.setBackground(new java.awt.Color(0, 204, 204));
-        backBtn.setText("<back");
+        viewbtn.setBackground(new java.awt.Color(204, 204, 255));
+        viewbtn.setText("View Details");
+
+        addNewPatientbtn.setBackground(new java.awt.Color(204, 204, 255));
+        addNewPatientbtn.setText("Sign Up New Patient");
+        addNewPatientbtn.addActionListener(new java.awt.event.ActionListener() {
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
@@ -136,18 +107,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         });
         add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 134, 41));
 
-        refreshBtn.setBackground(new java.awt.Color(0, 204, 204));
-        refreshBtn.setText("Refresh");
-        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshBtnActionPerformed(evt);
-            }
-        });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 450, 139, 35));
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/SystemAdmin/—Pngtree—blockchain big data mobile phone_920097.jpg"))); // NOI18N
-        jLabel2.setText("jLabel2");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(-120, -110, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -157,80 +116,25 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
-    private void signUpPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signUpPatientBtnActionPerformed
+    private void addNewPatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPatientbtnActionPerformed
         // TODO add your handling code here:
-        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, ecosystem.getPatientDirectory().getPatientList());
-        CardLayoutJPanel.add("CreatePatientJPanel", createPatientJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-        
-    }//GEN-LAST:event_signUpPatientBtnActionPerformed
-
-    private void viewPatientDetailsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewPatientDetailsBtnActionPerformed
-        // TODO add your handling code here:
-        
-        int row = patientTable.getSelectedRow();
-        
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        Patient viewPatient = null;
-        
-        for(Patient p : ecosystem.getPatientDirectory().getPatientList()) {
-            if(p.getId().equals(patientTable.getValueAt(row, 1))) {
-                viewPatient = p;
-            }
-        }
-        
-        PatientInfoJPanel patientInfoJPanel = new PatientInfoJPanel(CardLayoutJPanel, viewPatient);
-        CardLayoutJPanel.add("PatientInfoJPanel", patientInfoJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_viewPatientDetailsBtnActionPerformed
-
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-    }//GEN-LAST:event_refreshBtnActionPerformed
-
-    private void deleteTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteTxtActionPerformed
-        // TODO add your handling code here:
-        
-        int row = patientTable.getSelectedRow();
-        
-        
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-        
-        ArrayList<Patient> patientList = ecosystem.getPatientDirectory().getPatientList();
-        
-        for(int i = 0; i < patientList.size(); i ++) {
-            
-            Patient p = patientList.get(i);
-            
-            if(p.getId().equals(patientTable.getValueAt(row, 1))) {
-                patientList.remove(i);
-            }
-        }
-        
-        populateTable();
-        
-    }//GEN-LAST:event_deleteTxtActionPerformed
+//        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+//        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
+//        CardLayoutJPanel.add(createPatientJPanel);
+//        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_addNewPatientbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deletebtn;
+    private javax.swing.JButton addNewPatientbtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton deleteTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable patientTable;
-    private javax.swing.JButton refreshBtn;
-    private javax.swing.JButton signUpPatientBtn;
-    private javax.swing.JButton viewPatientDetailsBtn;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton viewbtn;
     // End of variables declaration//GEN-END:variables
 }
+        Deletebtn.setBackground(new java.awt.Color(204, 204, 255));
+        Deletebtn.setText("Delete Existing Patient");
