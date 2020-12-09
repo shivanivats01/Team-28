@@ -11,7 +11,7 @@ import Business.Ecosystem;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
-import UserInterface.SystemAdmin.SystemAdminLoginJPanel;
+import UserInterface.SystemAdmin.SystemAdminPortalJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -22,11 +22,8 @@ public class SystemAdminRole extends Role {
     
 
    
-    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business, HospitalDirectory hospitalDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
-        return new SystemAdminLoginJPanel(userProcessContainer,account, business, patientDirectory, hospitalDirectory, doctorDirectory,appointmentSchedule);
+    public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
+        return new SystemAdminPortalJPanel(userProcessContainer,account, business);
     }
-
-
-   
 
 }

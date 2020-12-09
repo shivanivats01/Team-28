@@ -5,6 +5,8 @@
  */
 package UserInterface.SystemAdmin;
 
+import Business.Ecosystem;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -16,14 +18,18 @@ import javax.swing.JPanel;
 public class SystemAdminPortalJPanel extends javax.swing.JPanel {
     
     JPanel CardLayoutJPanel;
+    UserAccount account;
+    Ecosystem business;
 
     /**
      * Creates new form SystemAdminPortalJPanel
      */
-    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel) {
+    public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem ecosystem) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.account = account;
+        this.business = ecosystem;
     }
 
     /**
@@ -113,7 +119,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
     private void patientPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientPortalBtnActionPerformed
         // TODO add your handling code here:
-        SystemAdminPatientPortalJPanel systemAdminPatientPortalJPanel = new SystemAdminPatientPortalJPanel(CardLayoutJPanel);
+        SystemAdminPatientPortalJPanel systemAdminPatientPortalJPanel = new SystemAdminPatientPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminPatientPortalJPanel", systemAdminPatientPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -121,7 +127,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
     private void hospitalPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalPortalBtnActionPerformed
         // TODO add your handling code here:
-        SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = new SystemAdminHospitalPortalJPanel(CardLayoutJPanel);
+        SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = new SystemAdminHospitalPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminHospitalPortalJPanel", systemAdminHospitalPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);

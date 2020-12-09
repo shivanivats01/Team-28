@@ -23,34 +23,31 @@ import javax.swing.table.DefaultTableModel;
 public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
-   // private UserAccount account;
     private Ecosystem business;
-    private PatientDirectory patientDirectory;
     
     /**
      * Creates new form SystemAdminPatientPortalJPanel
      */
-    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel) {
+    public SystemAdminPatientPortalJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.business = business;
     }
-public void populateTable() {
+
+    public void populateTable() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
         model.setRowCount(0);
-        for (UserAccount ua : business.getUserAccountDirectory().getUserAccountList()) {
-            for (Patient patient : patientDirectory.getPatientDirectory()) {
+        for (Patient patient : business.getPatientDirectory().getPatientDirectory()) {
                 
-                    Object[] row = new Object[5];
-                    row[0] = patient.getPatientID();
-                    row[1] = patient.getName();
-                    row[2] = patient.getPhoneNo();
-                    row[3] = patient.getAddress();
-                    row[4] = ua.getUsername();
-                    model.addRow(row);
+            Object[] row = new Object[5];
+            row[0] = patient.getPatientID();
+            row[1] = patient.getName();
+            row[2] = patient.getPhoneNo();
+            row[3] = patient.getAddress();
+            model.addRow(row);
                 
-            }
-        }
+        }   
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -160,11 +157,9 @@ public void populateTable() {
     private void addNewPatientbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNewPatientbtnActionPerformed
         // TODO add your handling code here:
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business, patientDirectory);
+        CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add(createPatientJPanel);
         layout.next(CardLayoutJPanel);
-        
-        
     }//GEN-LAST:event_addNewPatientbtnActionPerformed
 
 

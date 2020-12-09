@@ -32,22 +32,18 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
     private JPanel CardLayoutJPanel;
     private UserAccount account;
     private Ecosystem business;
-    private PatientDirectory patientDirectory;
-    private HospitalDirectory hospitalDirectory;
-    private DoctorDirectory doctorDirectory;
-    private AppointmentSchedule appointmentSchedule;
+//    private PatientDirectory patientDirectory;
+//    private HospitalDirectory hospitalDirectory;
+//    private DoctorDirectory doctorDirectory;
+//    private AppointmentSchedule appointmentSchedule;
     private SlotList slotList;
 
-    public PatientWorkAreaJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business, PatientDirectory patientDirectory, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
+    public PatientWorkAreaJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
 
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.account=account;
         this.business = business;
-        this.patientDirectory = patientDirectory;
-        this.doctorDirectory= doctorDirectory;
-        this.hospitalDirectory=hospitalDirectory;
-        this.appointmentSchedule = appointmentSchedule;
 
     }
 
@@ -195,21 +191,21 @@ public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable1.getModel();
         model.setRowCount(0);
         
-        for(Appointment appointment: business.getAppointmentSchedule().getAppointmentSchedule()){
-            if(appointment.getPatient().getPatientID().equalsIgnoreCase(account.getEmployee().getName())){
-                Object[] row = new Object[10];
-                    row[0] = appointment.getMessage();
-                    row[1] = appointment.getReceiver();
-                    row[2] = appointment.getStatus();
-                    row[3] = (appointment.getResult() == null ? "Waiting" : appointment.getResult());
-                    row[4] = appointment.getHospital().getName();
-                   
-                   
-                    row[5] = (appointment.getDoctor() == null) ? "Awaiting Confirmation" : appointment.getDoctor().getName();
-                    row[6] = appointment.getAppointmentId();
-                    model.addRow(row);
-            }
-        }
+//        for(Appointment appointment: business.getAppointmentSchedule().getAppointmentSchedule()){
+//            if(appointment.getPatient().getPatientID().equalsIgnoreCase(account.getEmployee().getName())){
+//                Object[] row = new Object[10];
+//                    row[0] = appointment.getMessage();
+//                    row[1] = appointment.getReceiver();
+//                    row[2] = appointment.getStatus();
+//                    row[3] = (appointment.getResult() == null ? "Waiting" : appointment.getResult());
+//                    row[4] = appointment.getHospital().getName();
+//                   
+//                   
+//                    row[5] = (appointment.getDoctor() == null) ? "Awaiting Confirmation" : appointment.getDoctor().getName();
+//                    row[6] = appointment.getAppointmentId();
+//                    model.addRow(row);
+//            }
+//        }
 }
 
     /**
@@ -222,7 +218,7 @@ public void populateRequestTable(){
             
         
                     Object[] row = new Object[4];
-                    row[0] = hospitalDirectory.getHospitalName(slot.getHospitalId());
+//                    row[0] = hospitalDirectory.getHospitalName(slot.getHospitalId());
                     row[1] = slot.getDepartment();
                     
                     row[2] = slot.getIn_time();
@@ -240,24 +236,24 @@ public void populateRequestTable(){
         if(count == 1){
             if(row >= 0){
                // int quantity = Integer.parseInt(quantityBox.getSelectedItem().toString());
-                Hospital hospital = hospitalDirectory.getHospital(slotList.getSlotByIndex(row).getHospitalId());
-                Patient patient = patientDirectory.getPatient(account.getEmployee().getName());
+//                Hospital hospital = hospitalDirectory.getHospital(slotList.getSlotByIndex(row).getHospitalId());
+//                Patient patient = patientDirectory.getPatient(account.getEmployee().getName());
                 Slot slot = slotList.getSlotByIndex(row);
                 String status = "Awaiting Appointment Confirmation";
 
-                Appointment appointmentRequest = business.getAppointmentSchedule().addAppointment();
-                appointmentRequest.setAppointmentId("A"+(business.getAppointmentSchedule().getAppointmentSchedule().size()));
-               // orderRequest.setOrderStatusPercentage(25);
-                appointmentRequest.setSlot(slot);
-                appointmentRequest.setHospital(hospital);
-                appointmentRequest.setPatient(patient);
-               
-                appointmentRequest.setMessage("Appointment request has been sent ");
-                appointmentRequest.setSender(account);
-                appointmentRequest.setStatus(status);
-                business.getWorkQueue().getWorkRequestList().add(appointmentRequest);
-                JOptionPane.showMessageDialog(null, "Your Appointment has been sucessfully booked!");
-                populateRequestTable();
+//                Appointment appointmentRequest = business.getAppointmentSchedule().addAppointment();
+//                appointmentRequest.setAppointmentId("A"+(business.getAppointmentSchedule().getAppointmentSchedule().size()));
+//               // orderRequest.setOrderStatusPercentage(25);
+//                appointmentRequest.setSlot(slot);
+//                appointmentRequest.setHospital(hospital);
+//                appointmentRequest.setPatient(patient);
+//               
+//                appointmentRequest.setMessage("Appointment request has been sent ");
+//                appointmentRequest.setSender(account);
+//                appointmentRequest.setStatus(status);
+//                business.getWorkQueue().getWorkRequestList().add(appointmentRequest);
+//                JOptionPane.showMessageDialog(null, "Your Appointment has been sucessfully booked!");
+//                populateRequestTable();
             }
         }
         else{

@@ -5,6 +5,7 @@
  */
 package UserInterface.SystemAdmin;
 
+import Business.Ecosystem;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -15,12 +16,15 @@ import javax.swing.JPanel;
 public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
+    private Ecosystem business;
+    
     /**
      * Creates new form SystemAdminHospitalPortalJPanel
      */
-    public SystemAdminHospitalPortalJPanel(JPanel CardLayoutJPanel) {
+    public SystemAdminHospitalPortalJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.business = business;
     }
 
     /**

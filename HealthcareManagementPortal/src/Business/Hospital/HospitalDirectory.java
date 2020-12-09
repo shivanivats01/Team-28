@@ -20,7 +20,7 @@ public class HospitalDirectory {
     
      private ArrayList<Hospital> hospitalDirectory;
 
-    public HospitalDirectory() throws IOException{
+    public HospitalDirectory(){
         hospitalDirectory = new ArrayList<Hospital>();
        
     }

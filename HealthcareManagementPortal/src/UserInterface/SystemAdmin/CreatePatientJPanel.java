@@ -27,17 +27,14 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
     /**
      * Creates new form CreatePatientJPanel
      */
-     public PatientDirectory patientDirectory;
     public JPanel CardLayoutJPanel;
     public Ecosystem business;
     
-    
 
-    CreatePatientJPanel(JPanel CardLayoutJPanel, Ecosystem business, PatientDirectory patientDirectory) {
+    CreatePatientJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
 
         initComponents();
         this.CardLayoutJPanel=CardLayoutJPanel;
-        this.patientDirectory= patientDirectory;
         this.business= business;
 
     }
@@ -207,22 +204,18 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
 
         if(name.isEmpty() || phone.isEmpty() || address.isEmpty()|| username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        }
-       // else if(!phoneFormat(phone))
-      //  {
-      //      JOptionPane.showMessageDialog(null, "Phone format incorrect!");
-     //   }
-     //   else if(!patientDirectory.isPhoneUnique(phone)){
-       //     JOptionPane.showMessageDialog(null, "Phone No. already registered!");
-     //   }
-      //  else if(!business.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
-       //     JOptionPane.showMessageDialog(null, "Username already exists!");
-      //  }
-        else{
-            Patient patient = patientDirectory.add(name,phone,address);
-            Employee employee = business.getEmployeeDirectory().createEmployee(patient.getPatientID());
-
+        } else{
+            
+            // Create a new patient in patient directory
+            Patient patient = business.getPatientDirectory().add(name,phone,address);
+            
+            // Create new employee
+            Employee employee = business.getEmployeeDirectory().createEmployee(patient.getPatientID());        
+            
+            // Create a new user account
             UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new PatientRole());
+            
+
             JOptionPane.showMessageDialog(null, "Patient added!");
             txtName.setText("");
             txtContactNumber.setText("");
