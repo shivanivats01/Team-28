@@ -1,5 +1,7 @@
 package UserInterface.HospitalAdmin;
 
+import Business.Ecosystem;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -15,13 +17,22 @@ import javax.swing.JPanel;
  */
 public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
-    JPanel CardLayoutJPanel;
+    private JPanel CardLayoutJPanel;
+    private Ecosystem business;
+   
+    private UserAccount account;
     /**
      * Creates new form HospitalWorkAreaJPanel
      */
-    public HospitalWorkAreaJPanel(JPanel CardLayoutJPanel) {
+    public HospitalWorkAreaJPanel(Ecosystem business,JPanel CardLayoutJPanel, UserAccount account) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+         this.account= account;
+        this.business= business;
+    }
+
+    public HospitalWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**

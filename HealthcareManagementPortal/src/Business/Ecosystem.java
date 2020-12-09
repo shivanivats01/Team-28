@@ -20,6 +20,15 @@ import java.util.ArrayList;
 public class Ecosystem extends HealthCarePortal {
     
     private static Ecosystem business;
+    
+    // Already exists in HealthCarePortal
+    // WorkQueue
+    // Employee directory
+    // User account directory
+    
+    private HospitalDirectory hospitalDirectory = new HospitalDirectory();
+    private PatientDirectory patientDirectory = new PatientDirectory();
+    private DoctorDirectory doctorDirectory = new DoctorDirectory();
 
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;
@@ -32,11 +41,10 @@ public class Ecosystem extends HealthCarePortal {
     public DoctorDirectory getDoctorDirectory() {
         return doctorDirectory;
     }
-    private HospitalDirectory hospitalDirectory;
-    private PatientDirectory patientDirectory;
-    private DoctorDirectory doctorDirectory;
-    private AppointmentSchedule appointmentSchedule;
+    
+//    private AppointmentSchedule appointmentSchedule;
 
+    // Making ecosystem singleton
     public static Ecosystem getInstance() {
         if(business==null){
             business=new Ecosystem();
@@ -46,17 +54,9 @@ public class Ecosystem extends HealthCarePortal {
     
 
     public Ecosystem(HospitalDirectory hospitalDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory ) {
-
         this.hospitalDirectory = hospitalDirectory;
         this.patientDirectory = patientDirectory;
         this.doctorDirectory = doctorDirectory;
-    }
-    public AppointmentSchedule getAppointmentSchedule() {
-        return appointmentSchedule;
-    }
-
-    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
-        this.appointmentSchedule = appointmentSchedule;
     }
     
     
@@ -69,7 +69,6 @@ public class Ecosystem extends HealthCarePortal {
     private Ecosystem(){
         super(null);
        // networkList=new ArrayList<Network>();
-       appointmentSchedule = new AppointmentSchedule();
     }
 
     

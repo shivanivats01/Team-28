@@ -40,15 +40,7 @@ public abstract class Role {
         }
     }
     
-    public abstract JPanel createWorkArea(JPanel userProcessContainer, 
-            UserAccount account,  
-            Ecosystem business ,
-    
-            
-     HospitalDirectory hospitalDirectory,
-    PatientDirectory patientDirectory,
-    DoctorDirectory doctorDirectory,
-    AppointmentSchedule appointmentSchedule );
+    public abstract JPanel createWorkArea(JPanel userProcessContainer, UserAccount account,  Ecosystem business );
     
            
             

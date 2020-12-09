@@ -5,12 +5,9 @@
  */
 package Business.Role;
 
-import Business.Appointment.AppointmentSchedule;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Hospital.HospitalDirectory;
-import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
+import UserInterface.HospitalAdmin.HospitalWorkAreaJPanel;
 import UserInterface.SystemAdmin.SystemAdminPortalJPanel;
 import javax.swing.JPanel;
 
@@ -18,12 +15,13 @@ import javax.swing.JPanel;
  *
  * @author riyamoitra
  */
-public class SystemAdminRole extends Role {
-    
+public class HospitalRole extends Role{
 
-   
+    @Override
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
-        return new SystemAdminPortalJPanel(userProcessContainer,account, business);
-    }
 
+        return new HospitalWorkAreaJPanel(userProcessContainer,account, business);
+
+    }
+    
 }

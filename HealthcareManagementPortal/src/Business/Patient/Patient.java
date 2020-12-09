@@ -11,18 +11,24 @@ package Business.Patient;
  */
 public class Patient {
     
-    private String id;
-    private String name;
-    private String phoneNumber;
-    private String emailId;
-    private String address;
+   private String patientID;
+   private String name;
+   private String phoneNo;
+   private String address;
 
-    public String getId() {
-        return id;
+    public Patient(String patientID, String name, String phoneNo, String address) {
+        this.patientID= patientID;
+        this.name = name;
+        this.phoneNo = phoneNo;
+        this.address = address;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public String getPatientID() {
+        return patientID;
+    }
+
+    public void setPatientID(String patientID) {
+        this.patientID = patientID;
     }
 
     public String getName() {
@@ -33,20 +39,12 @@ public class Patient {
         this.name = name;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getPhoneNo() {
+        return phoneNo;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getEmailId() {
-        return emailId;
-    }
-
-    public void setEmailId(String emailId) {
-        this.emailId = emailId;
+    public void setPhoneNo(String phoneNo) {
+        this.phoneNo = phoneNo;
     }
 
     public String getAddress() {
@@ -57,6 +55,4 @@ public class Patient {
         this.address = address;
     }
     
-    
 }
-

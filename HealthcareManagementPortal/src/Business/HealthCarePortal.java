@@ -16,6 +16,7 @@ import java.util.ArrayList;
  * @author riyamoitra
  */
 public abstract class HealthCarePortal {
+    
     private String name;
     private WorkQueue workQueue;
     private EmployeeDirectory employeeDirectory;

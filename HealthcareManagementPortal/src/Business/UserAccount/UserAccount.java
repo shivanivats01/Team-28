@@ -67,6 +67,13 @@ public class UserAccount {
     
     @Override
     public String toString() {
+        System.out.println(" Username : " + username);
+        System.out.println(" password : " + password);
+//        System.out.println(" employee id : " + employee.getId());
+//        System.out.println(" employee name : " + employee.getName());
+//        System.out.println(" role : " + role.toString());
+//        System.out.println(" workQueue length: " + workQueue.getWorkRequestList().size());
+        
         return username;
     }
     
