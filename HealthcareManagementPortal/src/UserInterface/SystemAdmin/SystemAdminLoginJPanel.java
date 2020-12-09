@@ -24,12 +24,14 @@ import javax.swing.JPanel;
 public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
-    private Ecosystem ecosystem;
+    private UserAccount account;
+    private Ecosystem business;
 
     /**
      * Creates new form LoginJPanel
      */
-    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, Ecosystem ecosystem) {
+    /**
+     * public SystemAdminLoginJPanel(JPanel CardLayoutJPanel) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.ecosystem = ecosystem;
@@ -37,13 +39,17 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
 //        Image img = ImageIO.read(getClass().getResource("resources/water.bmp"));
 //        button.setIcon(new ImageIcon(img));
     }
+*/
+    public SystemAdminLoginJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
 
-    public SystemAdminLoginJPanel(JPanel userProcessContainer, UserAccount account, Ecosystem business, PatientDirectory patientDirectory, HospitalDirectory hospitalDirectory, DoctorDirectory doctorDirectory, AppointmentSchedule appointmentSchedule) {
-        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    
+        initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
+        this.account=account;
+        this.business = business;
     
     }
 
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,7 +62,7 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        usernameTxt = new javax.swing.JTextField();
+        userNametxt = new javax.swing.JTextField();
         loginBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         passwordTxt = new javax.swing.JPasswordField();
@@ -116,21 +122,39 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private void loginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginBtnActionPerformed
         // TODO add your handling code here:
         
-        if(usernameTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter the username");
-            return;
-        }
+        String userName = userNametxt.getText();
+       // Get Password
+       char[] passwordCharArray = passwordtxt.getPassword();
+       
+       String password = String.valueOf(passwordCharArray);
+       
+       //Step1: Check in the system admin user account directory if you have the user
+       UserAccount account=business.getUserAccountDirectory().authenticateUser(userName, password);
+       //JOptionPane.showMessageDialog(null, "Username"+userAccount.getRole().toString());
+       if(account != null){
+          /**CardLayout layout=(CardLayout)CardLayoutJPanel.getLayout();
+            CardLayoutJPanel.add("workArea",userAccount.getRole().createWorkArea(CardLayoutJPanel, account, business,patientDirectory,hospitalDirectory,doctorDirectory,appointmentSchedule));
+            layout.next(CardLayoutJPanel);
+            */
+          
+//            SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
+//            CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
+//            CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+//            layout.next(CardLayoutJPanel);
+    }                                  
+       
+       else{
+           JOptionPane.showMessageDialog(null, "Username or password incorrect. Please try again.");
+       }
         
-        if(passwordTxt.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Please enter the password");
-            return;
-        }
-        
-        
-        SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel, ecosystem);
+        // TODO: Add login validations
+      /*  SystemAdminPortalJPanel systemAdminPortalJPanel = new SystemAdminPortalJPanel(CardLayoutJPanel);
         CardLayoutJPanel.add("SystemAdminPortalJPanel", systemAdminPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
+*/
+
+
     }//GEN-LAST:event_loginBtnActionPerformed
 
 
@@ -141,7 +165,7 @@ public class SystemAdminLoginJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JButton loginBtn;
-    private javax.swing.JPasswordField passwordTxt;
-    private javax.swing.JTextField usernameTxt;
+    private javax.swing.JPasswordField passwordtxt;
+    private javax.swing.JTextField userNametxt;
     // End of variables declaration//GEN-END:variables
 }

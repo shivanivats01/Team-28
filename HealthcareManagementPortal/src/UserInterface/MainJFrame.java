@@ -14,7 +14,6 @@ import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
 import UserInterface.Physician.PhysicianWorkAreaJPanel;
 
-import UserInterface.SystemAdmin.SystemAdminLoginJPanel;
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
@@ -40,7 +39,7 @@ public class MainJFrame extends javax.swing.JFrame {
         
         Image img = Toolkit.getDefaultToolkit().getImage("/Users/shivanivats/AED_GROUP/Team-28/HealthcareManagementPortal/src/UserInterface/Images/loginPage.jpg");
         Image scaledImage = img.getScaledInstance(500, 225 , Image.SCALE_SMOOTH);
-        imageLabel.setIcon(new ImageIcon(scaledImage));
+//        imageLabel.setIcon(new ImageIcon(scaledImage));
 
     }
 
@@ -56,16 +55,7 @@ public class MainJFrame extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         CardLayoutJPanel = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        sysAdminBtn = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        logoImageLabel = new javax.swing.JLabel();
-        hospitalAdminBtn = new javax.swing.JButton();
-        PatientBtn = new javax.swing.JButton();
-        physicianBtn = new javax.swing.JButton();
-        backgroungLable = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/images/—Pngtree—blockchain big data mobile phone_920097.jpg"))); // NOI18N
         jLabel6.setText("jLabel3");
@@ -77,90 +67,18 @@ public class MainJFrame extends javax.swing.JFrame {
 
         CardLayoutJPanel.setLayout(new java.awt.CardLayout());
 
-        jPanel2.setPreferredSize(new java.awt.Dimension(675, 398));
-
-        jPanel3.setBackground(new java.awt.Color(0, 0, 0));
-        jPanel3.setMinimumSize(new java.awt.Dimension(1969, 690));
-        jPanel3.setPreferredSize(new java.awt.Dimension(1366, 768));
-        jPanel3.setSize(new java.awt.Dimension(1366, 768));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        sysAdminBtn.setBackground(new java.awt.Color(0, 204, 204));
-        sysAdminBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        sysAdminBtn.setText("System Admin");
-        sysAdminBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sysAdminBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(sysAdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 630, 380, 50));
-
-        jLabel7.setText("jLabel7");
-        jPanel3.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
-        logoImageLabel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/images/company logo.png"))); // NOI18N
-        logoImageLabel.setText("jLabel1");
-        jPanel3.add(logoImageLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(1250, 660, 190, 140));
-
-        hospitalAdminBtn.setBackground(new java.awt.Color(0, 153, 153));
-        hospitalAdminBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        hospitalAdminBtn.setText("Hospital Admin");
-        hospitalAdminBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                hospitalAdminBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(hospitalAdminBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 700, 380, 50));
-
-        PatientBtn.setBackground(new java.awt.Color(0, 153, 153));
-        PatientBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        PatientBtn.setText("Patient");
-        PatientBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                PatientBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(PatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 700, 380, 50));
-
-        physicianBtn.setBackground(new java.awt.Color(0, 204, 204));
-        physicianBtn.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        physicianBtn.setText("Physician");
-        physicianBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                physicianBtnActionPerformed(evt);
-            }
-        });
-        jPanel3.add(physicianBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 630, 380, 50));
-
-        backgroungLable.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/images/—Pngtree—blockchain big data mobile phone_920097.jpg"))); // NOI18N
-        backgroungLable.setText("jLabel1");
-        jPanel3.add(backgroungLable, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1980, 730));
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 1969, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1969, Short.MAX_VALUE)
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, 854, Short.MAX_VALUE)
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 854, Short.MAX_VALUE)
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 1969, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 854, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-
-        CardLayoutJPanel.add(jPanel1, "card2");
+        CardLayoutJPanel.add(jPanel4, "card3");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -176,50 +94,13 @@ public class MainJFrame extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminBtnActionPerformed
+    private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {                                            
         // TODO add your handling code here:
         LoginJPanel systemAdminLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "System Admin");
         CardLayoutJPanel.add("SystemAdminLoginJPanel", systemAdminLoginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_sysAdminBtnActionPerformed
-
-    private void physicianBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicianBtnActionPerformed
-        // TODO add your handling code here:
-        
-        
-        LoginJPanel physicianAdminLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Physician");
-        CardLayoutJPanel.add("physicianAdminLoginJPanel", physicianAdminLoginJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_physicianBtnActionPerformed
-
-    private void PatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PatientBtnActionPerformed
-        // TODO add your handling code here:
-
-        PatientLoginJPanel patientLoginJPanel = new PatientLoginJPanel(CardLayoutJPanel);
-        CardLayoutJPanel.add("PatientLoginJPanel", patientLoginJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_PatientBtnActionPerformed
-
-    private void hospitalAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalAdminBtnActionPerformed
-        // TODO add your handling code here:
-        
-        
-        LoginJPanel hospitalLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Hospital");
-        CardLayoutJPanel.add("hospitalLoginJPanel", hospitalLoginJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_hospitalAdminBtnActionPerformed
-
-    private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sysAdminBtnActionPerformed
-        // TODO add your handling code here:
-        LoginJPanel hospitalLoginJPanel = new LoginJPanel(CardLayoutJPanel,business, "Hospital");
-        CardLayoutJPanel.add("hospitalLoginJPanel", hospitalLoginJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_sysAdminBtnActionPerformed
+    }                                           
 
     /**
      * @param args the command line arguments
@@ -258,17 +139,8 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel CardLayoutJPanel;
-    private javax.swing.JButton PatientBtn;
-    private javax.swing.JLabel backgroungLable;
-    private javax.swing.JButton hospitalAdminBtn;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JLabel logoImageLabel;
-    private javax.swing.JButton physicianBtn;
-    private javax.swing.JButton sysAdminBtn;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
