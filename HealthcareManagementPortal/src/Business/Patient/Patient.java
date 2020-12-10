@@ -15,12 +15,16 @@ public class Patient {
    private String name;
    private String phoneNo;
    private String address;
+   private String emailId;
+   private String age;
+   private String gender;
+   private String bloodGroup;
+   
+   
+   
 
-    public Patient(String patientID, String name, String phoneNo, String address) {
-        this.patientID= patientID;
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.address = address;
+    public Patient() {
+       
     }
 
     public String getPatientID() {
@@ -53,6 +57,44 @@ public class Patient {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getEmailId() {
+        return emailId;
+    }
+
+    public void setEmailId(String emailId) {
+        this.emailId = emailId;
+    }
+
+    public String getAge() {
+        return age;
+    }
+
+    public void setAge(String age) {
+        this.age = age;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+    
+    
+    @Override()
+    public String toString() {
+        return this.patientID;
     }
     
 }
