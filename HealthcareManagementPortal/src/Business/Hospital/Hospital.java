@@ -16,6 +16,8 @@ import java.util.ArrayList;
  */
 public class Hospital {
    
+    private String username;
+    private String password;
     private String hospitalId;
     private String name;
     private String phoneNo;
@@ -33,6 +35,11 @@ public class Hospital {
         this.address = address;
       
         this.licenseNo = licenseNo;
+    }
+    
+    public Hospital() {
+    
+    
     }
 
     public AppointmentSchedule getAppointmentSchedule() {
@@ -91,6 +98,27 @@ public class Hospital {
         this.licenseNo = licenseNo;
     }
 
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    @Override()
+    public String toString() {
+        return this.hospitalId;
+    }
+    
     
     
 }
