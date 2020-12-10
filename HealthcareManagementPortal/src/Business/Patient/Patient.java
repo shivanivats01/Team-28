@@ -11,6 +11,8 @@ package Business.Patient;
  */
 public class Patient {
     
+   private String username;
+   private String password;
    private String patientID;
    private String name;
    private String phoneNo;
@@ -21,8 +23,6 @@ public class Patient {
    private String bloodGroup;
    
    
-   
-
     public Patient() {
        
     }
@@ -89,6 +89,22 @@ public class Patient {
 
     public void setBloodGroup(String bloodGroup) {
         this.bloodGroup = bloodGroup;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
     
     
