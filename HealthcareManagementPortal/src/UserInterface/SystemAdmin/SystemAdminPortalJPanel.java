@@ -8,7 +8,6 @@ package UserInterface.SystemAdmin;
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
-import java.awt.Component;
 import javax.swing.JPanel;
 
 /**
@@ -16,13 +15,14 @@ import javax.swing.JPanel;
  * @author shivanivats
  */
 public class SystemAdminPortalJPanel extends javax.swing.JPanel {
+
     
     JPanel CardLayoutJPanel;
     UserAccount account;
     Ecosystem business;
-
+    
     /**
-     * Creates new form SystemAdminPortalJPanel
+     * Creates new form SystemAdminPortalJPanel1
      */
     public SystemAdminPortalJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem ecosystem) {
         initComponents();
@@ -30,6 +30,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.account = account;
         this.business = ecosystem;
+    
     }
 
     /**
@@ -41,62 +42,90 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        hospitalPortalBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+        patientPortalBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(0, 0, 0));
-        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 153));
-        jButton1.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jButton1.setText("Hospital Portal");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        hospitalPortalBtn.setText("hospital portal");
+        hospitalPortalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                hospitalPortalBtnActionPerformed(evt);
             }
         });
-        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 210, 270, 50));
 
-        jButton2.setBackground(new java.awt.Color(0, 204, 204));
-        jButton2.setFont(new java.awt.Font("Lucida Grande", 1, 18)); // NOI18N
-        jButton2.setText("Patient Portal");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backBtn.setText("back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backBtnActionPerformed(evt);
             }
         });
-        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 270, 50));
 
-        jButton3.setText("<Back");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        patientPortalBtn.setText("patient portal");
+        patientPortalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                patientPortalBtnActionPerformed(evt);
             }
         });
-        add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 30, 120, 40));
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/SystemAdmin/—Pngtree—blockchain big data mobile phone_920097.jpg"))); // NOI18N
-        jLabel1.setText("jLabel1");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1970, 760));
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(patientPortalBtn)
+                .addGap(86, 86, 86)
+                .addComponent(hospitalPortalBtn)
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(26, 26, 26)
+                    .addComponent(backBtn)
+                    .addContainerGap(299, Short.MAX_VALUE)))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(188, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(patientPortalBtn)
+                    .addComponent(hospitalPortalBtn))
+                .addGap(83, 83, 83))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(30, 30, 30)
+                    .addComponent(backBtn)
+                    .addContainerGap(241, Short.MAX_VALUE)))
+        );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void patientPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientPortalBtnActionPerformed
         // TODO add your handling code here:
         SystemAdminPatientPortalJPanel systemAdminPatientPortalJPanel = new SystemAdminPatientPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminPatientPortalJPanel", systemAdminPatientPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_patientPortalBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void hospitalPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalPortalBtnActionPerformed
         // TODO add your handling code here:
         SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = new SystemAdminHospitalPortalJPanel(CardLayoutJPanel, business);
         CardLayoutJPanel.add("SystemAdminHospitalPortalJPanel", systemAdminHospitalPortalJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);  
-    }//GEN-LAST:event_jButton1ActionPerformed
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_hospitalPortalBtnActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backBtnActionPerformed
+
+
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
+    private javax.swing.JButton hospitalPortalBtn;
+    private javax.swing.JButton patientPortalBtn;
     // End of variables declaration//GEN-END:variables
 }

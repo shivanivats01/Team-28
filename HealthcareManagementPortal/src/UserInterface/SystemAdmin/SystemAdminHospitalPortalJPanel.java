@@ -6,8 +6,15 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
+import Business.Hospital.Hospital;
+import Business.Hospital.HospitalDirectory;
+import Business.Patient.Patient;
+import UserInterface.HospitalAdmin.HospitalInfoJPanel;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -25,8 +32,34 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
+        
+         populateTable();
     }
 
+    public void populateTable() {
+        // populate all patients in patient directory
+        ArrayList<Hospital> hospitalList = business.getHospitalDirectory().getHospitalList();
+    
+        int rowCount = hospitalTable.getRowCount();
+        DefaultTableModel model = (DefaultTableModel)hospitalTable.getModel();
+        for(int i=rowCount-1;i>=0;i--) {
+            model.removeRow(i);
+        }
+        
+        for(Hospital h : hospitalList) {
+            Object row[] = new Object[6];
+            row[0] = h;
+            row[1] = h.getName();
+            row[2] = h.getPhoneNo();
+            row[3] = h.getAddress();
+            row[4] = h.getAdminName();
+            row[5] = h.getLicenseNo();
+           
+           
+            
+            model.addRow(row);
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,36 +72,28 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        hospitalTable = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        deleteBtn = new javax.swing.JButton();
+        viewHospitalBtn = new javax.swing.JButton();
+        refreshBtn = new javax.swing.JButton();
+        createHospitalBtn = new javax.swing.JButton();
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        hospitalTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Hospital Name", "Hospital id"
+                "Hospital Name", "Hospital id", "Contact Number", "Address", "Admin Name", "License Number"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
-
-        jButton1.setBackground(new java.awt.Color(204, 204, 255));
-        jButton1.setText("View Details");
-
-        jButton2.setBackground(new java.awt.Color(204, 204, 255));
-        jButton2.setText("Sign Up New Hospital");
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 255));
-        jButton3.setText("Delete Existing Hospital");
+        jScrollPane1.setViewportView(hospitalTable);
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Hospital Portal");
@@ -80,6 +105,34 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
             }
         });
 
+        deleteBtn.setText("Delete Existing Hospital");
+        deleteBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteBtnActionPerformed(evt);
+            }
+        });
+
+        viewHospitalBtn.setText("View Details");
+        viewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewHospitalBtnActionPerformed(evt);
+            }
+        });
+
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
+
+        createHospitalBtn.setText("Sign up New Hospital");
+        createHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createHospitalBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -88,17 +141,21 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 .addGap(17, 17, 17)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(58, 58, 58)
-                        .addComponent(jLabel1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(deleteBtn)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(backBtn)
+                                .addGap(58, 58, 58)
+                                .addComponent(jLabel1))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 128, Short.MAX_VALUE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(162, 162, 162)
-                        .addComponent(jButton1)))
-                .addGap(0, 46, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(refreshBtn)
+                            .addComponent(createHospitalBtn))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 193, Short.MAX_VALUE)
+                        .addComponent(viewHospitalBtn)
+                        .addGap(115, 115, 115))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -107,17 +164,20 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(52, 52, 52)
-                        .addComponent(jButton1))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(refreshBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(createHospitalBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
+                        .addComponent(viewHospitalBtn)
+                        .addGap(27, 27, 27)))
+                .addComponent(deleteBtn)
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -125,7 +185,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -134,7 +194,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 426, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel1Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -146,7 +206,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 543, Short.MAX_VALUE)
+            .addGap(0, 625, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -155,7 +215,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 426, Short.MAX_VALUE)
+            .addGap(0, 427, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -163,6 +223,56 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                     .addGap(0, 0, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
+        // TODO add your handling code here:
+        int row = hospitalTable.getSelectedRow();
+
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        HospitalDirectory hospitalDirectory = business.getHospitalDirectory();
+
+        business.getHospitalDirectory().deleteHospital(row, business);
+
+        populateTable();
+    }//GEN-LAST:event_deleteBtnActionPerformed
+
+    private void viewHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_viewHospitalBtnActionPerformed
+        // TODO add your handling code here:
+
+        int row = hospitalTable.getSelectedRow();
+
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        System.out.println("=========== >> " + hospitalTable.getValueAt(row, 0));
+
+        Hospital viewHospital = (Hospital) hospitalTable.getValueAt(row, 0);
+
+        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, viewHospital);
+        CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_viewHospitalBtnActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
+    private void createHospitalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createHospitalBtnActionPerformed
+        // TODO add your handling code here:
+        CreateHospitalJPanel createHospitalJPanel = new CreateHospitalJPanel(CardLayoutJPanel, business);
+        CardLayoutJPanel.add("CreateHospitalJPanel", createHospitalJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_createHospitalBtnActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
@@ -174,13 +284,14 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton createHospitalBtn;
+    private javax.swing.JButton deleteBtn;
+    private javax.swing.JTable hospitalTable;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JButton refreshBtn;
+    private javax.swing.JButton viewHospitalBtn;
     // End of variables declaration//GEN-END:variables
 }

@@ -29,10 +29,14 @@ public class PatientInfoJPanel extends javax.swing.JPanel {
         this.patient = patient;
         
         this.addressTxt.setText(patient.getAddress());
-//        this.emailTxt.setText(patient.get);
+        this.ageTxt.setText(patient.getAge());
         this.idTxt.setText(patient.getPatientID());
         this.nameTxt.setText(patient.getName());
         this.numberTxt.setText(patient.getPhoneNo());
+        this.bloodGroupTxt.setText(patient.getBloodGroup());
+        this.genderComboBox.setSelectedItem(patient.getGender());
+        this.emailTxt.setText(patient.getEmailId());
+        
         
         
       
@@ -286,9 +290,13 @@ public class PatientInfoJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         
         patient.setAddress(addressTxt.getText());
-//        patient.setEmailId(emailTxt.getText());
+        patient.setEmailId(emailTxt.getText());
         patient.setName(nameTxt.getText());
         patient.setPhoneNo(numberTxt.getText());
+        patient.setAge(ageTxt.getText());
+        patient.setBloodGroup(bloodGroupTxt.getText());
+        patient.setGender(genderComboBox.getSelectedItem().toString());
+        
         
        this.addressTxt.setEnabled(false);
        this.emailTxt.setEnabled(false);
