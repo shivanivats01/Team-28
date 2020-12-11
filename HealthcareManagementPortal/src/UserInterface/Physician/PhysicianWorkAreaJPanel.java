@@ -7,8 +7,11 @@ package UserInterface.Physician;
 
 import Business.Appointment.Appointment;
 import Business.Ecosystem;
+import Business.Hospital.Hospital;
 import Business.Slot.Slot;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -53,6 +56,7 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
         refreshJButton = new javax.swing.JButton();
         giveAppointmentJButton = new javax.swing.JButton();
         processPatientJButton = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -105,6 +109,13 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        backbtn.setText("<Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,9 +124,6 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(refreshJButton)
-                        .addGap(77, 77, 77))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 630, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -123,12 +131,20 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(processPatientJButton)
                         .addGap(77, 77, 77))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(backbtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(refreshJButton)
+                .addGap(77, 77, 77))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(36, 36, 36)
-                .addComponent(refreshJButton)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(refreshJButton)
+                    .addComponent(backbtn))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -140,14 +156,18 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshJButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshJButtonActionPerformed
-       // populateTable();
+      //  populateTable();
+       
+       
     }//GEN-LAST:event_refreshJButtonActionPerformed
 
-   /* 
+   
+    
+  /* 
     public void populateTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable.getModel();
         model.setRowCount(0);
-        for(Appointment appointment: business.getHospitalDirectory().getHospital(0).getAppointmentSchedule()){ // Hospital's index needs to be changed
+        for(Appointment appointment: business.getHospitalDirectory().getHospital().getAppointmentSchedule()){ // Hospital's index needs to be changed
             if(appointment.getDoctor() != null){
                 if(appointment.getDoctor().getDoctorId().equalsIgnoreCase(account.getEmployee().getName())){
                 Object[] row = new Object[7];
@@ -205,8 +225,17 @@ public class PhysicianWorkAreaJPanel extends javax.swing.JPanel {
 */
     }//GEN-LAST:event_processPatientJButtonActionPerformed
 
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        
+         CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backbtn;
     private javax.swing.JButton giveAppointmentJButton;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton processPatientJButton;

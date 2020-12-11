@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author shivanivats
+ * @author riyamoitra
  */
 public class CreatePhysicianJPanel extends javax.swing.JPanel {
 
@@ -27,11 +27,16 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
      */
     private JPanel CardLayoutJPanel;
     private Ecosystem business;
-    public CreatePhysicianJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
+    private UserAccount account;
+
+    CreatePhysicianJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
         
+
+
     }
 
     /**
@@ -121,23 +126,20 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                                     .addComponent(nameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
                                     .addComponent(usernameTxt, javax.swing.GroupLayout.Alignment.TRAILING)))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(jLabel4))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel9))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                    .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(saveBtn)))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(backBtn)
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1)))
-                .addContainerGap(153, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(saveBtn)
-                .addGap(165, 165, 165))
+                .addContainerGap(237, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -146,7 +148,7 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(backBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
@@ -170,15 +172,15 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel9)
                     .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addGap(32, 32, 32)
                 .addComponent(saveBtn)
-                .addGap(102, 102, 102))
+                .addGap(88, 88, 88))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
+       CardLayoutJPanel.remove(this);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
@@ -190,25 +192,30 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
     private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
         // TODO add your handling code here:
 
-        Doctor newDoc = new Doctor();
+        Doctor newdoc = new Doctor();
+        
         String name = nameTxt.getText();
         String phoneNo = numberTxt.getText();
         String emailId = emailTxt.getText();
         
+        
         String gender = genderComboBox.getSelectedItem().toString();
+        
+
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
 
-        newDoc.setName(name);
+        newdoc.setName(name);
         
-        newDoc.setEmailId(emailId);
-        newDoc.setGender(gender);
-        newDoc.setPassword(password);
-        newDoc.setPhoneNo(phoneNo);
-        newDoc.setUsername(username);
+        
+        newdoc.setEmailId(emailId);
+        newdoc.setGender(gender);
+        newdoc.setPassword(password);
+        newdoc.setPhoneNo(phoneNo);
+        newdoc.setUsername(username);
 
         //business.getPatientDirectory().add(newPatient);
-        if(name.isEmpty() || phoneNo.isEmpty() ||  username.isEmpty() || password.isEmpty()){
+        if(name.isEmpty() || phoneNo.isEmpty() || username.isEmpty() || password.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         }
         else if(!phoneFormat(phoneNo))
@@ -222,16 +229,15 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username already exists!");
         }
         else{
-            Doctor doc = business.getDoctorDirectory().add(newDoc);
-            Employee employee = business.getEmployeeDirectory().createEmployee(doc.getDoctorId());
+            Doctor doctor = business.getDoctorDirectory().add(newdoc);
+            Employee employee = business.getEmployeeDirectory().createEmployee(doctor.getDoctorId());
 
             UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new PhysicianRole());
 
-            JOptionPane.showMessageDialog(null, "New patient signed up");
+            JOptionPane.showMessageDialog(null, "New Physician Profile created");
     }//GEN-LAST:event_saveBtnActionPerformed
- 
     }
-    public boolean phoneFormat(String phoneNo){
+        public boolean phoneFormat(String phoneNo){
         String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
         Pattern pattern = Pattern.compile(regex);
         

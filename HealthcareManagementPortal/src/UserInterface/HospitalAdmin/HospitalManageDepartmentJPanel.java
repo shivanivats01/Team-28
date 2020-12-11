@@ -1,7 +1,17 @@
 package UserInterface.HospitalAdmin;
 
+import Business.Department.Department;
+import Business.Department.DepartmentDirectory;
+import Business.Ecosystem;
+import Business.Hospital.Hospital;
+import Business.Patient.Patient;
+import UserInterface.Patient.PatientInfoJPanel;
+import UserInterface.SystemAdmin.CreateHospitalJPanel;
 import java.awt.CardLayout;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -18,12 +28,22 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
     
 
     JPanel CardLayoutJPanel;
+    private Ecosystem business;
+    private Hospital hospital;
+    
     /**
      * Creates new form HospitalManageDepartmentJPanel
      */
-    public HospitalManageDepartmentJPanel(JPanel CardLayoutJPanel) {
+    
+
+    HospitalManageDepartmentJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
+
+
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.business= business;
+        hospital= business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY);
+
     }
 
     /**
@@ -37,21 +57,24 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        departmentTable = new javax.swing.JTable();
         btnBack = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        Viewbtn = new javax.swing.JButton();
+        addBtn = new javax.swing.JButton();
+        Deletebtn = new javax.swing.JButton();
+        Refreshbtn = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        departmentTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3"
+                "Department ID", "Department Name", "Department Admin Name"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(departmentTable);
 
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -60,22 +83,56 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("View Department Details");
+        Viewbtn.setText("View Department Details");
+        Viewbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ViewbtnActionPerformed(evt);
+            }
+        });
+
+        addBtn.setText("Add Departments");
+        addBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addBtnActionPerformed(evt);
+            }
+        });
+
+        Deletebtn.setText("Delete Departments");
+        Deletebtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                DeletebtnActionPerformed(evt);
+            }
+        });
+
+        Refreshbtn.setText("Refresh");
+        Refreshbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                RefreshbtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jButton1)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(34, 34, 34)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(55, 55, 55)
-                            .addComponent(btnBack))))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(55, 55, 55)
+                        .addComponent(btnBack))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(34, 34, 34)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(Refreshbtn)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(Deletebtn)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(addBtn)
+                                        .addGap(29, 29, 29)
+                                        .addComponent(Viewbtn))))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(35, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -83,9 +140,18 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(58, 58, 58)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(Viewbtn)
+                            .addComponent(addBtn)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(Refreshbtn)))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
+                .addComponent(Deletebtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
                 .addComponent(btnBack)
                 .addGap(94, 94, 94))
         );
@@ -103,7 +169,7 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 500, Short.MAX_VALUE)
+            .addGap(0, 511, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
@@ -119,12 +185,94 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
+    private void RefreshbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshbtnActionPerformed
+        // TODO add your handling code here:
+         populateTable();
+    }//GEN-LAST:event_RefreshbtnActionPerformed
+
+    private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
+        // TODO add your handling code here:
+        
+       
+        CreateDepartmentJPanel createDepartmentJPanel = new CreateDepartmentJPanel(CardLayoutJPanel, business);
+        CardLayoutJPanel.add("CreateDepartmentJPanel", createDepartmentJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_addBtnActionPerformed
+
+    private void ViewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewbtnActionPerformed
+        // TODO add your handling code here:
+        
+        int row = departmentTable.getSelectedRow();
+        
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+       // System.out.println("=========== >> " + patientTbl.getValueAt(row, 0));
+        
+        Department viewDepartment = (Department) departmentTable.getValueAt(row, 0);
+        
+        
+        
+        DepartmentInfoJPanel departmentInfoJPanel = new DepartmentInfoJPanel(CardLayoutJPanel, viewDepartment, business);
+        CardLayoutJPanel.add("DepartmentInfoJPanel", departmentInfoJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+        
+    }//GEN-LAST:event_ViewbtnActionPerformed
+
+    private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
+        // TODO add your handling code here:
+         int row = departmentTable.getSelectedRow();
+
+        if(row<0) {
+            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+
+        DepartmentDirectory departmentDirectory = business.getDepartmentDirectory();
+
+        business.getDepartmentDirectory().deleteDepartment(row, business);
+
+        populateTable();
+        
+        
+    }//GEN-LAST:event_DeletebtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton Deletebtn;
+    private javax.swing.JButton Refreshbtn;
+    private javax.swing.JButton Viewbtn;
+    private javax.swing.JButton addBtn;
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JTable departmentTable;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
+
+     public void populateTable() {
+        // populate all patients in patient directory
+        //ArrayList<Department> departmentDirectory = business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY).getDepartmentDirectory();
+       // DepartmentDirectory departmentList=business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY).getDepartmentDirectory();
+         ArrayList<Department> departmentDirectory = business.getDepartmentDirectory().getDepartmentDirectory();
+        int rowCount = departmentTable.getRowCount();
+        DefaultTableModel model = (DefaultTableModel)departmentTable.getModel();
+        for(int i=rowCount-1;i>=0;i--) {
+            model.removeRow(i);
+        }
+        
+        for(Department dep :  departmentDirectory ) {
+            Object row[] = new Object[3];
+            row[0] = dep;
+            row[1] = dep.getDepartmentName();
+           
+            row[2] = dep.getDepartmentAdminName();
+            
+           
+            model.addRow(row);
+        }
+    }
 }

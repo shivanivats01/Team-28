@@ -7,6 +7,8 @@ package Business.Hospital;
 
 import Business.Appointment.Appointment;
 import Business.Appointment.AppointmentSchedule;
+import Business.Department.Department;
+import Business.Department.DepartmentDirectory;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 
@@ -24,6 +26,16 @@ public class Hospital {
     private String address;
     private String adminName;
     private String licenseNo;
+
+    public DepartmentDirectory getDepartmentDirectory() {
+        return departmentDirectory;
+    }
+
+    public void setDepartmentDirectory(DepartmentDirectory DepartmentDirectory) {
+        this.departmentDirectory = DepartmentDirectory;
+    }
+    
+    private DepartmentDirectory departmentDirectory;
     
     private AppointmentSchedule appointmentSchedule;
 
@@ -35,12 +47,14 @@ public class Hospital {
         this.address = address;
       
         this.licenseNo = licenseNo;
+       departmentDirectory = new DepartmentDirectory();
     }
     
     public Hospital() {
     
     
     }
+
 
     public AppointmentSchedule getAppointmentSchedule() {
         return appointmentSchedule;

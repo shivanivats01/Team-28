@@ -8,6 +8,7 @@ package UserInterface.Patient;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
+import UserInterface.HospitalAdmin.HospitalInfoJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -48,9 +49,6 @@ public class PatientPageOneJPanel extends javax.swing.JPanel {
         hospitalNameCombo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         searchByHospitalName = new javax.swing.JButton();
-        DepartmentCombo = new javax.swing.JComboBox<>();
-        jLabel2 = new javax.swing.JLabel();
-        SearchByDepartmentName = new javax.swing.JButton();
         backbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -65,15 +63,9 @@ public class PatientPageOneJPanel extends javax.swing.JPanel {
         jLabel1.setText("Hospital Name:");
 
         searchByHospitalName.setText("Search");
-
-        DepartmentCombo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
-        jLabel2.setText("Department");
-
-        SearchByDepartmentName.setText("Search by Department");
-        SearchByDepartmentName.addActionListener(new java.awt.event.ActionListener() {
+        searchByHospitalName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchByDepartmentNameActionPerformed(evt);
+                searchByHospitalNameActionPerformed(evt);
             }
         });
 
@@ -92,17 +84,12 @@ public class PatientPageOneJPanel extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(backbtn)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hospitalNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(DepartmentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(hospitalNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(searchByHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchByDepartmentName, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(105, Short.MAX_VALUE))
+                .addComponent(searchByHospitalName, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(156, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -112,20 +99,11 @@ public class PatientPageOneJPanel extends javax.swing.JPanel {
                     .addComponent(hospitalNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(searchByHospitalName))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(DepartmentCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchByDepartmentName))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 145, Short.MAX_VALUE)
                 .addComponent(backbtn)
                 .addGap(100, 100, 100))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void SearchByDepartmentNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchByDepartmentNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_SearchByDepartmentNameActionPerformed
 
     private void hospitalNameComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospitalNameComboActionPerformed
         // TODO add your handling code here:
@@ -146,14 +124,20 @@ public class PatientPageOneJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_backbtnActionPerformed
 
+    private void searchByHospitalNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchByHospitalNameActionPerformed
+        // TODO add your handling code here:
+               
+        SearchbyDepJPanel searchbyDepJPanel = new SearchbyDepJPanel(CardLayoutJPanel,account,business);
+        CardLayoutJPanel.add("SearchbyDepJPanel", searchbyDepJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_searchByHospitalNameActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> DepartmentCombo;
-    private javax.swing.JButton SearchByDepartmentName;
     private javax.swing.JButton backbtn;
     private javax.swing.JComboBox<String> hospitalNameCombo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton searchByHospitalName;
     // End of variables declaration//GEN-END:variables
 }

@@ -26,19 +26,12 @@
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="backbtn" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" pref="124" max="-2" attributes="0"/>
-                  <Component id="jLabel2" min="-2" pref="124" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="hospitalNameCombo" min="-2" max="-2" attributes="0"/>
-                  <Component id="DepartmentCombo" min="-2" max="-2" attributes="0"/>
-              </Group>
+              <Component id="hospitalNameCombo" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="searchByHospitalName" min="-2" pref="118" max="-2" attributes="0"/>
-                  <Component id="SearchByDepartmentName" min="-2" pref="169" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="105" max="32767" attributes="0"/>
+              <Component id="searchByHospitalName" min="-2" pref="118" max="-2" attributes="0"/>
+              <EmptySpace pref="156" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -51,13 +44,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                   <Component id="searchByHospitalName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="DepartmentCombo" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="SearchByDepartmentName" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace pref="145" max="32767" attributes="0"/>
               <Component id="backbtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
           </Group>
@@ -92,33 +79,8 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="DepartmentCombo">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel2">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Department"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="SearchByDepartmentName">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Search by Department"/>
-      </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="SearchByDepartmentNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchByHospitalNameActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="backbtn">

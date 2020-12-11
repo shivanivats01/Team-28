@@ -5,6 +5,7 @@
  */
 package Business.Slot;
 
+import Business.Department.Department;
 import java.awt.image.BufferedImage;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -41,6 +42,14 @@ public class SlotList {
             }
         }
         return null;
+    }
+    
+     
+    public Slot add(Slot slot){
+        slot.setSlotId("S"+(slotList.size()+1));
+             
+        slotList.add(slot);
+        return slot;
     }
 
     public void updateSlot(String slotId, String hospitalId, String department, LocalDateTime in_time,int duration ) {
