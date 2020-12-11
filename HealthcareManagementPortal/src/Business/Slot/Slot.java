@@ -5,7 +5,9 @@
  */
 package Business.Slot;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.time;
+import com.toedter.calendar.JDateChooser;
 import java.time.LocalDateTime;
+import java.util.Date;
 /**
  *
  * @author riyamoitra
@@ -15,6 +17,15 @@ public class Slot {
     private String slotId;
     private LocalDateTime in_time;
     private int duration;
+    private Date date;
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     private String hospitalId;
     private String department;
     
@@ -24,6 +35,10 @@ public class Slot {
         this.in_time= in_time;
         this.duration = duration;
         this.hospitalId= hospitalId;
+    }
+
+    public Slot() {
+
     }
 
     public String getHospitalId() {
@@ -64,6 +79,10 @@ public class Slot {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public void setDate(JDateChooser datechooser) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

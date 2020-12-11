@@ -27,7 +27,7 @@ public abstract class HealthCarePortal {
     public enum Type{
         HospitalAdmin("HospitalAdmin"),
         Patient("Patient"),
-        Doctor("Delivery"),
+        Doctor("Doctor"),
         SystemAdmin("Sysadmin");
         
         private String value;

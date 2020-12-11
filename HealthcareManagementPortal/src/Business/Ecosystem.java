@@ -6,11 +6,13 @@
 package Business;
 
 import Business.Appointment.AppointmentSchedule;
+import Business.Department.DepartmentDirectory;
 import Business.Doctor.DoctorDirectory;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
+import Business.Slot.SlotList;
 import java.util.ArrayList;
 
 /**
@@ -29,6 +31,33 @@ public class Ecosystem extends HealthCarePortal {
     private HospitalDirectory hospitalDirectory = new HospitalDirectory();
     private PatientDirectory patientDirectory = new PatientDirectory();
     private DoctorDirectory doctorDirectory = new DoctorDirectory();
+    private DepartmentDirectory departmentDirectory = new DepartmentDirectory();
+    private AppointmentSchedule appointmentSchedule = new AppointmentSchedule();
+    private SlotList slotList = new SlotList();
+
+    public AppointmentSchedule getAppointmentSchedule() {
+        return appointmentSchedule;
+    }
+
+    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
+        this.appointmentSchedule = appointmentSchedule;
+    }
+
+    public DepartmentDirectory getDepartmentDirectory() {
+        return departmentDirectory;
+    }
+
+    public SlotList getSlotList() {
+        return slotList;
+    }
+
+    public void setSlotList(SlotList slotList) {
+        this.slotList = slotList;
+    }
+
+    public void setDepartmentDirectory(DepartmentDirectory departmentDirectory) {
+        this.departmentDirectory = departmentDirectory;
+    }
 
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;

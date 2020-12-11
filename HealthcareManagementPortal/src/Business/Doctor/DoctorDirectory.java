@@ -28,18 +28,7 @@ public class DoctorDirectory {
     public void setDoctorList(ArrayList<Doctor> doctorList) {
         this.doctorList = doctorList;
     }
-    public void deletePatient(int index,Ecosystem system){
-        String id = doctorList.get(index).getDoctorId();
-        
-        for(int i =0; i < system.getUserAccountDirectory().getUserAccountList().size();i++){
-            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
-                system.getUserAccountDirectory().getUserAccountList().remove(i);
-            }
-        }
-        
-        doctorList.remove(index);
-    }
-    
+ 
     public Doctor add(Doctor d){
         d.setDoctorId("D"+(doctorList.size()+1));
                 
@@ -54,4 +43,14 @@ public class DoctorDirectory {
         }
         return true;
     }
+    public void deleteDoctor(int index,Ecosystem system){
+        String id = doctorList.get(index).getDoctorId();
+        for(int i =0; i <system.getUserAccountDirectory().getUserAccountList().size();i++){
+            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
+                system.getUserAccountDirectory().getUserAccountList().remove(i);
+            }
+        }
+        doctorList.remove(index);
+    }
+    
 }

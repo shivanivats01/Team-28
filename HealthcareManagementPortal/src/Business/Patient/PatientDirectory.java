@@ -6,6 +6,7 @@
 package Business.Patient;
 
 import Business.Ecosystem;
+import Business.Hospital.Hospital;
 import java.util.ArrayList;
 
 /**
@@ -53,6 +54,15 @@ public class PatientDirectory {
             }
         }
         return true;
+    }
+    
+     public Patient getPatient(String id){
+        for(Patient patient: patientList){
+            if(patient.getPatientID().equalsIgnoreCase(id)){
+                return patient;
+            }
+        }
+        return null;
     }
     // TODO: Check if these methods are being used or not
     

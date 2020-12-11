@@ -7,6 +7,7 @@ package UserInterface.Patient;
 
 import Business.Appointment.Appointment;
 import Business.Appointment.AppointmentSchedule;
+import Business.Department.Department;
 import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
@@ -16,6 +17,7 @@ import Business.Patient.PatientDirectory;
 import Business.Slot.Slot;
 import Business.Slot.SlotList;
 import Business.UserAccount.UserAccount;
+import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -37,6 +39,8 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
 //    private DoctorDirectory doctorDirectory;
 //    private AppointmentSchedule appointmentSchedule;
     private SlotList slotList;
+    private Department dep;
+   String index;
 
     public PatientWorkAreaJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
 
@@ -63,25 +67,26 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         workRequestJTable1 = new javax.swing.JTable();
         refreshTestJButton1 = new javax.swing.JButton();
+        backbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         slotJTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Hospital", "Department", "Time", "Duration"
+                "Hospital", "Department", "Date", "Time", "Duration"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, true, false
+                false, false, true, true, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -143,11 +148,21 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
+        backbtn.setText("< Back");
+        backbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(120, 120, 120)
+                .addComponent(backbtn)
+                .addContainerGap(481, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
@@ -166,7 +181,10 @@ public class PatientWorkAreaJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 459, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(336, Short.MAX_VALUE)
+                .addComponent(backbtn)
+                .addGap(94, 94, 94))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(32, 32, 32)
@@ -191,21 +209,22 @@ public void populateRequestTable(){
         DefaultTableModel model = (DefaultTableModel) workRequestJTable1.getModel();
         model.setRowCount(0);
         
-//        for(Appointment appointment: business.getAppointmentSchedule().getAppointmentSchedule()){
-//            if(appointment.getPatient().getPatientID().equalsIgnoreCase(account.getEmployee().getName())){
-//                Object[] row = new Object[10];
-//                    row[0] = appointment.getMessage();
-//                    row[1] = appointment.getReceiver();
-//                    row[2] = appointment.getStatus();
-//                    row[3] = (appointment.getResult() == null ? "Waiting" : appointment.getResult());
-//                    row[4] = appointment.getHospital().getName();
+        for(Appointment appointment: business.getAppointmentSchedule().getAppointmentSchedule()){
+            if(appointment.getPatient().getPatientID().equalsIgnoreCase(account.getEmployee().getName())){
+                Object[] row = new Object[8];
+                    row[0] = appointment.getMessage();
+                    row[1] = appointment.getReceiver();
+                    row[2] = appointment.getStatus();
+                    row[3] = (appointment.getResult() == null ? "Waiting" : appointment.getResult());
+                    row[4] = appointment.getHospital().getName();
+                    row[5] = appointment.getHospital().getDepartmentDirectory().getDepartment(index);
+                   // row[5] = appointment.getDoctor().getName();
 //                   
-//                   
-//                    row[5] = (appointment.getDoctor() == null) ? "Awaiting Confirmation" : appointment.getDoctor().getName();
-//                    row[6] = appointment.getAppointmentId();
-//                    model.addRow(row);
-//            }
-//        }
+                    row[5] = (appointment.getDoctor() == null) ? "Awaiting Confirmation" : appointment.getDoctor().getName();
+                    row[7] = appointment.getAppointmentId();
+                    model.addRow(row);
+            }
+       }
 }
 
     /**
@@ -217,14 +236,14 @@ public void populateRequestTable(){
         for(Slot slot: slotList.getSlotList()){
             
         
-                    Object[] row = new Object[4];
-//                    row[0] = hospitalDirectory.getHospitalName(slot.getHospitalId());
+                    Object[] row = new Object[5];
+                    row[0] =business.getHospitalDirectory().getHospitalName(slot.getHospitalId());
                     row[1] = slot.getDepartment();
-                    
-                    row[2] = slot.getIn_time();
-                    row[3] = slot.getDuration();
+                    row[2] = slot.getDate();
+                    row[3] = slot.getIn_time();
+                    row[4] = slot.getDuration();
                     model.addRow(row);
-        
+                    
     }
     }
    
@@ -235,25 +254,28 @@ public void populateRequestTable(){
         int count = slotJTable.getSelectedRowCount();
         if(count == 1){
             if(row >= 0){
-               // int quantity = Integer.parseInt(quantityBox.getSelectedItem().toString());
-//                Hospital hospital = hospitalDirectory.getHospital(slotList.getSlotByIndex(row).getHospitalId());
-//                Patient patient = patientDirectory.getPatient(account.getEmployee().getName());
+             
+                Hospital hospital = business.getHospitalDirectory().getHospital(slotList.getSlotByIndex(row).getHospitalId());
+               Patient patient = business.getPatientDirectory().getPatient(account.getEmployee().getName());
+                dep= business.getDepartmentDirectory().getDepartment(slotList.getSlotByIndex(row).getDepartment());
+                index = dep.getDepartmentId();
+              //Patient patient = business.getPatientDirectory().getPatientList().getPatient(account.getEmployee().getName());
                 Slot slot = slotList.getSlotByIndex(row);
                 String status = "Awaiting Appointment Confirmation";
 
-//                Appointment appointmentRequest = business.getAppointmentSchedule().addAppointment();
-//                appointmentRequest.setAppointmentId("A"+(business.getAppointmentSchedule().getAppointmentSchedule().size()));
+               Appointment appointmentRequest = business.getAppointmentSchedule().addAppointment();
+               appointmentRequest.setAppointmentId("A"+(business.getAppointmentSchedule().getAppointmentSchedule().size()));
 //               // orderRequest.setOrderStatusPercentage(25);
-//                appointmentRequest.setSlot(slot);
-//                appointmentRequest.setHospital(hospital);
-//                appointmentRequest.setPatient(patient);
+                appointmentRequest.setSlot(slot);
+                appointmentRequest.setHospital(hospital);
+                appointmentRequest.setPatient(patient);
 //               
-//                appointmentRequest.setMessage("Appointment request has been sent ");
-//                appointmentRequest.setSender(account);
-//                appointmentRequest.setStatus(status);
-//                business.getWorkQueue().getWorkRequestList().add(appointmentRequest);
-//                JOptionPane.showMessageDialog(null, "Your Appointment has been sucessfully booked!");
-//                populateRequestTable();
+                appointmentRequest.setMessage("Appointment request has been sent ");
+                appointmentRequest.setSender(account);
+                appointmentRequest.setStatus(status);
+               business.getWorkQueue().getWorkRequestList().add(appointmentRequest);
+                JOptionPane.showMessageDialog(null, "Your Appointment has been sucessfully booked!");
+                populateRequestTable();
             }
         }
         else{
@@ -266,8 +288,17 @@ public void populateRequestTable(){
         populateRequestTable();
     }//GEN-LAST:event_refreshTestJButton1ActionPerformed
 
+    private void backbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backbtnActionPerformed
+        // TODO add your handling code here:
+        
+         CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backbtn;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JButton refreshTestJButton1;

@@ -62,6 +62,11 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         jLabel1.setText(" Work Area - Hospital Administrator");
 
         btnManageDoctors.setText("Manage Doctors");
+        btnManageDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDoctorsActionPerformed(evt);
+            }
+        });
 
         btnManageHospitalInfo.setText("Manage Hospital Information");
         btnManageHospitalInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -160,7 +165,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDepartmentsActionPerformed
         // TODO add your handling code here:
-        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel);
+        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel,business);
         CardLayoutJPanel.add("HospitalManageDepartmentJPanel", hospitalManageDepartmentJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -172,6 +177,16 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void btnManageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorsActionPerformed
+        // TODO add your handling code here:
+        ManagePhysicianJPanel managePhysicianJPanel = new ManagePhysicianJPanel(CardLayoutJPanel, account, business);
+        CardLayoutJPanel.add("managePhysicianJPanel", managePhysicianJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+        
+        
+    }//GEN-LAST:event_btnManageDoctorsActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
