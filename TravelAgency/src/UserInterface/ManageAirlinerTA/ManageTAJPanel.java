@@ -53,6 +53,11 @@ public class ManageTAJPanel extends javax.swing.JPanel {
         jLabel1.setText("Airliner Name:");
 
         AirlinerComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new Object[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        AirlinerComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AirlinerComboBoxActionPerformed(evt);
+            }
+        });
 
         btnFind.setText("FIND >>");
         btnFind.addActionListener(new java.awt.event.ActionListener() {
@@ -95,6 +100,10 @@ public class ManageTAJPanel extends javax.swing.JPanel {
         layout.next(CardSequenceJPanel);
         
     }//GEN-LAST:event_btnFindActionPerformed
+
+    private void AirlinerComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AirlinerComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_AirlinerComboBoxActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

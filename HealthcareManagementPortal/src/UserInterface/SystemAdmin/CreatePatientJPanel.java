@@ -6,9 +6,15 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
+import Business.Employee.Employee;
 import Business.Patient.Patient;
+import Business.Patient.PatientDirectory;
+import Business.Role.PatientRole;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -213,10 +219,6 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addressTxtActionPerformed
-
     private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_emailTxtActionPerformed
@@ -225,22 +227,62 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
 
         Patient newPatient = new Patient();
-        newPatient.setName(nameTxt.getText());
-        newPatient.setPhoneNo(numberTxt.getText());
-        newPatient.setEmailId(emailTxt.getText());
-        newPatient.setAddress(addressTxt.getText());
-        newPatient.setAge(ageTxt.getText());
-        newPatient.setGender(genderComboBox.getSelectedItem().toString());
-        newPatient.setBloodGroup(bloodGroupTxt.getText());
+        String name = nameTxt.getText();
+        String phoneNo = numberTxt.getText();
+        String emailId = emailTxt.getText();
+        String address = addressTxt.getText();
+        String age = ageTxt.getText();
+        String gender = genderComboBox.getSelectedItem().toString();
+        String bloodGroup = bloodGroupTxt.getText();
         
+        String username = usernameTxt.getText();
+        String password = passwordTxt.getText();
         
+        newPatient.setName(name);
+        newPatient.setAddress(address);
+        newPatient.setAge(age);
+        newPatient.setBloodGroup(bloodGroup);
+        newPatient.setEmailId(emailId);
+        newPatient.setGender(gender);
+        newPatient.setPassword(password);
+        newPatient.setPhoneNo(phoneNo);
+        newPatient.setUsername(username);
         
-        business.getPatientDirectory().add(newPatient);
-       
+        //business.getPatientDirectory().add(newPatient);
+        if(name.isEmpty() || phoneNo.isEmpty() || address.isEmpty()|| username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all fields!");
+        }
+        else if(!phoneFormat(phoneNo))
+        {
+            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+        }
+        else if(!business.getPatientDirectory().isPhoneUnique(phoneNo)){
+            JOptionPane.showMessageDialog(null, "Phone No already registered!");
+        }
+        else if(!business.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+            JOptionPane.showMessageDialog(null, "Username already exists!");
+        }
+       else{
+            Patient patient = business.getPatientDirectory().add(newPatient);
+            Employee employee = business.getEmployeeDirectory().createEmployee(patient.getPatientID());
+
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new PatientRole());
         
         JOptionPane.showMessageDialog(null, "New patient signed up");
     }//GEN-LAST:event_saveBtnActionPerformed
-
+    }
+        public boolean phoneFormat(String phoneNo){
+        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+        Pattern pattern = Pattern.compile(regex);
+        
+        Matcher matcher = pattern.matcher(phoneNo);
+        if(matcher.matches()){
+            return true;
+        }
+        return false;
+    }
+    
+        
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         CardLayoutJPanel.remove(this);
@@ -252,6 +294,10 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addressTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

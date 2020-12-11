@@ -6,11 +6,18 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
+import Business.Employee.Employee;
 import Business.Hospital.Hospital;
+import Business.Patient.Patient;
+import Business.Role.HospitalRole;
+import Business.Role.PatientRole;
+import Business.UserAccount.UserAccount;
 
 import java.awt.CardLayout;
 import java.awt.Component;
 import java.util.ArrayList;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -44,9 +51,7 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         passwordTxt = new javax.swing.JTextField();
-        idTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         contactNumberTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -57,7 +62,7 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         licenseTxt = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        nameTxt1 = new javax.swing.JTextField();
+        nameTxt = new javax.swing.JTextField();
         usernameTxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -68,8 +73,6 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         jLabel1.setText("Sign Up New Hospital");
 
         jLabel2.setText("Hospital Name");
-
-        jLabel3.setText("Hospital ID");
 
         passwordTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -111,9 +114,9 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
-        nameTxt1.addActionListener(new java.awt.event.ActionListener() {
+        nameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTxt1ActionPerformed(evt);
+                nameTxtActionPerformed(evt);
             }
         });
 
@@ -148,7 +151,6 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel3)
                     .addComponent(jLabel2)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8))
@@ -159,8 +161,7 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(adminTxt)
                     .addComponent(licenseTxt)
                     .addComponent(addressTxt, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(idTxt)
-                    .addComponent(nameTxt1)
+                    .addComponent(nameTxt)
                     .addComponent(passwordTxt))
                 .addGap(192, 192, 192))
         );
@@ -179,32 +180,26 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nameTxt1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
+                .addGap(34, 34, 34)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel7))))
-                    .addComponent(idTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(1, 1, 1)
+                        .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
@@ -245,19 +240,57 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         
         // TODO: add validations
         Hospital newHospital = new Hospital();
+      
+        String hospitalName= nameTxt.getText();
+        String username = usernameTxt.getText();
+        String password= passwordTxt.getText();
+    // String hospitalId;
+     
+     String phoneNo= contactNumberTxt.getText();
+     String address = addressTxt.getText();
+     String adminName = adminTxt.getText();
+     String licenseNo= licenseTxt.getText();
+     
+     newHospital.setName(hospitalName);
+     newHospital.setAddress(address);
+     newHospital.setAdminName(adminName);
+     newHospital.setLicenseNo(licenseNo);
+     newHospital.setUsername(username);
+     newHospital.setPassword(password);
+     newHospital.setPhoneNo(phoneNo);
+       if(hospitalName.isEmpty() || phoneNo.isEmpty() || address.isEmpty()|| username.isEmpty() || password.isEmpty()){
+            JOptionPane.showMessageDialog(null, "Please enter all fields!");
+        }
+        else if(!phoneFormat(phoneNo))
+        {
+            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+        }
+        else if(!business.getPatientDirectory().isPhoneUnique(phoneNo)){
+            JOptionPane.showMessageDialog(null, "Phone No already registered!");
+        }
+        else if(!business.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
+            JOptionPane.showMessageDialog(null, "Username already exists!");
+        }
+       else{
+            Hospital hospital = business.getHospitalDirectory().add(newHospital);
+            Employee employee = business.getEmployeeDirectory().createEmployee(hospital.getHospitalId());
+
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalRole());
         
-        newHospital.setName(nameTxt1.getText());
-        newHospital.setHospitalId(idTxt.getText());
-        newHospital.setPhoneNo(contactNumberTxt.getText());
+        JOptionPane.showMessageDialog(null, "New Hospital added");
+    }
+    }
+    
+        public boolean phoneFormat(String phoneNo){
+        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+        Pattern pattern = Pattern.compile(regex);
         
-        newHospital.setAddress(addressTxt.getText());
-        newHospital.setAdminName(adminTxt.getText());
-        newHospital.setLicenseNo(licenseTxt.getText());
-        
-        
-        business.getHospitalDirectory().add(newHospital);
-        JOptionPane.showMessageDialog(null, "New hospital signed up");
-        
+        Matcher matcher = pattern.matcher(phoneNo);
+        if(matcher.matches()){
+            return true;
+        }
+        return false;
+    
     }//GEN-LAST:event_btnSaveActionPerformed
 
     private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
@@ -268,9 +301,9 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_contactNumberTxtActionPerformed
 
-    private void nameTxt1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxt1ActionPerformed
+    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nameTxt1ActionPerformed
+    }//GEN-LAST:event_nameTxtActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
@@ -283,10 +316,8 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JTextField contactNumberTxt;
-    private javax.swing.JTextField idTxt;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -295,7 +326,7 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField licenseTxt;
-    private javax.swing.JTextField nameTxt1;
+    private javax.swing.JTextField nameTxt;
     private javax.swing.JTextField passwordTxt;
     private javax.swing.JTextField usernameTxt;
     // End of variables declaration//GEN-END:variables
