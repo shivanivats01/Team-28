@@ -147,7 +147,7 @@ public class LoginJPanel extends javax.swing.JPanel {
         UserAccount user = business.getUserAccountDirectory().authenticateUser(userName, password);
         
         if(user != null) {
-            System.out.println("Role: " + user.getRole().toString());
+           // System.out.println("Role: " + user.getRole().toString());
             
             CardLayoutJPanel.add("workarea", user.getRole().createWorkArea(CardLayoutJPanel, user, business));
             CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();

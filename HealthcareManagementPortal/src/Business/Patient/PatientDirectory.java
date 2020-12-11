@@ -46,7 +46,14 @@ public class PatientDirectory {
         patientList.add(p);
         return p;
     }
-    
+    public boolean isPhoneUnique(String phone){
+        for(Patient patient: patientList){
+            if(patient.getPhoneNo().equalsIgnoreCase(phone)){
+                return false;
+            }
+        }
+        return true;
+    }
     // TODO: Check if these methods are being used or not
     
 //    public Patient getCustomerId(int index){

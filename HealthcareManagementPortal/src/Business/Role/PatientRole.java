@@ -11,6 +11,7 @@ import Business.Ecosystem;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
+import UserInterface.Patient.PatientPageOneJPanel;
 
 import UserInterface.Patient.PatientWorkAreaJPanel;
 import javax.swing.JPanel;
@@ -24,7 +25,7 @@ public class PatientRole extends Role {
     
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
-        return new PatientWorkAreaJPanel(userProcessContainer, account, business);
+        return new PatientPageOneJPanel(userProcessContainer, account, business);
     }
 
    

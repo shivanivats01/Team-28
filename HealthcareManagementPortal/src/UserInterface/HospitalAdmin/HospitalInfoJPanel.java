@@ -1,6 +1,8 @@
 package UserInterface.HospitalAdmin;
 
+import Business.Ecosystem;
 import Business.Hospital.Hospital;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -16,16 +18,67 @@ import javax.swing.JPanel;
  */
 public class HospitalInfoJPanel extends javax.swing.JPanel {
 
-    JPanel CardLayoutJPanel;
-    Hospital hospital;
+    private JPanel CardLayoutJPanel;
+    private Hospital hospital;
+    private UserAccount account;
+    private Ecosystem business;
     /**
      * Creates new form HospitalInfoJPanel
      */
-    public HospitalInfoJPanel(JPanel CardLayoutJPanel, Hospital hospital) {
+    
+    HospitalInfoJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+
+        initComponents();
+        this.CardLayoutJPanel = CardLayoutJPanel;
+        this.business=business;
+        this.account=account;
+        this.hospital = business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY);
+        
+        /*this.addressTxt.setText(hospital.getAddress());
+        this.nameTxt.setText(hospital.getName());
+        this.idTxt.setText(hospital.getHospitalId());
+        this.adminTxt.setText(hospital.getAdminName());
+        this.contactNumberTxt.setText(hospital.getPhoneNo());
+        this.licenseTxt.setText(hospital.getLicenseNo());
+        */
+        
+       this.addressTxt.setEnabled(false);
+       this.nameTxt.setEnabled(false);
+       this.adminTxt.setEnabled(false);
+       this.idTxt.setEnabled(false);
+       this.contactNumberTxt.setEnabled(false);
+       this.licenseTxt.setEnabled(false);
+       this.saveBtn.setEnabled(false);
+        
+
+        for (Hospital hos : business.getHospitalDirectory().getHospitalList()) {
+            
+            if (hos.getHospitalId().equalsIgnoreCase(account.getEmployee().getName())) {
+                this.hospital = hos;
+                
+            }  }
+        
+        if (hospital == null) {
+            System.out.println("=====nulll");
+        }  else { 
+        
+        idTxt.setText(hospital.getHospitalId());
+        nameTxt.setText(hospital.getName());
+        adminTxt.setText(hospital.getAdminName());
+        addressTxt.setText(hospital.getAddress());
+        contactNumberTxt.setText(hospital.getPhoneNo());
+        licenseTxt.setText(hospital.getLicenseNo());
+    
+    }
+    }
+    
+
+    public HospitalInfoJPanel(JPanel CardLayoutJPanel, Hospital viewHospital) {
+
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         
-        this.hospital = hospital;
+        this.hospital = viewHospital;
         
         this.addressTxt.setText(hospital.getAddress());
         this.nameTxt.setText(hospital.getName());
@@ -42,7 +95,8 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
        this.licenseTxt.setEnabled(false);
        this.saveBtn.setEnabled(false);
         
-        
+
+
     }
 
     /**

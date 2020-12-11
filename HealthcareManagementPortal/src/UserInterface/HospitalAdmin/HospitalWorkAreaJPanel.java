@@ -24,15 +24,14 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     /**
      * Creates new form HospitalWorkAreaJPanel
      */
-    public HospitalWorkAreaJPanel(Ecosystem business,JPanel CardLayoutJPanel, UserAccount account) {
-        initComponents();
+    
+    public HospitalWorkAreaJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+
+
+         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
          this.account= account;
         this.business= business;
-    }
-
-    public HospitalWorkAreaJPanel(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     /**
@@ -152,7 +151,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalInfoActionPerformed
         // TODO add your handling code here:
-        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, null);
+        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, account, business);
         CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
