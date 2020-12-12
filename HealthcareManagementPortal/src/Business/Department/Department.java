@@ -5,7 +5,9 @@
  */
 package Business.Department;
 
+import Business.Doctor.DoctorDirectory;
 import Business.Hospital.Hospital;
+import java.util.ArrayList;
 
 /**
  *
@@ -15,12 +17,38 @@ public class Department {
     
     private String departmentId;
     private String departmentName;
+    private String username;
+    private String password;
     private Hospital hospital;
-    
     private String departmentAdminName;
+    private DoctorDirectory doctorDirectory;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public DoctorDirectory getDoctorDirectory() {
+        return doctorDirectory;
+    }
+
+    public void setDoctorDirectory(DoctorDirectory doctorDirectory) {
+        this.doctorDirectory = doctorDirectory;
+    }
     
     public Department() {
-       
+       this.doctorDirectory = new DoctorDirectory();
     }
 
     public Hospital getHospital() {
@@ -39,8 +67,6 @@ public class Department {
         this.departmentId = departmentId;
     }
 
-    
-
     public String getDepartmentName() {
         return departmentName;
     }
@@ -56,9 +82,10 @@ public class Department {
     public void setDepartmentAdminName(String departmentAdminName) {
         this.departmentAdminName = departmentAdminName;
     }
- 
     
-    
-    
+    @Override()
+    public String toString() {
+        return this.departmentId;
+    }
     
 }

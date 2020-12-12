@@ -6,7 +6,11 @@
 package Business.Department;
 
 
+import Business.Doctor.Doctor;
 import Business.Ecosystem;
+import Business.Employee.Employee;
+import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -15,23 +19,23 @@ import java.util.ArrayList;
  */
 public class DepartmentDirectory {
 
-    private ArrayList<Department> departmentDirectory;
+    private ArrayList<Department> departmentList;
 
     public DepartmentDirectory() {
-        departmentDirectory = new ArrayList<Department>();
+        departmentList = new ArrayList<Department>();
     }
 
-    public ArrayList<Department> getDepartmentDirectory() {
-        return departmentDirectory;
+    public ArrayList<Department> getDepartmentList() {
+        return departmentList;
     }
 
-    public void setDepartmentDirectory(ArrayList<Department> departmentDirectory) {
-        this.departmentDirectory = departmentDirectory;
+    public void setDepartmentList(ArrayList<Department> departmentDirectory) {
+        this.departmentList = departmentDirectory;
     }
     
       
     public Department getDepartment(String id){
-        for(Department department: departmentDirectory){
+        for(Department department: departmentList){
             if(department.getDepartmentId().equalsIgnoreCase(id)){
                 return department;
             }
@@ -40,20 +44,46 @@ public class DepartmentDirectory {
     }
     
     public Department add(Department dep){
-        dep.setDepartmentId("Dep"+(departmentDirectory.size()+1));
+        dep.setDepartmentId("Dep"+(departmentList.size()+1));
                 
-        departmentDirectory.add(dep);
+        departmentList.add(dep);
         return dep;
     }
    
-    public void deleteDepartment(int index,Ecosystem system){
-        String id = departmentDirectory.get(index).getDepartmentId();
-        for(int i =0; i <system.getUserAccountDirectory().getUserAccountList().size();i++){
-            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
-                system.getUserAccountDirectory().getUserAccountList().remove(i);
+    public void deleteDepartment(String departmentId, Ecosystem system){
+        
+        // Remove all doctors and this department
+        for(Department d: departmentList) {
+            if(d.getDepartmentId().equals(departmentId)){
+                d.getDoctorDirectory().removeAllDoctors(system);
+                departmentList.remove(d);
             }
         }
-        departmentDirectory.remove(index);
+  
+        // Remove department from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getEmployee().getName().equals(departmentId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+        
+        // Remove department from employeeList
+        for(Employee employee: system.getEmployeeDirectory().getEmployeeList()) {
+            if(employee.getName().equals(departmentId)) {
+                system.getEmployeeDirectory().getEmployeeList().remove(employee);
+            }
+        }
+    }
+    
+    public void removeAllDepartments(Ecosystem system){
+        
+        // Remove all the doctors from doctorList
+        for(Department d: departmentList) {
+            deleteDepartment(d.getDepartmentId(), system);
+        }
+        
+        this.departmentList = new ArrayList();
+        
     }
     
 }

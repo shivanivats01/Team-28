@@ -8,7 +8,11 @@ package UserInterface.HospitalAdmin;
 import Business.Department.Department;
 import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
+import Business.Employee.Employee;
 import Business.Hospital.Hospital;
+import Business.Patient.Patient;
+import Business.Role.DepartmentRole;
+import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -54,6 +58,8 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
+        password = new javax.swing.JTextField();
+        userName = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -91,54 +97,59 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(39, 39, 39)
+                        .addComponent(btnBack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSave))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(123, 123, 123)
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel6)
+                            .addComponent(jLabel2))
+                        .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameTxt)
-                            .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(password)
+                            .addComponent(userName))))
                 .addGap(88, 88, 88))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(27, 27, 27)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(btnBack)
-                            .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(142, 142, 142)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(98, 98, 98)
-                            .addComponent(jLabel2)
-                            .addGap(59, 312, Short.MAX_VALUE)))
-                    .addGap(27, 27, 27)))
+                    .addGap(169, 169, 169)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(131, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(148, Short.MAX_VALUE)
-                .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(98, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnSave)
-                .addGap(97, 97, 97))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(153, 153, 153)
+                        .addComponent(btnBack)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnSave)
+                        .addGap(21, 21, 21))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(106, 106, 106)
-                    .addComponent(jLabel2)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 151, Short.MAX_VALUE)
-                    .addComponent(btnBack)
-                    .addContainerGap()))
+                    .addContainerGap(308, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -164,35 +175,30 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
         // TODO: add validations
         Department newDep = new Department();
 
-        String depName= nameTxt.getText();
-       // String username = usernameTxt.getText();
-       // String password= passwordTxt.getText();
-       
+        String depName= nameTxt.getText();     
         String adminName = adminTxt.getText();
-       
-
-        newDep.setDepartmentName(depName);
+        String username = userName.getText();
+        String pswrd = password.getText();
+        
+      
+        if(depName.isEmpty() || adminName.isEmpty() || username.isEmpty() || pswrd.isEmpty() ){
+            JOptionPane.showMessageDialog(null, "Please enter all fields!");
+            return;
+        }
         
         newDep.setDepartmentAdminName(adminName);
-      
-        if(depName.isEmpty() ){
-            JOptionPane.showMessageDialog(null, "Please enter all fields!");
-        }
-       
-        else{
-           // Hospital hospital = business.getHospitalDirectory().add(newHospital);
-           
-           Department dep = business.getDepartmentDirectory().add(newDep);
-           // Employee employee = business.getEmployeeDirectory().createEmployee(hospital.getHospitalId());
-
-           // UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalRole());
-
-            JOptionPane.showMessageDialog(null, "New Department added");
-        }
+        newDep.setDepartmentName(depName);
+        newDep.setHospital(hospital);
+        newDep.setUsername(username);
+        newDep.setPassword(pswrd);
         
+        Department dep = business.getDepartmentDirectory().add(newDep);
+        Employee employee = business.getEmployeeDirectory().createEmployee(dep.getDepartmentId());
+        UserAccount account = business.getUserAccountDirectory().createUserAccount(username, pswrd, employee, new DepartmentRole());
 
-    
-
+        
+        JOptionPane.showMessageDialog(null, "New Department added");
+        
     }//GEN-LAST:event_btnSaveActionPerformed
 
 
@@ -204,5 +210,7 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JTextField nameTxt;
+    private javax.swing.JTextField password;
+    private javax.swing.JTextField userName;
     // End of variables declaration//GEN-END:variables
 }

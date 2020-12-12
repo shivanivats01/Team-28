@@ -1,6 +1,7 @@
 package UserInterface.HospitalAdmin;
 
 import Business.Ecosystem;
+import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -19,8 +20,9 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
     private Ecosystem business;
-   
     private UserAccount account;
+    private Hospital hospital;
+    
     /**
      * Creates new form HospitalWorkAreaJPanel
      */
@@ -28,10 +30,12 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     public HospitalWorkAreaJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
 
 
-         initComponents();
+        initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
-         this.account= account;
+        this.account= account;
         this.business= business;
+        
+        this.hospital = business.getHospitalDirectory().getHospital(account.getEmployee().getName());
     }
 
     /**
@@ -165,7 +169,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDepartmentsActionPerformed
         // TODO add your handling code here:
-        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel,business);
+        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel,account, business);
         CardLayoutJPanel.add("HospitalManageDepartmentJPanel", hospitalManageDepartmentJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -180,7 +184,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
 
     private void btnManageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorsActionPerformed
         // TODO add your handling code here:
-        ManagePhysicianJPanel managePhysicianJPanel = new ManagePhysicianJPanel(CardLayoutJPanel, account, business);
+        ManagePhysicianJPanel managePhysicianJPanel = new ManagePhysicianJPanel(CardLayoutJPanel, hospital, null, business);
         CardLayoutJPanel.add("managePhysicianJPanel", managePhysicianJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);

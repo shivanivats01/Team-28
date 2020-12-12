@@ -5,14 +5,18 @@
  */
 package Business;
 
-import Business.Appointment.AppointmentSchedule;
 import Business.Department.DepartmentDirectory;
 import Business.Doctor.DoctorDirectory;
+import Business.Employee.Employee;
+import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
+import Business.Patient.Patient;
 import Business.Patient.PatientDirectory;
+import Business.Role.HospitalRole;
+import Business.Role.PatientRole;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
-import Business.Slot.SlotList;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -23,36 +27,34 @@ public class Ecosystem extends HealthCarePortal {
     
     private static Ecosystem business;
     
-    // Already exists in HealthCarePortal
-    // WorkQueue
-    // Employee directory
-    // User account directory
-    
     private HospitalDirectory hospitalDirectory = new HospitalDirectory();
     private PatientDirectory patientDirectory = new PatientDirectory();
     private DoctorDirectory doctorDirectory = new DoctorDirectory();
     private DepartmentDirectory departmentDirectory = new DepartmentDirectory();
-    private AppointmentSchedule appointmentSchedule = new AppointmentSchedule();
-    private SlotList slotList = new SlotList();
 
-    public AppointmentSchedule getAppointmentSchedule() {
-        return appointmentSchedule;
+    
+//    public Ecosystem(HospitalDirectory hospitalDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory ) {
+//        this.hospitalDirectory = hospitalDirectory;
+//        this.patientDirectory = patientDirectory;
+////        this.doctorDirectory = doctorDirectory;
+//    }
+    
+    // Making ecosystem singleton
+    public static Ecosystem getInstance() {
+        if(business==null){
+            business=new Ecosystem();
+            
+            prePopulateData();
+        }
+        return business;
     }
-
-    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
-        this.appointmentSchedule = appointmentSchedule;
+    
+    public DoctorDirectory getDoctorDirectory() {
+        return doctorDirectory;
     }
-
+    
     public DepartmentDirectory getDepartmentDirectory() {
         return departmentDirectory;
-    }
-
-    public SlotList getSlotList() {
-        return slotList;
-    }
-
-    public void setSlotList(SlotList slotList) {
-        this.slotList = slotList;
     }
 
     public void setDepartmentDirectory(DepartmentDirectory departmentDirectory) {
@@ -67,27 +69,10 @@ public class Ecosystem extends HealthCarePortal {
         return patientDirectory;
     }
 
-    public DoctorDirectory getDoctorDirectory() {
-        return doctorDirectory;
-    }
-    
-//    private AppointmentSchedule appointmentSchedule;
-
-    // Making ecosystem singleton
-    public static Ecosystem getInstance() {
-        if(business==null){
-            business=new Ecosystem();
-        }
-        return business;
-    }
-    
-
-    public Ecosystem(HospitalDirectory hospitalDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory ) {
-        this.hospitalDirectory = hospitalDirectory;
-        this.patientDirectory = patientDirectory;
-        this.doctorDirectory = doctorDirectory;
-    }
-    
+//    public DoctorDirectory getDoctorDirectory() {
+//        return doctorDirectory;
+//    }
+   
     
     @Override
     public ArrayList<Role> getSupportedRole() {
@@ -95,14 +80,82 @@ public class Ecosystem extends HealthCarePortal {
         roleList.add(new SystemAdminRole());
         return roleList;
     }
+    
     private Ecosystem(){
         super(null);
-       // networkList=new ArrayList<Network>();
     }
 
     
     public boolean checkIfUserIsUnique(String userName){
-       //
        return false;
+    }
+    
+    private static void prePopulateData() {
+        // Create hospitals
+        Hospital h1 = new Hospital();
+        Hospital h2 = new Hospital();
+        
+        h1.setAddress("h1 address");
+        h1.setAdminName("h1 adminName");
+        h1.setLicenseNo("h1 licenseNo");
+        h1.setName("h1 name");
+        h1.setPassword("h1");
+        h1.setPhoneNo("h1 phoneNumber");
+        h1.setUsername("h1");
+        
+        
+        h2.setAddress("h2 address");
+        h2.setAdminName("h2 adminName");
+        h2.setLicenseNo("h2 licenseNo");
+        h2.setName("h2 name");
+        h2.setPassword("h2");
+        h2.setPhoneNo("h2 phoneNumber");
+        h2.setUsername("h2");
+                
+        
+        Hospital hospital1 = business.getHospitalDirectory().add(h1);
+        Employee employee1 = business.getEmployeeDirectory().createEmployee(hospital1.getHospitalId());
+        UserAccount account1 = business.getUserAccountDirectory().createUserAccount(hospital1.getUsername(), hospital1.getPassword(), employee1, new HospitalRole());
+
+        
+        Hospital hospital2 = business.getHospitalDirectory().add(h2);
+        Employee employee2 = business.getEmployeeDirectory().createEmployee(hospital2.getHospitalId());
+        UserAccount account2 = business.getUserAccountDirectory().createUserAccount(hospital2.getUsername(), hospital2.getPassword(), employee2, new HospitalRole());
+
+
+        // Create Patients
+        Patient p1= new Patient();
+        Patient p2 = new Patient();
+        
+        p1.setAddress("p1 address");
+        p1.setAge("p1 age");
+        p1.setBloodGroup("p1 bloodGroup");
+        p1.setName("p1 name");
+        p1.setPassword("p1");
+        p1.setPhoneNo("p1 phoneNumber");
+        p1.setUsername("p1");
+        p1.setEmailId("p1 email");
+        p1.setGender("p1 gender");
+ 
+        p2.setAddress("p2 address");
+        p2.setAge("p2 age");
+        p2.setBloodGroup("p2 bloodGroup");
+        p2.setName("p2 name");
+        p2.setPassword("p2");
+        p2.setPhoneNo("p2 phoneNumber");
+        p2.setUsername("p2");
+        p2.setEmailId("p2 email");
+        p2.setGender("p2 gender");
+                
+        
+        Patient patient1 = business.getPatientDirectory().add(p1);
+        Employee employeePatient1 = business.getEmployeeDirectory().createEmployee(patient1.getPatientID());
+        UserAccount accountPatient1 = business.getUserAccountDirectory().createUserAccount(patient1.getUsername(), patient1.getPassword(), employeePatient1, new PatientRole());
+
+        
+        Patient patient2 = business.getPatientDirectory().add(p2);
+        Employee employeePatient2 = business.getEmployeeDirectory().createEmployee(patient2.getPatientID());
+        UserAccount accountPatient2 = business.getUserAccountDirectory().createUserAccount(patient2.getUsername(), patient2.getPassword(), employeePatient2, new PatientRole());
+
     }
 }

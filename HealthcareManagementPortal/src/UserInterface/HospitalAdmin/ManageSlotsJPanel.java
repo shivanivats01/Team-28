@@ -175,18 +175,18 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
 
     private void DeletebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeletebtnActionPerformed
         // TODO add your handling code here:
-        int row = slotTable.getSelectedRow();
-
-        if(row<0) {
-            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
-            return;
-        }
-
-        SlotList slotList = business.getSlotList();
-
-        business.getDepartmentDirectory().deleteDepartment(row, business);
-
-        populateTable();
+//        int row = slotTable.getSelectedRow();
+//
+//        if(row<0) {
+//            JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
+//            return;
+//        }
+//
+//        SlotList slotList = business.getSlotList();
+//
+//        business.getDepartmentDirectory().deleteDepartment(row, business);
+//
+//        populateTable();
 
     }//GEN-LAST:event_DeletebtnActionPerformed
 
@@ -194,24 +194,24 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
         // populate all patients in patient directory
         //ArrayList<Department> departmentDirectory = business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY).getDepartmentDirectory();
        // DepartmentDirectory departmentList=business.getHospitalDirectory().getHospital(TOOL_TIP_TEXT_KEY).getDepartmentDirectory();
-         ArrayList<Slot> slotList = business.getSlotList().getSlotList();
-        int rowCount = slotTable.getRowCount();
-        DefaultTableModel model = (DefaultTableModel)slotTable.getModel();
-        for(int i=rowCount-1;i>=0;i--) {
-            model.removeRow(i);
-        }
-        
-        for(Slot slot :  slotList ) {
-            Object row[] = new Object[4];
-            row[0] = slot;
-            row[1] = slot.getDate();
-           
-            row[2] = slot.getIn_time();
-            row[3] = slot.getDuration();
-            
-           
-            model.addRow(row);
-        }
+//         ArrayList<Slot> slotList = business.getSlotList().getSlotList();
+//        int rowCount = slotTable.getRowCount();
+//        DefaultTableModel model = (DefaultTableModel)slotTable.getModel();
+//        for(int i=rowCount-1;i>=0;i--) {
+//            model.removeRow(i);
+//        }
+//        
+//        for(Slot slot :  slotList ) {
+//            Object row[] = new Object[4];
+//            row[0] = slot;
+//            row[1] = slot.getDate();
+//           
+//            row[2] = slot.getIn_time();
+//            row[3] = slot.getDuration();
+//            
+//           
+//            model.addRow(row);
+//        }
     }
     
     private void ViewbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ViewbtnActionPerformed

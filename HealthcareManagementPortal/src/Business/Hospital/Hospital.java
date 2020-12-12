@@ -26,6 +26,11 @@ public class Hospital {
     private String address;
     private String adminName;
     private String licenseNo;
+    private DepartmentDirectory departmentDirectory;
+    
+    public Hospital() {
+        this.departmentDirectory = new DepartmentDirectory();
+    }
 
     public DepartmentDirectory getDepartmentDirectory() {
         return departmentDirectory;
@@ -33,35 +38,6 @@ public class Hospital {
 
     public void setDepartmentDirectory(DepartmentDirectory DepartmentDirectory) {
         this.departmentDirectory = DepartmentDirectory;
-    }
-    
-    private DepartmentDirectory departmentDirectory;
-    
-    private AppointmentSchedule appointmentSchedule;
-
-    public Hospital(String hospitalId,String adminName,String name,String phoneNo, String address,String licenseNo){
-        this.adminName = adminName;
-        this.hospitalId =hospitalId;
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.address = address;
-      
-        this.licenseNo = licenseNo;
-       departmentDirectory = new DepartmentDirectory();
-    }
-    
-    public Hospital() {
-    
-    
-    }
-
-
-    public AppointmentSchedule getAppointmentSchedule() {
-        return appointmentSchedule;
-    }
-
-    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
-        this.appointmentSchedule = appointmentSchedule;
     }
 
     public String getHospitalId() {
@@ -132,7 +108,5 @@ public class Hospital {
     public String toString() {
         return this.hospitalId;
     }
-    
-    
-    
+
 }

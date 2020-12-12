@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.HospitalAdmin;
+package UserInterface.DepartmentAdmin;
 
 import Business.Department.Department;
 import Business.Ecosystem;
+import Business.UserAccount.UserAccount;
+import UserInterface.HospitalAdmin.ManageSlotsJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,20 +24,21 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
     private Department viewDepartment;
-    private Ecosystem business;
 
 
-    DepartmentInfoJPanel(JPanel CardLayoutJPanel, Department viewDepartment, Ecosystem business) {
+    public DepartmentInfoJPanel(JPanel CardLayoutJPanel, Department viewDepartment) {
 
         initComponents();
         
         this.CardLayoutJPanel=CardLayoutJPanel;
-        this.viewDepartment= viewDepartment;
-        this.business = business;
         this.nameTxt.setText(viewDepartment.getDepartmentName());
         this.adminTxt.setText(viewDepartment.getDepartmentAdminName());
-
+        
+        this.viewDepartment = viewDepartment;
+        
     }
+    
+    
 
    
 
@@ -110,27 +113,27 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
                 .addGap(56, 56, 56)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addGap(86, 86, 86)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(185, 185, 185)
-                                .addComponent(UpdateBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(saveBtn))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel2))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(ManageSlotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(145, 145, 145)
+                                .addComponent(ManageSlotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(55, 55, 55)
-                                .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(UpdateBtn)
+                                .addGap(18, 18, 18)
+                                .addComponent(saveBtn)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -139,24 +142,20 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(backBtn))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel2)))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ManageSlotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(ManageSlotBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
+                .addGap(84, 84, 84)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UpdateBtn)
                     .addComponent(saveBtn))
-                .addContainerGap())
+                .addGap(55, 55, 55))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -202,11 +201,11 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
 
     private void ManageSlotBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ManageSlotBtnActionPerformed
         // TODO add your handling code here:
-        
-        ManageSlotsJPanel manageSlotsJPanel = new ManageSlotsJPanel(CardLayoutJPanel,business);
-        CardLayoutJPanel.add("ManageSlotsJPanel", manageSlotsJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel); 
+//        
+//        ManageSlotsJPanel manageSlotsJPanel = new ManageSlotsJPanel(CardLayoutJPanel,business);
+//        CardLayoutJPanel.add("ManageSlotsJPanel", manageSlotsJPanel);
+//        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+//        layout.next(CardLayoutJPanel); 
         
         
     }//GEN-LAST:event_ManageSlotBtnActionPerformed

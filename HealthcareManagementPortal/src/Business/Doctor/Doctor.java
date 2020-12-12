@@ -5,6 +5,8 @@
  */
 package Business.Doctor;
 
+import Business.Department.Department;
+import Business.Hospital.Hospital;
 import java.util.List;
 
 /**
@@ -15,15 +17,30 @@ public class Doctor {
     
     private String name;
     private String licenseNo;
-    //private int NumberOfHospitalsAssociated;
-    private List <String> HospitalName;
     private String doctorId;
     private String phoneNo;
     private String emailId;
     private String gender;
     private String username;
-   private String password;
-    //private static int count = 1;
+    private String password;
+    private Hospital hospital;
+
+    public Hospital getHospital() {
+        return hospital;
+    }
+
+    public void setHospital(Hospital hospital) {
+        this.hospital = hospital;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+    private Department department;
 
     public Doctor() {
        
@@ -83,16 +100,6 @@ public class Doctor {
 
     public void setLicenseNo(String licenseNo) {
         this.licenseNo = licenseNo;
-    }
-
-    
-
-    public List<String> getHospitalName() {
-        return HospitalName;
-    }
-
-    public void setHospitalName(List<String> HospitalName) {
-        this.HospitalName = HospitalName;
     }
 
     public String getDoctorId() {

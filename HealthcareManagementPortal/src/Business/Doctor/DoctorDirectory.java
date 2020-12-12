@@ -6,7 +6,9 @@
 package Business.Doctor;
 
 import Business.Ecosystem;
+import Business.Employee.Employee;
 import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -43,14 +45,41 @@ public class DoctorDirectory {
         }
         return true;
     }
-    public void deleteDoctor(int index,Ecosystem system){
-        String id = doctorList.get(index).getDoctorId();
-        for(int i =0; i <system.getUserAccountDirectory().getUserAccountList().size();i++){
-            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
-                system.getUserAccountDirectory().getUserAccountList().remove(i);
+    
+    public void deleteDoctor(String doctorId, Ecosystem system){
+        
+        // Remove the doctor from doctorList
+        for(Doctor d: doctorList) {
+            if(d.getDoctorId().equals(doctorId)){
+                doctorList.remove(d);
             }
         }
-        doctorList.remove(index);
+        
+        // Remove doctor from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getEmployee().getName().equals(doctorId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+        
+        // Remove doctor from employeeList
+        for(Employee employee: system.getEmployeeDirectory().getEmployeeList()) {
+            if(employee.getName().equals(doctorId)) {
+                system.getEmployeeDirectory().getEmployeeList().remove(employee);
+            }
+        }
+        
+    }
+    
+    public void removeAllDoctors(Ecosystem system){
+        
+        // Remove all the doctors from doctorList
+        for(Doctor d: doctorList) {
+            deleteDoctor(d.getDoctorId(), system);
+        }
+        
+        this.doctorList = new ArrayList();
+        
     }
     
 }
