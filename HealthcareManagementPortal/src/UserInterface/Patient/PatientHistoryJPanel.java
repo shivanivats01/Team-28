@@ -33,11 +33,15 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.patient = patient;
+        
+        populateTable();
     }
     
     public void populateTable() {
         // populate all patients in patient directory
         ArrayList<PatientDetails> list = patient.getPatientDetails();
+        
+        System.out.println("=========== >> " + list.size());
     
         int rowCount = jTable1.getRowCount();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
@@ -46,12 +50,11 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
         }
         
         for(PatientDetails r: list) {
-            Object row[] = new Object[5];
-            row[0] = r.getDoctor().getDepartment().getHospital().getName();
-            row[1] = r.getDoctor().getName();
-            row[2] = r.getDate();
+            Object row[] = new Object[4];
+            row[0] = (r.getDoctor() != null) ? r.getDoctor().getDepartment().getHospital().getName() : "Hospital Dummy";
+            row[1] = (r.getDoctor() != null) ? r.getDoctor().getName() : "Doctor Dummy";
+            row[2] = r;
             row[3] = r.getNotes();
-            row[4] = r;
             
             model.addRow(row);
         }
@@ -112,24 +115,24 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
-                .addContainerGap(14, Short.MAX_VALUE))
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
+                .addGap(35, 35, 35)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addGap(43, 43, 43))
+                    .addComponent(jButton2)
+                    .addComponent(jButton1))
+                .addGap(26, 26, 26))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -143,7 +146,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
             return;
         }
         
-        PatientDetails details = (PatientDetails) jTable1.getValueAt(row, 4);
+        PatientDetails details = (PatientDetails) jTable1.getValueAt(row, 2);
         
         PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(CardLayoutJPanel, details);
         CardLayoutJPanel.add("PatientDetailsJPanel", patientDetailsJPanel);

@@ -36,5 +36,9 @@ public class PatientDetails {
         return notes;
     }
     
+    @Override()
+    public String toString() {
+        return this.date.toString();
+    }
     
 }

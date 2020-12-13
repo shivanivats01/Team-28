@@ -77,7 +77,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         patientTbl = new javax.swing.JTable();
         deleteBtn = new javax.swing.JButton();
-        refreshBtn = new javax.swing.JButton();
         viewPatientBtn = new javax.swing.JButton();
         createPatientBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
@@ -101,13 +100,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
-            }
-        });
-
-        refreshBtn.setText("Refresh");
-        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshBtnActionPerformed(evt);
             }
         });
 
@@ -145,11 +137,8 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                         .addComponent(jLabel1))
                     .addComponent(createPatientBtn)
                     .addComponent(deleteBtn)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(refreshBtn)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(viewPatientBtn))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(viewPatientBtn)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(16, Short.MAX_VALUE))
         );
@@ -163,9 +152,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewPatientBtn)
-                    .addComponent(refreshBtn))
+                .addComponent(viewPatientBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(createPatientBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -220,12 +207,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-        
-    }//GEN-LAST:event_refreshBtnActionPerformed
-
     private void createPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientBtnActionPerformed
         // TODO add your handling code here:
         CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
@@ -242,7 +223,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable patientTbl;
-    private javax.swing.JButton refreshBtn;
     private javax.swing.JButton viewPatientBtn;
     // End of variables declaration//GEN-END:variables
 }

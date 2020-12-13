@@ -28,9 +28,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         this.details = details;
         
         this.dateTxt.setText(details.getDate().toString());
-        this.hospitalTxt.setText(details.getDoctor().getDepartment().getHospital().getName());
-        this.DoctorTxt.setText(details.getDoctor().getName());
+        this.hospitalTxt.setText((details.getDoctor() != null ? details.getDoctor().getDepartment().getHospital().getName() : "Hospital Dummy"));
+        this.DoctorTxt.setText((details.getDoctor() != null ) ? details.getDoctor().getName() : "Doctor Dummy");
         this.notesTxt.setText(details.getNotes());
+        
+        this.notesTxt.setLineWrap(true);
         
         this.dateTxt.setEnabled(false);
         this.hospitalTxt.setEnabled(false);
@@ -94,11 +96,11 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                             .addComponent(jLabel4))
                         .addGap(81, 81, 81)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dateTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(DoctorTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
+                            .addComponent(dateTxt)
+                            .addComponent(DoctorTxt)
                             .addComponent(hospitalTxt)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
-                .addContainerGap(29, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(69, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -117,9 +119,9 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3))
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                 .addComponent(backBtn)
                 .addGap(19, 19, 19))
         );

@@ -52,7 +52,6 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         deptInformation = new javax.swing.JButton();
         managePhysicianBtn = new javax.swing.JButton();
-        AppointmentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
 
@@ -70,13 +69,6 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         managePhysicianBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 managePhysicianBtnActionPerformed(evt);
-            }
-        });
-
-        AppointmentsBtn.setText("Appointments");
-        AppointmentsBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AppointmentsBtnActionPerformed(evt);
             }
         });
 
@@ -102,7 +94,6 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(deptInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(managePhysicianBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
@@ -120,20 +111,13 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(deptInformation, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(managePhysicianBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
+                .addGap(67, 67, 67)
                 .addComponent(backBtn)
                 .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed
-        // TODO add your handling code here:
-       
-    }//GEN-LAST:event_AppointmentsBtnActionPerformed
 
     private void managePhysicianBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePhysicianBtnActionPerformed
         // TODO add your handling code here:
@@ -160,7 +144,6 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AppointmentsBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton deptInformation;
     private javax.swing.JLabel jLabel1;

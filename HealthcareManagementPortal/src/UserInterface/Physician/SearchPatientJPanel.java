@@ -5,6 +5,7 @@
  */
 package UserInterface.Physician;
 
+import Business.Doctor.Doctor;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -15,12 +16,14 @@ import javax.swing.JPanel;
 public class SearchPatientJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
+    private Doctor doctor;
     /**
      * Creates new form SearchPatientJPanel
      */
-    public SearchPatientJPanel(JPanel CardLayoutJPanel) {
+    public SearchPatientJPanel(JPanel CardLayoutJPanel, Doctor doctor) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.doctor = doctor;
     }
 
     /**

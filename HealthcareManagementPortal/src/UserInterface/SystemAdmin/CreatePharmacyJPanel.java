@@ -3,27 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Physician;
-
-import Business.Department.Department;
-import Business.Doctor.Doctor;
-import UserInterface.SystemAdmin.*;
+package UserInterface.SystemAdmin;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
-import Business.Patient.Patient;
+import Business.Pharmacy.Pharmacy;
 import Business.Role.HospitalRole;
-import Business.Role.PatientRole;
-import Business.Role.PhysicianRole;
+import Business.Role.PharmacyRole;
 import Business.UserAccount.UserAccount;
-import UserInterface.HospitalAdmin.HospitalManageDepartmentJPanel;
-import UserInterface.HospitalAdmin.ManagePhysicianJPanel;
-
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -31,28 +21,19 @@ import javax.swing.JPanel;
  *
  * @author shivanivats
  */
-public class CreatePhysicianJPanel extends javax.swing.JPanel {
+public class CreatePharmacyJPanel extends javax.swing.JPanel {
 
     JPanel CardLayoutJPanel;
-    Ecosystem business;
-    Hospital hospital;
-    Department department;
-    
+    private Ecosystem business;
     /**
-     * Creates new form CreateHospitalJPanel
+     * Creates new form CreatePharmacyJPanel
      */
-    public CreatePhysicianJPanel( JPanel CardLayoutJPanel, Ecosystem business, Hospital hospital, Department department) {
+    public CreatePharmacyJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
         initComponents();
+        
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
         
-        this.hospital = hospital;
-        this.department = department;
-        
-        ArrayList<Department> departmentList = hospital.getDepartmentDirectory();
-        Department[] comboBoxModel1 = departmentList.toArray(new Department[0]);
-        
-        departmentComboBox.setModel(new DefaultComboBoxModel<Department>(comboBoxModel1));
     }
 
     /**
@@ -66,7 +47,6 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         passwordTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         contactNumberTxt = new javax.swing.JTextField();
@@ -81,16 +61,13 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
         usernameTxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        departmentComboBox = new javax.swing.JComboBox<>();
-        jLabel10 = new javax.swing.JLabel();
-        genderTxt = new javax.swing.JTextField();
+        jLabel10a = new javax.swing.JLabel();
+        addressTxt = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Sign Up New Physician");
-
-        jLabel2.setText("Department:");
+        jLabel1.setText("Sign Up New Pharmacy");
 
         passwordTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -142,7 +119,7 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
 
         jLabel9.setText("Username:");
 
-        jLabel10.setText("Gender");
+        jLabel10a.setText("Address:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -154,10 +131,10 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnSave)
                 .addGap(133, 133, 133))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(182, 182, 182)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(115, 115, 115))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(138, 138, 138)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,28 +142,27 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel7)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel2)
                     .addComponent(jLabel9)
                     .addComponent(jLabel8)
-                    .addComponent(jLabel10))
+                    .addComponent(jLabel10a))
                 .addGap(114, 114, 114)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(genderTxt)
-                    .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
-                    .addComponent(contactNumberTxt)
-                    .addComponent(nameTxt)
-                    .addComponent(licenseTxt)
-                    .addComponent(emailtxt, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(passwordTxt)
-                    .addComponent(departmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(192, 192, 192))
+                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(passwordTxt, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 134, Short.MAX_VALUE)
+                        .addComponent(usernameTxt, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(68, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(35, 35, 35)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
@@ -194,33 +170,27 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(1, 1, 1)
-                        .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel7)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(genderTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                    .addComponent(jLabel4)
+                    .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(24, 24, 24)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel7)
+                    .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10a)
+                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnBack))
@@ -235,9 +205,17 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTxtActionPerformed
+
+    private void contactNumberTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNumberTxtActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_contactNumberTxtActionPerformed
 
     private void emailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtxtActionPerformed
         // TODO add your handling code here:
@@ -248,9 +226,8 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
         CardLayoutJPanel.remove(this);
         Component[] componentArray = CardLayoutJPanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        
-        ManagePhysicianJPanel managePhysicianJPanel = (ManagePhysicianJPanel) component;
-        managePhysicianJPanel.populateTable();
+        SystemAdminPharmacyJPanel systemAdminPharmacyJPanel = (SystemAdminPharmacyJPanel) component;
+        systemAdminPharmacyJPanel.populateTable();
 
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
@@ -259,71 +236,66 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
 
         // TODO: add validations
-        Doctor newDoctor = new Doctor();
-      
-        String username = usernameTxt.getText();
-        String password= passwordTxt.getText();
-     
-        String email= emailtxt.getText();
-        String phoneNo= contactNumberTxt.getText();
-        String name = nameTxt.getText();
-        String gender = genderTxt.getText();
-        String licenseNo= licenseTxt.getText();
         
-        Department selectedDepartment = (Department) departmentComboBox.getSelectedItem();
+        Pharmacy newPharmacy = new Pharmacy();
         
-        newDoctor.setDepartment(selectedDepartment);
-        newDoctor.setEmailId(email);
-        newDoctor.setGender(gender);
-        newDoctor.setLicenseNo(licenseNo);
-        newDoctor.setName(name);
-        newDoctor.setPhoneNo(phoneNo);
-        newDoctor.setUsername(username);
-        newDoctor.setPassword(password);
-     
+         String username = usernameTxt.getText();
+         String password= passwordTxt.getText(); 
+         
+         String emailId = emailtxt.getText();
+         String name = nameTxt.getText();
+         String phoneNo= contactNumberTxt.getText();
+         String licenseNo= licenseTxt.getText();
+         String address = addressTxt.getText();
+         
+        newPharmacy.setAddress(address);
+        newPharmacy.setEmailId(emailId);
         
-       if(password.isEmpty() || phoneNo.isEmpty() || name.isEmpty()|| username.isEmpty() || email.isEmpty() || selectedDepartment == null){
+        newPharmacy.setLicenseNo(licenseNo);
+        newPharmacy.setName(name);
+        newPharmacy.setPhoneNo(phoneNo);
+        newPharmacy.setUsername(username);
+        newPharmacy.setPassword(password);
+        
+        if(password.isEmpty() || phoneNo.isEmpty() || name.isEmpty()|| username.isEmpty() || emailId.isEmpty()){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         }
         else if(!phoneFormat(phoneNo))
         {
             JOptionPane.showMessageDialog(null, "Phone format incorrect!");
         }
-        else if(!business.getPatientDirectory().isPhoneUnique(phoneNo)){
+ 
+
+        else if(!phoneFormat(phoneNo))
+        {
+            JOptionPane.showMessageDialog(null, "Phone format incorrect!");
+        }
+        else if(!business.getPharmacyDirectory().isPhoneUnique(phoneNo)){
             JOptionPane.showMessageDialog(null, "Phone No already registered!");
         }
         else if(!business.getUserAccountDirectory().checkIfUsernameIsUnique(username)){
             JOptionPane.showMessageDialog(null, "Username already exists!");
         }
-       else{
-            
-            
-            Doctor doctor = hospital.getDepartment(selectedDepartment.getDepartmentId()).addDoctor(newDoctor);
-            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, doctor.getDoctorId(), new PhysicianRole(), doctor);
+        else{
+
+            Pharmacy pharmacy = business.getPharmacyDirectory().addPharmacy(newPharmacy);
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, pharmacy.getPharmacyId(), new PharmacyRole(), pharmacy);
         
-            JOptionPane.showMessageDialog(null, "New Physician added");
+            JOptionPane.showMessageDialog(null, "New Pharmacy added");
         }
-    }
-    
+        }
+
         public boolean phoneFormat(String phoneNo){
-        String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
-        Pattern pattern = Pattern.compile(regex);
-        
-        Matcher matcher = pattern.matcher(phoneNo);
-        if(matcher.matches()){
-            return true;
-        }
-        return false;
-    
+            String regex = "^\\(?([0-9]{3})\\)?[-.\\s]?([0-9]{3})[-.\\s]?([0-9]{4})$";
+            Pattern pattern = Pattern.compile(regex);
+
+            Matcher matcher = pattern.matcher(phoneNo);
+            if(matcher.matches()){
+                return true;
+            }
+            return false;
+
     }//GEN-LAST:event_btnSaveActionPerformed
-
-    private void passwordTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordTxtActionPerformed
-
-    private void contactNumberTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_contactNumberTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_contactNumberTxtActionPerformed
 
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
@@ -331,15 +303,13 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField addressTxt;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JTextField contactNumberTxt;
-    private javax.swing.JComboBox<Department> departmentComboBox;
     private javax.swing.JTextField emailtxt;
-    private javax.swing.JTextField genderTxt;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10a;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
