@@ -7,7 +7,6 @@ package Business.Role;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
-import UserInterface.Physician.PhysicianWorkAreaJPanel;
 import UserInterface.Physician.WelcomePhysicianJPanel;
 import UserInterface.SystemAdmin.SystemAdminPortalJPanel;
 import javax.swing.JPanel;

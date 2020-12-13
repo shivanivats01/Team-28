@@ -24,8 +24,11 @@ public class Ecosystem extends HealthCarePortal {
     
     private static Ecosystem business;
     
+    // TODO: Create a lab directory, pharmacy directory
+    
     private HospitalDirectory hospitalDirectory = new HospitalDirectory();
     private PatientDirectory patientDirectory = new PatientDirectory();
+    
 
     
     // Making ecosystem singleton
