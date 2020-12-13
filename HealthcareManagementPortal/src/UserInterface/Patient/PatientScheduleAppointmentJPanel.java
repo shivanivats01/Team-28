@@ -360,6 +360,8 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         
         doctorAccount.getWorkQueue().getWorkRequestList().add(workRequest);
         this.account.getWorkQueue().getWorkRequestList().add(workRequest);
+        
+        JOptionPane.showMessageDialog(null, "Appointment sent for approval to physician");
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

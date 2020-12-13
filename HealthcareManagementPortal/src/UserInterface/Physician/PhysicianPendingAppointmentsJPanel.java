@@ -10,6 +10,7 @@ import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -56,7 +57,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest w: upcomingAppointmentList) {
-            Object row[] = new Object[6];
+            Object row[] = new Object[7];
         
             row[0] = w.getSender().getId();
             row[1] = w.getReceiver().getId();
@@ -64,9 +65,8 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             row[3] = w.getRequestDate();
             row[4] = w.getResolveDate();
             row[5] = w.getMessage();
-            
+            row[6] = w;
             model.addRow(row);
-            
             
         }     
             
@@ -84,7 +84,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
+        acceptBtn = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Upcoming Appointments");
@@ -102,7 +102,12 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jButton5.setText("Delete an Appointment");
+        acceptBtn.setText("Accept");
+        acceptBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                acceptBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -116,7 +121,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(57, 57, 57)
-                    .addComponent(jButton5)
+                    .addComponent(acceptBtn)
                     .addContainerGap(556, Short.MAX_VALUE)))
         );
         jPanel4Layout.setVerticalGroup(
@@ -130,7 +135,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addContainerGap(406, Short.MAX_VALUE)
-                    .addComponent(jButton5)
+                    .addComponent(acceptBtn)
                     .addGap(98, 98, 98)))
         );
 
@@ -148,9 +153,26 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void acceptBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_acceptBtnActionPerformed
+        // TODO add your handling code here:
+        
+        int rowCount = jTable4.getSelectedRow();
+        
+        if(rowCount < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 6);
+        
+        request.setStatus("accepted");
+        
+        JOptionPane.showMessageDialog(null, "Appointment accepted");
+    }//GEN-LAST:event_acceptBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton acceptBtn;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;

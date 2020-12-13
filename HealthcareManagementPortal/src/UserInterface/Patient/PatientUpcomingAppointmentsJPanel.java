@@ -9,6 +9,7 @@ import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -39,10 +40,9 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
     public void populateTable() {
         // populate all patients in patient directory
         ArrayList<WorkRequest> appointmentList = account.getWorkQueue().getWorkRequestList();
-        
         ArrayList<WorkRequest> upcomingAppointmentList = new ArrayList();
         for(WorkRequest w: appointmentList) {
-            if(w.getStatus().equals("upcoming")) {
+            if(!w.getStatus().equals("complete")) {
                 upcomingAppointmentList.add(w);
             }
         }
@@ -55,14 +55,16 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest w: upcomingAppointmentList) {
-            Object row[] = new Object[6];
+            Object row[] = new Object[7];
         
+            
             row[0] = w.getSender().getId();
             row[1] = w.getReceiver().getId();
             row[2] = w.getStatus();
             row[3] = w.getRequestDate();
             row[4] = w.getResolveDate();
             row[5] = w.getMessage();
+            row[6] = w;
             
             model.addRow(row);
             
@@ -102,6 +104,11 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         jScrollPane4.setViewportView(jTable4);
 
         jButton5.setText("Delete an Appointment");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -147,27 +154,35 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+        
+        int rowCount = jTable4.getSelectedRow();
+        
+        if(rowCount < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 6);
+        
+        // delete from patient work queue
+        this.account.getWorkQueue().getWorkRequestList().remove(request);
+        
+        
+        // delete from physician work queue
+        request.getReceiver().getWorkQueue().getWorkRequestList().remove(request);
+        
+        JOptionPane.showMessageDialog(null, "Appointment deleted");
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 }

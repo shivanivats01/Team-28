@@ -43,7 +43,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="57" max="-2" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="acceptBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="556" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -61,7 +61,7 @@
               <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace pref="406" max="32767" attributes="0"/>
-                      <Component id="jButton5" min="-2" max="-2" attributes="0"/>
+                      <Component id="acceptBtn" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="98" max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -137,10 +137,13 @@
             </Component>
           </SubComponents>
         </Container>
-        <Component class="javax.swing.JButton" name="jButton5">
+        <Component class="javax.swing.JButton" name="acceptBtn">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Delete an Appointment"/>
+            <Property name="text" type="java.lang.String" value="Accept"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="acceptBtnActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
