@@ -15,6 +15,7 @@ import Business.Patient.PatientDirectory;
 import Business.Pharmacy.PharmacyDirectory;
 import Business.Role.HospitalRole;
 import Business.Role.PatientRole;
+import Business.Role.PharmacyRole;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
@@ -142,6 +143,35 @@ public class Ecosystem extends HealthCarePortal {
         ArrayList<PatientDetails> l2 = new ArrayList();
         l2.add(new PatientDetails(null, new Date(), "Back pain is one of the most common reasons people go to the doctor or miss work, and it is a leading cause of disability worldwide."));
         patient2.setPatientDetails(l2);
+        
+         // Create pharmacy
+        Pharmacy ph1 = new Pharmacy();
+        Pharmacy ph2 = new Pharmacy();
+        
+        ph1.setAddress("ph1 address");
+        ph1.setEmailId("ph1 emailId");
+        ph1.setLicenseNo("ph1 licenseNo");
+        ph1.setName("ph1 name");
+        ph1.setPassword("ph1");
+        ph1.setPhoneNo("ph1 phoneNumber");
+        ph1.setUsername("ph1");
+        
+        
+        ph2.setAddress("ph2 address");
+        ph2.setEmailId("ph2 adminName");
+        ph2.setLicenseNo("ph2 licenseNo");
+        ph2.setName("ph2 name");
+        ph2.setPassword("ph2");
+        ph2.setPhoneNo("ph2 phoneNumber");
+        ph2.setUsername("ph2");
+                
+        
+        Pharmacy pharmacy1 = business.getPharmacyDirectory().addPharmacy(ph1);
+        UserAccount accountPharmacy1 = business.getUserAccountDirectory().createUserAccount(pharmacy1.getUsername(), pharmacy1.getPassword(), pharmacy1.getPharmacyId(), new PharmacyRole(), pharmacy1);
+        
+        Pharmacy pharmacy2 = business.getPharmacyDirectory().addPharmacy(ph2);
+        UserAccount accountPharmacy2 = business.getUserAccountDirectory().createUserAccount(pharmacy2.getUsername(), pharmacy2.getPassword(), pharmacy2.getPharmacyId(), new PharmacyRole(), pharmacy2);
+
 
     }
 }
