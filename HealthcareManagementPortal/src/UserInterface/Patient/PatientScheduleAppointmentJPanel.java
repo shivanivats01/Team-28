@@ -10,11 +10,9 @@ import Business.Doctor.Doctor;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkQueue;
 import Business.WorkQueue.WorkRequest;
-import UserInterface.HospitalAdmin.HospitalInfoJPanel;
-import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -67,13 +65,15 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest r: appointments) {
-            Object row[] = new Object[6];
-            row[0] = r.getSender().getEmployee().getName();
-            row[1] = r.getReceiver().getEmployee().getName();
-            row[2] = r.getStatus();
-            row[3] = r.getRequestDate();
-            row[4] = r.getResolveDate();
-            row[5] = r.getMessage();
+            Object row[] = new Object[8];
+            row[0] = r;
+            row[1] = r.getSender().getId();
+            row[2] = r.getReceiver().getId();
+            row[3] = r.getStatus();
+            row[4] = r.getRequestDate();
+            row[5] = r.getResolveDate();
+            row[6] = r.getMessage();
+            row[7] = r.getTime();
             
             model.addRow(row);
         }
@@ -136,13 +136,13 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Sender", "Reciever", "Status", "Request Date", "Resolve Date", "Message", "Time Slot"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -150,6 +150,11 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         jLabel4.setText("Date");
 
         jButton1.setText("Book Now");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -159,7 +164,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                 .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 463, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(24, 24, 24)
@@ -178,7 +182,11 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                                 .addComponent(hospitalNameComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(departmentlNameCombo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addComponent(searchByHospitalName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(67, Short.MAX_VALUE))
+                .addContainerGap(263, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -192,7 +200,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                     .addComponent(departmentlNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(physicianNameCombo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -219,35 +227,92 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         Hospital selectedHospital = (Hospital) hospitalNameComboBox.getSelectedItem();
         Department selectedDept = (Department) departmentlNameCombo.getSelectedItem();
         Doctor selectedDoctor = (Doctor) physicianNameCombo.getSelectedItem();
+        Date selectedDate = jDateChooser1.getDate();
                
-        if(selectedHospital == null || selectedDept == null) {
-            JOptionPane.showMessageDialog(null, "Please select the hospital and departmnent");
+        if(selectedHospital == null || selectedDept == null || selectedDate == null) {
+            JOptionPane.showMessageDialog(null, "Please select the hospital, departmnent and date");
             return;
         }
         
-        UserAccount hospitalAccount = business.getUserAccountDirectory().getUserByEmployeeId(selectedHospital.getHospitalId());
-        ArrayList<WorkRequest> hospitalAppointments = hospitalAccount.getWorkQueue().getWorkRequestList();
-        
-        ArrayList<WorkRequest> availableAppointments = new ArrayList();
-        for(WorkRequest w : hospitalAppointments) {
+        ArrayList<WorkRequest> availableWorkRequests = new ArrayList();
+        // When only hospital and department are selected
+        if(selectedDoctor == null) {
             
-            if(selectedDoctor == null) {
-                if(w.getDepartment().getDepartmentId().equals(selectedDept.getDepartmentId()) && w.getStatus().equals("available")) {
-                    availableAppointments.add(w);
+            // Each doctor 
+            for(int i = 0; i < selectedDept.getDoctorDirectory().size(); i ++) {
+                UserAccount doctorAccount = business.getUserAccountDirectory().getUserById(selectedDoctor.getDoctorId());
+                ArrayList<WorkRequest> doctorWorkRequestList = doctorAccount.getWorkQueue().getWorkRequestList();
+            
+                if(doctorWorkRequestList.size() == 0) {
+                    for(int time = 8; time < 19; time ++) {
+                        WorkRequest newRequest = new WorkRequest();
+
+                        newRequest.setReceiver(doctorAccount);
+                        newRequest.setRequestDate(new Date());
+                        newRequest.setSender(account);
+                        newRequest.setStatus("available");
+                        newRequest.setTime(selectedDate.toString()+ " [ " + time + " ] ");
+
+                        availableWorkRequests.add(newRequest);
+                    }
+                } else {
+                    for(int time = 8; time < 19; time ++) {
+                        WorkRequest newRequest = new WorkRequest();
+
+                        newRequest.setReceiver(doctorAccount);
+                        newRequest.setRequestDate(new Date());
+                        newRequest.setSender(account);
+                        newRequest.setStatus("available");
+                        newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+
+                        for(WorkRequest w : doctorWorkRequestList) {
+                            if(!w.getTime().equals(selectedDate.toString() + " [ " + time + " ] ")) {
+                                availableWorkRequests.add(newRequest);
+                            }
+                        }
+                    }
+                }
+            } 
+        } else {
+            
+            UserAccount doctorAccount = business.getUserAccountDirectory().getUserById(selectedDoctor.getDoctorId());
+            ArrayList<WorkRequest> doctorWorkRequestList = doctorAccount.getWorkQueue().getWorkRequestList();
+            
+            if(doctorWorkRequestList.size() == 0) {
+                for(int time = 8; time < 19; time ++) {
+                    WorkRequest newRequest = new WorkRequest();
+                            
+                    newRequest.setReceiver(doctorAccount);
+                    newRequest.setRequestDate(new Date());
+                    newRequest.setSender(account);
+                    newRequest.setStatus("available");
+                    newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+
+                    availableWorkRequests.add(newRequest);
                 }
             } else {
-               if(
-                       w.getDepartment().getDepartmentId().equals(selectedDept.getDepartmentId()) 
-                       && w.getStatus().equals("available")
-                       && w.getDoctor().getDoctorId().equals(selectedDoctor.getDoctorId())
-                  ) {
-                    availableAppointments.add(w);
-                } 
+                for(int time = 8; time < 19; time ++) {
+                    WorkRequest newRequest = new WorkRequest();
+                            
+                    newRequest.setReceiver(doctorAccount);
+                    newRequest.setRequestDate(new Date());
+                    newRequest.setSender(account);
+                    newRequest.setStatus("available");
+                    newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+                    
+                    for(WorkRequest w : doctorWorkRequestList) {
+                        if(!w.getTime().equals(selectedDate.toString() + " [ " + time + " ] ")) {
+                            availableWorkRequests.add(newRequest);
+                        }
+                    }
+                }
             }
-
+            
         }
+                   
+        System.out.println("================ >>> " + availableWorkRequests.size());
         
-        populateTable(availableAppointments);
+        populateTable(availableWorkRequests);
         
 
     }//GEN-LAST:event_searchByHospitalNameActionPerformed
@@ -257,7 +322,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         
         Hospital selectedHospital = (Hospital) hospitalNameComboBox.getSelectedItem();
         
-        ArrayList<Department> deptList = selectedHospital.getDepartmentDirectory().getDepartmentList();
+        ArrayList<Department> deptList = selectedHospital.getDepartmentDirectory();
         Department[] comboBoxModel = deptList.toArray(new Department[0]);
        
         departmentlNameCombo.setModel(new DefaultComboBoxModel<Department>(comboBoxModel));
@@ -269,13 +334,33 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         
         Department selectedDept = (Department) departmentlNameCombo.getSelectedItem();
         
-        ArrayList<Doctor> doctorList = selectedDept.getDoctorDirectory().getDoctorList();
+        ArrayList<Doctor> doctorList = selectedDept.getDoctorDirectory();
         Doctor[] comboBoxModel2 = doctorList.toArray(new Doctor[0]);
         
         physicianNameCombo.setModel(new DefaultComboBoxModel<Doctor>(comboBoxModel2));
         
         
     }//GEN-LAST:event_departmentlNameComboActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int selectedRow = jTable1.getSelectedRow();
+        
+        if(selectedRow < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        WorkRequest workRequest = (WorkRequest) jTable1.getValueAt(selectedRow, 0);
+        
+        UserAccount doctorAccount = workRequest.getReceiver();
+        
+        workRequest.setStatus("awaiting approval");
+        
+        doctorAccount.getWorkQueue().getWorkRequestList().add(workRequest);
+        this.account.getWorkQueue().getWorkRequestList().add(workRequest);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

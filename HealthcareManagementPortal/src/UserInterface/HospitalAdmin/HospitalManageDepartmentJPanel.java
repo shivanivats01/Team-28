@@ -2,7 +2,6 @@ package UserInterface.HospitalAdmin;
 
 import UserInterface.DepartmentAdmin.DepartmentInfoJPanel;
 import Business.Department.Department;
-import Business.Department.DepartmentDirectory;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.Patient.Patient;
@@ -44,15 +43,15 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
         this.business= business;
         this.account = account;
         
-        hospital= business.getHospitalDirectory().getHospital(account.getEmployee().getName());
+        hospital= (Hospital) this.account.getDetails();
         
         this.populateTable();
         
     }
     
     public void populateTable() {
-        ArrayList<Department> departmentDirectory = hospital.getDepartmentDirectory().getDepartmentList();
-        
+        ArrayList<Department> departmentDirectory = hospital.getDepartmentDirectory();
+                
         int rowCount = departmentTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel)departmentTable.getModel();
         for(int i=rowCount-1;i>=0;i--) {
@@ -217,9 +216,8 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
 
     private void addBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addBtnActionPerformed
         // TODO add your handling code here:
-        
-       
-        CreateDepartmentJPanel createDepartmentJPanel = new CreateDepartmentJPanel(CardLayoutJPanel, business);
+ 
+        CreateDepartmentJPanel createDepartmentJPanel = new CreateDepartmentJPanel(CardLayoutJPanel, business, hospital);
         CardLayoutJPanel.add("CreateDepartmentJPanel", createDepartmentJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -254,7 +252,7 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
             return;
         }
         
-        business.getDepartmentDirectory().deleteDepartment(selected.getDepartmentId(), business);
+        hospital.deleteDepartment(selected.getDepartmentId(), business);
 
         populateTable();
         

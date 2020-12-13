@@ -3,8 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Patient;
+package UserInterface.Physician;
 
+import Business.Doctor.Doctor;
+import UserInterface.Patient.*;
 import Business.Ecosystem;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
@@ -16,24 +18,24 @@ import UserInterface.Patient.PatientInfoJPanel;
  *
  * @author shivanivats
  */
-public class WelcomePatientJPanel extends javax.swing.JPanel {
+public class WelcomePhysicianJPanel extends javax.swing.JPanel {
 
     private JPanel CardLayoutJPanel;
     private Ecosystem business;
     private UserAccount account;
-    private Patient patient;
+    private Doctor doctor;
     
     /**
      * Creates new form WelcomePatientJPanel
      */
-    public WelcomePatientJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public WelcomePhysicianJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
         this.account = account;
         
-        this.patient = (Patient) account.getDetails();
+        this.doctor = (Doctor) account.getDetails();
     }
 
     /**
@@ -46,7 +48,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        historyBtn = new javax.swing.JButton();
+        searchPatientBtn = new javax.swing.JButton();
         personalinfoBtn = new javax.swing.JButton();
         AppointmentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -55,7 +57,12 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
 
-        historyBtn.setText("History");
+        searchPatientBtn.setText("Search Patient History");
+        searchPatientBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchPatientBtnActionPerformed(evt);
+            }
+        });
 
         personalinfoBtn.setText("Personal Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -94,7 +101,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchPatientBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
@@ -110,7 +117,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 .addGap(85, 85, 85)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(searchPatientBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -124,8 +131,8 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed
         // TODO add your handling code here:
         
-        PatientAppointmentsJPanel patientAppointmentsJPanel = new PatientAppointmentsJPanel(CardLayoutJPanel, account, business);
-        CardLayoutJPanel.add("PatientAppointmentsJPanel", patientAppointmentsJPanel);
+        PhysicianAppointmentsJPanel physicianAppointmentsJPanel = new PhysicianAppointmentsJPanel(CardLayoutJPanel, account, business);
+        CardLayoutJPanel.add("PhysicianAppointmentsJPanel", physicianAppointmentsJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_AppointmentsBtnActionPerformed
@@ -133,8 +140,8 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private void personalinfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalinfoBtnActionPerformed
         // TODO add your handling code here:
         
-        PatientInfoJPanel patientInfoJPanel = new PatientInfoJPanel(CardLayoutJPanel, this.patient);
-        CardLayoutJPanel.add("PatientInfoJPanel", patientInfoJPanel);
+        PhysicianInfoJPanel physicianInfoJPanel = new PhysicianInfoJPanel(CardLayoutJPanel, this.doctor);
+        CardLayoutJPanel.add("PhysicianInfoJPanel", physicianInfoJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_personalinfoBtnActionPerformed
@@ -146,13 +153,22 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void searchPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientBtnActionPerformed
+        // TODO add your handling code here:
+        
+        SearchPatientJPanel searchPatientJPanel = new SearchPatientJPanel(CardLayoutJPanel);
+        CardLayoutJPanel.add("SearchPatientJPanel", searchPatientJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_searchPatientBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton historyBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton personalinfoBtn;
+    private javax.swing.JButton searchPatientBtn;
     // End of variables declaration//GEN-END:variables
 }

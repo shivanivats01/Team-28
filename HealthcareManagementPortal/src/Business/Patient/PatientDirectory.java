@@ -7,7 +7,6 @@ package Business.Patient;
 
 import Business.Doctor.Doctor;
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
@@ -32,7 +31,7 @@ public class PatientDirectory {
         this.patientList = patientDirectory;
     }
     
-    public Patient add(Patient p){
+    public Patient addPatient(Patient p){
         p.setPatientID("P"+(patientList.size()+1));
                 
         patientList.add(p);
@@ -67,19 +66,11 @@ public class PatientDirectory {
         
         // Remove patient from userAccountList
         for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
-            if(account.getEmployee().getName().equals(patientId)) {
+            if(account.getId().equals(patientId)) {
                 system.getUserAccountDirectory().getUserAccountList().remove(account);
             }
         }
         
-        // Remove patient from employeeList
-        for(Employee employee: system.getEmployeeDirectory().getEmployeeList()) {
-            if(employee.getName().equals(patientId)) {
-                system.getEmployeeDirectory().getEmployeeList().remove(employee);
-            }
-        }
     }
-     
-     
     
 }

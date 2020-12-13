@@ -5,7 +5,6 @@
  */
 package Business;
 
-import Business.Employee.EmployeeDirectory;
 import Business.Role.Role;
 import Business.UserAccount.UserAccountDirectory;
 import java.util.ArrayList;
@@ -17,7 +16,6 @@ import java.util.ArrayList;
 public abstract class HealthCarePortal {
     
     private String name;
-    private EmployeeDirectory employeeDirectory;
     private UserAccountDirectory userAccountDirectory;
     
     public HealthCarePortal(){
@@ -26,7 +24,6 @@ public abstract class HealthCarePortal {
     
     public HealthCarePortal(String name) {
         this.name = name;
-        employeeDirectory = new EmployeeDirectory();
         userAccountDirectory = new UserAccountDirectory();
     }
     
@@ -34,10 +31,6 @@ public abstract class HealthCarePortal {
     
     public UserAccountDirectory getUserAccountDirectory() {
         return userAccountDirectory;
-    }
-
-    public EmployeeDirectory getEmployeeDirectory() {
-        return employeeDirectory;
     }
     
     public String getName() {

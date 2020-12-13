@@ -3,17 +3,25 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.SystemAdmin;
+package UserInterface.Physician;
 
+import Business.Department.Department;
+import Business.Doctor.Doctor;
+import UserInterface.SystemAdmin.*;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
+import Business.Patient.Patient;
 import Business.Role.HospitalRole;
+import Business.Role.PatientRole;
+import Business.Role.PhysicianRole;
 import Business.UserAccount.UserAccount;
 
 import java.awt.CardLayout;
 import java.awt.Component;
+import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -21,18 +29,26 @@ import javax.swing.JPanel;
  *
  * @author shivanivats
  */
-public class CreateHospitalJPanel extends javax.swing.JPanel {
+public class CreatePhysicianJPanel extends javax.swing.JPanel {
 
     JPanel CardLayoutJPanel;
     Ecosystem business;
+    Hospital hospital;
     
     /**
      * Creates new form CreateHospitalJPanel
      */
-    public CreateHospitalJPanel( JPanel CardLayoutJPanel, Ecosystem business) {
+    public CreatePhysicianJPanel( JPanel CardLayoutJPanel, Ecosystem business, Hospital hospital) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
+        
+        this.hospital = hospital;
+        
+        ArrayList<Department> departmentList = hospital.getDepartmentDirectory();
+        Department[] comboBoxModel1 = departmentList.toArray(new Department[0]);
+        
+        departmentComboBox.setModel(new DefaultComboBoxModel<Department>(comboBoxModel1));
     }
 
     /**
@@ -51,24 +67,26 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         contactNumberTxt = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        addressTxt = new javax.swing.JTextField();
+        emailtxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        adminTxt = new javax.swing.JTextField();
+        nameTxt = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         licenseTxt = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
         btnSave = new javax.swing.JButton();
-        nameTxt = new javax.swing.JTextField();
         usernameTxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        departmentComboBox = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        genderTxt = new javax.swing.JTextField();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Sign Up New Hospital");
+        jLabel1.setText("Sign Up New Physician");
 
-        jLabel2.setText("Hospital Name");
+        jLabel2.setText("Department:");
 
         passwordTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,15 +102,15 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel5.setText("Address");
+        jLabel5.setText("Email");
 
-        addressTxt.addActionListener(new java.awt.event.ActionListener() {
+        emailtxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addressTxtActionPerformed(evt);
+                emailtxtActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Hospital Admin Name");
+        jLabel6.setText("Name");
 
         jLabel7.setText("License Number");
 
@@ -110,12 +128,6 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             }
         });
 
-        nameTxt.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nameTxtActionPerformed(evt);
-            }
-        });
-
         usernameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 usernameTxtActionPerformed(evt);
@@ -125,6 +137,8 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         jLabel8.setText("Password:");
 
         jLabel9.setText("Username:");
+
+        jLabel10.setText("Gender");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -149,16 +163,18 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel5)
                     .addComponent(jLabel2)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel8))
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel10))
                 .addGap(114, 114, 114)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE)
+                    .addComponent(genderTxt)
+                    .addComponent(usernameTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 158, Short.MAX_VALUE)
                     .addComponent(contactNumberTxt)
-                    .addComponent(adminTxt)
-                    .addComponent(licenseTxt)
-                    .addComponent(addressTxt, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(nameTxt)
-                    .addComponent(passwordTxt))
+                    .addComponent(licenseTxt)
+                    .addComponent(emailtxt, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(passwordTxt)
+                    .addComponent(departmentComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(192, 192, 192))
         );
         jPanel1Layout.setVerticalGroup(
@@ -174,29 +190,33 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel8))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(34, 34, 34)
+                .addGap(12, 12, 12)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(departmentComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(27, 27, 27)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(contactNumberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(emailtxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(1, 1, 1)
                         .addComponent(licenseTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel7)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(genderTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnBack))
@@ -215,46 +235,44 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void addressTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addressTxtActionPerformed
+    private void emailtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailtxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_addressTxtActionPerformed
+    }//GEN-LAST:event_emailtxtActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         CardLayoutJPanel.remove(this);
-        Component[] componentArray = CardLayoutJPanel.getComponents();
-        Component component = componentArray[componentArray.length - 1];
-        SystemAdminHospitalPortalJPanel systemAdminHospitalPortalJPanel = (SystemAdminHospitalPortalJPanel) component;
-        systemAdminHospitalPortalJPanel.populateTable();
-
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
-        // TODO add your handling code here:
-        
+
         // TODO: add validations
-        Hospital newHospital = new Hospital();
+        Doctor newDoctor = new Doctor();
       
-        String hospitalName= nameTxt.getText();
         String username = usernameTxt.getText();
         String password= passwordTxt.getText();
-    // String hospitalId;
      
-     String phoneNo= contactNumberTxt.getText();
-     String address = addressTxt.getText();
-     String adminName = adminTxt.getText();
-     String licenseNo= licenseTxt.getText();
+        String email= emailtxt.getText();
+        String phoneNo= contactNumberTxt.getText();
+        String name = nameTxt.getText();
+        String gender = genderTxt.getText();
+        String licenseNo= licenseTxt.getText();
+        
+        Department selectedDepartment = (Department) departmentComboBox.getSelectedItem();
+        
+        newDoctor.setDepartment(selectedDepartment);
+        newDoctor.setEmailId(email);
+        newDoctor.setGender(gender);
+        newDoctor.setLicenseNo(licenseNo);
+        newDoctor.setName(name);
+        newDoctor.setPhoneNo(phoneNo);
+        newDoctor.setUsername(username);
+        newDoctor.setPassword(password);
      
-     newHospital.setName(hospitalName);
-     newHospital.setAddress(address);
-     newHospital.setAdminName(adminName);
-     newHospital.setLicenseNo(licenseNo);
-     newHospital.setUsername(username);
-     newHospital.setPassword(password);
-     newHospital.setPhoneNo(phoneNo);
-       if(hospitalName.isEmpty() || phoneNo.isEmpty() || address.isEmpty()|| username.isEmpty() || password.isEmpty()){
+        
+       if(password.isEmpty() || phoneNo.isEmpty() || name.isEmpty()|| username.isEmpty() || email.isEmpty() || selectedDepartment == null){
             JOptionPane.showMessageDialog(null, "Please enter all fields!");
         }
         else if(!phoneFormat(phoneNo))
@@ -268,10 +286,12 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username already exists!");
         }
        else{
-            Hospital hospital = business.getHospitalDirectory().addHospital(newHospital);
-            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, hospital.getHospitalId(), new HospitalRole(), hospital);
+            
+            
+            Doctor doctor = hospital.getDepartment(selectedDepartment.getDepartmentId()).addDoctor(newDoctor);
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, doctor.getDoctorId(), new PhysicianRole(), doctor);
         
-            JOptionPane.showMessageDialog(null, "New Hospital added");
+            JOptionPane.showMessageDialog(null, "New Physician added");
         }
     }
     
@@ -295,22 +315,20 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_contactNumberTxtActionPerformed
 
-    private void nameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTxtActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameTxtActionPerformed
-
     private void usernameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTxtActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_usernameTxtActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField addressTxt;
-    private javax.swing.JTextField adminTxt;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
     private javax.swing.JTextField contactNumberTxt;
+    private javax.swing.JComboBox<Department> departmentComboBox;
+    private javax.swing.JTextField emailtxt;
+    private javax.swing.JTextField genderTxt;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

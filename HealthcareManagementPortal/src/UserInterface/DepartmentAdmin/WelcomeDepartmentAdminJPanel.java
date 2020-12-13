@@ -37,7 +37,7 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         this.business = business;
         this.account = account;
         
-        this.department = business.getDepartmentDirectory().getDepartment(account.getEmployee().getName());
+        this.department = (Department) this.account.getDetails();
     }
 
     /**
@@ -54,6 +54,7 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         managePhysicianBtn = new javax.swing.JButton();
         AppointmentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        backBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
@@ -82,6 +83,13 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
 
+        backBtn.setText("< back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -99,7 +107,8 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
                             .addComponent(managePhysicianBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
-                                .addComponent(jLabel2)))))
+                                .addComponent(jLabel2))
+                            .addComponent(backBtn))))
                 .addContainerGap(117, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -115,7 +124,9 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
                 .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(managePhysicianBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(backBtn)
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -140,9 +151,17 @@ public class WelcomeDepartmentAdminJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_deptInformationActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton deptInformation;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

@@ -5,8 +5,10 @@
  */
 package Business.Department;
 
-import Business.Doctor.DoctorDirectory;
+import Business.Doctor.Doctor;
+import Business.Ecosystem;
 import Business.Hospital.Hospital;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -15,14 +17,20 @@ import java.util.ArrayList;
  */
 public class Department {
     
+    // Member Variables
     private String departmentId;
     private String departmentName;
     private String username;
     private String password;
     private Hospital hospital;
     private String departmentAdminName;
-    private DoctorDirectory doctorDirectory;
-
+    private ArrayList<Doctor> doctorDirectory;
+    
+    public Department() {
+        this.doctorDirectory = new ArrayList();    
+    }
+   
+    // Getters and Setters
     public String getUsername() {
         return username;
     }
@@ -37,18 +45,6 @@ public class Department {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public DoctorDirectory getDoctorDirectory() {
-        return doctorDirectory;
-    }
-
-    public void setDoctorDirectory(DoctorDirectory doctorDirectory) {
-        this.doctorDirectory = doctorDirectory;
-    }
-    
-    public Department() {
-       this.doctorDirectory = new DoctorDirectory();
     }
 
     public Hospital getHospital() {
@@ -83,9 +79,55 @@ public class Department {
         this.departmentAdminName = departmentAdminName;
     }
     
+    public ArrayList<Doctor> getDoctorDirectory() {
+        return this.doctorDirectory;
+    }
+    
+    // Overriding methods
     @Override()
     public String toString() {
         return this.departmentId;
+    }
+    
+    // Methods
+    public Doctor addDoctor(Doctor d){
+        d.setDoctorId(
+                d.getDepartment().getHospital().getHospitalId()
+                        + "-"
+                        + d.getDepartment().getDepartmentId() 
+                        + "-"
+                        +"Doc"+(doctorDirectory.size()+1));
+                
+        doctorDirectory.add(d);
+        return d;
+    }
+    
+    public void deleteDoctor(String doctorId, Ecosystem system){
+        
+        // Remove the doctor from doctorList
+        for(Doctor d: doctorDirectory) {
+            if(d.getDoctorId().equals(doctorId)){
+                doctorDirectory.remove(d);
+            }
+        }
+        
+        // Remove doctor from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getId().equals(doctorId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+    }
+    
+    public void removeAllDoctors(Ecosystem system){
+        
+        // Remove all the doctors from doctorList
+        for(Doctor d: doctorDirectory) {
+            deleteDoctor(d.getDoctorId(), system);
+        }
+        
+        this.doctorDirectory = new ArrayList();
+        
     }
     
 }

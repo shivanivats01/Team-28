@@ -5,11 +5,7 @@
  */
 package Business.Role;
 
-import Business.Appointment.AppointmentSchedule;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Hospital.HospitalDirectory;
-import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 

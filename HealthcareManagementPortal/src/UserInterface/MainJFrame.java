@@ -5,20 +5,12 @@
  */
 package UserInterface;
 
-import Business.Appointment.AppointmentSchedule;
 import Business.DB4OUtil.DB4OUtil;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Hospital.HospitalDirectory;
-import Business.Patient.PatientDirectory;
-import Business.UserAccount.UserAccount;
-import UserInterface.Physician.PhysicianWorkAreaJPanel;
 
 import java.awt.CardLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
 
 /**
  *

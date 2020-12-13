@@ -5,12 +5,12 @@
  */
 package UserInterface.HospitalAdmin;
 
+import UserInterface.Physician.PhysicianInfoJPanel;
 import Business.Department.Department;
 import Business.Doctor.Doctor;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
-import Business.UserAccount.UserAccount;
+import UserInterface.Physician.CreatePhysicianJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -181,10 +181,10 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
 
     private void createPhysiciansBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPhysiciansBtnActionPerformed
         // TODO add your handling code here:
-//        CreatePhysicianJPanel createPhysicianJPanel = new CreatePhysicianJPanel(CardLayoutJPanel, account, business);
-//        CardLayoutJPanel.add("createPhysicianJPanel", createPhysicianJPanel);
-//        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-//        layout.next(CardLayoutJPanel);
+        CreatePhysicianJPanel createPhysicianJPanel = new CreatePhysicianJPanel(CardLayoutJPanel, business, hospital);
+        CardLayoutJPanel.add("createPhysicianJPanel", createPhysicianJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_createPhysiciansBtnActionPerformed
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
@@ -196,10 +196,12 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             return;
         }
         
-        Doctor selectedDoctor = (Doctor) physicianTable.getValueAt(row, 0);
-        business.getDoctorDirectory().deleteDoctor(selectedDoctor.getDoctorId(), business);
+//        Doctor selectedDoctor = (Doctor) physicianTable.getValueAt(row, 0);
+//        
+//        
+//        
+//        business.getDoctorDirectory().deleteDoctor(selectedDoctor.getDoctorId(), business);
        
-
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
@@ -208,11 +210,11 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
         
         ArrayList<Doctor> doctorList = new ArrayList();
         if(department == null) {
-           for(Department d : this.hospital.getDepartmentDirectory().getDepartmentList()) {
-                doctorList.addAll(d.getDoctorDirectory().getDoctorList());
+           for(Department d : this.hospital.getDepartmentDirectory()) {
+                doctorList.addAll(d.getDoctorDirectory());
             } 
         } else {
-            doctorList.addAll(this.department.getDoctorDirectory().getDoctorList());
+            doctorList.addAll(this.department.getDoctorDirectory());
         }
         
         
@@ -244,8 +246,6 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        //System.out.println("=========== >> " + physicianTable.getValueAt(row, 0));
 
         Doctor viewDoctor = (Doctor) physicianTable.getValueAt(row, 0);
 

@@ -5,9 +5,6 @@
  */
 package Business;
 
-import Business.Department.DepartmentDirectory;
-import Business.Doctor.DoctorDirectory;
-import Business.Employee.Employee;
 import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
 import Business.Patient.Patient;
@@ -29,15 +26,7 @@ public class Ecosystem extends HealthCarePortal {
     
     private HospitalDirectory hospitalDirectory = new HospitalDirectory();
     private PatientDirectory patientDirectory = new PatientDirectory();
-    private DoctorDirectory doctorDirectory = new DoctorDirectory();
-    private DepartmentDirectory departmentDirectory = new DepartmentDirectory();
 
-    
-//    public Ecosystem(HospitalDirectory hospitalDirectory, PatientDirectory patientDirectory, DoctorDirectory doctorDirectory ) {
-//        this.hospitalDirectory = hospitalDirectory;
-//        this.patientDirectory = patientDirectory;
-////        this.doctorDirectory = doctorDirectory;
-//    }
     
     // Making ecosystem singleton
     public static Ecosystem getInstance() {
@@ -49,18 +38,6 @@ public class Ecosystem extends HealthCarePortal {
         return business;
     }
     
-    public DoctorDirectory getDoctorDirectory() {
-        return doctorDirectory;
-    }
-    
-    public DepartmentDirectory getDepartmentDirectory() {
-        return departmentDirectory;
-    }
-
-    public void setDepartmentDirectory(DepartmentDirectory departmentDirectory) {
-        this.departmentDirectory = departmentDirectory;
-    }
-
     public HospitalDirectory getHospitalDirectory() {
         return hospitalDirectory;
     }
@@ -68,10 +45,6 @@ public class Ecosystem extends HealthCarePortal {
     public PatientDirectory getPatientDirectory() {
         return patientDirectory;
     }
-
-//    public DoctorDirectory getDoctorDirectory() {
-//        return doctorDirectory;
-//    }
    
     
     @Override
@@ -113,14 +86,11 @@ public class Ecosystem extends HealthCarePortal {
         h2.setUsername("h2");
                 
         
-        Hospital hospital1 = business.getHospitalDirectory().add(h1);
-        Employee employee1 = business.getEmployeeDirectory().createEmployee(hospital1.getHospitalId());
-        UserAccount account1 = business.getUserAccountDirectory().createUserAccount(hospital1.getUsername(), hospital1.getPassword(), employee1, new HospitalRole());
-
+        Hospital hospital1 = business.getHospitalDirectory().addHospital(h1);
+        UserAccount account1 = business.getUserAccountDirectory().createUserAccount(hospital1.getUsername(), hospital1.getPassword(), hospital1.getHospitalId(), new HospitalRole(), hospital1);
         
-        Hospital hospital2 = business.getHospitalDirectory().add(h2);
-        Employee employee2 = business.getEmployeeDirectory().createEmployee(hospital2.getHospitalId());
-        UserAccount account2 = business.getUserAccountDirectory().createUserAccount(hospital2.getUsername(), hospital2.getPassword(), employee2, new HospitalRole());
+        Hospital hospital2 = business.getHospitalDirectory().addHospital(h2);
+        UserAccount account2 = business.getUserAccountDirectory().createUserAccount(hospital2.getUsername(), hospital2.getPassword(), hospital2.getHospitalId(), new HospitalRole(), hospital2);
 
 
         // Create Patients
@@ -148,14 +118,12 @@ public class Ecosystem extends HealthCarePortal {
         p2.setGender("p2 gender");
                 
         
-        Patient patient1 = business.getPatientDirectory().add(p1);
-        Employee employeePatient1 = business.getEmployeeDirectory().createEmployee(patient1.getPatientID());
-        UserAccount accountPatient1 = business.getUserAccountDirectory().createUserAccount(patient1.getUsername(), patient1.getPassword(), employeePatient1, new PatientRole());
+        Patient patient1 = business.getPatientDirectory().addPatient(p1);
+        UserAccount accountPatient1 = business.getUserAccountDirectory().createUserAccount(patient1.getUsername(), patient1.getPassword(), patient1.getPatientID(), new PatientRole(), patient1);
 
         
-        Patient patient2 = business.getPatientDirectory().add(p2);
-        Employee employeePatient2 = business.getEmployeeDirectory().createEmployee(patient2.getPatientID());
-        UserAccount accountPatient2 = business.getUserAccountDirectory().createUserAccount(patient2.getUsername(), patient2.getPassword(), employeePatient2, new PatientRole());
+        Patient patient2 = business.getPatientDirectory().addPatient(p2);
+        UserAccount accountPatient2 = business.getUserAccountDirectory().createUserAccount(patient2.getUsername(), patient2.getPassword(), patient2.getPatientID(), new PatientRole(), patient2);
 
     }
 }

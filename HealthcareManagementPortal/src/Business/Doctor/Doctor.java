@@ -15,6 +15,7 @@ import java.util.List;
  */
 public class Doctor {
     
+    // Member Variables
     private String name;
     private String licenseNo;
     private String doctorId;
@@ -22,28 +23,19 @@ public class Doctor {
     private String emailId;
     private String gender;
     private String username;
-    private String password;
-    private Hospital hospital;
+    private String password;    
+    private Department department;
 
-    public Hospital getHospital() {
-        return hospital;
-    }
+    // Empty constructor
+    public Doctor() {}
 
-    public void setHospital(Hospital hospital) {
-        this.hospital = hospital;
-    }
-
+    // Getters and Setters
     public Department getDepartment() {
         return department;
     }
 
     public void setDepartment(Department department) {
         this.department = department;
-    }
-    private Department department;
-
-    public Doctor() {
-       
     }
 
     public String getPhoneNo() {
@@ -105,12 +97,15 @@ public class Doctor {
     public String getDoctorId() {
         return doctorId;
     }
-
+    
     public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
-    
-    
-    
-    
+
+    // Overriding methods
+    @Override()
+    public String toString() {
+        return this.doctorId;
+    }
+      
 }

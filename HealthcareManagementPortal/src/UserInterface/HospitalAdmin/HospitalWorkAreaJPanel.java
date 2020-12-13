@@ -35,7 +35,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         this.account= account;
         this.business= business;
         
-        this.hospital = business.getHospitalDirectory().getHospital(account.getEmployee().getName());
+        this.hospital = (Hospital) this.account.getDetails();
     }
 
     /**

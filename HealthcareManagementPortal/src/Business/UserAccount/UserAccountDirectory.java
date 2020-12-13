@@ -5,7 +5,6 @@
  */
 package Business.UserAccount;
 
-import Business.Employee.Employee;
 import Business.Role.Role;
 import java.util.ArrayList;
 
@@ -35,12 +34,13 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public UserAccount createUserAccount(String username, String password, Employee employee, Role role){
+    public UserAccount createUserAccount(String username, String password, String id, Role role, Object details){
         UserAccount userAccount = new UserAccount();
         userAccount.setUsername(username);
         userAccount.setPassword(password);
-        userAccount.setEmployee(employee);
+        userAccount.setId(id);
         userAccount.setRole(role);
+        userAccount.setDetails(details);
         userAccountList.add(userAccount);
         return userAccount;
     }
@@ -55,22 +55,13 @@ public class UserAccountDirectory {
     
    
     
-    public UserAccount getUserByEmployeeId(String id){
+    public UserAccount getUserById(String id){
         for(UserAccount user: userAccountList){
-            if(user.getEmployee().getName().equalsIgnoreCase(id)){
+            if(user.getId().equalsIgnoreCase(id)){
                 return user;
             }
         }
         return null;
-    }
-    
-    public void removeAllAccounts(){
-        for(int i =0 ; i< userAccountList.size();i++)
-            if(!userAccountList.get(i).getUsername().equalsIgnoreCase("sysadmin"))
-                userAccountList.remove(i);
-        
-        for(int i =0 ; i< userAccountList.size();i++)
-            System.out.println(userAccountList.get(i).getEmployee());
     }
     
     

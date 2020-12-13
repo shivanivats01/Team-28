@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Patient;
+package UserInterface.Physician;
 
+import UserInterface.Patient.*;
 import Business.Ecosystem;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
@@ -17,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author shivanivats
  */
-public class PatientPastAppointmentsJPanel extends javax.swing.JPanel {
+public class PhysicianPastAppointmentsJPanel extends javax.swing.JPanel {
     
     JPanel CardLayoutJPanel;
     UserAccount account;
@@ -26,7 +27,7 @@ public class PatientPastAppointmentsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PatientPastAppointmentsJPanel
      */
-    public PatientPastAppointmentsJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public PhysicianPastAppointmentsJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;

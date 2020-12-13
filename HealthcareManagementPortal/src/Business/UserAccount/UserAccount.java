@@ -5,7 +5,6 @@
  */
 package Business.UserAccount;
 
-import Business.Employee.Employee;
 import Business.Role.Role;
 import Business.WorkQueue.WorkQueue;
 
@@ -17,12 +16,29 @@ public class UserAccount {
     
     private String username;
     private String password;
-    private Employee employee;
+    private String id;
+    private Object details;
     private Role role;
     private WorkQueue workQueue;
 
     public UserAccount() {
         workQueue = new WorkQueue();
+    }
+    
+    public String getId() {
+        return id;
+    }
+    
+    public void setId(String id) {
+        this.id = id;
+    }
+    
+    public Object getDetails() {
+        return details;
+    }
+    
+    public void setDetails(Object details) {
+        this.details = details;
     }
     
     public String getUsername() {
@@ -45,32 +61,19 @@ public class UserAccount {
         return role;
     }
 
-    public void setEmployee(Employee employee) {
-        this.employee = employee;
-    }
-
     public void setRole(Role role) {
         this.role = role;
-    }
-
-    public Employee getEmployee() {
-        return employee;
     }
 
     public WorkQueue getWorkQueue() {
         return workQueue;
     }
 
-    
-    
     @Override
     public String toString() {
         System.out.println(" Username : " + username);
         System.out.println(" password : " + password);
-//        System.out.println(" employee id : " + employee.getId());
-//        System.out.println(" employee name : " + employee.getName());
-//        System.out.println(" role : " + role.toString());
-//        System.out.println(" workQueue length: " + workQueue.getWorkRequestList().size());
+        System.out.println(" id : " + id);
         
         return username;
     }

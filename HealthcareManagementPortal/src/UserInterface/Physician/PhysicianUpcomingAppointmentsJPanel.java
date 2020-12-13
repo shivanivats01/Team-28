@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package UserInterface.Patient;
+package UserInterface.Physician;
 
+import UserInterface.Patient.*;
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
@@ -16,7 +17,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author shivanivats
  */
-public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
+public class PhysicianUpcomingAppointmentsJPanel extends javax.swing.JPanel {
     
     JPanel CardLayoutJPanel;
     UserAccount account;
@@ -25,7 +26,7 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
     /**
      * Creates new form PatientUpcomingAppointmentsJPanel
      */
-    public PatientUpcomingAppointmentsJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public PhysicianUpcomingAppointmentsJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
@@ -42,7 +43,7 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         
         ArrayList<WorkRequest> upcomingAppointmentList = new ArrayList();
         for(WorkRequest w: appointmentList) {
-            if(w.getStatus().equals("upcoming")) {
+            if(!w.getStatus().equals("completed")) {
                 upcomingAppointmentList.add(w);
             }
         }
@@ -149,25 +150,10 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
-    private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables
 }

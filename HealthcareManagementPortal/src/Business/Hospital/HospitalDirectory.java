@@ -7,7 +7,6 @@ package Business.Hospital;
 
 import Business.Department.Department;
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
 import java.awt.image.BufferedImage;
@@ -36,12 +35,7 @@ public class HospitalDirectory {
         this.hospitalList = hospitalDirectory;
     }
     
-//    public Hospital add(String adminName,String name, String phone, String address, BufferedImage photo,String licenseNo){
-//       Hospital restaurant = new Hospital("H"+(hospitalList.size()+1),adminName, name, phone, address,licenseNo);
-//       hospitalList.add(restaurant);
-//       return restaurant;
-//    }
-    public Hospital add(Hospital h){
+    public Hospital addHospital(Hospital h){
        
         h.setHospitalId("H"+(hospitalList.size()+1));
         hospitalList.add(h);
@@ -53,22 +47,15 @@ public class HospitalDirectory {
         // Remove all doctors, departments and this hospital
         for(Hospital h: hospitalList) {
             if(h.getHospitalId().equals(hospitalId)){
-                h.getDepartmentDirectory().removeAllDepartments(system);
+                h.removeAllDepartments(system);
                 hospitalList.remove(h);
             }
         }
   
         // Remove hospital from userAccountList
         for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
-            if(account.getEmployee().getName().equals(hospitalId)) {
+            if(account.getId().equals(hospitalId)) {
                 system.getUserAccountDirectory().getUserAccountList().remove(account);
-            }
-        }
-        
-        // Remove hospital from employeeList
-        for(Employee employee: system.getEmployeeDirectory().getEmployeeList()) {
-            if(employee.getName().equals(hospitalId)) {
-                system.getEmployeeDirectory().getEmployeeList().remove(employee);
             }
         }
     

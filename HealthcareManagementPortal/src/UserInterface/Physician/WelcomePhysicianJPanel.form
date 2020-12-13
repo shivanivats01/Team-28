@@ -26,7 +26,7 @@
                       <EmptySpace min="-2" pref="68" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="AppointmentsBtn" min="-2" pref="224" max="-2" attributes="0"/>
-                          <Component id="historyBtn" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
+                          <Component id="searchPatientBtn" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
                           <Component id="personalinfoBtn" alignment="0" min="-2" pref="224" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
@@ -48,7 +48,7 @@
               <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
               <Component id="jLabel2" min="-2" pref="26" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="historyBtn" min="-2" pref="38" max="-2" attributes="0"/>
+              <Component id="searchPatientBtn" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="AppointmentsBtn" min="-2" pref="38" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
@@ -69,10 +69,13 @@
         <Property name="text" type="java.lang.String" value="Welcome To WeCare"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="historyBtn">
+    <Component class="javax.swing.JButton" name="searchPatientBtn">
       <Properties>
-        <Property name="text" type="java.lang.String" value="History"/>
+        <Property name="text" type="java.lang.String" value="Search Patient History"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchPatientBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="personalinfoBtn">
       <Properties>

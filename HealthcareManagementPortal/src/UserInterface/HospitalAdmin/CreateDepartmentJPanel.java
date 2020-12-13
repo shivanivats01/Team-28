@@ -6,9 +6,7 @@
 package UserInterface.HospitalAdmin;
 
 import Business.Department.Department;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Hospital.Hospital;
 import Business.Patient.Patient;
 import Business.Role.DepartmentRole;
@@ -33,11 +31,13 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
     private UserAccount account;
     private Hospital hospital;
 
-    CreateDepartmentJPanel(JPanel CardLayoutJPanel, Ecosystem business) {
+    CreateDepartmentJPanel(JPanel CardLayoutJPanel, Ecosystem business, Hospital hospital) {
 
         initComponents();
         this.CardLayoutJPanel=CardLayoutJPanel;
         this.business = business;
+        this.hospital = hospital;
+            
          
         //this.hospital = business.getHospitalDirectory().getHospital();
     }
@@ -60,6 +60,8 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
         btnSave = new javax.swing.JButton();
         password = new javax.swing.JTextField();
         userName = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -90,6 +92,10 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel7.setText("Username");
+
+        jLabel8.setText("Password");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -105,7 +111,9 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
                         .addGap(123, 123, 123)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel8))
                         .addGap(90, 90, 90)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(nameTxt)
@@ -139,9 +147,13 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnSave)
                         .addGap(21, 21, 21))))
@@ -192,9 +204,10 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
         newDep.setUsername(username);
         newDep.setPassword(pswrd);
         
-        Department dep = business.getDepartmentDirectory().add(newDep);
-        Employee employee = business.getEmployeeDirectory().createEmployee(dep.getDepartmentId());
-        UserAccount account = business.getUserAccountDirectory().createUserAccount(username, pswrd, employee, new DepartmentRole());
+        Department dep = hospital.addDepartment(newDep);
+        UserAccount account = business.getUserAccountDirectory().createUserAccount(username, pswrd, dep.getDepartmentId(), new DepartmentRole(), dep);
+        
+        
 
         
         JOptionPane.showMessageDialog(null, "New Department added");
@@ -209,6 +222,8 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JTextField nameTxt;
     private javax.swing.JTextField password;
     private javax.swing.JTextField userName;
