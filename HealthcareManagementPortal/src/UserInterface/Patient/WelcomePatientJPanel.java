@@ -56,6 +56,11 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         jLabel1.setText("Welcome To WeCare");
 
         historyBtn.setText("History");
+        historyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyBtnActionPerformed(evt);
+            }
+        });
 
         personalinfoBtn.setText("Personal Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +150,14 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
+        // TODO add your handling code here:
+        PatientHistoryJPanel patientHistoryJPanel = new PatientHistoryJPanel(CardLayoutJPanel, this.patient);
+        CardLayoutJPanel.add("PatientHistoryJPanel", patientHistoryJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_historyBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
