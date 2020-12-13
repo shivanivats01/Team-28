@@ -5,8 +5,10 @@
  */
 package Business.Patient;
 
+import Business.Doctor.Doctor;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -29,19 +31,7 @@ public class PatientDirectory {
         this.patientList = patientDirectory;
     }
     
-    public void deletePatient(int index,Ecosystem system){
-        String id = patientList.get(index).getPatientID();
-        
-        for(int i =0; i < system.getUserAccountDirectory().getUserAccountList().size();i++){
-            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
-                system.getUserAccountDirectory().getUserAccountList().remove(i);
-            }
-        }
-        
-        patientList.remove(index);
-    }
-    
-    public Patient add(Patient p){
+    public Patient addPatient(Patient p){
         p.setPatientID("P"+(patientList.size()+1));
                 
         patientList.add(p);
@@ -64,43 +54,23 @@ public class PatientDirectory {
         }
         return null;
     }
-    // TODO: Check if these methods are being used or not
-    
-//    public Patient getCustomerId(int index){
-//        return patientList.get(index);
-//    }
-//    
-//   public void updatePatient(String id,String name,String phone,String address){
-//        for(Patient patient: patientList){
-//            if(patient.getPatientID().equalsIgnoreCase(id)){
-//                patient.setName(name);
-//                patient.setPhoneNo(phone);
-//                patient.setAddress(address);
-//                patient.getEmailId();
-//                patient.getAge();
-//                patient.getBloodGroup();
-//                patient.getGender();
-//                 
-//            }
-//        }
-//    }
-//    
-//    public boolean isPhoneUnique(String phone){
-//        for(Patient patient: patientList){
-//            if(patient.getPhoneNo().equalsIgnoreCase(phone)){
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
-//    
-//    public Patient getPatient(String id){
-//        for(Patient patient: patientList){
-//            if(patient.getPatientID().equalsIgnoreCase(id)){
-//                return patient;
-//            }
-//        }
-//        return null;
-//    }
+     
+    public void deletePatient(String patientId, Ecosystem system){
+        
+        // Remove the patient from patientList
+        for(Patient p: patientList) {
+            if(p.getPatientID().equals(patientId)){
+                patientList.remove(p);
+            }
+        }
+        
+        // Remove patient from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getId().equals(patientId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+        
+    }
     
 }

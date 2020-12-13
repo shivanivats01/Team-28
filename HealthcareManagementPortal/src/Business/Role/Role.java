@@ -5,11 +5,7 @@
  */
 package Business.Role;
 
-import Business.Appointment.AppointmentSchedule;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Hospital.HospitalDirectory;
-import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
 import javax.swing.JPanel;
 
@@ -42,9 +38,6 @@ public abstract class Role {
     
     public abstract JPanel createWorkArea(JPanel userProcessContainer, UserAccount account,  Ecosystem business );
     
-           
-            
-
     @Override
     public String toString() {
         return this.getClass().getName();

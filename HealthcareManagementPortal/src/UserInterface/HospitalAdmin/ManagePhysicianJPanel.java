@@ -5,11 +5,12 @@
  */
 package UserInterface.HospitalAdmin;
 
+import UserInterface.Physician.PhysicianInfoJPanel;
+import Business.Department.Department;
 import Business.Doctor.Doctor;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
-import Business.UserAccount.UserAccount;
+import UserInterface.Physician.CreatePhysicianJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -25,21 +26,24 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
     /**
      * Creates new form ManagePhysicianJPanel
      */
-     private JPanel CardLayoutJPanel;
+    private JPanel CardLayoutJPanel;
+    private Hospital hospital;
+    private Department department;
     private Ecosystem business;
-    private UserAccount account;
     
     public ManagePhysicianJPanel() {
         initComponents();
     }
 
-    ManagePhysicianJPanel(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public ManagePhysicianJPanel(JPanel CardLayoutJPanel, Hospital hospital, Department department, Ecosystem business) {
 
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
+        this.hospital = hospital;
+        this.department = department;
         this.business = business;
-        this.account=account;
-         populateTable();
+        
+        populateTable();
 
     }
 
@@ -177,7 +181,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
 
     private void createPhysiciansBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPhysiciansBtnActionPerformed
         // TODO add your handling code here:
-        CreatePhysicianJPanel createPhysicianJPanel = new CreatePhysicianJPanel(CardLayoutJPanel, account, business);
+        CreatePhysicianJPanel createPhysicianJPanel = new CreatePhysicianJPanel(CardLayoutJPanel, business, hospital);
         CardLayoutJPanel.add("createPhysicianJPanel", createPhysicianJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
@@ -191,18 +195,29 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        DoctorDirectory doctorList = business.getDoctorDirectory();
-
-        business.getDoctorDirectory().deleteDoctor(row, business);
-
+        
+//        Doctor selectedDoctor = (Doctor) physicianTable.getValueAt(row, 0);
+//        
+//        
+//        
+//        business.getDoctorDirectory().deleteDoctor(selectedDoctor.getDoctorId(), business);
+       
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
     public void populateTable() {
         // populate all patients in patient directory
-        ArrayList<Doctor> doctorList = business.getDoctorDirectory().getDoctorList();
-    
+        
+        ArrayList<Doctor> doctorList = new ArrayList();
+        if(department == null) {
+           for(Department d : this.hospital.getDepartmentDirectory()) {
+                doctorList.addAll(d.getDoctorDirectory());
+            } 
+        } else {
+            doctorList.addAll(this.department.getDoctorDirectory());
+        }
+        
+        
         int rowCount = physicianTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel)physicianTable.getModel();
         for(int i=rowCount-1;i>=0;i--) {
@@ -218,8 +233,6 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             row[4] = d.getEmailId();
             row[5] = d.getLicenseNo();
            
-           
-            
             model.addRow(row);
         }
     }
@@ -233,8 +246,6 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
-
-        //System.out.println("=========== >> " + physicianTable.getValueAt(row, 0));
 
         Doctor viewDoctor = (Doctor) physicianTable.getValueAt(row, 0);
 

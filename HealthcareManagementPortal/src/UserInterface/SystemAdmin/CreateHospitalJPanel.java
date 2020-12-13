@@ -6,16 +6,12 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Hospital.Hospital;
-import Business.Patient.Patient;
 import Business.Role.HospitalRole;
-import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
 
 import java.awt.CardLayout;
 import java.awt.Component;
-import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -272,13 +268,11 @@ public class CreateHospitalJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username already exists!");
         }
        else{
-            Hospital hospital = business.getHospitalDirectory().add(newHospital);
-            Employee employee = business.getEmployeeDirectory().createEmployee(hospital.getHospitalId());
-
-            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalRole());
+            Hospital hospital = business.getHospitalDirectory().addHospital(newHospital);
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, hospital.getHospitalId(), new HospitalRole(), hospital);
         
-        JOptionPane.showMessageDialog(null, "New Hospital added");
-    }
+            JOptionPane.showMessageDialog(null, "New Hospital added");
+        }
     }
     
         public boolean phoneFormat(String phoneNo){

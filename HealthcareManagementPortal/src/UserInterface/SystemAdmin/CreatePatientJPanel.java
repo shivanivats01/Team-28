@@ -6,9 +6,7 @@
 package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Patient.Patient;
-import Business.Patient.PatientDirectory;
 import Business.Role.PatientRole;
 import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
@@ -263,10 +261,8 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Username already exists!");
         }
        else{
-            Patient patient = business.getPatientDirectory().add(newPatient);
-            Employee employee = business.getEmployeeDirectory().createEmployee(patient.getPatientID());
-
-            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new PatientRole());
+            Patient patient = business.getPatientDirectory().addPatient(newPatient);
+            UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, patient.getPatientID(), new PatientRole(), patient);
         
         JOptionPane.showMessageDialog(null, "New patient signed up");
     }//GEN-LAST:event_saveBtnActionPerformed

@@ -5,6 +5,8 @@
  */
 package Business.Doctor;
 
+import Business.Department.Department;
+import Business.Hospital.Hospital;
 import java.util.List;
 
 /**
@@ -13,20 +15,27 @@ import java.util.List;
  */
 public class Doctor {
     
+    // Member Variables
     private String name;
     private String licenseNo;
-    //private int NumberOfHospitalsAssociated;
-    private List <String> HospitalName;
     private String doctorId;
     private String phoneNo;
     private String emailId;
     private String gender;
     private String username;
-   private String password;
-    //private static int count = 1;
+    private String password;    
+    private Department department;
 
-    public Doctor() {
-       
+    // Empty constructor
+    public Doctor() {}
+
+    // Getters and Setters
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
     }
 
     public String getPhoneNo() {
@@ -85,25 +94,18 @@ public class Doctor {
         this.licenseNo = licenseNo;
     }
 
-    
-
-    public List<String> getHospitalName() {
-        return HospitalName;
-    }
-
-    public void setHospitalName(List<String> HospitalName) {
-        this.HospitalName = HospitalName;
-    }
-
     public String getDoctorId() {
         return doctorId;
     }
-
+    
     public void setDoctorId(String doctorId) {
         this.doctorId = doctorId;
     }
-    
-    
-    
-    
+
+    // Overriding methods
+    @Override()
+    public String toString() {
+        return this.doctorId;
+    }
+      
 }

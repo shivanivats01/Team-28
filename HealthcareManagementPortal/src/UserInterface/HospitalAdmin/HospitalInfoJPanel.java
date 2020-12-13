@@ -53,7 +53,7 @@ public class HospitalInfoJPanel extends javax.swing.JPanel {
 
         for (Hospital hos : business.getHospitalDirectory().getHospitalList()) {
             
-            if (hos.getHospitalId().equalsIgnoreCase(account.getEmployee().getName())) {
+            if (hos.getHospitalId().equalsIgnoreCase(account.getId())) {
                 this.hospital = hos;
                 
             }  }

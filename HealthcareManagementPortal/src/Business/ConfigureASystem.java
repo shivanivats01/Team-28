@@ -5,7 +5,6 @@
  */
 package Business;
 import Business.Ecosystem;
-import Business.Employee.Employee;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
 /**
@@ -17,10 +16,8 @@ public class ConfigureASystem {
     public static Ecosystem configure(){
         
         Ecosystem system = Ecosystem.getInstance();
-        
-        Employee employee = system.getEmployeeDirectory().createEmployee("RRH");
-        
-        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", employee, new SystemAdminRole());
+                
+        UserAccount ua = system.getUserAccountDirectory().createUserAccount("sysadmin", "sysadmin", "RRH", new SystemAdminRole(), null);
         
         return system;
         

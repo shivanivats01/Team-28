@@ -5,6 +5,8 @@
  */
 package Business.WorkQueue;
 
+import Business.Department.Department;
+import Business.Doctor.Doctor;
 import Business.UserAccount.UserAccount;
 import java.util.Date;
 
@@ -20,6 +22,34 @@ public class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
+    private String timeDate;
+//    private Department department;
+//    private Doctor doctor;
+
+    
+    public String getTime() {
+        return timeDate;
+    }
+
+    public void setTime(String time) {
+        this.timeDate = time;
+    }
+
+//    public Department getDepartment() {
+//        return department;
+//    }
+//
+//    public void setDepartment(Department department) {
+//        this.department = department;
+//    }
+//
+//    public Doctor getDoctor() {
+//        return doctor;
+//    }
+//
+//    public void setDoctor(Doctor doctor) {
+//        this.doctor = doctor;
+//    }
 
     public String getMessage() {
         return message;
@@ -69,6 +99,8 @@ public class WorkRequest {
         this.resolveDate = resolveDate;
     }
     
-    
+    public boolean sameRequestExists(int time, String recieverId) {
+        return false;
+    }
     
 }

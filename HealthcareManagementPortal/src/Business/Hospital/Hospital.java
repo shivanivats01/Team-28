@@ -5,11 +5,9 @@
  */
 package Business.Hospital;
 
-import Business.Appointment.Appointment;
-import Business.Appointment.AppointmentSchedule;
 import Business.Department.Department;
-import Business.Department.DepartmentDirectory;
-import java.awt.image.BufferedImage;
+import Business.Ecosystem;
+import Business.UserAccount.UserAccount;
 import java.util.ArrayList;
 
 /**
@@ -18,6 +16,7 @@ import java.util.ArrayList;
  */
 public class Hospital {
    
+    // Member variables
     private String username;
     private String password;
     private String hospitalId;
@@ -26,42 +25,16 @@ public class Hospital {
     private String address;
     private String adminName;
     private String licenseNo;
-
-    public DepartmentDirectory getDepartmentDirectory() {
-        return departmentDirectory;
-    }
-
-    public void setDepartmentDirectory(DepartmentDirectory DepartmentDirectory) {
-        this.departmentDirectory = DepartmentDirectory;
-    }
+    private ArrayList<Department> departmentDirectory;
     
-    private DepartmentDirectory departmentDirectory;
-    
-    private AppointmentSchedule appointmentSchedule;
-
-    public Hospital(String hospitalId,String adminName,String name,String phoneNo, String address,String licenseNo){
-        this.adminName = adminName;
-        this.hospitalId =hospitalId;
-        this.name = name;
-        this.phoneNo = phoneNo;
-        this.address = address;
-      
-        this.licenseNo = licenseNo;
-       departmentDirectory = new DepartmentDirectory();
-    }
-    
+    // Constructor
     public Hospital() {
-    
-    
+        this.departmentDirectory = new ArrayList();
     }
 
-
-    public AppointmentSchedule getAppointmentSchedule() {
-        return appointmentSchedule;
-    }
-
-    public void setAppointmentSchedule(AppointmentSchedule appointmentSchedule) {
-        this.appointmentSchedule = appointmentSchedule;
+    // Getters and Setters
+    public ArrayList<Department> getDepartmentDirectory() {
+        return departmentDirectory;
     }
 
     public String getHospitalId() {
@@ -128,11 +101,58 @@ public class Hospital {
         this.password = password;
     }
     
+    // Overriding methods
     @Override()
     public String toString() {
         return this.hospitalId;
     }
     
+    // Methods
+    public Department getDepartment(String id){
+        for(Department department: departmentDirectory){
+            if(department.getDepartmentId().equalsIgnoreCase(id)){
+                return department;
+            }
+        }
+        return null;
+    }
     
+    public Department addDepartment(Department dep){
+        dep.setDepartmentId(
+                dep.getHospital().getHospitalId() + 
+                "-Dep"+(departmentDirectory.size()+1));
+                
+        departmentDirectory.add(dep);
+        return dep;
+    }
+   
+    public void deleteDepartment(String departmentId, Ecosystem system){
+        
+        // Remove all doctors and this department
+        for(Department d: departmentDirectory) {
+            if(d.getDepartmentId().equals(departmentId)){
+                d.removeAllDoctors(system);
+                departmentDirectory.remove(d);
+            }
+        }
+  
+        // Remove department from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getId().equals(departmentId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+    }
     
+    public void removeAllDepartments(Ecosystem system){
+        
+        // Remove all the doctors from doctorList
+        for(Department d: departmentDirectory) {
+            deleteDepartment(d.getDepartmentId(), system);
+        }
+        
+        this.departmentDirectory = new ArrayList();
+        
+    }
+
 }

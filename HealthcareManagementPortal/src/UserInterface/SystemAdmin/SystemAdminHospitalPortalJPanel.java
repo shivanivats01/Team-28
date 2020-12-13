@@ -227,6 +227,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int row = hospitalTable.getSelectedRow();
+        Hospital selected = (Hospital) hospitalTable.getValueAt(row, 0);
 
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -235,7 +236,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
 
         HospitalDirectory hospitalDirectory = business.getHospitalDirectory();
 
-        business.getHospitalDirectory().deleteHospital(row, business);
+        business.getHospitalDirectory().deleteHospital(selected.getHospitalId(), business);
 
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed

@@ -5,15 +5,10 @@
  */
 package Business.Role;
 
-import Business.Appointment.AppointmentSchedule;
-import Business.Doctor.DoctorDirectory;
 import Business.Ecosystem;
-import Business.Hospital.HospitalDirectory;
-import Business.Patient.PatientDirectory;
 import Business.UserAccount.UserAccount;
-import UserInterface.Patient.PatientPageOneJPanel;
 
-import UserInterface.Patient.PatientWorkAreaJPanel;
+import UserInterface.Patient.WelcomePatientJPanel;
 import javax.swing.JPanel;
 
 /**
@@ -25,7 +20,7 @@ public class PatientRole extends Role {
     
     
     public JPanel createWorkArea(JPanel userProcessContainer, UserAccount account, Ecosystem business) {
-        return new PatientPageOneJPanel(userProcessContainer, account, business);
+        return new WelcomePatientJPanel(userProcessContainer, account, business);
     }
 
    

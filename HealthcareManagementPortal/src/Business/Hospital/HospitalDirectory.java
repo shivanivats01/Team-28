@@ -8,6 +8,7 @@ package Business.Hospital;
 import Business.Department.Department;
 import Business.Ecosystem;
 import Business.Patient.Patient;
+import Business.UserAccount.UserAccount;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -34,28 +35,30 @@ public class HospitalDirectory {
         this.hospitalList = hospitalDirectory;
     }
     
-//    public Hospital add(String adminName,String name, String phone, String address, BufferedImage photo,String licenseNo){
-//       Hospital restaurant = new Hospital("H"+(hospitalList.size()+1),adminName, name, phone, address,licenseNo);
-//       hospitalList.add(restaurant);
-//       return restaurant;
-//    }
-    public Hospital add(Hospital h){
+    public Hospital addHospital(Hospital h){
        
         h.setHospitalId("H"+(hospitalList.size()+1));
         hospitalList.add(h);
         return h;
     }
-    
-    
-    
-    public void deleteHospital(int index,Ecosystem system){
-        String id = hospitalList.get(index).getHospitalId();
-        for(int i =0; i <system.getUserAccountDirectory().getUserAccountList().size();i++){
-            if(system.getUserAccountDirectory().getUserAccountList().get(i).getEmployee().getName().equalsIgnoreCase(id)){
-                system.getUserAccountDirectory().getUserAccountList().remove(i);
+
+    public void deleteHospital(String hospitalId,Ecosystem system){
+        
+        // Remove all doctors, departments and this hospital
+        for(Hospital h: hospitalList) {
+            if(h.getHospitalId().equals(hospitalId)){
+                h.removeAllDepartments(system);
+                hospitalList.remove(h);
             }
         }
-        hospitalList.remove(index);
+  
+        // Remove hospital from userAccountList
+        for(UserAccount account: system.getUserAccountDirectory().getUserAccountList()) {
+            if(account.getId().equals(hospitalId)) {
+                system.getUserAccountDirectory().getUserAccountList().remove(account);
+            }
+        }
+    
     }
     
     public Hospital getHospitalId(int index){

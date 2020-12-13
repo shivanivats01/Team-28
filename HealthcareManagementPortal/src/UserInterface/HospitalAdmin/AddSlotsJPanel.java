@@ -47,8 +47,6 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
         this.business= business;
     }
 
-   
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,7 +56,6 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDayChooser1 = new com.toedter.calendar.JDayChooser();
         jLabel1 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
@@ -67,7 +64,7 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
         inTimeTxt = new javax.swing.JTextField();
         durationTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        datechooser = new com.toedter.calendar.JDateChooser();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -127,7 +124,7 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
                                 .addComponent(inTimeTxt)
                                 .addGap(39, 39, 39))
                             .addComponent(durationTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                            .addComponent(datechooser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(176, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,11 +134,11 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(btnBack)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGap(30, 30, 30)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4)
-                    .addComponent(datechooser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(durationTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -174,7 +171,7 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
        // DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:MM");
         
          int duration = Integer.parseInt(durationTxt.getText());
-         Date date = datechooser.getDate();
+         Date date = jDateChooser1.getDate();
         // String username = usernameTxt.getText();
         // String password= passwordTxt.getText();
 
@@ -190,12 +187,12 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
         
             // Hospital hospital = business.getHospitalDirectory().add(newHospital);
 
-            Slot slot = business.getSlotList().add(newSlot);
-            // Employee employee = business.getEmployeeDirectory().createEmployee(hospital.getHospitalId());
-
-            // UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalRole());
-
-            JOptionPane.showMessageDialog(null, "New Slot added");
+//            Slot slot = business.getSlotList().add(newSlot);
+//            // Employee employee = business.getEmployeeDirectory().createEmployee(hospital.getHospitalId());
+//
+//            // UserAccount account = business.getUserAccountDirectory().createUserAccount(username, password, employee, new HospitalRole());
+//
+//            JOptionPane.showMessageDialog(null, "New Slot added");
        
 
     }//GEN-LAST:event_btnSaveActionPerformed
@@ -220,10 +217,9 @@ public class AddSlotsJPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnSave;
-    private com.toedter.calendar.JDateChooser datechooser;
     private javax.swing.JTextField durationTxt;
     private javax.swing.JTextField inTimeTxt;
-    private com.toedter.calendar.JDayChooser jDayChooser1;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
