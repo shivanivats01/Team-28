@@ -54,6 +54,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
         createPrescription = new javax.swing.JButton();
+        requestLabTestbtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
@@ -96,6 +97,13 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
             }
         });
 
+        requestLabTestbtn.setText("Request Lab Test");
+        requestLabTestbtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                requestLabTestbtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -116,7 +124,8 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(11, 11, 11)
                                     .addComponent(jLabel2)))
-                            .addComponent(createPrescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(createPrescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(requestLabTestbtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -134,7 +143,9 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(createPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(requestLabTestbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                 .addComponent(backBtn)
                 .addGap(18, 18, 18))
         );
@@ -182,6 +193,15 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_createPrescriptionActionPerformed
 
+    private void requestLabTestbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_requestLabTestbtnActionPerformed
+        // TODO add your handling code here:
+        
+        CreateLabTestRequestJPanel createLabTestRequestJPanel = new CreateLabTestRequestJPanel( CardLayoutJPanel,account, business, this.doctor);
+        CardLayoutJPanel.add("CreateLabTestRequestJPanel", createLabTestRequestJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_requestLabTestbtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
@@ -190,6 +210,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton personalinfoBtn;
+    private javax.swing.JButton requestLabTestbtn;
     private javax.swing.JButton searchPatientBtn;
     // End of variables declaration//GEN-END:variables
 }

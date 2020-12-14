@@ -90,7 +90,7 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
         patientComboBox = new javax.swing.JComboBox<>();
         patientDetails = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        testResult = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
 
@@ -108,7 +108,12 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton3.setText("Patient Test Results");
+        testResult.setText("Patient Test Results");
+        testResult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testResultActionPerformed(evt);
+            }
+        });
 
         backBtn.setText("< back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +134,7 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
                             .addComponent(patientComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(patientDetails)
                             .addComponent(jButton2)
-                            .addComponent(jButton3)))
+                            .addComponent(testResult)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(25, 25, 25)
                         .addComponent(backBtn)))
@@ -145,7 +150,7 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jButton2)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(testResult)
                 .addGap(181, 181, 181)
                 .addComponent(backBtn)
                 .addContainerGap(290, Short.MAX_VALUE))
@@ -213,15 +218,19 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void testResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testResultActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_testResultActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JComboBox<Patient> patientComboBox;
     private javax.swing.JButton patientDetails;
+    private javax.swing.JButton testResult;
     // End of variables declaration//GEN-END:variables
 }

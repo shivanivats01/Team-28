@@ -52,11 +52,13 @@
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="hospitalBtn" max="32767" attributes="0"/>
                           <Component id="systemAdminBtn" pref="216" max="32767" attributes="0"/>
+                          <Component id="labBtn" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="patientBtn" max="32767" attributes="0"/>
                           <Component id="pharmacyBtn" pref="216" max="32767" attributes="0"/>
+                          <Component id="ambulanceBtn" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace pref="1440" max="32767" attributes="0"/>
                   </Group>
@@ -75,7 +77,12 @@
                           <Component id="hospitalBtn" min="-2" pref="74" max="-2" attributes="0"/>
                           <Component id="pharmacyBtn" min="-2" pref="64" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="564" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labBtn" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
+                          <Component id="ambulanceBtn" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="472" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -111,6 +118,22 @@
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="pharmacyBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="labBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lab"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="labBtnActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JButton" name="ambulanceBtn">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Ambulance"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ambulanceBtnActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
