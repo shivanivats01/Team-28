@@ -84,8 +84,6 @@ public class CreatePrescriptionJPanel extends javax.swing.JPanel {
         
         
         pharmacyListComboBox.setModel(new DefaultComboBoxModel<Pharmacy>(comboBoxModel4));
-        
-    
     
     }
 

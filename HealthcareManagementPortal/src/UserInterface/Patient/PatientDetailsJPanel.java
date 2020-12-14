@@ -9,6 +9,7 @@ package UserInterface.Patient;
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
