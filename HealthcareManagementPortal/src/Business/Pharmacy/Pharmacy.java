@@ -22,19 +22,10 @@ public class Pharmacy {
     private String address;
     private String username;
     private String password; 
-    private ArrayList<PharmacyDetails> pharmacyDetails = new ArrayList();
     
     
     // Empty constructor
     public Pharmacy() {}
-
-    public ArrayList<PharmacyDetails> getPharmacyDetails() {
-        return pharmacyDetails;
-    }
-
-    public void setPharmacyDetails(ArrayList<PharmacyDetails> pharmacyDetails) {
-        this.pharmacyDetails = pharmacyDetails;
-    }
 
     public String getAddress() {
         return address;

@@ -5,6 +5,7 @@
  */
 package Business;
 
+import Business.Department.Department;
 import Business.Doctor.Doctor;
 import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
@@ -13,9 +14,11 @@ import Business.Patient.PatientDetails;
 import Business.Pharmacy.Pharmacy;
 import Business.Patient.PatientDirectory;
 import Business.Pharmacy.PharmacyDirectory;
+import Business.Role.DepartmentRole;
 import Business.Role.HospitalRole;
 import Business.Role.PatientRole;
 import Business.Role.PharmacyRole;
+import Business.Role.PhysicianRole;
 import Business.Role.Role;
 import Business.Role.SystemAdminRole;
 import Business.UserAccount.UserAccount;
@@ -106,6 +109,34 @@ public class Ecosystem extends HealthCarePortal {
         Hospital hospital2 = business.getHospitalDirectory().addHospital(h2);
         UserAccount account2 = business.getUserAccountDirectory().createUserAccount(hospital2.getUsername(), hospital2.getPassword(), hospital2.getHospitalId(), new HospitalRole(), hospital2);
 
+        // Create department
+        Department d1 = new Department();
+        d1.setDepartmentAdminName("d1 admin name");
+        d1.setDepartmentName("d1 name");
+        d1.setUsername("d1");
+        d1.setPassword("d1");
+        d1.setHospital(hospital1);
+        
+        Department department = hospital1.addDepartment(d1);
+        business.getUserAccountDirectory().createUserAccount(department.getUsername(), department.getPassword(), department.getDepartmentId(), new DepartmentRole(), department);
+
+        
+        
+        // Create physician
+        Doctor doc1 = new Doctor();
+        doc1.setDepartment(department);
+        doc1.setEmailId("doc1 email");
+        doc1.setGender("doc1 gender");
+        doc1.setLicenseNo("doc1 licenseNo");
+        doc1.setName("doc1 name");
+        doc1.setPassword("doc1");
+        doc1.setUsername("doc1");
+        doc1.setPhoneNo("doc1 phoneNo");
+        
+        Doctor doctor = department.addDoctor(doc1);
+        business.getUserAccountDirectory().createUserAccount(doctor.getUsername(), doctor.getPassword(), doctor.getDoctorId(), new PhysicianRole(), doctor);
+        
+        
 
         // Create Patients
         Patient p1= new Patient();

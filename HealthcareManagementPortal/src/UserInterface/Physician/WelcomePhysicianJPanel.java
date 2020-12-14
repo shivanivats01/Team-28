@@ -53,8 +53,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
         AppointmentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        createPrescription = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
@@ -90,14 +89,12 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
             }
         });
 
-        jButton1.setText("Request Lab Test");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createPrescription.setText("Create Prescriptions");
+        createPrescription.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createPrescriptionActionPerformed(evt);
             }
         });
-
-        jButton2.setText("Create Prescriptions");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -118,9 +115,8 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                     .addGap(11, 11, 11)
-                                    .addComponent(jLabel2))
-                                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(jLabel2)))
+                            .addComponent(createPrescription, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(158, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -137,10 +133,8 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addComponent(createPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
                 .addComponent(backBtn)
                 .addGap(18, 18, 18))
         );
@@ -180,16 +174,19 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_searchPatientBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createPrescriptionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPrescriptionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        CreatePrescriptionJPanel createPrescriptionJPanel = new CreatePrescriptionJPanel( CardLayoutJPanel,account, business, this.doctor);
+        CardLayoutJPanel.add("CreatePrescriptionJPanel", createPrescriptionJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_createPrescriptionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
     private javax.swing.JButton backBtn;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton createPrescription;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton personalinfoBtn;

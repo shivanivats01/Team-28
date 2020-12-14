@@ -41,24 +41,24 @@ public class PastPrescriptionsJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        pharmacyTable = new javax.swing.JTable();
         backBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Past Prescriptions");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        pharmacyTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Doctor", "Patient", "Medicines", "Status", "Request Date", "Resolve Date"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(pharmacyTable);
 
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -107,6 +107,6 @@ public class PastPrescriptionsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable pharmacyTable;
     // End of variables declaration//GEN-END:variables
 }

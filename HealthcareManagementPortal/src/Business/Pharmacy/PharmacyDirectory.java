@@ -32,7 +32,7 @@ public class PharmacyDirectory {
     }
     
     public Pharmacy addPharmacy(Pharmacy p){
-        p.setPharmacyId("P"+(pharmacyList.size()+1));
+        p.setPharmacyId("PH"+(pharmacyList.size()+1));
                 
         pharmacyList.add(p);
         return p;

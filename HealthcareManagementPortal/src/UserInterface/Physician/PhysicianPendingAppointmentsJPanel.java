@@ -57,15 +57,14 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest w: upcomingAppointmentList) {
-            Object row[] = new Object[7];
+            Object row[] = new Object[6];
         
             row[0] = w.getSender().getId();
             row[1] = w.getReceiver().getId();
             row[2] = w.getStatus();
-            row[3] = w.getRequestDate();
+            row[3] = w;
             row[4] = w.getResolveDate();
             row[5] = w.getMessage();
-            row[6] = w;
             model.addRow(row);
             
         }     
@@ -163,7 +162,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 6);
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 3);
         
         request.setStatus("accepted");
         
