@@ -77,10 +77,10 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         patientTbl = new javax.swing.JTable();
         deleteBtn = new javax.swing.JButton();
-        refreshBtn = new javax.swing.JButton();
         viewPatientBtn = new javax.swing.JButton();
         createPatientBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        refreshBtn = new javax.swing.JButton();
 
         jLabel1.setText("Patient Portal");
 
@@ -104,13 +104,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
             }
         });
 
-        refreshBtn.setText("Refresh");
-        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                refreshBtnActionPerformed(evt);
-            }
-        });
-
         viewPatientBtn.setText("View Details");
         viewPatientBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +122,13 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
+            }
+        });
+
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
             }
         });
 
@@ -220,12 +220,6 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed
 
-    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
-        // TODO add your handling code here:
-        populateTable();
-        
-    }//GEN-LAST:event_refreshBtnActionPerformed
-
     private void createPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createPatientBtnActionPerformed
         // TODO add your handling code here:
         CreatePatientJPanel createPatientJPanel = new CreatePatientJPanel(CardLayoutJPanel, business);
@@ -233,6 +227,11 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_createPatientBtnActionPerformed
+
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_refreshBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

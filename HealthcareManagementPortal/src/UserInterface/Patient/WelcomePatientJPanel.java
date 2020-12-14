@@ -56,6 +56,11 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         jLabel1.setText("Welcome To WeCare");
 
         historyBtn.setText("History");
+        historyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                historyBtnActionPerformed(evt);
+            }
+        });
 
         personalinfoBtn.setText("Personal Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +105,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                                 .addGap(11, 11, 11)
                                 .addComponent(jLabel2))
                             .addComponent(backBtn))))
-                .addContainerGap(117, Short.MAX_VALUE))
+                .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,9 +120,9 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
                 .addComponent(backBtn)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addGap(31, 31, 31))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -145,6 +150,14 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
+
+    private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
+        // TODO add your handling code here:
+        PatientHistoryJPanel patientHistoryJPanel = new PatientHistoryJPanel(CardLayoutJPanel, this.patient, this.account);
+        CardLayoutJPanel.add("PatientHistoryJPanel", patientHistoryJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+    }//GEN-LAST:event_historyBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

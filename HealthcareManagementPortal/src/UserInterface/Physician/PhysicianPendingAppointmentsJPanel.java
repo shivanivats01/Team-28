@@ -5,9 +5,12 @@
  */
 package UserInterface.Physician;
 
+import Business.Doctor.Doctor;
 import UserInterface.Patient.*;
 import Business.Ecosystem;
+import Business.Patient.Patient;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PhysicianRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -41,11 +44,11 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
     public void populateTable() {
         // populate all patients in patient directory
         ArrayList<WorkRequest> appointmentList = account.getWorkQueue().getWorkRequestList();
+        ArrayList<WorkRequest> pendingAppointmentList = new ArrayList();
         
-        ArrayList<WorkRequest> upcomingAppointmentList = new ArrayList();
         for(WorkRequest w: appointmentList) {
-            if(w.getStatus().equals("awaiting approval")) {
-                upcomingAppointmentList.add(w);
+            if(w.getStatus().equals("pending physician approval")) {
+                pendingAppointmentList.add(w);
             }
         }
         
@@ -56,16 +59,19 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             model.removeRow(i);
         }
         
-        for(WorkRequest w: upcomingAppointmentList) {
-            Object row[] = new Object[7];
+        for(WorkRequest w: pendingAppointmentList) {
+            Object row[] = new Object[4];
+            
+            PhysicianRequest pr = (PhysicianRequest) w;
+            
+            Patient p = (Patient) this.business.getUserAccountDirectory().getUserById(pr.getSender().getId()).getDetails();
+            Doctor d = (Doctor) this.account.getDetails();
         
-            row[0] = w.getSender().getId();
-            row[1] = w.getReceiver().getId();
-            row[2] = w.getStatus();
-            row[3] = w.getRequestDate();
-            row[4] = w.getResolveDate();
-            row[5] = w.getMessage();
-            row[6] = w;
+            row[0] = p.getName();
+            row[1] = d.getDepartment().getHospital().getName();
+            row[2] = pr;
+            row[3] = pr.getTime();
+            
             model.addRow(row);
             
         }     
@@ -85,19 +91,20 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         acceptBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
-        jLabel4.setText("Upcoming Appointments");
+        jLabel4.setText("Pending Approvals");
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Patient", "Hospital", "Status", "Date Requested", "Date Accepted", "Message"
+                "Patient", "Hospital", "Date Requested", "Time Slot"
             }
         ));
         jScrollPane4.setViewportView(jTable4);
@@ -109,15 +116,27 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Decline");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane4)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(135, 135, 135)
-                .addComponent(jLabel4)
-                .addContainerGap(203, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(135, 135, 135)
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(162, 162, 162)
+                        .addComponent(jButton1)))
+                .addContainerGap(316, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(57, 57, 57)
@@ -131,7 +150,9 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
                 .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(248, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 121, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(98, 98, 98))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
                     .addContainerGap(406, Short.MAX_VALUE)
@@ -163,16 +184,38 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 6);
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 2);
         
-        request.setStatus("accepted");
+        request.setStatus("physician accepted");
         
         JOptionPane.showMessageDialog(null, "Appointment accepted");
+        
+        populateTable();
     }//GEN-LAST:event_acceptBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        int rowCount = jTable4.getSelectedRow();
+        
+        if(rowCount < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 2);
+        
+        request.setStatus("physician declined");
+        
+        JOptionPane.showMessageDialog(null, "Appointment declined");
+        
+        populateTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acceptBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;

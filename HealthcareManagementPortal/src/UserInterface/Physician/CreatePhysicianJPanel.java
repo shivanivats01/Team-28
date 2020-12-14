@@ -15,6 +15,8 @@ import Business.Role.HospitalRole;
 import Business.Role.PatientRole;
 import Business.Role.PhysicianRole;
 import Business.UserAccount.UserAccount;
+import UserInterface.HospitalAdmin.HospitalManageDepartmentJPanel;
+import UserInterface.HospitalAdmin.ManagePhysicianJPanel;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -34,16 +36,18 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
     JPanel CardLayoutJPanel;
     Ecosystem business;
     Hospital hospital;
+    Department department;
     
     /**
      * Creates new form CreateHospitalJPanel
      */
-    public CreatePhysicianJPanel( JPanel CardLayoutJPanel, Ecosystem business, Hospital hospital) {
+    public CreatePhysicianJPanel( JPanel CardLayoutJPanel, Ecosystem business, Hospital hospital, Department department) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
         
         this.hospital = hospital;
+        this.department = department;
         
         ArrayList<Department> departmentList = hospital.getDepartmentDirectory();
         Department[] comboBoxModel1 = departmentList.toArray(new Department[0]);
@@ -242,6 +246,12 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         // TODO add your handling code here:
         CardLayoutJPanel.remove(this);
+        Component[] componentArray = CardLayoutJPanel.getComponents();
+        Component component = componentArray[componentArray.length - 1];
+        
+        ManagePhysicianJPanel managePhysicianJPanel = (ManagePhysicianJPanel) component;
+        managePhysicianJPanel.populateTable();
+
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_btnBackActionPerformed

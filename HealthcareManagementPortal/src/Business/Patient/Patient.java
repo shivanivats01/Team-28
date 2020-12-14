@@ -5,6 +5,8 @@
  */
 package Business.Patient;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author riyamoitra
@@ -21,10 +23,20 @@ public class Patient {
    private String age;
    private String gender;
    private String bloodGroup;
-   
+   private ArrayList<PatientDetails> patientDetails = new ArrayList();
+
    
     public Patient() {
-       
+       this.patientDetails = new ArrayList();
+    }
+    
+    public void setPatientDetails(ArrayList<PatientDetails> patientDetails) {
+        this.patientDetails = patientDetails;
+    }
+   
+    
+    public ArrayList<PatientDetails> getPatientDetails() {
+        return patientDetails;
     }
 
     public String getPatientID() {

@@ -44,7 +44,6 @@ public class PatientAppointmentsJPanel extends javax.swing.JPanel {
         jSplitPane1 = new javax.swing.JSplitPane();
         rightJPanel = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        pastBtn = new javax.swing.JButton();
         UpcomingAppointmentBtn = new javax.swing.JButton();
         ScheduleAppointmentBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
@@ -61,13 +60,6 @@ public class PatientAppointmentsJPanel extends javax.swing.JPanel {
         );
 
         jSplitPane1.setRightComponent(rightJPanel);
-
-        pastBtn.setText("Past Appointments");
-        pastBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                pastBtnActionPerformed(evt);
-            }
-        });
 
         UpcomingAppointmentBtn.setText("Upcoming Appointments");
         UpcomingAppointmentBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -95,29 +87,28 @@ public class PatientAppointmentsJPanel extends javax.swing.JPanel {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ScheduleAppointmentBtn)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(pastBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(UpcomingAppointmentBtn, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(ScheduleAppointmentBtn))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(UpcomingAppointmentBtn))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(backBtn)
-                .addGap(60, 60, 60)
-                .addComponent(pastBtn)
-                .addGap(18, 18, 18)
+                .addGap(69, 69, 69)
                 .addComponent(UpcomingAppointmentBtn)
                 .addGap(18, 18, 18)
                 .addComponent(ScheduleAppointmentBtn)
-                .addContainerGap(200, Short.MAX_VALUE))
+                .addContainerGap(238, Short.MAX_VALUE))
         );
 
         jSplitPane1.setLeftComponent(jPanel1);
@@ -133,12 +124,6 @@ public class PatientAppointmentsJPanel extends javax.swing.JPanel {
             .addComponent(jSplitPane1)
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void pastBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pastBtnActionPerformed
-        // TODO add your handling code here:
-        jSplitPane1.setRightComponent(new PatientPastAppointmentsJPanel(CardLayoutJPanel, account, business));
-        
-    }//GEN-LAST:event_pastBtnActionPerformed
 
     private void UpcomingAppointmentBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UpcomingAppointmentBtnActionPerformed
         // TODO add your handling code here:
@@ -165,7 +150,6 @@ public class PatientAppointmentsJPanel extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JButton pastBtn;
     private javax.swing.JPanel rightJPanel;
     // End of variables declaration//GEN-END:variables
 }

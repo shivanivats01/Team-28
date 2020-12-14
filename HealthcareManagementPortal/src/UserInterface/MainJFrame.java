@@ -49,6 +49,7 @@ public class MainJFrame extends javax.swing.JFrame {
         patientBtn = new javax.swing.JButton();
         systemAdminBtn = new javax.swing.JButton();
         hospitalBtn = new javax.swing.JButton();
+        pharmacyBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,29 +76,40 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        pharmacyBtn.setText("Pharmacy");
+        pharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pharmacyBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(63, 63, 63)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(systemAdminBtn)
-                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(patientBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(hospitalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(1775, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(hospitalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(systemAdminBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                .addGap(67, 67, 67)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(patientBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(pharmacyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE))
+                .addContainerGap(1440, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(372, Short.MAX_VALUE)
-                .addComponent(systemAdminBtn)
-                .addGap(18, 18, 18)
-                .addComponent(patientBtn)
-                .addGap(18, 18, 18)
-                .addComponent(hospitalBtn)
-                .addGap(359, 359, 359))
+                .addGap(97, 97, 97)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(patientBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
+                    .addComponent(systemAdminBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(hospitalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 74, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pharmacyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(564, Short.MAX_VALUE))
         );
 
         CardLayoutJPanel.add(jPanel4, "card3");
@@ -139,6 +151,14 @@ public class MainJFrame extends javax.swing.JFrame {
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_hospitalBtnActionPerformed
+
+    private void pharmacyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacyBtnActionPerformed
+        // TODO add your handling code here:
+        LoginJPanel pharmacyLoginJPanel = new LoginJPanel(CardLayoutJPanel, business, "Pharmacy");
+        CardLayoutJPanel.add("pharmacyLoginJPanel", pharmacyLoginJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_pharmacyBtnActionPerformed
 
     // TODO: Remove this. Do not use this method
     private void sysAdminBtnActionPerformed(java.awt.event.ActionEvent evt) {                                            
@@ -189,6 +209,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JButton hospitalBtn;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JButton patientBtn;
+    private javax.swing.JButton pharmacyBtn;
     private javax.swing.JButton systemAdminBtn;
     // End of variables declaration//GEN-END:variables
 }

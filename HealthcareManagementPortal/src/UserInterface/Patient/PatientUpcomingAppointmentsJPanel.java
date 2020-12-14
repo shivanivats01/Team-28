@@ -5,9 +5,12 @@
  */
 package UserInterface.Patient;
 
+import Business.Doctor.Doctor;
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PhysicianRequest;
 import Business.WorkQueue.WorkRequest;
+import java.awt.CardLayout;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -56,15 +59,18 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         
         for(WorkRequest w: upcomingAppointmentList) {
             Object row[] = new Object[7];
-        
             
-            row[0] = w.getSender().getId();
-            row[1] = w.getReceiver().getId();
-            row[2] = w.getStatus();
-            row[3] = w.getRequestDate();
-            row[4] = w.getResolveDate();
-            row[5] = w.getMessage();
-            row[6] = w;
+            PhysicianRequest pr = (PhysicianRequest) w;        
+            Doctor doctor = (Doctor) w.getReceiver().getDetails();
+          
+            
+            row[0] = doctor.getName();
+            row[1] = doctor.getDepartment().getHospital().getName();
+            row[2] = doctor.getDepartment().getDepartmentName();
+            row[3] = pr;
+            row[4] = pr.getStatus();
+            row[5] = pr.getTime();
+            row[6] = doctor.getDepartment().getHospital().getAddress();
             
             model.addRow(row);
             
@@ -86,27 +92,35 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Upcoming Appointments");
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient", "Hospital", "Status", "Date Requested", "Date Accepted", "Message"
+                "Physician", "Hospital", "Department", "Date Requested", "Status", "Time Slot", "Address"
             }
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jButton5.setText("Delete an Appointment");
+        jButton5.setText("Cancel an Appointment");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
+            }
+        });
+
+        backBtn.setText("<back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -116,7 +130,9 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jScrollPane4)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(135, 135, 135)
+                .addContainerGap()
+                .addComponent(backBtn)
+                .addGap(45, 45, 45)
                 .addComponent(jLabel4)
                 .addContainerGap(203, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,8 +144,14 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(backBtn)
+                        .addGap(12, 12, 12)))
                 .addGap(44, 44, 44)
                 .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(248, Short.MAX_VALUE))
@@ -164,7 +186,8 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 6);
+        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 3);
+        request.setStatus("patient canceled");
         
         // delete from patient work queue
         this.account.getWorkQueue().getWorkRequestList().remove(request);
@@ -177,8 +200,16 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+    }//GEN-LAST:event_backBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton backBtn;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;
