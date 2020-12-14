@@ -11,6 +11,7 @@ import Business.Lab.Lab;
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabTestRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.awt.image.BufferedImage;
@@ -32,7 +33,7 @@ public class TestResultJPanel extends javax.swing.JPanel {
      * Creates new form TestResultJPanel
      */
     
-    WorkRequest request;
+    LabTestRequest request;
 
     
     //Ecosystem business;
@@ -46,7 +47,7 @@ public class TestResultJPanel extends javax.swing.JPanel {
 
 
 
-    TestResultJPanel(JPanel CardLayoutJPanel, WorkRequest request, UserAccount account) {
+    TestResultJPanel(JPanel CardLayoutJPanel, LabTestRequest request, UserAccount account) {
         this.CardLayoutJPanel= CardLayoutJPanel;
        // this.CardLayoutJPanel = CardLayoutJPanel;
        
@@ -149,22 +150,21 @@ public class TestResultJPanel extends javax.swing.JPanel {
         try{
             img = ImageIO.read(file);
         } catch (IOException e){
+            JOptionPane.showMessageDialog(null, "Please add a valid scanned copy of report");
         } 
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void completeTRbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTRbtnActionPerformed
         // TODO add your handling code here:
 
+        if(img == null) {
+            JOptionPane.showMessageDialog(null, "Please upload the scanned report");
+            return;
+        }
+        
         request.setResolveDate(new Date());
-        
-        //Patient  p = (Patient) request.getSender().getDetails();
-        Lab l = (Lab) request.getSender().getDetails();
-        Doctor d = (Doctor) account.getDetails();
-        
-       // PatientDetails newDetails = new PatientDetails(d, new Date(), "");
-       // p.getPatientDetails().add(newDetails);
-       
-        this.request.setStatus("complete");
+        this.request.setStatus("lab test complete");
+        this.request.setImage(img);
         
         JOptionPane.showMessageDialog(null, "Test Completed");
         

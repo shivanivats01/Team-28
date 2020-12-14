@@ -51,6 +51,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         AppointmentsBtn = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        reportBtn = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
@@ -86,6 +87,13 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
             }
         });
 
+        reportBtn.setText("Reports");
+        reportBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                reportBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -104,7 +112,8 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(jLabel2))
-                            .addComponent(backBtn))))
+                            .addComponent(backBtn)
+                            .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(195, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -120,7 +129,9 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(reportBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
                 .addComponent(backBtn)
                 .addGap(31, 31, 31))
         );
@@ -159,6 +170,16 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_historyBtnActionPerformed
 
+    private void reportBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_reportBtnActionPerformed
+        // TODO add your handling code here:
+        
+        PatientReportsJPanel patientReportsJPanel = new PatientReportsJPanel(CardLayoutJPanel, this.patient, this.account);
+        CardLayoutJPanel.add("PatientReportsJPanel", patientReportsJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel); 
+        
+    }//GEN-LAST:event_reportBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
@@ -167,5 +188,6 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton personalinfoBtn;
+    private javax.swing.JButton reportBtn;
     // End of variables declaration//GEN-END:variables
 }

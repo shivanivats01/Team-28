@@ -18,9 +18,7 @@ public class Lab {
    private String phoneNo;
    private String address;
    private String emailId;
-   
-   
-   
+  
     public Lab() {
        
     }
