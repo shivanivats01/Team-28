@@ -10,6 +10,7 @@ import Business.Department.Department;
 import Business.Doctor.Doctor;
 import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
+import Business.Lab.Lab;
 import Business.Lab.LabDirectory;
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
@@ -18,6 +19,7 @@ import Business.Patient.PatientDirectory;
 import Business.Pharmacy.PharmacyDirectory;
 import Business.Role.DepartmentRole;
 import Business.Role.HospitalRole;
+import Business.Role.LabRole;
 import Business.Role.PatientRole;
 import Business.Role.PharmacyRole;
 import Business.Role.PhysicianRole;
@@ -208,14 +210,19 @@ public class Ecosystem extends HealthCarePortal {
         ph1.setUsername("ph1");
         
         
-        ph2.setAddress("ph2 address");
-        ph2.setEmailId("ph2 adminName");
-        ph2.setLicenseNo("ph2 licenseNo");
-        ph2.setName("ph2 name");
-        ph2.setPassword("ph2");
-        ph2.setPhoneNo("ph2 phoneNumber");
-        ph2.setUsername("ph2");
-                
+        Lab l1 = new Lab();
+        
+        l1.setAddress("l1 address");
+        l1.setEmailId("l1 emailId");
+        l1.setLabname("l1 licenseNo");
+        l1.setPassword("l1");
+        l1.setPhoneNo("l1 phoneNumber");
+        l1.setUsername("l1");
+        
+        Lab lab1 = business.labDirectory.addLab(l1);
+        UserAccount accountLab1 = business.getUserAccountDirectory().createUserAccount(lab1.getUsername(), lab1.getPassword(), lab1.getLabID(), new LabRole(), lab1);
+
+        
         
         Pharmacy pharmacy1 = business.getPharmacyDirectory().addPharmacy(ph1);
         UserAccount accountPharmacy1 = business.getUserAccountDirectory().createUserAccount(pharmacy1.getUsername(), pharmacy1.getPassword(), pharmacy1.getPharmacyId(), new PharmacyRole(), pharmacy1);

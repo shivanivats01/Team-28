@@ -6,12 +6,9 @@
 package UserInterface.Lab;
 
 import Business.Doctor.Doctor;
-import Business.Ecosystem;
 import Business.Lab.Lab;
-import Business.Patient.Patient;
-import Business.Patient.PatientDetails;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.WorkRequest;
+import Business.WorkQueue.LabTestRequest;
 import java.awt.CardLayout;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -24,38 +21,30 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author riyamoitra
+ * @author shivanivats
  */
-public class TestResultJPanel extends javax.swing.JPanel {
-
-    /**
-     * Creates new form TestResultJPanel
-     */
+public class TestNewJpanel extends javax.swing.JPanel {
     
-    WorkRequest request;
-
-    
-    //Ecosystem business;
+    JPanel CardLayoutJPanel;
+    LabTestRequest request;
+    UserAccount account;
     
     JFileChooser chooser;
     File file;
     BufferedImage img;
-    private JPanel CardLayoutJPanel;
-    //private PatientDetails details;
-    private UserAccount account;
 
-
-
-    TestResultJPanel(JPanel CardLayoutJPanel, WorkRequest request, UserAccount account) {
-        this.CardLayoutJPanel= CardLayoutJPanel;
-       // this.CardLayoutJPanel = CardLayoutJPanel;
-       
+    /**
+     * Creates new form TestNewJpanel
+     */
+    public TestNewJpanel(JPanel CardLayoutJPanel, LabTestRequest request, UserAccount account) {
+        initComponents();
+        
+            
+        this.CardLayoutJPanel = CardLayoutJPanel;
+        this.request = request;
         this.account = account;
-        this.request= request;
-
     }
 
-    /* */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -65,18 +54,23 @@ public class TestResultJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        backBtn = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         choosebtn = new javax.swing.JButton();
         completeTRbtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel1.setText("Upload Result: ");
+        backBtn.setText("< Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Upload Test Result");
+
+        jLabel1.setText("Upload Result: ");
 
         choosebtn.setText("Choose");
         choosebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -89,13 +83,6 @@ public class TestResultJPanel extends javax.swing.JPanel {
         completeTRbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 completeTRbtnActionPerformed(evt);
-            }
-        });
-
-        backBtn.setText("< Back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
             }
         });
 
@@ -118,7 +105,7 @@ public class TestResultJPanel extends javax.swing.JPanel {
                                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(choosebtn)))))
-                .addContainerGap(108, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,48 +123,44 @@ public class TestResultJPanel extends javax.swing.JPanel {
                     .addComponent(choosebtn))
                 .addGap(52, 52, 52)
                 .addComponent(completeTRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(214, Short.MAX_VALUE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        // TODO add your handling code here:
+
+        CardLayoutJPanel.remove(this);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.previous(CardLayoutJPanel);
+
+    }//GEN-LAST:event_backBtnActionPerformed
+
     private void choosebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_choosebtnActionPerformed
         // TODO add your handling code here:
-        
+
         chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         file = chooser.getSelectedFile();
         try{
             img = ImageIO.read(file);
         } catch (IOException e){
-        } 
+        }
     }//GEN-LAST:event_choosebtnActionPerformed
 
     private void completeTRbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_completeTRbtnActionPerformed
         // TODO add your handling code here:
 
         request.setResolveDate(new Date());
-        
-        //Patient  p = (Patient) request.getSender().getDetails();
-        Lab l = (Lab) request.getSender().getDetails();
-        Doctor d = (Doctor) account.getDetails();
-        
-       // PatientDetails newDetails = new PatientDetails(d, new Date(), "");
-       // p.getPatientDetails().add(newDetails);
-       
-        this.request.setStatus("complete");
-        
-        JOptionPane.showMessageDialog(null, "Test Completed");
-        
-    }//GEN-LAST:event_completeTRbtnActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        
-        CardLayoutJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-                                          
-    }//GEN-LAST:event_backBtnActionPerformed
+        Doctor doctor = (Doctor) request.getSender().getDetails();
+        Lab lab = (Lab) account.getDetails();
+
+        this.request.setStatus("complete");
+
+        JOptionPane.showMessageDialog(null, "Test Completed");
+
+    }//GEN-LAST:event_completeTRbtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

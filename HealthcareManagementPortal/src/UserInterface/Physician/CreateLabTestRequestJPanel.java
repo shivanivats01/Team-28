@@ -15,8 +15,10 @@ import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.Lab.Lab;
 import Business.Patient.Patient;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestRequest;
+import Business.WorkQueue.PharmacyRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -101,7 +103,6 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         patientjComboBox = new javax.swing.JComboBox<>();
         jLabel3 = new javax.swing.JLabel();
         labListComboBox = new javax.swing.JComboBox<>();
-        sendRequestBtn = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         testListComboBox = new javax.swing.JComboBox<>();
         sendRequestBtn1 = new javax.swing.JButton();
@@ -132,13 +133,6 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         labListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labListComboBoxActionPerformed(evt);
-            }
-        });
-
-        sendRequestBtn.setText("Send Request");
-        sendRequestBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                sendRequestBtnActionPerformed(evt);
             }
         });
 
@@ -189,11 +183,6 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
                                 .addComponent(testListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(sendRequestBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(116, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(294, 294, 294)
-                    .addComponent(sendRequestBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(184, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,11 +211,6 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(85, 85, 85))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(359, 359, 359)
-                    .addComponent(sendRequestBtn)
-                    .addContainerGap(87, Short.MAX_VALUE)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -245,18 +229,12 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_labListComboBoxActionPerformed
 
-    private void sendRequestBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRequestBtnActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_sendRequestBtnActionPerformed
-
     private void testListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testListComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_testListComboBoxActionPerformed
 
     private void sendRequestBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendRequestBtn1ActionPerformed
         // TODO add your handling code here:
-
         
         Patient patient = (Patient) patientjComboBox.getSelectedItem();
         Lab lab = (Lab) labListComboBox.getSelectedItem();
@@ -270,9 +248,8 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         newRequest.setSender(account);
         newRequest.setPatient(patient);
         newRequest.setReceiver(this.business.getUserAccountDirectory().getUserById(lab.getLabID()));
-        newRequest.setStatus("pending");
+        newRequest.setStatus("pending lab approval");
         newRequest.setRequestDate(new Date());
-        //newRequest.setMessage();
 
         this.business.getUserAccountDirectory().getUserById(lab.getLabID()).getWorkQueue().getWorkRequestList().add(newRequest);
         this.account.getWorkQueue().getWorkRequestList().add(newRequest);
@@ -306,7 +283,6 @@ public void populateTestcomboBox() {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JComboBox<Lab> labListComboBox;
     private javax.swing.JComboBox<Patient> patientjComboBox;
-    private javax.swing.JButton sendRequestBtn;
     private javax.swing.JButton sendRequestBtn1;
     private javax.swing.JComboBox<String> testListComboBox;
     // End of variables declaration//GEN-END:variables

@@ -12,8 +12,10 @@ import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestRequest;
+import Business.WorkQueue.PharmacyRequest;
 import Business.WorkQueue.WorkRequest;
 import UserInterface.Patient.PatientDetailsJPanel;
+import UserInterface.Pharmacy.PastPrescriptionsJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
@@ -47,6 +49,8 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
     }
 
     public void populateTable() {
+        
+        
         // populate all patients in patient directory
         ArrayList<WorkRequest> testList = account.getWorkQueue().getWorkRequestList();
         ArrayList<LabTestRequest> upcomingTestList = new ArrayList();
@@ -54,7 +58,7 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
         for(WorkRequest w: testList) {
             
             LabTestRequest pr = (LabTestRequest) w;            
-            if(w.getStatus().equals("pending")) {
+            if(w.getStatus().equals("pending lab approval")) {
                 upcomingTestList.add(pr);
             }
         }
@@ -67,14 +71,13 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
         }
         
         for(LabTestRequest w: upcomingTestList) {
-            Object row[] = new Object[7];
+            Object row[] = new Object[4];
         
             
             row[0] = w.getSender().getId();
             row[1] = w.getPatient().getPatientID();
-            row[2] = w.getMessage();
-            row[3] = w.getStatus();
-            row[4] = w;
+            row[2] = w.getStatus();
+            row[3] = w;
            
             
             model.addRow(row);
@@ -104,13 +107,13 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
 
         pendingTestTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "Doctor", "Patient", "Message", "Status", "Date Requested"
+                "Doctor", "Patient", "Status", "Date Requested"
             }
         ));
         jScrollPane4.setViewportView(pendingTestTbl);
@@ -195,22 +198,16 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) pendingTestTbl.getValueAt(rowCount, 4);
-//        request.setResolveDate(new Date());
-          request.setStatus("complete");
-          
+        LabTestRequest request = (LabTestRequest) pendingTestTbl.getValueAt(rowCount, 3);
+        request.setStatus("lab request in-progress");
         
-        //Patient  p = (Patient) request.getSender().getDetails();
-        Doctor doc = (Doctor) request.getSender().getDetails();
-        Lab l = (Lab) account.getDetails();
+        populateTable();
         
-      
-        
-        
-        TestResultJPanel testResultJPanel = new TestResultJPanel(CardLayoutJPanel,request, this.account);
-        CardLayoutJPanel.add("TestResultJPanel", testResultJPanel);
+        TestNewJpanel testResultJPanel = new TestNewJpanel(CardLayoutJPanel,request, this.account);
+        CardLayoutJPanel.add("TestNewJpanel", testResultJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel);
+        
     }//GEN-LAST:event_ProcessTestbtnActionPerformed
 
 
