@@ -17,6 +17,10 @@ public class PatientDetails {
     private Doctor doctor;
     private Date date;
     private String notes;
+
+    public void setNotes(String notes) {
+        this.notes = notes;
+    }
     
     public PatientDetails(Doctor doctor, Date date, String notes) {
         this.doctor = doctor;

@@ -165,15 +165,15 @@ public class Ecosystem extends HealthCarePortal {
         
         Patient patient1 = business.getPatientDirectory().addPatient(p1);
         UserAccount accountPatient1 = business.getUserAccountDirectory().createUserAccount(patient1.getUsername(), patient1.getPassword(), patient1.getPatientID(), new PatientRole(), patient1);
-        ArrayList<PatientDetails> l1 = new ArrayList();
-        l1.add(new PatientDetails(null, new Date(), "Headaches can have causes that aren't due to underlying disease. Examples include lack of sleep, an incorrect eyeglass prescription, stress, loud noise exposure, or tight headwear."));
-        patient1.setPatientDetails(l1);
+//        ArrayList<PatientDetails> l1 = new ArrayList();
+//        l1.add(new PatientDetails(null, new Date(), "Headaches can have causes that aren't due to underlying disease. Examples include lack of sleep, an incorrect eyeglass prescription, stress, loud noise exposure, or tight headwear."));
+//        patient1.setPatientDetails(l1);
         
         Patient patient2 = business.getPatientDirectory().addPatient(p2);
         UserAccount accountPatient2 = business.getUserAccountDirectory().createUserAccount(patient2.getUsername(), patient2.getPassword(), patient2.getPatientID(), new PatientRole(), patient2);
-        ArrayList<PatientDetails> l2 = new ArrayList();
-        l2.add(new PatientDetails(null, new Date(), "Back pain is one of the most common reasons people go to the doctor or miss work, and it is a leading cause of disability worldwide."));
-        patient2.setPatientDetails(l2);
+//        ArrayList<PatientDetails> l2 = new ArrayList();
+//        l2.add(new PatientDetails(null, new Date(), "Back pain is one of the most common reasons people go to the doctor or miss work, and it is a leading cause of disability worldwide."));
+//        patient2.setPatientDetails(l2);
         
          // Create pharmacy
         Pharmacy ph1 = new Pharmacy();

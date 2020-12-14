@@ -10,6 +10,7 @@ import Business.Doctor.Doctor;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PhysicianRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         
     }
     
-    public void populateTable(ArrayList<WorkRequest> appointments) {
+    public void populateTable(ArrayList<PhysicianRequest> appointments) {
         // populate all patients in patient directory
         
         int rowCount = jTable1.getRowCount();
@@ -65,16 +66,15 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             model.removeRow(i);
         }
         
-        for(WorkRequest r: appointments) {
-            Object row[] = new Object[8];
-            row[0] = r;
-            row[1] = r.getSender().getId();
-            row[2] = r.getReceiver().getId();
-            row[3] = r.getStatus();
-            row[4] = r.getRequestDate();
-            row[5] = r.getResolveDate();
-            row[6] = r.getMessage();
-            row[7] = r.getTime();
+        for(PhysicianRequest pr: appointments) {
+            Object row[] = new Object[4];
+            
+            Doctor doctor = (Doctor) pr.getReceiver().getDetails();
+            
+            row[0] = doctor.getName();
+            row[1] = doctor.getDepartment().getHospital().getName();
+            row[2] = doctor.getDepartment().getDepartmentName();
+            row[3] = pr.getTime();
             
             model.addRow(row);
         }
@@ -138,13 +138,13 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "ID", "Sender", "Reciever", "Status", "Request Date", "Resolve Date", "Message", "Time Slot"
+                "Physician", "Hospital", "Department", "Time Slot"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -252,7 +252,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             return;
         }
         
-        ArrayList<WorkRequest> availableWorkRequests = new ArrayList();
+        ArrayList<PhysicianRequest> availableWorkRequests = new ArrayList();
         // When only hospital and department are selected
         if(selectedDoctor == null) {
             
@@ -263,28 +263,31 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             
                 if(doctorWorkRequestList.size() == 0) {
                     for(int time = 8; time < 19; time ++) {
-                        WorkRequest newRequest = new WorkRequest();
-
+                        PhysicianRequest newRequest = new PhysicianRequest();
+                       
                         newRequest.setReceiver(doctorAccount);
                         newRequest.setRequestDate(new Date());
                         newRequest.setSender(account);
                         newRequest.setStatus("available");
-                        newRequest.setTime(selectedDate.toString()+ " [ " + time + " ] ");
+                        newRequest.setTime(time + " - " + (time + 1));
 
                         availableWorkRequests.add(newRequest);
                     }
                 } else {
                     for(int time = 8; time < 19; time ++) {
-                        WorkRequest newRequest = new WorkRequest();
+                        PhysicianRequest newRequest = new PhysicianRequest();
 
                         newRequest.setReceiver(doctorAccount);
                         newRequest.setRequestDate(new Date());
                         newRequest.setSender(account);
                         newRequest.setStatus("available");
-                        newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+                        newRequest.setTime(time + " - " + (time + 1));
 
                         for(WorkRequest w : doctorWorkRequestList) {
-                            if(!w.getTime().equals(selectedDate.toString() + " [ " + time + " ] ")) {
+                            
+                            PhysicianRequest pr = (PhysicianRequest) w;
+                            
+                            if(!pr.getTime().equals(selectedDate.toString() + "  (  " + time + " - " + (time + 1) + " ) ")) {
                                 availableWorkRequests.add(newRequest);
                             }
                         }
@@ -298,28 +301,31 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             
             if(doctorWorkRequestList.size() == 0) {
                 for(int time = 8; time < 19; time ++) {
-                    WorkRequest newRequest = new WorkRequest();
+                    PhysicianRequest newRequest = new PhysicianRequest();
                             
                     newRequest.setReceiver(doctorAccount);
                     newRequest.setRequestDate(new Date());
                     newRequest.setSender(account);
                     newRequest.setStatus("available");
-                    newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+                    newRequest.setTime(time + " - " + (time + 1));
 
                     availableWorkRequests.add(newRequest);
                 }
             } else {
                 for(int time = 8; time < 19; time ++) {
-                    WorkRequest newRequest = new WorkRequest();
+                    PhysicianRequest newRequest = new PhysicianRequest();
                             
                     newRequest.setReceiver(doctorAccount);
                     newRequest.setRequestDate(new Date());
                     newRequest.setSender(account);
                     newRequest.setStatus("available");
-                    newRequest.setTime(selectedDate.toString() + " [ " + time + " ] ");
+                    newRequest.setTime(time + " - " + (time + 1));
                     
                     for(WorkRequest w : doctorWorkRequestList) {
-                        if(!w.getTime().equals(selectedDate.toString() + " [ " + time + " ] ")) {
+                        
+                        PhysicianRequest pr = (PhysicianRequest) w;
+                        
+                        if(!pr.getTime().equals(selectedDate.toString() + "  (  " + time + " - " + (time + 1) + " ) ")) {
                             availableWorkRequests.add(newRequest);
                         }
                     }
@@ -327,8 +333,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             }
             
         }
-                   
-        System.out.println("================ >>> " + availableWorkRequests.size());
         
         populateTable(availableWorkRequests);
         
@@ -370,14 +374,24 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest workRequest = (WorkRequest) jTable1.getValueAt(selectedRow, 0);
+        Hospital selectedHospital = (Hospital) hospitalNameComboBox.getSelectedItem();
+        Department selectedDept = (Department) departmentlNameCombo.getSelectedItem();
+        Doctor selectedDoctor = (Doctor) physicianNameCombo.getSelectedItem();
+        Date selectedDate = jDateChooser1.getDate();
+        String timeSlot = (String) jTable1.getValueAt(selectedRow, 3);
         
-        UserAccount doctorAccount = workRequest.getReceiver();
+        UserAccount doctorAccount = business.getUserAccountDirectory().getUserById(selectedDoctor.getDoctorId());
         
-        workRequest.setStatus("awaiting approval");
+        PhysicianRequest request = new PhysicianRequest();
+        request.setReceiver(doctorAccount);
+        request.setSender(account);
+        request.setRequestDate(new Date());
+        request.setStatus("pending physician approval");
+        request.setTime(new Date().toString() + " ( " + timeSlot + " ) ");
         
-        doctorAccount.getWorkQueue().getWorkRequestList().add(workRequest);
-        this.account.getWorkQueue().getWorkRequestList().add(workRequest);
+        
+        doctorAccount.getWorkQueue().getWorkRequestList().add(request);
+        this.account.getWorkQueue().getWorkRequestList().add(request);
         
         JOptionPane.showMessageDialog(null, "Appointment sent for approval to physician");
     }//GEN-LAST:event_jButton1ActionPerformed

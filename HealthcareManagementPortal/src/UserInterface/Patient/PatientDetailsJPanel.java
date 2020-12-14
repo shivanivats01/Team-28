@@ -8,6 +8,7 @@ package UserInterface.Patient;
 
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
+import Business.UserAccount.UserAccount;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -19,13 +20,29 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
     private PatientDetails details;
+    private UserAccount account;
 
     /** Creates new form PatientDetailsJPanel */
-    public PatientDetailsJPanel(JPanel CardLayoutJPanel, PatientDetails details) {
+    public PatientDetailsJPanel(JPanel CardLayoutJPanel, PatientDetails details, UserAccount account) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.details = details;
+        this.account = account;
+        
+        if(account.getRole().toString().equals("Business.Role.PhysicianRole")) {
+            addNotesBtn.setVisible(true);
+            saveBtn.setVisible(true);
+            
+            addNotesBtn.setEnabled(true);
+            saveBtn.setEnabled(false);
+            
+        } else {
+            
+            addNotesBtn.setVisible(false);
+            saveBtn.setVisible(false);
+        }
+        
         
         this.dateTxt.setText(details.getDate().toString());
         this.hospitalTxt.setText((details.getDoctor() != null ? details.getDoctor().getDepartment().getHospital().getName() : "Hospital Dummy"));
@@ -60,6 +77,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         backBtn = new javax.swing.JButton();
+        addNotesBtn = new javax.swing.JButton();
+        saveBtn = new javax.swing.JButton();
 
         notesTxt.setColumns(20);
         notesTxt.setRows(5);
@@ -80,6 +99,20 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             }
         });
 
+        addNotesBtn.setText("Add Notes");
+        addNotesBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addNotesBtnActionPerformed(evt);
+            }
+        });
+
+        saveBtn.setText("Save");
+        saveBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -87,7 +120,6 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backBtn)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -99,8 +131,15 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                             .addComponent(dateTxt)
                             .addComponent(DoctorTxt)
                             .addComponent(hospitalTxt)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(69, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(addNotesBtn)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(saveBtn)
+                        .addGap(57, 57, 57))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -122,7 +161,10 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                     .addComponent(jLabel4)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(backBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(backBtn)
+                    .addComponent(addNotesBtn)
+                    .addComponent(saveBtn))
                 .addGap(19, 19, 19))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -134,9 +176,27 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void addNotesBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addNotesBtnActionPerformed
+        // TODO add your handling code here:
+        notesTxt.setEnabled(true);
+        saveBtn.setEnabled(true);
+        addNotesBtn.setEnabled(false);
+    }//GEN-LAST:event_addNotesBtnActionPerformed
+
+    private void saveBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveBtnActionPerformed
+        // TODO add your handling code here:
+        
+        notesTxt.setEnabled(false);
+        saveBtn.setEnabled(false);
+        addNotesBtn.setEnabled(true);
+        
+        this.details.setNotes(notesTxt.getText());
+    }//GEN-LAST:event_saveBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField DoctorTxt;
+    private javax.swing.JButton addNotesBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField dateTxt;
     private javax.swing.JTextField hospitalTxt;
@@ -146,6 +206,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea notesTxt;
+    private javax.swing.JButton saveBtn;
     // End of variables declaration//GEN-END:variables
 
 }

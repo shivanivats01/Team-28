@@ -81,6 +81,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         viewPharmacyBtn = new javax.swing.JButton();
         createPharmacyBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        refreshBtn = new javax.swing.JButton();
 
         jLabel1.setText("Pharmacy Portal");
 
@@ -135,16 +136,23 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(backBtn)
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel1))
-                    .addComponent(deleteBtn)
+                        .addComponent(jLabel1)
+                        .addContainerGap(213, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(createPharmacyBtn)
-                        .addGap(59, 59, 59)
-                        .addComponent(viewPharmacyBtn)))
-                .addContainerGap(76, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(viewPharmacyBtn)
+                        .addGap(57, 57, 57))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(deleteBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(createPharmacyBtn)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -157,19 +165,29 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(viewPharmacyBtn)
-                    .addComponent(createPharmacyBtn))
-                .addGap(18, 18, 18)
+                .addComponent(viewPharmacyBtn)
+                .addGap(2, 2, 2)
+                .addComponent(createPharmacyBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(deleteBtn)
-                .addContainerGap(104, Short.MAX_VALUE))
+                .addContainerGap(85, Short.MAX_VALUE))
         );
+
+        refreshBtn.setText("Refresh");
+        refreshBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                refreshBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 493, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(refreshBtn)
+                .addContainerGap(379, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 16, Short.MAX_VALUE)
@@ -178,7 +196,10 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 371, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(182, Short.MAX_VALUE)
+                .addComponent(refreshBtn)
+                .addGap(160, 160, 160))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(0, 7, Short.MAX_VALUE)
@@ -239,6 +260,11 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
+        // TODO add your handling code here:
+        populateTable();
+    }//GEN-LAST:event_refreshBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
@@ -248,6 +274,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable pharmacyTbl;
+    private javax.swing.JButton refreshBtn;
     private javax.swing.JButton viewPharmacyBtn;
     // End of variables declaration//GEN-END:variables
 }

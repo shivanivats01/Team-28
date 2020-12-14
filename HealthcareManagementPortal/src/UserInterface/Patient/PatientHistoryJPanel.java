@@ -23,16 +23,18 @@ import javax.swing.table.DefaultTableModel;
 public class PatientHistoryJPanel extends javax.swing.JPanel {
     
     private JPanel CardLayoutJPanel;
+    private UserAccount account;
     private Patient patient;
 
     /**
      * Creates new form PatientHistoryJPanel
      */
-    public PatientHistoryJPanel(JPanel CardLayoutJPanel, Patient patient) {
+    public PatientHistoryJPanel(JPanel CardLayoutJPanel, Patient patient, UserAccount account) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.patient = patient;
+        this.account = account;
         
         populateTable();
     }
@@ -40,9 +42,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
     public void populateTable() {
         // populate all patients in patient directory
         ArrayList<PatientDetails> list = patient.getPatientDetails();
-        
-        System.out.println("=========== >> " + list.size());
-    
+            
         int rowCount = jTable1.getRowCount();
         DefaultTableModel model = (DefaultTableModel)jTable1.getModel();
         for(int i=rowCount-1;i>=0;i--) {
@@ -148,7 +148,7 @@ public class PatientHistoryJPanel extends javax.swing.JPanel {
         
         PatientDetails details = (PatientDetails) jTable1.getValueAt(row, 2);
         
-        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(CardLayoutJPanel, details);
+        PatientDetailsJPanel patientDetailsJPanel = new PatientDetailsJPanel(CardLayoutJPanel, details, account);
         CardLayoutJPanel.add("PatientDetailsJPanel", patientDetailsJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 

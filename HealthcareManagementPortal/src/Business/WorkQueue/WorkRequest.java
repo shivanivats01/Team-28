@@ -22,16 +22,7 @@ public class WorkRequest {
     private String status;
     private Date requestDate;
     private Date resolveDate;
-    private String timeDate;
-
     
-    public String getTime() {
-        return timeDate;
-    }
-
-    public void setTime(String time) {
-        this.timeDate = time;
-    }
 
     public String getMessage() {
         return message;
