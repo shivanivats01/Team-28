@@ -55,7 +55,7 @@ public class CreatePrescriptionJPanel extends javax.swing.JPanel {
         for(WorkRequest w: workRequestOfDoctor) {
             String patientId = w.getSender().getId();
             
-            if(!patientIdSet.contains(patientId)) {
+            if(!patientId.equals(this.account.getId()) && !patientIdSet.contains(patientId)) {
                 list.add((Patient) w.getSender().getDetails());
                 patientIdSet.add(patientId);
             }

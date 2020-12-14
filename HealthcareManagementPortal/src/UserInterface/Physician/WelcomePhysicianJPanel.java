@@ -168,7 +168,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
     private void searchPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientBtnActionPerformed
         // TODO add your handling code here:
         
-        SearchPatientJPanel searchPatientJPanel = new SearchPatientJPanel(CardLayoutJPanel, this.doctor, this.account);
+        SearchPatientJPanel searchPatientJPanel = new SearchPatientJPanel(CardLayoutJPanel, this.doctor, this.account, business);
         CardLayoutJPanel.add("SearchPatientJPanel", searchPatientJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
