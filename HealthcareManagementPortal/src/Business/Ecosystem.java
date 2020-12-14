@@ -5,10 +5,12 @@
  */
 package Business;
 
+import Business.Ambulance.AmbulanceFleet;
 import Business.Department.Department;
 import Business.Doctor.Doctor;
 import Business.Hospital.Hospital;
 import Business.Hospital.HospitalDirectory;
+import Business.Lab.LabDirectory;
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
 import Business.Pharmacy.Pharmacy;
@@ -38,6 +40,24 @@ public class Ecosystem extends HealthCarePortal {
     private HospitalDirectory hospitalDirectory = new HospitalDirectory();
     private PatientDirectory patientDirectory = new PatientDirectory();
     private PharmacyDirectory pharmacyDirectory = new PharmacyDirectory();
+    private LabDirectory labDirectory = new LabDirectory();
+    private AmbulanceFleet ambulancefleet = new AmbulanceFleet();
+
+    public LabDirectory getLabDirectory() {
+        return labDirectory;
+    }
+
+    public void setLabDirectory(LabDirectory labDirectory) {
+        this.labDirectory = labDirectory;
+    }
+
+    public AmbulanceFleet getAmbulancefleet() {
+        return ambulancefleet;
+    }
+
+    public void setAmbulancefleet(AmbulanceFleet ambulancefleet) {
+        this.ambulancefleet = ambulancefleet;
+    }
     
     
 
