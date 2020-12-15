@@ -43,7 +43,10 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
     }
     public void populateTable() {
         // populate all patients in patient directory
-        ArrayList<Lab> labList = business.getLabDirectory().getLabList();
+        ArrayList<Lab> labList = new ArrayList();
+        labList.addAll(business.getLabDirectory().getNeurologyLabs());
+        labList.addAll(business.getLabDirectory().getOrthopedicLabs());
+        labList.addAll(business.getLabDirectory().getPathologyLabs());
     
         int rowCount = labTable.getRowCount();
         DefaultTableModel model = (DefaultTableModel)labTable.getModel();
@@ -52,12 +55,13 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         }
         
         for(Lab l : labList) {
-            Object row[] = new Object[5];
+            Object row[] = new Object[6];
             row[0] = l;
             row[1] = l.getLabname();
             row[2] = l.getPhoneNo();
             row[3] = l.getAddress();
             row[4] = l.getEmailId();
+            row[5] = l.getType();
           
             model.addRow(row);
         }
@@ -95,13 +99,13 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
 
         labTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null},
+                {null, null, null, null, null, null}
             },
             new String [] {
-                "Lab Id", "Lab name", "Contact Number", "Address", "Email"
+                "Lab Id", "Lab name", "Contact Number", "Address", "Email", "Type"
             }
         ));
         jScrollPane1.setViewportView(labTable);
@@ -212,7 +216,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
 
         LabDirectory labDirectory = business.getLabDirectory();
 
-        business.getLabDirectory().deleteLab(selected.getLabID(), business);
+        business.getLabDirectory().deleteLab(selected.getLabID(), selected.getType(), business);
 
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed

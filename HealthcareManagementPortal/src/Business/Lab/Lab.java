@@ -18,6 +18,15 @@ public class Lab {
    private String phoneNo;
    private String address;
    private String emailId;
+   private String type;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
   
     public Lab() {
        
@@ -88,6 +97,5 @@ public class Lab {
     public String toString() {
         return this.labID;
     }
-    
     
 }

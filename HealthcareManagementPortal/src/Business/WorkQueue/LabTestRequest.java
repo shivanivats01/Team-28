@@ -17,6 +17,16 @@ public class LabTestRequest extends WorkRequest {
      private Patient patient;
      
      private BufferedImage image;
+     
+     private String test;
+
+    public String getTest() {
+        return test;
+    }
+
+    public void setTest(String test) {
+        this.test = test;
+    }
 
     public BufferedImage getImage() {
         return image;

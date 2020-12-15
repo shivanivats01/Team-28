@@ -53,7 +53,6 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         populateLabComboBox();
 
         populatePatientComboBox();
-        populateTestcomboBox();
 
     }
  public ArrayList<Patient> getAssociatedPatients() {
@@ -77,12 +76,18 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
     }
     
     public void populateLabComboBox() {
+        
+        ArrayList<Lab> labList = new ArrayList();
+        labList.addAll(business.getLabDirectory().getNeurologyLabs());
+        labList.addAll(business.getLabDirectory().getOrthopedicLabs());
+        labList.addAll(business.getLabDirectory().getPathologyLabs());
        
-        ArrayList<Lab> labList = business.getLabDirectory().getLabList();
         Lab[] comboBoxModel4 = labList.toArray(new Lab[0]);
         
         
         labListComboBox.setModel(new DefaultComboBoxModel<Lab>(comboBoxModel4));
+        
+
         
     }
     
@@ -229,6 +234,28 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
 
     private void labListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labListComboBoxActionPerformed
         // TODO add your handling code here:
+        Lab selected = (Lab) labListComboBox.getSelectedItem();
+        
+        if(selected != null) {
+            if(selected.getType().equals("Pathology Lab")) {
+                testListComboBox.addItem("LFT - Liver function tests");
+                testListComboBox.addItem("Urine analysis");
+                testListComboBox.addItem("TSH - Thyroid Simulation Harmobne Quantification");
+                testListComboBox.addItem("Full blood examination");
+                testListComboBox.addItem("Iron Tests");
+            } else if(selected.getType().equals("Neurology Lab")) {
+                testListComboBox.addItem("MRI Scan");
+                testListComboBox.addItem("CT Scan");
+                testListComboBox.addItem("NCV - Nerve Conductivity Velocity");
+            }
+            else if(selected.getType().equals("Orthopedic Lab")) {
+                testListComboBox.addItem("Ultrasound");
+                testListComboBox.addItem("X ray");
+                testListComboBox.addItem("Dual Energy X ray");
+                testListComboBox.addItem("Bone Scan");
+            }
+        }
+        
     }//GEN-LAST:event_labListComboBoxActionPerformed
 
     private void testListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testListComboBoxActionPerformed
@@ -240,8 +267,10 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         
         Patient patient = (Patient) patientjComboBox.getSelectedItem();
         Lab lab = (Lab) labListComboBox.getSelectedItem();
+        String test = (String) testListComboBox.getSelectedItem();       
 
-        if(patient == null || lab == null) {
+
+        if(patient == null || lab == null || test == null) {
             JOptionPane.showMessageDialog(null, "Please select all fields", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
@@ -262,21 +291,7 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         
 
     }//GEN-LAST:event_sendRequestBtn1ActionPerformed
-public void populateTestcomboBox() {
-        
-        ArrayList<String> testList = new ArrayList<String>();
-        testList.add("MRI");
-        testList.add("CT Scan");
-        testList.add("Blood Sample");
-        testList.add("X Ray");
-        
-        String[] comboBoxModel1 = testList.toArray(new String[0]);
-        
-        
-        testListComboBox.setModel(new DefaultComboBoxModel<String>(comboBoxModel1));
-        
-    }
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton jButton1;
