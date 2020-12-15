@@ -5,10 +5,12 @@
  */
 package UserInterface.Pharmacy;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.Ecosystem;
 import Business.Patient.Patient;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
+import UserInterface.LoginJPanel;
 import UserInterface.Pharmacy.PharmacyInfoJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
@@ -23,6 +25,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
     private Ecosystem business;
     private UserAccount account;
     private Pharmacy pharmacy;
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     /**
      * Creates new form WelcomePharmacyJPanel
      */
@@ -50,7 +53,9 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         PastPrescriptionsBtn = new javax.swing.JButton();
         InventoryStockBtn = new javax.swing.JButton();
         pendingPrescriptionsBtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
+        logOutBtn = new javax.swing.JButton();
+
+        setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
@@ -79,10 +84,11 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
             }
         });
 
-        backBtn.setText("<back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
+        logOutBtn.setText("Logout");
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                logOutBtnActionPerformed(evt);
             }
         });
 
@@ -93,20 +99,21 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(51, 51, 51)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pendingPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(PastPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(InventoryStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(backBtn)))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(51, 51, 51)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(pendingPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(PastPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(InventoryStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(108, 108, 108)
+                            .addComponent(jLabel1))
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(103, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -122,9 +129,9 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 .addComponent(pendingPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(InventoryStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(backBtn)
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -152,20 +159,22 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_InventoryStockBtnActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
+        dB4OUtil.storeSystem(business);
+        LoginJPanel loginJPanel = new LoginJPanel(CardLayoutJPanel, business,"");
+        CardLayoutJPanel.add("LoginJPanel", loginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_backBtnActionPerformed
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_logOutBtnActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton InventoryStockBtn;
     private javax.swing.JButton PastPrescriptionsBtn;
-    private javax.swing.JButton backBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton logOutBtn;
     private javax.swing.JButton pendingPrescriptionsBtn;
     // End of variables declaration//GEN-END:variables
 }

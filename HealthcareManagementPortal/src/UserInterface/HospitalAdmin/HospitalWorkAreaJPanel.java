@@ -1,8 +1,10 @@
 package UserInterface.HospitalAdmin;
 
+import Business.DB4OUtil.DB4OUtil;
 import Business.Ecosystem;
 import Business.Hospital.Hospital;
 import Business.UserAccount.UserAccount;
+import UserInterface.LoginJPanel;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 
@@ -22,7 +24,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     private Ecosystem business;
     private UserAccount account;
     private Hospital hospital;
-    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     /**
      * Creates new form HospitalWorkAreaJPanel
      */
@@ -53,7 +55,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         btnManageDoctors = new javax.swing.JButton();
         btnManageHospitalInfo = new javax.swing.JButton();
         btnManageDepartments = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
+        logOutBtn = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -86,10 +88,11 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
             }
         });
 
-        backBtn.setText("<back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
+        logOutBtn.setText("Logout");
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                logOutBtnActionPerformed(evt);
             }
         });
 
@@ -100,32 +103,27 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(32, 32, 32)
-                        .addComponent(backBtn)
-                        .addGap(143, 143, 143)
+                        .addGap(259, 259, 259)
                         .addComponent(lblhospitalName))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(283, 283, 283)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btnManageHospitalInfo)
                             .addComponent(btnManageDoctors)
-                            .addComponent(btnManageDepartments))))
+                            .addComponent(btnManageDepartments)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(129, 129, 129)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1))))
                 .addContainerGap(132, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(17, 17, 17)
-                        .addComponent(lblhospitalName))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(31, 31, 31)
-                        .addComponent(backBtn)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(17, 17, 17)
+                .addComponent(lblhospitalName)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel1)
                 .addGap(62, 62, 62)
                 .addComponent(btnManageDoctors)
@@ -133,7 +131,9 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 .addComponent(btnManageHospitalInfo)
                 .addGap(18, 18, 18)
                 .addComponent(btnManageDepartments)
-                .addContainerGap(211, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(165, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -175,13 +175,6 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_btnManageDepartmentsActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private void btnManageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorsActionPerformed
         // TODO add your handling code here:
         ManagePhysicianJPanel managePhysicianJPanel = new ManagePhysicianJPanel(CardLayoutJPanel, hospital, null, business);
@@ -192,14 +185,23 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnManageDoctorsActionPerformed
 
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
+        // TODO add your handling code here:
+        dB4OUtil.storeSystem(business);
+        LoginJPanel loginJPanel = new LoginJPanel(CardLayoutJPanel, business,"");
+        CardLayoutJPanel.add("LoginJPanel", loginJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_logOutBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton btnManageDepartments;
     private javax.swing.JButton btnManageDoctors;
     private javax.swing.JButton btnManageHospitalInfo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblhospitalName;
+    private javax.swing.JButton logOutBtn;
     // End of variables declaration//GEN-END:variables
 }

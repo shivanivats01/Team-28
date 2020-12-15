@@ -7,8 +7,12 @@ package UserInterface.SystemAdmin;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
+import UserInterface.LoginJPanel;
+import UserInterface.MainJFrame;
 import java.awt.CardLayout;
+import static java.time.Clock.system;
 import javax.swing.JPanel;
+import Business.DB4OUtil.DB4OUtil;
 
 /**
  *
@@ -16,7 +20,7 @@ import javax.swing.JPanel;
  */
 public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
-    
+    private DB4OUtil dB4OUtil = DB4OUtil.getInstance();
     JPanel CardLayoutJPanel;
     UserAccount account;
     Ecosystem business;
@@ -43,7 +47,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         hospitalPortalBtn = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
+        logOutBtn = new javax.swing.JButton();
         patientPortalBtn = new javax.swing.JButton();
         pharmacyBtn = new javax.swing.JButton();
         labbtn = new javax.swing.JButton();
@@ -51,6 +55,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(255, 255, 255));
 
+        hospitalPortalBtn.setBackground(new java.awt.Color(204, 204, 204));
         hospitalPortalBtn.setText("hospital portal");
         hospitalPortalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -58,20 +63,26 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
             }
         });
 
-        backBtn.setText("back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
+        logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
+        logOutBtn.setText("Logout");
+        logOutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
+                logOutBtnActionPerformed(evt);
             }
         });
 
+        patientPortalBtn.setBackground(new java.awt.Color(204, 204, 204));
         patientPortalBtn.setText("patient portal");
+        patientPortalBtn.setMaximumSize(new java.awt.Dimension(200, 40));
+        patientPortalBtn.setMinimumSize(new java.awt.Dimension(200, 40));
+        patientPortalBtn.setPreferredSize(new java.awt.Dimension(200, 40));
         patientPortalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 patientPortalBtnActionPerformed(evt);
             }
         });
 
+        pharmacyBtn.setBackground(new java.awt.Color(204, 204, 204));
         pharmacyBtn.setText("pharmacy portal");
         pharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -79,6 +90,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
             }
         });
 
+        labbtn.setBackground(new java.awt.Color(204, 204, 204));
         labbtn.setText("Lab Portal");
         labbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,6 +98,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
             }
         });
 
+        ambulancebtn.setBackground(new java.awt.Color(204, 204, 204));
         ambulancebtn.setText("Ambulance Portal");
         ambulancebtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,42 +111,36 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pharmacyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(patientPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(86, 86, 86)
+                .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ambulancebtn, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(hospitalPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(75, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(26, 26, 26)
-                    .addComponent(backBtn)
-                    .addContainerGap(375, Short.MAX_VALUE)))
+                    .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pharmacyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(patientPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(labbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(39, 39, 39)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(ambulancebtn, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
+                            .addComponent(hospitalPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(187, Short.MAX_VALUE)
-                .addComponent(ambulancebtn)
+                .addGap(28, 28, 28)
+                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(patientPortalBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ambulancebtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(patientPortalBtn)
-                    .addComponent(hospitalPortalBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(pharmacyBtn)
-                    .addComponent(labbtn))
-                .addGap(48, 48, 48))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(30, 30, 30)
-                    .addComponent(backBtn)
-                    .addContainerGap(281, Short.MAX_VALUE)))
+                    .addComponent(hospitalPortalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pharmacyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(labbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,12 +160,15 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_hospitalPortalBtnActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+    private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
+        dB4OUtil.storeSystem(business);
+         LoginJPanel loginJPanel = new LoginJPanel(CardLayoutJPanel, business,"");
+        CardLayoutJPanel.add("LoginJPanel", loginJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_backBtnActionPerformed
+        layout.next(CardLayoutJPanel);
+        
+    }//GEN-LAST:event_logOutBtnActionPerformed
 
     private void pharmacyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pharmacyBtnActionPerformed
         // TODO add your handling code here:
@@ -189,9 +199,9 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton ambulancebtn;
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton hospitalPortalBtn;
     private javax.swing.JButton labbtn;
+    private javax.swing.JButton logOutBtn;
     private javax.swing.JButton patientPortalBtn;
     private javax.swing.JButton pharmacyBtn;
     // End of variables declaration//GEN-END:variables

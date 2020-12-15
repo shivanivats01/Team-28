@@ -69,7 +69,7 @@ public class Ecosystem extends HealthCarePortal {
         if(business==null){
             business=new Ecosystem();
             
-            prePopulateData();
+            //prePopulateData();
         }
         return business;
     }
@@ -101,7 +101,7 @@ public class Ecosystem extends HealthCarePortal {
     public boolean checkIfUserIsUnique(String userName){
        return false;
     }
-    
+    /*
     private static void prePopulateData() {
         // Create hospitals
         Hospital h1 = new Hospital();
@@ -230,6 +230,5 @@ public class Ecosystem extends HealthCarePortal {
         Pharmacy pharmacy2 = business.getPharmacyDirectory().addPharmacy(ph2);
         UserAccount accountPharmacy2 = business.getUserAccountDirectory().createUserAccount(pharmacy2.getUsername(), pharmacy2.getPassword(), pharmacy2.getPharmacyId(), new PharmacyRole(), pharmacy2);
 
-
-    }
+    }*/
 }
