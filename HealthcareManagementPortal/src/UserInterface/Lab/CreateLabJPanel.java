@@ -60,6 +60,8 @@ public class CreateLabJPanel extends javax.swing.JPanel {
         usernameTxt = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         passwordTxt = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -104,6 +106,10 @@ public class CreateLabJPanel extends javax.swing.JPanel {
 
         jLabel8.setText("Password:");
 
+        jLabel3.setText("Type:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pathology Lab", "Neurology Lab", "Orthopedic Lab" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,10 +134,6 @@ public class CreateLabJPanel extends javax.swing.JPanel {
                                     .addComponent(jLabel4)
                                     .addGap(18, 18, 18)
                                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
-                                    .addGap(18, 18, 18)
-                                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(saveBtn)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel5)
@@ -140,7 +142,15 @@ public class CreateLabJPanel extends javax.swing.JPanel {
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel8)
                                     .addGap(18, 18, 18)
-                                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(jLabel3)
+                                        .addComponent(jLabel7))
+                                    .addGap(18, 18, 18)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addressTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addComponent(jLabel1))))
                 .addContainerGap(88, Short.MAX_VALUE))
         );
@@ -151,7 +161,7 @@ public class CreateLabJPanel extends javax.swing.JPanel {
                 .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -175,9 +185,13 @@ public class CreateLabJPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(saveBtn)
-                .addGap(26, 26, 26))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -208,6 +222,9 @@ public class CreateLabJPanel extends javax.swing.JPanel {
         //String labId = idTxt.getText();
         String username = usernameTxt.getText();
         String password = passwordTxt.getText();
+        String type = (String) jComboBox1.getSelectedItem();
+        
+        System.out.println("============= >>> " + type);
         
         newLab.setLabname(name);
         newLab.setAddress(address);
@@ -216,6 +233,7 @@ public class CreateLabJPanel extends javax.swing.JPanel {
         newLab.setPassword(password);
         newLab.setPhoneNo(phoneNo);
         newLab.setUsername(username);
+        newLab.setType(type);
         
         //business.getPatientDirectory().add(newPatient);
         if(name.isEmpty() || phoneNo.isEmpty() || address.isEmpty()|| username.isEmpty() || password.isEmpty()){
@@ -254,8 +272,10 @@ public class CreateLabJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField addressTxt;
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField emailTxt;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;

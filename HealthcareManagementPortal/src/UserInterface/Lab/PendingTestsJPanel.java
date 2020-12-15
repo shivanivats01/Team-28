@@ -177,6 +177,7 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
         }
 
         WorkRequest request = (WorkRequest) pendingTestTbl.getValueAt(rowCount, 4);
+        request.setStatus("lab test canceled");
 
         // delete from patient work queue
         this.account.getWorkQueue().getWorkRequestList().remove(request);

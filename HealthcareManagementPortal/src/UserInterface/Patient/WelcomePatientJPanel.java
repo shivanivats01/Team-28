@@ -196,5 +196,6 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logOutBtn;
     private javax.swing.JButton personalinfoBtn;
+    private javax.swing.JButton reportBtn;
     // End of variables declaration//GEN-END:variables
 }

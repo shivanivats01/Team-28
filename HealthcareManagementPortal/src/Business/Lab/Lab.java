@@ -5,6 +5,8 @@
  */
 package Business.Lab;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author riyamoitra
@@ -18,9 +20,25 @@ public class Lab {
    private String phoneNo;
    private String address;
    private String emailId;
-   
-   
-   
+   private String type;
+   private ArrayList<String> tests;
+
+    public ArrayList<String> getTests() {
+        return tests;
+    }
+
+    public void setTests(ArrayList<String> tests) {
+        this.tests = tests;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+  
     public Lab() {
        
     }
@@ -90,6 +108,5 @@ public class Lab {
     public String toString() {
         return this.labID;
     }
-    
     
 }

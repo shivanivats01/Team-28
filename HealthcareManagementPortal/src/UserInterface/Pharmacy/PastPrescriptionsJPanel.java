@@ -8,8 +8,12 @@ package UserInterface.Pharmacy;
 import Business.Ecosystem;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PharmacyRequest;
+import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
+import java.util.ArrayList;
 import javax.swing.JPanel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -28,8 +32,48 @@ public class PastPrescriptionsJPanel extends javax.swing.JPanel {
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.pharmacy = pharmacy;
         this.account = account;
+        
+         populateTable();
     }
+    
+    public void populateTable() {
 
+    ArrayList<WorkRequest> appointmentList = account.getWorkQueue().getWorkRequestList();
+        ArrayList<PharmacyRequest> upcomingAppointmentList = new ArrayList();
+        
+        for(WorkRequest w: appointmentList) {
+            
+            PharmacyRequest pr = (PharmacyRequest) w;            
+            if(w.getStatus().equals("medicines picked up")) {
+                upcomingAppointmentList.add(pr);
+            }
+        }
+        
+    
+        int rowCount = pharmacyTable.getRowCount();
+        DefaultTableModel model = (DefaultTableModel)pharmacyTable.getModel();
+        for(int i=rowCount-1;i>=0;i--) {
+            model.removeRow(i);
+        }
+        
+        for(PharmacyRequest w: upcomingAppointmentList) {
+            Object row[] = new Object[7];
+        
+            
+            row[0] = w.getSender().getId();
+            row[1] = w.getPatient().getPatientID();
+            row[2] = w.getMessage();
+            row[3] = w.getStatus();
+            row[4] = w;
+            row[5] = w.getResolveDate();
+           
+            
+            model.addRow(row);
+            
+            
+        } 
+        
+    }  
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

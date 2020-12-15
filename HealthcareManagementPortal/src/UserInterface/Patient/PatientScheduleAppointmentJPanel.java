@@ -253,84 +253,16 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         }
         
         ArrayList<PhysicianRequest> availableWorkRequests = new ArrayList();
-        // When only hospital and department are selected
+        
         if(selectedDoctor == null) {
             
-            // Each doctor 
-            for(int i = 0; i < selectedDept.getDoctorDirectory().size(); i ++) {
-                UserAccount doctorAccount = business.getUserAccountDirectory().getUserById(selectedDoctor.getDoctorId());
-                ArrayList<WorkRequest> doctorWorkRequestList = doctorAccount.getWorkQueue().getWorkRequestList();
-            
-                if(doctorWorkRequestList.size() == 0) {
-                    for(int time = 8; time < 19; time ++) {
-                        PhysicianRequest newRequest = new PhysicianRequest();
-                       
-                        newRequest.setReceiver(doctorAccount);
-                        newRequest.setRequestDate(new Date());
-                        newRequest.setSender(account);
-                        newRequest.setStatus("available");
-                        newRequest.setTime(time + " - " + (time + 1));
-
-                        availableWorkRequests.add(newRequest);
-                    }
-                } else {
-                    for(int time = 8; time < 19; time ++) {
-                        PhysicianRequest newRequest = new PhysicianRequest();
-
-                        newRequest.setReceiver(doctorAccount);
-                        newRequest.setRequestDate(new Date());
-                        newRequest.setSender(account);
-                        newRequest.setStatus("available");
-                        newRequest.setTime(time + " - " + (time + 1));
-
-                        for(WorkRequest w : doctorWorkRequestList) {
-                            
-                            PhysicianRequest pr = (PhysicianRequest) w;
-                            
-                            if(!pr.getTime().equals(selectedDate.toString() + "  (  " + time + " - " + (time + 1) + " ) ")) {
-                                availableWorkRequests.add(newRequest);
-                            }
-                        }
-                    }
-                }
-            } 
+            for(Doctor d: selectedDept.getDoctorDirectory()) {
+                availableWorkRequests.addAll(this.getAvailablePhysicianSlots(d, selectedDate));
+            }
+          
         } else {
             
-            UserAccount doctorAccount = business.getUserAccountDirectory().getUserById(selectedDoctor.getDoctorId());
-            ArrayList<WorkRequest> doctorWorkRequestList = doctorAccount.getWorkQueue().getWorkRequestList();
-            
-            if(doctorWorkRequestList.size() == 0) {
-                for(int time = 8; time < 19; time ++) {
-                    PhysicianRequest newRequest = new PhysicianRequest();
-                            
-                    newRequest.setReceiver(doctorAccount);
-                    newRequest.setRequestDate(new Date());
-                    newRequest.setSender(account);
-                    newRequest.setStatus("available");
-                    newRequest.setTime(time + " - " + (time + 1));
-
-                    availableWorkRequests.add(newRequest);
-                }
-            } else {
-                for(int time = 8; time < 19; time ++) {
-                    PhysicianRequest newRequest = new PhysicianRequest();
-                            
-                    newRequest.setReceiver(doctorAccount);
-                    newRequest.setRequestDate(new Date());
-                    newRequest.setSender(account);
-                    newRequest.setStatus("available");
-                    newRequest.setTime(time + " - " + (time + 1));
-                    
-                    for(WorkRequest w : doctorWorkRequestList) {
-                        
-                        PhysicianRequest pr = (PhysicianRequest) w;
-                        
-                        if(!pr.getTime().equals(selectedDate.toString() + "  (  " + time + " - " + (time + 1) + " ) ")) {
-                            availableWorkRequests.add(newRequest);
-                        }
-                    }
-                }
-            }
+            availableWorkRequests = this.getAvailablePhysicianSlots(selectedDoctor, selectedDate);
             
         }
         
@@ -387,7 +319,8 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         request.setSender(account);
         request.setRequestDate(new Date());
         request.setStatus("pending physician approval");
-        request.setTime(new Date().toString() + " ( " + timeSlot + " ) ");
+        request.setAppointmentDate(selectedDate);
+        request.setTime(timeSlot);
         
         
         doctorAccount.getWorkQueue().getWorkRequestList().add(request);
@@ -403,6 +336,41 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private ArrayList<PhysicianRequest> getAvailablePhysicianSlots (Doctor doctor, Date selectedDate) {
+        ArrayList<PhysicianRequest> availableWorkRequests = new ArrayList();
+        ArrayList<PhysicianRequest> unavailableWorkRequests = new ArrayList();
+
+        ArrayList<WorkRequest> existingRequests = this.business.getUserAccountDirectory().getUserById(doctor.getDoctorId()).getWorkQueue().getWorkRequestList();
+        for(WorkRequest w : existingRequests) {
+            
+            if(w.getStatus().equals("pending physician approval") || w.getStatus().equals("physician accepted")) {
+                PhysicianRequest pr = (PhysicianRequest) w;
+                if(pr.getAppointmentDate().getDate() == selectedDate.getDate()) {
+                    unavailableWorkRequests.add(pr);
+                }
+            }
+        }
+        for(int time = 8; time < 19; time++) {
+            boolean isValid = true;
+            for(PhysicianRequest pr: unavailableWorkRequests) {
+                if(pr.getTime().equals(time + " - " + (time + 1))) {
+                    isValid = false;
+                    break;
+                }
+            }
+            if(isValid) {
+                PhysicianRequest newRequest = new PhysicianRequest();
+                newRequest.setReceiver(this.business.getUserAccountDirectory().getUserById(doctor.getDoctorId()));
+                newRequest.setAppointmentDate(selectedDate);
+                newRequest.setRequestDate(new Date());
+                newRequest.setSender(account);
+                newRequest.setTime(time + " - " + (time + 1));
+
+                availableWorkRequests.add(newRequest);
+            }
+        }
+        return availableWorkRequests;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;

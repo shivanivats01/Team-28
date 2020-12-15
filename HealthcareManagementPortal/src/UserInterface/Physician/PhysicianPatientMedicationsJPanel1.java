@@ -10,12 +10,16 @@ import UserInterface.Patient.*;
 import Business.Ecosystem;
 import Business.Patient.Patient;
 import Business.Patient.PatientDetails;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.PharmacyRequest;
 import Business.WorkQueue.PhysicianRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
@@ -29,16 +33,18 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
     JPanel CardLayoutJPanel;
     UserAccount account;
     Ecosystem business;
+    Patient patient;
 
     /**
      * Creates new form PatientUpcomingAppointmentsJPanel
      */
-    public PhysicianPatientMedicationsJPanel1(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public PhysicianPatientMedicationsJPanel1(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business, Patient patient) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
         this.account = account;
+        this.patient = patient;
         
         this.populateTable();
         
@@ -48,11 +54,23 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
         // populate all patients in patient directory
         ArrayList<WorkRequest> appointmentList = account.getWorkQueue().getWorkRequestList();
         
-        ArrayList<WorkRequest> upcomingAppointmentList = new ArrayList();
+        Set<String> pharmacyIds = new HashSet();
+        for(Pharmacy ph : this.business.getPharmacyDirectory().getPharmacyList()) {
+            pharmacyIds.add(ph.getPharmacyId());
+        }
+        
+        ArrayList<PharmacyRequest> upcomingAppointmentList = new ArrayList();
         for(WorkRequest w: appointmentList) {
-            if(w.getStatus().equals("physician accepted")) {
-                upcomingAppointmentList.add(w);
+            
+            if(w.getSender().getId().equals(account.getId()) && pharmacyIds.contains(w.getReceiver().getId())) {
+               PharmacyRequest pr = (PharmacyRequest) w;
+              if(pr.getPatient().getPatientID().equals(patient.getPatientID())) {
+                upcomingAppointmentList.add(pr);
+                
+              }  
             }
+            
+           
         }
         
     
@@ -62,21 +80,19 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
             model.removeRow(i);
         }
         
-        for(WorkRequest w: upcomingAppointmentList) {
-            Object row[] = new Object[4];
+        for(PharmacyRequest w: upcomingAppointmentList) {
+            Object row[] = new Object[5];
         
-            PhysicianRequest pr = (PhysicianRequest) w;
-            
-            Patient p = (Patient) this.business.getUserAccountDirectory().getUserById(pr.getSender().getId()).getDetails();
+            Patient p = w.getPatient();
             Doctor d = (Doctor) this.account.getDetails();
         
-            row[0] = p.getName();
-            row[1] = d.getDepartment().getHospital().getName();
-            row[2] = pr;
-            row[3] = pr.getTime();
+            row[0] = business.getUserAccountDirectory().getUserById(w.getReceiver().getId());
+            row[1] = w;
+            row[2] = w.getResolveDate();
+            row[3] = w.getStatus();
+            row[4] = w.getMessage();
             
             model.addRow(row);
-            
             
         }     
             
@@ -112,7 +128,7 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jButton5.setText("Cancel Appointment");
+        jButton5.setText("Cancel ");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
@@ -131,7 +147,7 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
                         .addComponent(jLabel4))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(36, 36, 36)
-                        .addComponent(jButton5)))
+                        .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(301, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
@@ -170,11 +186,16 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
             return;
         }
         
-        WorkRequest request = (WorkRequest) jTable4.getValueAt(rowCount, 2);
+        PharmacyRequest request = (PharmacyRequest) jTable4.getValueAt(rowCount, 2);
         
-        request.setStatus("physician canceled");
+        if(request.getStatus().equals("pending pharmacy approval")) {
+            request.setStatus("physician canceled medication");
+            JOptionPane.showMessageDialog(null, "Appointment canceled");
+        } else {
+            JOptionPane.showMessageDialog(null, "You can only cancel pending requests");
+        }
         
-        JOptionPane.showMessageDialog(null, "Appointment canceled");
+        populateTable();
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

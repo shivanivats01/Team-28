@@ -5,6 +5,8 @@
  */
 package Business.WorkQueue;
 
+import java.util.Date;
+
 /**
  *
  * @author shivanivats
@@ -12,6 +14,15 @@ package Business.WorkQueue;
 public class PhysicianRequest extends WorkRequest {
     
     private String timeDate;
+    private Date appointmentDate;
+
+    public Date getAppointmentDate() {
+        return appointmentDate;
+    }
+
+    public void setAppointmentDate(Date appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
 
     
     public String getTime() {

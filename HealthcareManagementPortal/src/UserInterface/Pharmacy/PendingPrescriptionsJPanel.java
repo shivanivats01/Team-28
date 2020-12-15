@@ -6,12 +6,16 @@
 package UserInterface.Pharmacy;
 
 import Business.Ecosystem;
+import Business.Patient.Patient;
 import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
+import Business.Utils.EmailService;
 import Business.WorkQueue.PharmacyRequest;
 import Business.WorkQueue.WorkRequest;
 import java.awt.CardLayout;
 import java.util.ArrayList;
+import java.util.Date;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.table.DefaultTableModel;
 
@@ -24,16 +28,18 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
     JPanel CardLayoutJPanel;
     UserAccount account;
     Pharmacy pharmacy;
+    Ecosystem business;
     
    
     /**
      * Creates new form PendingPrescriptionsJPanel
      */
-    public PendingPrescriptionsJPanel(JPanel CardLayoutJPanel, UserAccount account, Pharmacy pharmacy) {
+    public PendingPrescriptionsJPanel(JPanel CardLayoutJPanel, UserAccount account, Pharmacy pharmacy, Ecosystem business) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.pharmacy = pharmacy;
         this.account = account;
+        this.business = business;
         
         this.populateTable();
     }
@@ -47,7 +53,7 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
         for(WorkRequest w: appointmentList) {
             
             PharmacyRequest pr = (PharmacyRequest) w;            
-            if(w.getStatus().equals("pending")) {
+            if(w.getStatus().equals("pending pharmacy approval") || w.getStatus().equals("awaiting patient pick up")) {
                 upcomingAppointmentList.add(pr);
             }
         }
@@ -67,7 +73,7 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
             row[1] = w.getPatient().getPatientID();
             row[2] = w.getMessage();
             row[3] = w.getStatus();
-            row[4] = w.getRequestDate();
+            row[4] = w;
            
             
             model.addRow(row);
@@ -89,6 +95,8 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
         backBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         pharmacyTable = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Pending Prescriptions");
@@ -113,23 +121,49 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(pharmacyTable);
 
+        jButton1.setText("Picked Up");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Ready For Pickup");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(58, 58, 58))
-            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(backBtn)
-                .addContainerGap(453, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(backBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 72, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel1)
+                                .addGap(58, 58, 58))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(16, 16, 16))))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jScrollPane1)
                     .addContainerGap()))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(16, 16, 16)
+                    .addComponent(jButton2)
+                    .addContainerGap(376, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -138,12 +172,19 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
                 .addComponent(backBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
-                .addContainerGap(438, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 316, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(82, 82, 82))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(171, 171, 171)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(172, Short.MAX_VALUE)))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(432, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(80, 80, 80)))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -154,9 +195,58 @@ public class PendingPrescriptionsJPanel extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        int rowCount = pharmacyTable.getSelectedRow();
+        
+        if(rowCount < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        PharmacyRequest selected = (PharmacyRequest) pharmacyTable.getValueAt(rowCount, 4);
+        selected.setStatus("awaiting patient pick up");
+        
+        String emailTo = selected.getPatient().getEmailId();
+        String message = "Your prescription is readu for pick up. \n \n Regards \n WeCare ";
+        String subject = "Medicines ready for pick up";
+        
+        boolean emailSent = EmailService.sendEmail(emailTo, message, subject);
+        
+        if(emailSent) {
+            JOptionPane.showMessageDialog(null, "Medicines ready for pick up Email sent to the patient"); 
+        } else {
+             JOptionPane.showMessageDialog(null, "Medicines ready for pick up. Unable to send email to the patient");
+        }
+
+        this.populateTable();
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        int rowCount = pharmacyTable.getSelectedRow();
+        
+        if(rowCount < 0) {
+            JOptionPane.showMessageDialog(null, "Please select a row");
+            return;
+        }
+        
+        PharmacyRequest selected = (PharmacyRequest) pharmacyTable.getValueAt(rowCount, 4);
+        
+        selected.setStatus("medicines picked up");
+        selected.setResolveDate(new Date());
+        JOptionPane.showMessageDialog(null, "Medicines picked up");
+        
+        this.populateTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable pharmacyTable;

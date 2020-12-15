@@ -145,7 +145,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
 
     private void pendingPrescriptionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pendingPrescriptionsBtnActionPerformed
         // TODO add your handling code here:
-        PendingPrescriptionsJPanel pendingPrescriptionsJPanel = new PendingPrescriptionsJPanel(CardLayoutJPanel, account, this.pharmacy);
+        PendingPrescriptionsJPanel pendingPrescriptionsJPanel = new PendingPrescriptionsJPanel(CardLayoutJPanel, account, this.pharmacy, business);
         CardLayoutJPanel.add("PendingPrescriptionsJPanel", pendingPrescriptionsJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 

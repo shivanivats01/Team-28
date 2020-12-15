@@ -36,10 +36,13 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         nameTxt.setText(lab.getLabname());
         addressTxt.setText(lab.getAddress());
         
+        jComboBox1.setSelectedItem(lab.getType());
+        
         emailTxt.setEnabled(false);
         numberTxt.setEnabled(false);
         nameTxt.setEnabled(false);
         addressTxt.setEnabled(false);
+        jComboBox1.setEnabled(false);
         
         this.saveBtn.setEnabled(false);
         this.UpdateBtn.setEnabled(true);
@@ -69,6 +72,8 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         addressTxt = new javax.swing.JTextField();
         UpdateBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -118,6 +123,10 @@ public class LabInfoJpanel extends javax.swing.JPanel {
             }
         });
 
+        jLabel5.setText("Type:");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pathology Lab", "Neurology Lab", "Orthopedic Lab" }));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,9 +157,13 @@ public class LabInfoJpanel extends javax.swing.JPanel {
                                     .addGap(18, 18, 18)
                                     .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel7)
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGap(18, 18, 18)
-                                    .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(addressTxt, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                             .addComponent(jLabel1)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(313, 313, 313)
@@ -188,9 +201,13 @@ public class LabInfoJpanel extends javax.swing.JPanel {
                     .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(UpdateBtn)
                     .addComponent(saveBtn))
-                .addContainerGap(109, Short.MAX_VALUE))
+                .addGap(37, 37, 37))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -217,6 +234,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         this.emailTxt.setEnabled(true);
         this.nameTxt.setEnabled(true);
         this.numberTxt.setEnabled(true);
+        this.jComboBox1.setEnabled(true);
         
 
         this.saveBtn.setEnabled(true);
@@ -231,6 +249,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         lab.setEmailId(emailTxt.getText());
         lab.setLabname(nameTxt.getText());
         lab.setPhoneNo(numberTxt.getText());
+        lab.setType((String) jComboBox1.getSelectedItem());
         
         this.idTxt.setEnabled(false);
         this.addressTxt.setEnabled(false);
@@ -238,6 +257,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         this.idTxt.setEnabled(false);
         this.nameTxt.setEnabled(false);
         this.numberTxt.setEnabled(false);
+        jComboBox1.setEnabled(false);
         
 
         this.saveBtn.setEnabled(false);
@@ -254,10 +274,12 @@ public class LabInfoJpanel extends javax.swing.JPanel {
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField emailTxt;
     private javax.swing.JTextField idTxt;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField nameTxt;

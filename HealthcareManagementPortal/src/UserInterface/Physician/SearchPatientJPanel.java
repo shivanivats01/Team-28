@@ -6,10 +6,13 @@
 package UserInterface.Physician;
 
 import Business.Doctor.Doctor;
+import Business.Ecosystem;
 import Business.Patient.Patient;
+import Business.Pharmacy.Pharmacy;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.WorkRequest;
 import UserInterface.Patient.PatientHistoryJPanel;
+import UserInterface.Patient.PatientReportsJPanel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -27,14 +30,16 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
     private JPanel CardLayoutJPanel;
     private UserAccount account;
     private Doctor doctor;
+    private Ecosystem business;
     /**
      * Creates new form SearchPatientJPanel
      */
-    public SearchPatientJPanel(JPanel CardLayoutJPanel, Doctor doctor, UserAccount account) {
+    public SearchPatientJPanel(JPanel CardLayoutJPanel, Doctor doctor, UserAccount account, Ecosystem business) {
         initComponents();
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.doctor = doctor;
         this.account = account;
+        this.business = business;
         
         populatePatientComboBox();
     }
@@ -195,6 +200,16 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        Patient p = (Patient) patientComboBox.getSelectedItem();
+               
+        
+        if(p == null) {
+            JOptionPane.showMessageDialog(null, "Please select a patient");
+            return;
+        }
+        
+        jSplitPane1.setRightComponent(new PhysicianPatientMedicationsJPanel1(CardLayoutJPanel, this.account,this.business, p));
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -206,6 +221,13 @@ public class SearchPatientJPanel extends javax.swing.JPanel {
 
     private void testResultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testResultActionPerformed
         // TODO add your handling code here:
+        Patient p = (Patient) patientComboBox.getSelectedItem();
+        if(p == null) {
+            JOptionPane.showMessageDialog(null, "Please select a patient");
+            return;
+        }
+        
+        jSplitPane1.setRightComponent(new PatientReportsJPanel(CardLayoutJPanel, p, this.account));
     }//GEN-LAST:event_testResultActionPerformed
 
 
