@@ -39,6 +39,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
          
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.business = business;
+        populateTable();
 
     }
     public void populateTable() {
@@ -57,7 +58,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         for(Lab l : labList) {
             Object row[] = new Object[6];
             row[0] = l;
-            row[1] = l.getLabname();
+            row[1] = l.getLabID();
             row[2] = l.getPhoneNo();
             row[3] = l.getAddress();
             row[4] = l.getEmailId();
@@ -108,12 +109,12 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Lab Id", "Lab name", "Contact Number", "Address", "Email", "Type"
+                "Lab name", "Lab Id", "Contact Number", "Address", "Email", "Type"
             }
         ));
         jScrollPane1.setViewportView(labTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 64, 600, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 600, 131));
 
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -121,7 +122,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 213, -1, -1));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 213, 170, -1));
 
         createLabBtn.setText("Sign up New Lab");
         createLabBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +130,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 createLabBtnActionPerformed(evt);
             }
         });
-        add(createLabBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
+        add(createLabBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 170, -1));
 
         deleteBtn.setText("Delete Existing Lab");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -137,7 +138,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 170, -1));
 
         viewHospitalBtn.setText("View Details");
         viewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -145,7 +146,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 viewHospitalBtnActionPerformed(evt);
             }
         });
-        add(viewHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        add(viewHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

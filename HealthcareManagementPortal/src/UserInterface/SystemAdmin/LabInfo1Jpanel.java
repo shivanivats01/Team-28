@@ -31,7 +31,7 @@ public class LabInfo1Jpanel extends javax.swing.JPanel {
         this.CardLayoutJPanel=CardLayoutJPanel;
         this.lab= lab;
         
-        idTxt.setText(lab.getEmailId());
+        idTxt.setText(lab.getLabID());
         emailTxt.setText(lab.getEmailId());
         numberTxt.setText(lab.getPhoneNo());
         nameTxt.setText(lab.getLabname());
@@ -89,11 +89,11 @@ public class LabInfo1Jpanel extends javax.swing.JPanel {
 
         jLabel3.setText("Lab Id:");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 120, -1, -1));
-        add(idTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 221, -1));
+        add(idTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 110, 220, 30));
 
         jLabel2.setText("Lab Name:");
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 150, -1, -1));
-        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 140, 221, -1));
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 146, 220, 30));
 
         jLabel6.setText("Contact number:");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 180, -1, -1));
@@ -107,7 +107,7 @@ public class LabInfo1Jpanel extends javax.swing.JPanel {
                 emailTxtActionPerformed(evt);
             }
         });
-        add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 221, -1));
+        add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 210, 220, 30));
 
         jLabel7.setText("Address:");
         add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 260, -1, -1));

@@ -85,6 +85,8 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
         addBtn = new javax.swing.JButton();
         Deletebtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 153, 153));
+
         jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         departmentTable.setModel(new javax.swing.table.DefaultTableModel(

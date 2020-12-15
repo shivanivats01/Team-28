@@ -99,9 +99,11 @@ public class PhysicianUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Upcoming Appointments");
+        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 78, -1, 58));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -116,12 +118,15 @@ public class PhysicianUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(jTable4);
 
+        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 154, 802, 183));
+
         jButton5.setText("Cancel Appointment");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton5ActionPerformed(evt);
             }
         });
+        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(338, 355, -1, -1));
 
         completeBtn.setText("Complete Appointment");
         completeBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -129,6 +134,7 @@ public class PhysicianUpcomingAppointmentsJPanel extends javax.swing.JPanel {
                 completeBtnActionPerformed(evt);
             }
         });
+        jPanel4.add(completeBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(522, 355, 183, -1));
 
         jButton1.setText("Refresh");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -136,39 +142,7 @@ public class PhysicianUpcomingAppointmentsJPanel extends javax.swing.JPanel {
                 jButton1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addComponent(jButton1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(completeBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(97, 97, 97))
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(144, 144, 144)
-                .addComponent(jLabel4)
-                .addContainerGap(194, Short.MAX_VALUE))
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(completeBtn)
-                    .addComponent(jButton5)
-                    .addComponent(jButton1))
-                .addContainerGap(201, Short.MAX_VALUE))
-        );
+        jPanel4.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 355, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);

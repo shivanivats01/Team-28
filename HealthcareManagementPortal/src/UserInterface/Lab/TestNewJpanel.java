@@ -61,6 +61,7 @@ public class TestNewJpanel extends javax.swing.JPanel {
         completeTRbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -68,11 +69,14 @@ public class TestNewJpanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 23, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Upload Test Result");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(132, 38, -1, 58));
 
         jLabel1.setText("Upload Result: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(84, 156, 116, 30));
 
         choosebtn.setText("Choose");
         choosebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -80,6 +84,7 @@ public class TestNewJpanel extends javax.swing.JPanel {
                 choosebtnActionPerformed(evt);
             }
         });
+        add(choosebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 158, -1, -1));
 
         completeTRbtn.setText("Complete Test Request");
         completeTRbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -87,47 +92,7 @@ public class TestNewJpanel extends javax.swing.JPanel {
                 completeTRbtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(backBtn)
-                        .addGap(29, 29, 29)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(choosebtn)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(completeTRbtn)
-                .addGap(119, 119, 119))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(38, 38, 38)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(23, 23, 23)
-                        .addComponent(backBtn)))
-                .addGap(60, 60, 60)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(choosebtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
-                .addComponent(completeTRbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25))
-        );
+        add(completeTRbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(183, 237, -1, 38));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -159,7 +124,8 @@ public class TestNewJpanel extends javax.swing.JPanel {
         Doctor doctor = (Doctor) request.getSender().getDetails();
         Lab lab = (Lab) account.getDetails();
 
-        this.request.setStatus("complete");
+        this.request.setStatus("lab test completed");
+        this.request.setImage(img);
 
         JOptionPane.showMessageDialog(null, "Test Completed");
 

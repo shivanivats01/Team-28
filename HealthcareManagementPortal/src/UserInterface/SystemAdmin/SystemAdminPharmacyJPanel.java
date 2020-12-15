@@ -51,7 +51,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         for(Pharmacy p : pharmacyList) {
             Object row[] = new Object[6];
             row[0] = p;
-            row[1] = p.getName();
+            row[1] = p.getPharmacyId();
             row[2] = p.getLicenseNo();
             row[3] = p.getPhoneNo();
             row[4] = p.getEmailId();
@@ -107,12 +107,12 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Pharmacy Id", "Name", "License No.", "phone no.", "email id", "Address"
+                "Name", "Pharmacy Id", "License No.", "phone no.", "email id", "Address"
             }
         ));
         jScrollPane1.setViewportView(pharmacyTbl);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 760, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 700, 90));
 
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete Existing Pharmacy");
@@ -147,7 +147,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 200, 30));
         add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 70, 50));
     }// </editor-fold>//GEN-END:initComponents
 

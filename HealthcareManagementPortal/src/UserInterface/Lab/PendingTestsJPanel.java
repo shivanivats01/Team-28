@@ -101,9 +101,11 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
         ProcessTestbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Pending Tests");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(218, 57, -1, 58));
 
         pendingTestTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -118,12 +120,15 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(pendingTestTbl);
 
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 140, 627, 134));
+
         DeleteTestbtn.setText("Delete an Test");
         DeleteTestbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 DeleteTestbtnActionPerformed(evt);
             }
         });
+        add(DeleteTestbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 310, -1, -1));
 
         ProcessTestbtn.setText("Process Test Request");
         ProcessTestbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -131,40 +136,7 @@ public class PendingTestsJPanel extends javax.swing.JPanel {
                 ProcessTestbtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(218, 218, 218)
-                .addComponent(jLabel4)
-                .addGap(0, 332, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 627, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(50, 50, 50))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(DeleteTestbtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(ProcessTestbtn)
-                        .addGap(65, 65, 65))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 134, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ProcessTestbtn)
-                    .addComponent(DeleteTestbtn))
-                .addContainerGap(183, Short.MAX_VALUE))
-        );
+        add(ProcessTestbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 310, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void DeleteTestbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DeleteTestbtnActionPerformed

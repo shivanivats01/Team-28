@@ -58,9 +58,11 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
         Viewbtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Manage Slots ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(213, 30, 286, 42));
 
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -68,6 +70,7 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
                 btnBackActionPerformed(evt);
             }
         });
+        add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 30, -1, -1));
 
         slotTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,12 +82,15 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(slotTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 90, 619, 156));
+
         Refreshbtn.setText("Refresh");
         Refreshbtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RefreshbtnActionPerformed(evt);
             }
         });
+        add(Refreshbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(32, 264, 100, 30));
 
         addBtn.setText("Add Slots");
         addBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -92,6 +98,7 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
                 addBtnActionPerformed(evt);
             }
         });
+        add(addBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 270, -1, -1));
 
         Deletebtn.setText("Remove Slots");
         Deletebtn.addActionListener(new java.awt.event.ActionListener() {
@@ -99,6 +106,7 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
                 DeletebtnActionPerformed(evt);
             }
         });
+        add(Deletebtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 270, -1, -1));
 
         Viewbtn.setText("View/Edit Slot Details");
         Viewbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -106,47 +114,7 @@ public class ManageSlotsJPanel extends javax.swing.JPanel {
                 ViewbtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Refreshbtn)
-                        .addGap(63, 63, 63)
-                        .addComponent(addBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Deletebtn)
-                        .addGap(18, 18, 18)
-                        .addComponent(Viewbtn))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 619, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createSequentialGroup()
-                            .addComponent(btnBack)
-                            .addGap(94, 94, 94)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 286, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Viewbtn)
-                    .addComponent(addBtn)
-                    .addComponent(Refreshbtn)
-                    .addComponent(Deletebtn))
-                .addContainerGap(319, Short.MAX_VALUE))
-        );
+        add(Viewbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 270, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed

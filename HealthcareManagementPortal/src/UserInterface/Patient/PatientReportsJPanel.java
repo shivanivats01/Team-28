@@ -57,7 +57,7 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
             
             
             
-            if(w.getStatus().equals("pending lab approval") || w.getStatus().equals("lab test canceled") || w.getStatus().equals("lab request in-progress") || w.getStatus().equals("lab test complete")) {
+            if(w.getStatus().equals("pending lab approval") || w.getStatus().equals("lab test canceled") || w.getStatus().equals("lab request in-progress") || w.getStatus().equals("lab test completed")) {
                 LabTestRequest lr = (LabTestRequest) w;
                 
                 
@@ -97,6 +97,7 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -119,12 +120,15 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 35, 622, 309));
+
         jButton1.setText("View Details");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(507, 379, -1, -1));
 
         jButton2.setText("< back");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -132,32 +136,7 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
                 jButton2ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 622, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(35, 35, 35)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addGap(26, 26, 26))
-        );
+        add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 379, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -172,7 +151,8 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
         }
         
         LabTestRequest details = (LabTestRequest) jTable1.getValueAt(row, 2);
-        if(details.getStatus().equals("lab test complete")) {
+        System.out.print(details.getImage());
+        if(details.getStatus().equals("lab test completed")) {
             PatientReportViewJPanel patientReportViewJPanel = new PatientReportViewJPanel(CardLayoutJPanel, account, details.getImage());
             CardLayoutJPanel.add("PatientReportViewJPanel", patientReportViewJPanel);
             CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();

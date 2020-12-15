@@ -57,7 +57,6 @@ public class LabWorkArea extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        historyBtn = new javax.swing.JButton();
         AppointmentsBtn = new javax.swing.JButton();
         personalinfoBtn = new javax.swing.JButton();
         logOutBtn = new javax.swing.JButton();
@@ -65,13 +64,14 @@ public class LabWorkArea extends javax.swing.JPanel {
         personalinfoBtn1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 46, 562, 46));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
-
-        historyBtn.setText("History");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(249, 98, -1, 26));
 
         AppointmentsBtn.setText("Test Requests");
         AppointmentsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +79,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 AppointmentsBtnActionPerformed(evt);
             }
         });
+        add(AppointmentsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 204, 224, 38));
 
         personalinfoBtn.setText("Lab Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,6 +87,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 personalinfoBtnActionPerformed(evt);
             }
         });
+        add(personalinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 260, 224, 38));
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -94,6 +96,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 63, 112, -1));
 
         testInfoBtn.setText("Test Information");
         testInfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +104,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 testInfoBtnActionPerformed(evt);
             }
         });
+        add(testInfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 0));
 
         personalinfoBtn1.setText("Manage Tests");
         personalinfoBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -108,51 +112,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 personalinfoBtn1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(42, 42, 42)
-                        .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(249, 249, 249)
-                        .addComponent(jLabel2)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(214, 214, 214)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(personalinfoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(290, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logOutBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(personalinfoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(125, Short.MAX_VALUE))
-        );
+        add(personalinfoBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 316, 224, 38));
     }// </editor-fold>//GEN-END:initComponents
 
     private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed
@@ -201,7 +161,6 @@ public class LabWorkArea extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
-    private javax.swing.JButton historyBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logOutBtn;

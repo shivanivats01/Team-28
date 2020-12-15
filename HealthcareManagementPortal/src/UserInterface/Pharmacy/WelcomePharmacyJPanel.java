@@ -55,13 +55,16 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         pendingPrescriptionsBtn = new javax.swing.JButton();
         logOutBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(108, 50, -1, 46));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(176, 114, -1, 26));
 
         PastPrescriptionsBtn.setText("Past Prescriptions");
         PastPrescriptionsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +72,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 PastPrescriptionsBtnActionPerformed(evt);
             }
         });
+        add(PastPrescriptionsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 158, 195, 46));
 
         InventoryStockBtn.setText("Inventory Stock");
         InventoryStockBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +80,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 InventoryStockBtnActionPerformed(evt);
             }
         });
+        add(InventoryStockBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 262, 195, 46));
 
         pendingPrescriptionsBtn.setText("Pending Prescriptions");
         pendingPrescriptionsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +88,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 pendingPrescriptionsBtnActionPerformed(evt);
             }
         });
+        add(pendingPrescriptionsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 210, 195, 46));
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -91,48 +97,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(166, 166, 166)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(pendingPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(PastPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(InventoryStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jLabel2)))))
-                .addContainerGap(103, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(logOutBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(PastPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(pendingPrescriptionsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(InventoryStockBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(110, Short.MAX_VALUE))
-        );
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 15, 110, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void PastPrescriptionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PastPrescriptionsBtnActionPerformed

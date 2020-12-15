@@ -71,7 +71,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 260, 110, 20));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 260, 150, 40));
 
         patientPortalBtn.setBackground(new java.awt.Color(204, 204, 204));
         patientPortalBtn.setText("Patient Portal");
