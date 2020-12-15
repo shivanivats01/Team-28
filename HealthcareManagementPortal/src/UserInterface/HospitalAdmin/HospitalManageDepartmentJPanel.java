@@ -139,10 +139,10 @@ public class HospitalManageDepartmentJPanel extends javax.swing.JPanel {
                 refreshbtnActionPerformed(evt);
             }
         });
-        add(refreshbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 201, -1));
+        add(refreshbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 280, 201, 30));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
-        jLabel1.setText("Departments");
+        jLabel1.setText("Pharmacy Portal");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 40, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 

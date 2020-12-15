@@ -101,7 +101,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         jDateChooser1 = new com.toedter.calendar.JDateChooser();
         jButton1 = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -170,14 +169,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             }
         });
         add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 540, -1, -1));
-
-        backBtn.setText("<back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 20, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void physicianNameComboActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_physicianNameComboActionPerformed
@@ -282,13 +273,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
         populateTable(new ArrayList());
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private ArrayList<PhysicianRequest> getAvailablePhysicianSlots (Doctor doctor, Date selectedDate) {
         ArrayList<PhysicianRequest> availableWorkRequests = new ArrayList();
         ArrayList<PhysicianRequest> unavailableWorkRequests = new ArrayList();
@@ -326,7 +310,6 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
     private javax.swing.JComboBox<Department> departmentlNameCombo;
     private javax.swing.JComboBox<Hospital> hospitalNameComboBox;
     private javax.swing.JButton jButton1;

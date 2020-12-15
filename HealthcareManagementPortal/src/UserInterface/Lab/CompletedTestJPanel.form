@@ -57,7 +57,7 @@
                 <Column editable="true" title="Status" type="java.lang.Object"/>
                 <Column editable="true" title="Date Requested" type="java.lang.Object"/>
                 <Column editable="true" title="Date Accepted" type="java.lang.Object"/>
-                <Column editable="true" title="Messsage" type="java.lang.Object"/>
+                <Column editable="true" title="Patient" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">

@@ -109,7 +109,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, -1, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, -1));
 
         viewPhysicianBtn.setText("View Details");
         viewPhysicianBtn.addActionListener(new java.awt.event.ActionListener() {

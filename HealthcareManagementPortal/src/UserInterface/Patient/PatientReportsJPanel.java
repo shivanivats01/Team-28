@@ -30,16 +30,22 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
     private JPanel CardLayoutJPanel;
     private UserAccount account;
     private Patient patient;
+    private boolean isPatientLogged;
 
     /**
      * Creates new form PatientHistoryJPanel
      */
-    public PatientReportsJPanel(JPanel CardLayoutJPanel, Patient patient, UserAccount account) {
+    public PatientReportsJPanel(JPanel CardLayoutJPanel, Patient patient, UserAccount account, boolean isPatientLogged) {
         initComponents();
         
         this.CardLayoutJPanel = CardLayoutJPanel;
         this.patient = patient;
         this.account = account;
+        this.isPatientLogged = isPatientLogged;
+        
+        jButton2.setVisible(isPatientLogged);
+        
+           
         
         populateTable();
     }

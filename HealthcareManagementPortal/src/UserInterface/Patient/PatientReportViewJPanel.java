@@ -30,7 +30,7 @@ public class PatientReportViewJPanel extends javax.swing.JPanel {
         this.img = img;
         this.CardLayoutJPanel = CardLayoutJPanel;
         
-        Image scaledImage = img.getScaledInstance(500, 225 , Image.SCALE_SMOOTH);
+        Image scaledImage = img.getScaledInstance(500, 500 , Image.SCALE_SMOOTH);
         jLabel1.setIcon(new ImageIcon(scaledImage));
     }
 

@@ -37,7 +37,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         addressTxt.setText(lab.getAddress());
         
         jComboBox1.setSelectedItem(lab.getType());
-        
+        idTxt.setEnabled(false);
         emailTxt.setEnabled(false);
         numberTxt.setEnabled(false);
         nameTxt.setEnabled(false);

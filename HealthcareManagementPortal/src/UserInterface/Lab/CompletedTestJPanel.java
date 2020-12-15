@@ -7,6 +7,7 @@ package UserInterface.Lab;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabTestRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -64,7 +65,7 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Lab ID", "Doctor", "Status", "Date Requested", "Date Accepted", "Messsage"
+                "Lab ID", "Doctor", "Status", "Date Requested", "Date Accepted", "Patient"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -91,12 +92,15 @@ public void populateTable() {
         
         for(WorkRequest r: completedTestList) {
             Object row[] = new Object[6];
+            
+            LabTestRequest lr = (LabTestRequest) r;
+                    
             row[0] = r.getSender().getId();
             row[1] = r.getReceiver().getId();
             row[2] = r.getStatus();
             row[3] = r.getRequestDate();
             row[4] = r.getResolveDate();
-            row[5] = r.getMessage();
+            row[5] = lr.getPatient();
             
             model.addRow(row);
         }
