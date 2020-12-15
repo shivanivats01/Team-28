@@ -50,8 +50,8 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         
         for(Pharmacy p : pharmacyList) {
             Object row[] = new Object[6];
-            row[0] = p;
-            row[1] = p.getName();
+            row[0] = p.getPharmacyId();
+            row[1] = p;
             row[2] = p.getLicenseNo();
             row[3] = p.getPhoneNo();
             row[4] = p.getEmailId();
@@ -181,9 +181,9 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
             return;
         }
 
-        System.out.println("=========== >> " + pharmacyTbl.getValueAt(row, 0));
+        System.out.println("=========== >> " + pharmacyTbl.getValueAt(row, 1));
 
-        Pharmacy viewPharmacy = (Pharmacy) pharmacyTbl.getValueAt(row, 0);
+        Pharmacy viewPharmacy = (Pharmacy) pharmacyTbl.getValueAt(row, 1);
 
         PharmacyInfoJPanel pharmacyInfoJPanel = new PharmacyInfoJPanel(CardLayoutJPanel, viewPharmacy);
         CardLayoutJPanel.add("PharmacyInfoJPanel", pharmacyInfoJPanel);
@@ -194,7 +194,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int row = pharmacyTbl.getSelectedRow();
-        Pharmacy selectedPharmacy = (Pharmacy) pharmacyTbl.getValueAt(row, 0);
+        Pharmacy selectedPharmacy = (Pharmacy) pharmacyTbl.getValueAt(row, 1);
 
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);

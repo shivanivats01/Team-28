@@ -7,6 +7,7 @@ package UserInterface.Lab;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
+import Business.WorkQueue.LabTestRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -32,6 +33,8 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         this.CardLayoutJPanel=CardLayoutJPanel;
         this.account=account;
         this.business= business;
+        
+        populateTable();
     
     }
 
@@ -61,7 +64,7 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient", "Hospital", "Status", "Date Requested", "Date Accepted", "Messsage"
+                "Physician", "Hospital", "Status", "Date Requested", "Date Accepted", "Patient"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -89,13 +92,14 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
                 .addContainerGap(121, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-public void populateTable() {
+    public void populateTable() {
         // populate all patients in patient directory
         ArrayList<WorkRequest> testList = account.getWorkQueue().getWorkRequestList();
         
         ArrayList<WorkRequest> completedTestList = new ArrayList();
         for(WorkRequest w: testList) {
-            if(w.getStatus().equals("complete")) {
+            System.out.println("====== >>> " + w.getStatus());
+            if(w.getStatus().equals("lab test completed")) {
                 completedTestList.add(w);
             }
         }
@@ -108,13 +112,16 @@ public void populateTable() {
         }
         
         for(WorkRequest r: completedTestList) {
+            
+            LabTestRequest l = (LabTestRequest) r;
+            
             Object row[] = new Object[6];
             row[0] = r.getSender().getId();
             row[1] = r.getReceiver().getId();
             row[2] = r.getStatus();
             row[3] = r.getRequestDate();
             row[4] = r.getResolveDate();
-            row[5] = r.getMessage();
+            row[5] = l.getPatient();
             
             model.addRow(row);
         }

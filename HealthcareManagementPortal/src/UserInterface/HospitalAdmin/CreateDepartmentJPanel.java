@@ -198,6 +198,19 @@ public class CreateDepartmentJPanel extends javax.swing.JPanel {
             return;
         }
         
+        boolean isNameValid = true;
+        for(Department d : hospital.getDepartmentDirectory()) {
+            if(depName.equals(d.getDepartmentName())) {
+                isNameValid = false;
+                break;
+            }
+        }
+        
+        if(!isNameValid){
+            JOptionPane.showMessageDialog(null, "Department with this name already exists");
+            return;
+        }
+        
         newDep.setDepartmentAdminName(adminName);
         newDep.setDepartmentName(depName);
         newDep.setHospital(hospital);

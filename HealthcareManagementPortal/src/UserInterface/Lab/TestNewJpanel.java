@@ -10,6 +10,7 @@ import Business.Lab.Lab;
 import Business.UserAccount.UserAccount;
 import Business.WorkQueue.LabTestRequest;
 import java.awt.CardLayout;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -145,6 +146,8 @@ public class TestNewJpanel extends javax.swing.JPanel {
         try{
             img = ImageIO.read(file);
         } catch (IOException e){
+            System.out.println("================================= " + e);
+              
         }
     }//GEN-LAST:event_choosebtnActionPerformed
 
@@ -156,7 +159,8 @@ public class TestNewJpanel extends javax.swing.JPanel {
         Doctor doctor = (Doctor) request.getSender().getDetails();
         Lab lab = (Lab) account.getDetails();
 
-        this.request.setStatus("complete");
+        this.request.setStatus("lab test completed");
+        this.request.setImage(img);
 
         JOptionPane.showMessageDialog(null, "Test Completed");
 
