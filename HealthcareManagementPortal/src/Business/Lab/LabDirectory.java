@@ -56,30 +56,42 @@ public class LabDirectory {
         
         if(l.getType().equals("Pathology Lab")) {
             l.setLabID("pathologyLab"+(pathologyLabs.size()+1));
+            ArrayList<String> tests = new ArrayList();
+            tests.add("LFT - Liver function tests");
+            tests.add("Urine analysis");
+            tests.add("TSH - Thyroid Simulation Harmobne Quantification");
+            tests.add("Full blood examination");
+            tests.add("Iron Tests");
+            l.setTests(tests);
+                
             pathologyLabs.add(l);
         }
         
         if(l.getType().equals("Neurology Lab")) {
             l.setLabID("neurologyLab"+(neurologyLabs.size()+1));
+            ArrayList<String> tests = new ArrayList();
+            tests.add("MRI Scan");
+            tests.add("CT Scan");
+            tests.add("NCV - Nerve Conductivity Velocity");
+            l.setTests(tests);
+            
             neurologyLabs.add(l);
         }
                 
         if(l.getType().equals("Orthopedic Lab")) {
             l.setLabID("orthopedicLab"+(orthopedicLabs.size()+1));
+            ArrayList<String> tests = new ArrayList();
+            tests.add("Ultrasound");
+            tests.add("X ray");
+            tests.add("Dual Energy X ray");
+            tests.add("Bone Scan");
+            l.setTests(tests);
+            
             orthopedicLabs.add(l);
         }
         
         return l;
     }
-    
-//    public boolean isPhoneUnique(String phone){
-//        for(Lab lab: labList){
-//            if(lab.getPhoneNo().equalsIgnoreCase(phone)){
-//                return false;
-//            }
-//        }
-//        return true;
-//    }
     
      public Lab getLab(String id, String type){
          if(type.equals("pathology")) {

@@ -27,7 +27,7 @@ public class LabWorkArea extends javax.swing.JPanel {
     UserAccount account;
     Ecosystem business;
 
-    public LabWorkArea(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business) {
+    public LabWorkArea(JPanel CardLayoutJPanel, UserAccount account, Ecosystem business, String type) {
 
         initComponents();
         this.CardLayoutJPanel=CardLayoutJPanel;
@@ -35,6 +35,8 @@ public class LabWorkArea extends javax.swing.JPanel {
         this.business= business;
         
         this.lab = (Lab) account.getDetails();
+        
+        jLabel1.setText("Welcome to weCare " + type);
         
 
 
@@ -55,11 +57,11 @@ public class LabWorkArea extends javax.swing.JPanel {
         AppointmentsBtn = new javax.swing.JButton();
         personalinfoBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        testInfoBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
-        jLabel1.setText("Welcome To WeCare");
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
@@ -87,15 +89,19 @@ public class LabWorkArea extends javax.swing.JPanel {
             }
         });
 
+        testInfoBtn.setText("Test Information");
+        testInfoBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                testInfoBtnActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(68, 68, 68)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,8 +111,12 @@ public class LabWorkArea extends javax.swing.JPanel {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(11, 11, 11)
                                 .addComponent(jLabel2))
-                            .addComponent(backBtn))))
-                .addContainerGap(146, Short.MAX_VALUE))
+                            .addComponent(backBtn)
+                            .addComponent(testInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(100, 100, 100)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(134, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -121,9 +131,11 @@ public class LabWorkArea extends javax.swing.JPanel {
                 .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(testInfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(backBtn)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,6 +165,16 @@ public class LabWorkArea extends javax.swing.JPanel {
         layout.previous(CardLayoutJPanel);
     }//GEN-LAST:event_backBtnActionPerformed
 
+    private void testInfoBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testInfoBtnActionPerformed
+        // TODO add your handling code here:
+                
+        TestInformationJPanel testInformationJPanel = new TestInformationJPanel(CardLayoutJPanel, this.lab);
+        CardLayoutJPanel.add("TestInformationJPanel", testInformationJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+        
+    }//GEN-LAST:event_testInfoBtnActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton AppointmentsBtn;
@@ -161,5 +183,6 @@ public class LabWorkArea extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JButton personalinfoBtn;
+    private javax.swing.JButton testInfoBtn;
     // End of variables declaration//GEN-END:variables
 }

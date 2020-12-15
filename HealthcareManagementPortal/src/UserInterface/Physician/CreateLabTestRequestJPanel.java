@@ -235,26 +235,12 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
     private void labListComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labListComboBoxActionPerformed
         // TODO add your handling code here:
         Lab selected = (Lab) labListComboBox.getSelectedItem();
-        
-        if(selected != null) {
-            if(selected.getType().equals("Pathology Lab")) {
-                testListComboBox.addItem("LFT - Liver function tests");
-                testListComboBox.addItem("Urine analysis");
-                testListComboBox.addItem("TSH - Thyroid Simulation Harmobne Quantification");
-                testListComboBox.addItem("Full blood examination");
-                testListComboBox.addItem("Iron Tests");
-            } else if(selected.getType().equals("Neurology Lab")) {
-                testListComboBox.addItem("MRI Scan");
-                testListComboBox.addItem("CT Scan");
-                testListComboBox.addItem("NCV - Nerve Conductivity Velocity");
-            }
-            else if(selected.getType().equals("Orthopedic Lab")) {
-                testListComboBox.addItem("Ultrasound");
-                testListComboBox.addItem("X ray");
-                testListComboBox.addItem("Dual Energy X ray");
-                testListComboBox.addItem("Bone Scan");
-            }
+        for(String test : selected.getTests()) {
+            testListComboBox.addItem(test);
         }
+        
+        
+        
         
     }//GEN-LAST:event_labListComboBoxActionPerformed
 
