@@ -38,6 +38,11 @@
       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="jPanel4">
+          <Properties>
+            <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+              <Color blue="ff" green="ff" red="ff" type="rgb"/>
+            </Property>
+          </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignCardLayout" value="org.netbeans.modules.form.compat2.layouts.DesignCardLayout$CardConstraintsDescription">
               <CardConstraints cardName="card3"/>
@@ -50,39 +55,46 @@
                   <Group type="102" attributes="0">
                       <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="hospitalBtn" max="32767" attributes="0"/>
-                          <Component id="systemAdminBtn" pref="216" max="32767" attributes="0"/>
-                          <Component id="labBtn" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" attributes="0">
+                              <Component id="systemAdminBtn" min="-2" pref="200" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="patientBtn" min="-2" pref="200" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="labBtn" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="hospitalBtn" min="-2" pref="200" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="pharmacyBtn" min="-2" pref="200" max="-2" attributes="0"/>
+                                  <Component id="ambulanceBtn" min="-2" pref="199" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="patientBtn" max="32767" attributes="0"/>
-                          <Component id="pharmacyBtn" pref="216" max="32767" attributes="0"/>
-                          <Component id="ambulanceBtn" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="1440" max="32767" attributes="0"/>
+                      <EmptySpace pref="1255" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace min="-2" pref="97" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="patientBtn" pref="80" max="32767" attributes="0"/>
-                          <Component id="systemAdminBtn" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="hospitalBtn" min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="pharmacyBtn" min="-2" pref="64" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="416" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="systemAdminBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="patientBtn" alignment="3" min="-2" pref="41" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="labBtn" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
-                          <Component id="ambulanceBtn" alignment="3" min="-2" pref="74" max="-2" attributes="0"/>
+                          <Component id="hospitalBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="pharmacyBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="472" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="labBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                          <Component id="ambulanceBtn" alignment="3" min="-2" pref="40" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="189" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

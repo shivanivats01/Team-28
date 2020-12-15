@@ -64,7 +64,6 @@ public class Ecosystem extends HealthCarePortal {
     public static Ecosystem getInstance() {
         if(business==null){
             business=new Ecosystem();
-            
         }
         return business;
     }
@@ -96,5 +95,5 @@ public class Ecosystem extends HealthCarePortal {
     public boolean checkIfUserIsUnique(String userName){
        return false;
     }
-   
+
 }
