@@ -59,9 +59,11 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
         logOutBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 46, -1, 46));
 
         searchPatientBtn.setText("Search Patient History");
         searchPatientBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -69,6 +71,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 searchPatientBtnActionPerformed(evt);
             }
         });
+        add(searchPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 152, 224, 38));
 
         personalinfoBtn.setText("Personal Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,6 +79,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 personalinfoBtnActionPerformed(evt);
             }
         });
+        add(personalinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 240, 224, 38));
 
         AppointmentsBtn.setText("Appointments");
         AppointmentsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -83,9 +87,11 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 AppointmentsBtnActionPerformed(evt);
             }
         });
+        add(AppointmentsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 196, 224, 38));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 98, -1, 26));
 
         createPrescription.setText("Create Prescriptions");
         createPrescription.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +99,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 createPrescriptionActionPerformed(evt);
             }
         });
+        add(createPrescription, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 284, 224, 37));
 
         requestLabTestbtn.setText("Request Lab Test");
         requestLabTestbtn.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +107,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 requestLabTestbtnActionPerformed(evt);
             }
         });
+        add(requestLabTestbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 333, 224, 37));
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -108,53 +116,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(151, 151, 151)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(198, 198, 198)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(searchPatientBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(createPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(requestLabTestbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(158, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(logOutBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(searchPatientBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(createPrescription, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(requestLabTestbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(160, Short.MAX_VALUE))
-        );
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, 115, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed

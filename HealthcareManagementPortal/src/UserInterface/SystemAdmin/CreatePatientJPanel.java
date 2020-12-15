@@ -67,37 +67,53 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         addressTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addressTxtActionPerformed(evt);
             }
         });
+        add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 229, 221, -1));
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 120, 221, -1));
+        add(numberTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 153, 221, -1));
 
         emailTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 emailTxtActionPerformed(evt);
             }
         });
+        add(emailTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 191, 221, -1));
 
         jLabel8.setText("Age:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(178, 267, -1, 15));
 
         jLabel2.setText("Patient Name:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(119, 125, -1, -1));
 
         jLabel9.setText("Gender:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(158, 303, -1, -1));
 
         jLabel10.setText("Blood Group:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(125, 337, -1, -1));
 
         jLabel4.setText("Email id:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(152, 196, -1, -1));
+        add(ageTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 261, 221, -1));
+        add(bloodGroupTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 332, 221, -1));
 
         jLabel6.setText("Contact number:");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(101, 158, -1, -1));
 
         genderComboBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "female", "male", "other" }));
+        add(genderComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 299, 221, -1));
 
         jLabel7.setText("Address:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 234, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Sign Up New Patient");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 21, -1, -1));
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +121,7 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 364, -1, -1));
 
         backBtn.setText("<Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -112,114 +129,15 @@ public class CreatePatientJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 36, -1, -1));
+        add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 88, 221, -1));
+        add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(224, 56, 221, -1));
 
         jLabel3.setText("Password:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(143, 93, -1, -1));
 
         jLabel5.setText("Username:");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(saveBtn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel6)
-                                .addGap(18, 18, 18)
-                                .addComponent(numberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4)
-                                .addGap(18, 18, 18)
-                                .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addGap(18, 18, 18)
-                                .addComponent(bloodGroupTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel7)
-                                .addGap(18, 18, 18)
-                                .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8)
-                                .addGap(18, 18, 18)
-                                .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(18, 18, 18)
-                                .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel2)
-                                    .addComponent(jLabel3))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(passwordTxt)
-                                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addGap(18, 18, 18)
-                                .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(81, 81, 81)
-                        .addComponent(jLabel1)))
-                .addContainerGap(158, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(usernameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(passwordTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel2))
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(numberTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(emailTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(addressTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(ageTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel9)
-                            .addComponent(genderComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel10)
-                            .addComponent(bloodGroupTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(backBtn)))
-                .addContainerGap(20, Short.MAX_VALUE))
-        );
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 61, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void emailTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_emailTxtActionPerformed

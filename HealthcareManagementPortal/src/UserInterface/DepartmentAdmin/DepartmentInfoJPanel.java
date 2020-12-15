@@ -62,9 +62,11 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
         adminTxt = new javax.swing.JTextField();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Department Information");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 59, 320, 42));
 
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -72,6 +74,7 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 72, -1, -1));
 
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,6 +82,7 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
                 UpdateBtnActionPerformed(evt);
             }
         });
+        add(UpdateBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 255, -1, -1));
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -86,68 +90,21 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 255, -1, -1));
 
         jLabel2.setText("Department Name: ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 119, -1, -1));
 
         nameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTxtActionPerformed(evt);
             }
         });
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 119, 118, 20));
 
         jLabel6.setText("Department Admin Name: ");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(86, 86, 86)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(45, 45, 45))
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(91, 91, 91)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(nameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(UpdateBtn)
-                                .addGap(18, 18, 18)
-                                .addComponent(saveBtn)))))
-                .addContainerGap(202, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(59, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(backBtn))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(nameTxt, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(adminTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addGap(84, 84, 84)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(UpdateBtn)
-                    .addComponent(saveBtn))
-                .addGap(55, 55, 55))
-        );
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 145, -1, -1));
+        add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 145, 118, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

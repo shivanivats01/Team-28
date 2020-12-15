@@ -57,9 +57,11 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
         personalinfoBtn1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Welcome To WeCare");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 46, -1, 46));
 
         historyBtn.setText("History");
         historyBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -67,6 +69,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 historyBtnActionPerformed(evt);
             }
         });
+        add(historyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 154, 224, 38));
 
         personalinfoBtn.setText("Personal Information");
         personalinfoBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -74,6 +77,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 personalinfoBtnActionPerformed(evt);
             }
         });
+        add(personalinfoBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 242, 224, 38));
 
         AppointmentsBtn.setText("Appointments");
         AppointmentsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -81,9 +85,11 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 AppointmentsBtnActionPerformed(evt);
             }
         });
+        add(AppointmentsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 198, 224, 38));
 
         jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
         jLabel2.setText("Navigate to:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 110, -1, 26));
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -92,6 +98,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 150, 40));
 
         personalinfoBtn1.setText("Reports");
         personalinfoBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -99,50 +106,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 personalinfoBtn1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(155, 155, 155)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(11, 11, 11)
-                                .addComponent(jLabel2))
-                            .addComponent(personalinfoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(39, 39, 39)
-                                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(195, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(historyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(AppointmentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(personalinfoBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(personalinfoBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(164, Short.MAX_VALUE))
-        );
+        add(personalinfoBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(155, 292, 224, 38));
     }// </editor-fold>//GEN-END:initComponents
 
     private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed

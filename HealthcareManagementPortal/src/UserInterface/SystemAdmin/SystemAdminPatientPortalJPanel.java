@@ -50,7 +50,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         for(Patient p : patientList) {
             Object row[] = new Object[8];
             row[0] = p;
-            row[1] = p.getName();
+            row[1] = p.getPatientID();
             row[2] = p.getPhoneNo();
             row[3] = p.getEmailId();
             row[4] = p.getAddress();
@@ -73,6 +73,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         patientTbl = new javax.swing.JTable();
@@ -97,12 +98,12 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Patient Id", "Name", "Contact No.", "email id", "Address", "Age", "Gender", "Blood Group"
+                "Name", "Patient Id", "Contact No.", "email id", "Address", "Age", "Gender", "Blood Group"
             }
         ));
         jScrollPane1.setViewportView(patientTbl);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 530, 104));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 620, 110));
 
         deleteBtn.setText("Delete Existing Patient");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -110,7 +111,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 170, -1));
 
         viewPatientBtn.setText("View Details");
         viewPatientBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -118,7 +119,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 viewPatientBtnActionPerformed(evt);
             }
         });
-        add(viewPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        add(viewPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 170, -1));
 
         createPatientBtn.setText("Sign Up New Patient");
         createPatientBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -126,7 +127,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 createPatientBtnActionPerformed(evt);
             }
         });
-        add(createPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        add(createPatientBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 170, -1));
 
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -142,7 +143,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 190, -1, -1));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 170, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -207,6 +208,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton createPatientBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;

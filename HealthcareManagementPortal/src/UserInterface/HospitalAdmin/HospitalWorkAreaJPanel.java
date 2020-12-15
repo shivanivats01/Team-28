@@ -49,44 +49,15 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        logOutBtn = new javax.swing.JButton();
         lblhospitalName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         btnManageDoctors = new javax.swing.JButton();
         btnManageHospitalInfo = new javax.swing.JButton();
         btnManageDepartments = new javax.swing.JButton();
-        logOutBtn = new javax.swing.JButton();
 
-        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
-
-        lblhospitalName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblhospitalName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblhospitalName.setText("HOSPITAL");
-        lblhospitalName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText(" Work Area - Hospital Administrator");
-
-        btnManageDoctors.setText("Manage Doctors");
-        btnManageDoctors.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageDoctorsActionPerformed(evt);
-            }
-        });
-
-        btnManageHospitalInfo.setText("Manage Hospital Information");
-        btnManageHospitalInfo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageHospitalInfoActionPerformed(evt);
-            }
-        });
-
-        btnManageDepartments.setText("Manage Departments");
-        btnManageDepartments.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnManageDepartmentsActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -95,85 +66,42 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 17, 118, -1));
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(106, 106, 106)
-                        .addComponent(lblhospitalName))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(129, 129, 129)
-                        .addComponent(jLabel1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(267, 267, 267)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnManageHospitalInfo)
-                            .addComponent(btnManageDoctors)
-                            .addComponent(btnManageDepartments))))
-                .addContainerGap(132, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblhospitalName)
-                    .addComponent(logOutBtn))
-                .addGap(20, 20, 20)
-                .addComponent(jLabel1)
-                .addGap(62, 62, 62)
-                .addComponent(btnManageDoctors)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageHospitalInfo)
-                .addGap(18, 18, 18)
-                .addComponent(btnManageDepartments)
-                .addContainerGap(211, Short.MAX_VALUE))
-        );
+        lblhospitalName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lblhospitalName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblhospitalName.setText("HOSPITAL");
+        lblhospitalName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        add(lblhospitalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 17, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 686, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 491, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setText(" Work Area - Hospital Administrator");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 66, -1, -1));
+
+        btnManageDoctors.setText("Manage Doctors");
+        btnManageDoctors.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDoctorsActionPerformed(evt);
+            }
+        });
+        add(btnManageDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 157, 227, -1));
+
+        btnManageHospitalInfo.setText("Manage Hospital Information");
+        btnManageHospitalInfo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageHospitalInfoActionPerformed(evt);
+            }
+        });
+        add(btnManageHospitalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+
+        btnManageDepartments.setText("Manage Departments");
+        btnManageDepartments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnManageDepartmentsActionPerformed(evt);
+            }
+        });
+        add(btnManageDepartments, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 251, 227, -1));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnManageHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalInfoActionPerformed
-        // TODO add your handling code here:
-        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, account, business);
-        CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-        
-    }//GEN-LAST:event_btnManageHospitalInfoActionPerformed
-
-    private void btnManageDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDepartmentsActionPerformed
-        // TODO add your handling code here:
-        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel,account, business);
-        CardLayoutJPanel.add("HospitalManageDepartmentJPanel", hospitalManageDepartmentJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel);
-    }//GEN-LAST:event_btnManageDepartmentsActionPerformed
 
     private void btnManageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorsActionPerformed
         // TODO add your handling code here:
@@ -194,13 +122,29 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_logOutBtnActionPerformed
 
+    private void btnManageDepartmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDepartmentsActionPerformed
+        // TODO add your handling code here:
+        HospitalManageDepartmentJPanel hospitalManageDepartmentJPanel = new HospitalManageDepartmentJPanel(CardLayoutJPanel,account, business);
+        CardLayoutJPanel.add("HospitalManageDepartmentJPanel", hospitalManageDepartmentJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+    }//GEN-LAST:event_btnManageDepartmentsActionPerformed
+
+    private void btnManageHospitalInfoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageHospitalInfoActionPerformed
+        // TODO add your handling code here:
+        HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, account, business);
+        CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);
+        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
+        layout.next(CardLayoutJPanel);
+
+    }//GEN-LAST:event_btnManageHospitalInfoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnManageDepartments;
     private javax.swing.JButton btnManageDoctors;
     private javax.swing.JButton btnManageHospitalInfo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblhospitalName;
     private javax.swing.JButton logOutBtn;
     // End of variables declaration//GEN-END:variables

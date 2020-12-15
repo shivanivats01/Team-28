@@ -113,11 +113,14 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
         sendRequestBtn1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Create Lab Test Request");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(165, 47, 341, 42));
 
         jLabel4.setText("Patient ID:");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 152, 128, -1));
 
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -125,22 +128,29 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(25, 25, -1, -1));
+
+        add(patientjComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 148, 232, -1));
 
         jLabel3.setText("Select Lab:");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 191, 128, -1));
 
         labListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 labListComboBoxActionPerformed(evt);
             }
         });
+        add(labListComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 187, 232, -1));
 
         jLabel5.setText("Select Test:");
+        add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(144, 243, 128, -1));
 
         testListComboBox.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 testListComboBoxActionPerformed(evt);
             }
         });
+        add(testListComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 232, 232, -1));
 
         sendRequestBtn1.setText("Send Request");
         sendRequestBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -148,62 +158,7 @@ public class CreateLabTestRequestJPanel extends javax.swing.JPanel {
                 sendRequestBtn1ActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(backBtn)
-                        .addGap(56, 56, 56)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(144, 144, 144)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(patientjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(labListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(testListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 232, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(sendRequestBtn1, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addContainerGap(116, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(25, 25, 25)
-                        .addComponent(backBtn)))
-                .addGap(59, 59, 59)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(patientjComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(labListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel5)
-                    .addComponent(testListComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(sendRequestBtn1)
-                .addContainerGap(169, Short.MAX_VALUE))
-        );
+        add(sendRequestBtn1, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 277, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

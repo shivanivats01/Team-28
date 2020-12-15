@@ -82,18 +82,28 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         saveBtn = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        add(hospitalTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 18, 382, -1));
+        add(DoctorTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 50, 382, -1));
+        add(dateTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 82, 382, -1));
 
         notesTxt.setColumns(20);
         notesTxt.setRows(5);
         jScrollPane1.setViewportView(notesTxt);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 136, 382, 214));
+
         jLabel1.setText("Hospital: ");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 23, -1, -1));
 
         jLabel2.setText("Physician: ");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 55, -1, -1));
 
         jLabel3.setText("Date: ");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 87, -1, -1));
 
         jLabel4.setText("Notes: ");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 136, -1, -1));
 
         backBtn.setText("< back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -101,6 +111,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 383, -1, -1));
 
         addNotesBtn.setText("Add Notes");
         addNotesBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -108,6 +119,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 addNotesBtnActionPerformed(evt);
             }
         });
+        add(addNotesBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(385, 383, -1, -1));
 
         saveBtn.setText("Save");
         saveBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -115,61 +127,7 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
                 saveBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(81, 81, 81)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(dateTxt)
-                            .addComponent(DoctorTxt)
-                            .addComponent(hospitalTxt)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 382, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap(69, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(addNotesBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(saveBtn)
-                        .addGap(57, 57, 57))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hospitalTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(DoctorTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(dateTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel4)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backBtn)
-                    .addComponent(addNotesBtn)
-                    .addComponent(saveBtn))
-                .addGap(19, 19, 19))
-        );
+        add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(501, 383, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

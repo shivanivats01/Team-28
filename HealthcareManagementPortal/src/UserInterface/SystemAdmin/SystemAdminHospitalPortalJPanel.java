@@ -49,7 +49,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         for(Hospital h : hospitalList) {
             Object row[] = new Object[6];
             row[0] = h;
-            row[1] = h.getName();
+            row[1] = h.getHospitalId();
             row[2] = h.getPhoneNo();
             row[3] = h.getAddress();
             row[4] = h.getAdminName();
@@ -94,7 +94,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(hospitalTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 620, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 620, 131));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Hospital Portal");
@@ -114,7 +114,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 190, -1));
 
         viewHospitalBtn.setText("View Details");
         viewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +122,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 viewHospitalBtnActionPerformed(evt);
             }
         });
-        add(viewHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
+        add(viewHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 190, -1));
 
         createHospitalBtn.setText("Sign up New Hospital");
         createHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -130,7 +130,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 createHospitalBtnActionPerformed(evt);
             }
         });
-        add(createHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, -1, -1));
+        add(createHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 190, -1));
 
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -138,7 +138,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, -1, -1));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 230, 190, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed

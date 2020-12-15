@@ -32,6 +32,7 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         this.CardLayoutJPanel=CardLayoutJPanel;
         this.account=account;
         this.business= business;
+        populateTable();
     
     }
 
@@ -49,9 +50,11 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         jTable2 = new javax.swing.JTable();
 
         setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Completed Tests");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(179, 42, -1, -1));
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -61,33 +64,12 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Patient", "Hospital", "Status", "Date Requested", "Date Accepted", "Messsage"
+                "Lab ID", "Doctor", "Status", "Date Requested", "Date Accepted", "Messsage"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(194, 194, 194)
-                .addComponent(jLabel1)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(55, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(42, 42, 42)
-                .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(235, Short.MAX_VALUE))
-        );
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(43, 97, 602, 141));
     }// </editor-fold>//GEN-END:initComponents
 public void populateTable() {
         // populate all patients in patient directory
@@ -95,7 +77,7 @@ public void populateTable() {
         
         ArrayList<WorkRequest> completedTestList = new ArrayList();
         for(WorkRequest w: testList) {
-            if(w.getStatus().equals("complete")) {
+            if(w.getStatus().equals("lab test completed")) {
                 completedTestList.add(w);
             }
         }

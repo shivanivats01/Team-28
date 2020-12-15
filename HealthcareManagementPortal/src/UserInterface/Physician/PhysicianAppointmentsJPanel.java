@@ -64,7 +64,7 @@ public class PhysicianAppointmentsJPanel extends javax.swing.JPanel {
 
         jSplitPane1.setRightComponent(rightJPanel);
 
-        jPanel1.setBackground(new java.awt.Color(0, 51, 153));
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
 
         UpcomingAppointmentBtn.setText("Upcoming Appointments");
         UpcomingAppointmentBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -87,7 +87,7 @@ public class PhysicianAppointmentsJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel3.setBackground(new java.awt.Color(0, 0, 102));
+        jLabel3.setBackground(new java.awt.Color(0, 153, 153));
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/UserInterface/images/company logo.png"))); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -100,10 +100,13 @@ public class PhysicianAppointmentsJPanel extends javax.swing.JPanel {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3)
-                    .addComponent(UpcomingAppointmentBtn))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(UpcomingAppointmentBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
