@@ -66,15 +66,15 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Department Information");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(229, 59, 320, 42));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 60, 320, 42));
 
-        backBtn.setText("< Back");
+        backBtn.setText("< back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(56, 72, -1, -1));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, 100, 40));
 
         UpdateBtn.setText("Update");
         UpdateBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -93,18 +93,18 @@ public class DepartmentInfoJPanel extends javax.swing.JPanel {
         add(saveBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(257, 255, -1, -1));
 
         jLabel2.setText("Department Name: ");
-        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 119, -1, -1));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 150, -1, -1));
 
         nameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTxtActionPerformed(evt);
             }
         });
-        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 119, 118, 20));
+        add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 150, 30));
 
         jLabel6.setText("Department Admin Name: ");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(151, 145, -1, -1));
-        add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(409, 145, 118, -1));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 200, -1, -1));
+        add(adminTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 190, 150, 30));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

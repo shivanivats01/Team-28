@@ -50,11 +50,11 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         logOutBtn = new javax.swing.JButton();
-        lblhospitalName = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         btnManageDoctors = new javax.swing.JButton();
         btnManageHospitalInfo = new javax.swing.JButton();
         btnManageDepartments = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -66,17 +66,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(35, 17, 118, -1));
-
-        lblhospitalName.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        lblhospitalName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblhospitalName.setText("HOSPITAL");
-        lblhospitalName.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        add(lblhospitalName, new org.netbeans.lib.awtextra.AbsoluteConstraints(259, 17, -1, -1));
-
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText(" Work Area - Hospital Administrator");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(129, 66, -1, -1));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 290, 240, 40));
 
         btnManageDoctors.setText("Manage Doctors");
         btnManageDoctors.addActionListener(new java.awt.event.ActionListener() {
@@ -84,7 +74,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageDoctorsActionPerformed(evt);
             }
         });
-        add(btnManageDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 157, 227, -1));
+        add(btnManageDoctors, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 130, 240, 40));
 
         btnManageHospitalInfo.setText("Manage Hospital Information");
         btnManageHospitalInfo.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +82,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageHospitalInfoActionPerformed(evt);
             }
         });
-        add(btnManageHospitalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 200, -1, -1));
+        add(btnManageHospitalInfo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 240, 40));
 
         btnManageDepartments.setText("Manage Departments");
         btnManageDepartments.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +90,15 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
                 btnManageDepartmentsActionPerformed(evt);
             }
         });
-        add(btnManageDepartments, new org.netbeans.lib.awtextra.AbsoluteConstraints(267, 251, 227, -1));
+        add(btnManageDepartments, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 230, 240, 40));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
+        jLabel1.setText("Welcome To WeCare");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 30, -1, 46));
+
+        jLabel2.setFont(new java.awt.Font("Lucida Grande", 0, 24)); // NOI18N
+        jLabel2.setText("Navigate to:");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, 26));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnManageDoctorsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManageDoctorsActionPerformed
@@ -145,7 +143,7 @@ public class HospitalWorkAreaJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnManageDoctors;
     private javax.swing.JButton btnManageHospitalInfo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel lblhospitalName;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton logOutBtn;
     // End of variables declaration//GEN-END:variables
 }

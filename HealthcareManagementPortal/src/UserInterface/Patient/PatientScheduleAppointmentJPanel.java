@@ -111,7 +111,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                 physicianNameComboActionPerformed(evt);
             }
         });
-        add(physicianNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 160, -1));
+        add(physicianNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 140, 200, -1));
 
         jLabel1.setText("Hospital: ");
         add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 55, 124, 27));
@@ -132,7 +132,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                 hospitalNameComboBoxActionPerformed(evt);
             }
         });
-        add(hospitalNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 56, 160, -1));
+        add(hospitalNameComboBox, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 56, 200, -1));
 
         jLabel3.setText("Department: ");
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 95, 124, 27));
@@ -142,7 +142,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
                 departmentlNameComboActionPerformed(evt);
             }
         });
-        add(departmentlNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 160, -1));
+        add(departmentlNameCombo, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 95, 200, -1));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,7 +161,7 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Date");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 179, 124, 27));
-        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 180, 150, -1));
+        add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 180, 200, -1));
 
         jButton1.setText("Book Now");
         jButton1.addActionListener(new java.awt.event.ActionListener() {

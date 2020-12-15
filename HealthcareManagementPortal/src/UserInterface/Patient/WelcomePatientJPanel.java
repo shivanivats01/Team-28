@@ -98,7 +98,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 150, 40));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 220, 40));
 
         personalinfoBtn1.setText("Reports");
         personalinfoBtn1.addActionListener(new java.awt.event.ActionListener() {
