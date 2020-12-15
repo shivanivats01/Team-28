@@ -48,6 +48,8 @@ public class InventoryStockJPanel extends javax.swing.JPanel {
         jTable1 = new javax.swing.JTable();
         backBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 153, 153));
+
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Inventory Stock");
 

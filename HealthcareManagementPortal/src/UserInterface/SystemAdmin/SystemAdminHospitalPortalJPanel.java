@@ -48,8 +48,8 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         
         for(Hospital h : hospitalList) {
             Object row[] = new Object[6];
-            row[0] = h.getHospitalId();
-            row[1] = h;
+            row[0] = h;
+            row[1] = h.getName();
             row[2] = h.getPhoneNo();
             row[3] = h.getAddress();
             row[4] = h.getAdminName();
@@ -144,7 +144,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int row = hospitalTable.getSelectedRow();
-        Hospital selected = (Hospital) hospitalTable.getValueAt(row, 1);
+        Hospital selected = (Hospital) hospitalTable.getValueAt(row, 0);
 
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -168,9 +168,9 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
             return;
         }
 
-        System.out.println("=========== >> " + hospitalTable.getValueAt(row, 1));
+        System.out.println("=========== >> " + hospitalTable.getValueAt(row, 0));
 
-        Hospital viewHospital = (Hospital) hospitalTable.getValueAt(row, 1);
+        Hospital viewHospital = (Hospital) hospitalTable.getValueAt(row, 0);
 
         HospitalInfoJPanel hospitalInfoJPanel = new HospitalInfoJPanel(CardLayoutJPanel, viewHospital);
         CardLayoutJPanel.add("HospitalInfoJPanel", hospitalInfoJPanel);

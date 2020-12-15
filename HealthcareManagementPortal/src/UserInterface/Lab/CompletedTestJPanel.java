@@ -7,7 +7,6 @@ package UserInterface.Lab;
 
 import Business.Ecosystem;
 import Business.UserAccount.UserAccount;
-import Business.WorkQueue.LabTestRequest;
 import Business.WorkQueue.WorkRequest;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -33,8 +32,6 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         this.CardLayoutJPanel=CardLayoutJPanel;
         this.account=account;
         this.business= business;
-        
-        populateTable();
     
     }
 
@@ -51,7 +48,7 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Completed Tests");
@@ -64,7 +61,7 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
                 {null, null, null, null, null, null}
             },
             new String [] {
-                "Physician", "Hospital", "Status", "Date Requested", "Date Accepted", "Patient"
+                "Patient", "Hospital", "Status", "Date Requested", "Date Accepted", "Messsage"
             }
         ));
         jScrollPane2.setViewportView(jTable2);
@@ -73,33 +70,32 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 695, Short.MAX_VALUE)
-                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(144, 144, 144)
+                .addGap(194, 194, 194)
                 .addComponent(jLabel1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(55, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 602, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(93, 93, 93)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1)
-                .addGap(39, 39, 39)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(235, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-    public void populateTable() {
+public void populateTable() {
         // populate all patients in patient directory
         ArrayList<WorkRequest> testList = account.getWorkQueue().getWorkRequestList();
         
         ArrayList<WorkRequest> completedTestList = new ArrayList();
         for(WorkRequest w: testList) {
-            System.out.println("====== >>> " + w.getStatus());
-            if(w.getStatus().equals("lab test completed")) {
+            if(w.getStatus().equals("complete")) {
                 completedTestList.add(w);
             }
         }
@@ -112,16 +108,13 @@ public class CompletedTestJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest r: completedTestList) {
-            
-            LabTestRequest l = (LabTestRequest) r;
-            
             Object row[] = new Object[6];
             row[0] = r.getSender().getId();
             row[1] = r.getReceiver().getId();
             row[2] = r.getStatus();
             row[3] = r.getRequestDate();
             row[4] = r.getResolveDate();
-            row[5] = l.getPatient();
+            row[5] = r.getMessage();
             
             model.addRow(row);
         }

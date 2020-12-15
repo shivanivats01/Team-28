@@ -84,6 +84,7 @@ public class PatientInfoJPanel extends javax.swing.JPanel {
         bloodGroupTxt = new javax.swing.JTextField();
         genderComboBox = new javax.swing.JComboBox<>();
 
+        setBackground(new java.awt.Color(0, 153, 153));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1969, 800));
 

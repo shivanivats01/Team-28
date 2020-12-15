@@ -81,6 +81,8 @@ public class PatientDetailsJPanel extends javax.swing.JPanel {
         addNotesBtn = new javax.swing.JButton();
         saveBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 153, 153));
+
         notesTxt.setColumns(20);
         notesTxt.setRows(5);
         jScrollPane1.setViewportView(notesTxt);
