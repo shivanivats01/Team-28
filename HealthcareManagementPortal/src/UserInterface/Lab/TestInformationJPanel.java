@@ -73,6 +73,8 @@ public class TestInformationJPanel extends javax.swing.JPanel {
         addBtn = new javax.swing.JButton();
         removeBtn = new javax.swing.JButton();
 
+        setBackground(new java.awt.Color(0, 153, 153));
+
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null},

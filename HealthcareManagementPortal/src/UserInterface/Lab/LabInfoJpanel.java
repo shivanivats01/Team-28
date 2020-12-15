@@ -43,7 +43,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         nameTxt.setEnabled(false);
         addressTxt.setEnabled(false);
         jComboBox1.setEnabled(false);
-        idTxt.setEnabled(false);
+        
         this.saveBtn.setEnabled(false);
         this.UpdateBtn.setEnabled(true);
 
@@ -75,7 +75,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
 
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {

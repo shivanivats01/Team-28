@@ -56,8 +56,8 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         
         for(Lab l : labList) {
             Object row[] = new Object[6];
-            row[0] = l.getLabID();
-            row[1] = l;
+            row[0] = l;
+            row[1] = l.getLabname();
             row[2] = l.getPhoneNo();
             row[3] = l.getAddress();
             row[4] = l.getEmailId();
@@ -171,7 +171,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int row = labTable.getSelectedRow();
-        Lab selected = (Lab) labTable.getValueAt(row, 1);
+        Lab selected = (Lab) labTable.getValueAt(row, 0);
 
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
@@ -197,7 +197,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
 
         //System.out.println("=========== >> " + labTable.getValueAt(row, 0));
 
-        Lab viewLab = (Lab) labTable.getValueAt(row, 1);
+        Lab viewLab = (Lab) labTable.getValueAt(row, 0);
 
         LabInfo1Jpanel labInfo1JPanel = new LabInfo1Jpanel(CardLayoutJPanel, viewLab);
         CardLayoutJPanel.add("LabInfo1JPanel", labInfo1JPanel);
