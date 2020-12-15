@@ -104,7 +104,7 @@ public class Hospital {
     // Overriding methods
     @Override()
     public String toString() {
-        return this.hospitalId;
+        return this.name;
     }
     
     // Methods

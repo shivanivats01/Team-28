@@ -252,6 +252,13 @@ public class PatientScheduleAppointmentJPanel extends javax.swing.JPanel {
             return;
         }
         
+         if(selectedDate.before(new Date())) {
+            JOptionPane.showMessageDialog(null, "Please select a valid date");
+            return;
+        }
+        
+        
+        
         ArrayList<PhysicianRequest> availableWorkRequests = new ArrayList();
         
         if(selectedDoctor == null) {

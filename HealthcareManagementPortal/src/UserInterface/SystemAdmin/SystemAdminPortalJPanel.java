@@ -51,17 +51,18 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
         patientPortalBtn = new javax.swing.JButton();
         pharmacyBtn = new javax.swing.JButton();
         labbtn = new javax.swing.JButton();
-        ambulancebtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         hospitalPortalBtn.setBackground(new java.awt.Color(204, 204, 204));
-        hospitalPortalBtn.setText("hospital portal");
+        hospitalPortalBtn.setText("Hospital Portal");
         hospitalPortalBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 hospitalPortalBtnActionPerformed(evt);
             }
         });
+        add(hospitalPortalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 90, 200, 40));
 
         logOutBtn.setBackground(new java.awt.Color(204, 204, 204));
         logOutBtn.setText("Logout");
@@ -70,9 +71,10 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 150, 40));
 
         patientPortalBtn.setBackground(new java.awt.Color(204, 204, 204));
-        patientPortalBtn.setText("patient portal");
+        patientPortalBtn.setText("Patient Portal");
         patientPortalBtn.setMaximumSize(new java.awt.Dimension(200, 40));
         patientPortalBtn.setMinimumSize(new java.awt.Dimension(200, 40));
         patientPortalBtn.setPreferredSize(new java.awt.Dimension(200, 40));
@@ -81,14 +83,16 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
                 patientPortalBtnActionPerformed(evt);
             }
         });
+        add(patientPortalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
 
         pharmacyBtn.setBackground(new java.awt.Color(204, 204, 204));
-        pharmacyBtn.setText("pharmacy portal");
+        pharmacyBtn.setText("Pharmacy Portal");
         pharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pharmacyBtnActionPerformed(evt);
             }
         });
+        add(pharmacyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 150, 200, 40));
 
         labbtn.setBackground(new java.awt.Color(204, 204, 204));
         labbtn.setText("Lab Portal");
@@ -97,51 +101,7 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
                 labbtnActionPerformed(evt);
             }
         });
-
-        ambulancebtn.setBackground(new java.awt.Color(204, 204, 204));
-        ambulancebtn.setText("Ambulance Portal");
-        ambulancebtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ambulancebtnActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(pharmacyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(patientPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(labbtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(39, 39, 39)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(ambulancebtn, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
-                            .addComponent(hospitalPortalBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(76, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(logOutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(patientPortalBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(ambulancebtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(hospitalPortalBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pharmacyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(labbtn, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(42, 42, 42))
-        );
+        add(labbtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 210, 200, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void patientPortalBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_patientPortalBtnActionPerformed
@@ -178,15 +138,6 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_pharmacyBtnActionPerformed
 
-    private void ambulancebtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ambulancebtnActionPerformed
-        // TODO add your handling code here:
-        SystemAdminAmbulanceJPanel systemAdminAmbulanceJPanel = new SystemAdminAmbulanceJPanel(CardLayoutJPanel, business);
-        CardLayoutJPanel.add("SystemAdminAmbulanceJPanel", systemAdminAmbulanceJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel); 
-        
-    }//GEN-LAST:event_ambulancebtnActionPerformed
-
     private void labbtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_labbtnActionPerformed
         // TODO add your handling code here:
         SystemAdminLabJPanel systemAdminLabJPanel = new SystemAdminLabJPanel(CardLayoutJPanel, business);
@@ -198,7 +149,6 @@ public class SystemAdminPortalJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton ambulancebtn;
     private javax.swing.JButton hospitalPortalBtn;
     private javax.swing.JButton labbtn;
     private javax.swing.JButton logOutBtn;
