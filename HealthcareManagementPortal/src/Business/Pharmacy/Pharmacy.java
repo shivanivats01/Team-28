@@ -98,7 +98,7 @@ public class Pharmacy {
     // Overriding methods
     @Override()
     public String toString() {
-        return this.pharmacyId;
+        return this.name;
     }
 }
 

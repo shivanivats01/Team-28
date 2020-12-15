@@ -73,19 +73,31 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        viewPharmacyBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         pharmacyTbl = new javax.swing.JTable();
         deleteBtn = new javax.swing.JButton();
-        viewPharmacyBtn = new javax.swing.JButton();
         createPharmacyBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         refreshBtn = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        viewPharmacyBtn.setBackground(new java.awt.Color(0, 153, 153));
+        viewPharmacyBtn.setText("View Details");
+        viewPharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                viewPharmacyBtnActionPerformed(evt);
+            }
+        });
+        add(viewPharmacyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 350, 200, 30));
+
+        jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel1.setText("Pharmacy Portal");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 70, -1, -1));
 
         pharmacyTbl.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -100,75 +112,34 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(pharmacyTbl);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 760, 90));
+
+        deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete Existing Pharmacy");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteBtnActionPerformed(evt);
             }
         });
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 200, 30));
 
-        viewPharmacyBtn.setText("View Details");
-        viewPharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                viewPharmacyBtnActionPerformed(evt);
-            }
-        });
-
+        createPharmacyBtn.setBackground(new java.awt.Color(255, 255, 255));
         createPharmacyBtn.setText("Sign Up New Pharmacy");
         createPharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 createPharmacyBtnActionPerformed(evt);
             }
         });
+        add(createPharmacyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 30));
 
+        backBtn.setBackground(new java.awt.Color(0, 153, 153));
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(backBtn)
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel1)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(viewPharmacyBtn)
-                        .addGap(57, 57, 57))))
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(deleteBtn)
-                    .addComponent(createPharmacyBtn)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 442, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(20, 20, 20)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(viewPharmacyBtn)
-                .addGap(2, 2, 2)
-                .addComponent(createPharmacyBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(deleteBtn)
-                .addContainerGap(195, Short.MAX_VALUE))
-        );
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 20, 80, 40));
 
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -176,27 +147,8 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(79, 79, 79)
-                .addComponent(refreshBtn)
-                .addContainerGap(422, Short.MAX_VALUE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(279, Short.MAX_VALUE)
-                .addComponent(refreshBtn)
-                .addGap(159, 159, 159))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 110, 30));
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 490, 70, 50));
     }// </editor-fold>//GEN-END:initComponents
 
     private void refreshBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_refreshBtnActionPerformed
@@ -262,7 +214,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
     private javax.swing.JButton createPharmacyBtn;
     private javax.swing.JButton deleteBtn;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable pharmacyTbl;
     private javax.swing.JButton refreshBtn;

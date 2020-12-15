@@ -85,17 +85,20 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         deleteBtn = new javax.swing.JButton();
         viewHospitalBtn = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        backBtn.setText("< Back");
+        backBtn.setText("< back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 23, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Lab Portal");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 20, -1, -1));
 
         labTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,12 +113,15 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(labTable);
 
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(-3, 64, 600, 131));
+
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 refreshBtnActionPerformed(evt);
             }
         });
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 213, -1, -1));
 
         createLabBtn.setText("Sign up New Lab");
         createLabBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -123,6 +129,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 createLabBtnActionPerformed(evt);
             }
         });
+        add(createLabBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, -1, -1));
 
         deleteBtn.setText("Delete Existing Lab");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -130,6 +137,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, -1, -1));
 
         viewHospitalBtn.setText("View Details");
         viewHospitalBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -137,51 +145,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 viewHospitalBtnActionPerformed(evt);
             }
         });
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(deleteBtn)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backBtn)
-                                .addGap(58, 58, 58)
-                                .addComponent(jLabel1))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 106, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(createLabBtn)
-                        .addGap(115, 438, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(refreshBtn)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(viewHospitalBtn)
-                        .addGap(124, 124, 124))))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(backBtn))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(refreshBtn)
-                    .addComponent(viewHospitalBtn))
-                .addGap(18, 18, 18)
-                .addComponent(createLabBtn)
-                .addGap(18, 18, 18)
-                .addComponent(deleteBtn)
-                .addContainerGap(71, Short.MAX_VALUE))
-        );
+        add(viewHospitalBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed

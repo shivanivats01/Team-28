@@ -30,7 +30,6 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
     private JPanel CardLayoutJPanel;
     private UserAccount account;
     private Patient patient;
-    BufferedImage img;
 
     /**
      * Creates new form PatientHistoryJPanel
@@ -55,14 +54,19 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
         
         ArrayList<LabTestRequest> requests = new ArrayList();
         for(WorkRequest w : this.account.getWorkQueue().getWorkRequestList()) {
+            
+            
+            
             if(w.getStatus().equals("pending lab approval") || w.getStatus().equals("lab test canceled") || w.getStatus().equals("lab request in-progress") || w.getStatus().equals("lab test complete")) {
                 LabTestRequest lr = (LabTestRequest) w;
                 
-                if(lr.getPatient().equals(patient.getPatientID())) {
+                
+                if(lr.getPatient().getPatientID().equals(patient.getPatientID())) {
                     requests.add(lr);
                 }
             }
         }
+        
         
         for(LabTestRequest r: requests) {
             Object row[] = new Object[5];
@@ -74,6 +78,8 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
             
             model.addRow(row);
         }
+        
+        jTable1.setModel(model);
     }
 
     /**
@@ -165,7 +171,7 @@ public class PatientReportsJPanel extends javax.swing.JPanel {
         
         LabTestRequest details = (LabTestRequest) jTable1.getValueAt(row, 2);
         if(details.getStatus().equals("lab test complete")) {
-            PatientReportViewJPanel patientReportViewJPanel = new PatientReportViewJPanel(CardLayoutJPanel, account, img);
+            PatientReportViewJPanel patientReportViewJPanel = new PatientReportViewJPanel(CardLayoutJPanel, account, details.getImage());
             CardLayoutJPanel.add("PatientReportViewJPanel", patientReportViewJPanel);
             CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
             layout.next(CardLayoutJPanel);  

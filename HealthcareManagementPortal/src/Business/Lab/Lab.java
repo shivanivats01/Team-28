@@ -106,7 +106,7 @@ public class Lab {
     
     @Override()
     public String toString() {
-        return this.labID;
+        return this.Labname;
     }
     
 }

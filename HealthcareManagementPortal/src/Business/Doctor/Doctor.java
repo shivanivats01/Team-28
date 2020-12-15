@@ -105,7 +105,7 @@ public class Doctor {
     // Overriding methods
     @Override()
     public String toString() {
-        return this.doctorId;
+        return this.name;
     }
       
 }

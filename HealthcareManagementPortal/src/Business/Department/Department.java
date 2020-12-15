@@ -86,7 +86,7 @@ public class Department {
     // Overriding methods
     @Override()
     public String toString() {
-        return this.departmentId;
+        return this.departmentName;
     }
     
     // Methods

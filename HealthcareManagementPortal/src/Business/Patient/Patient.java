@@ -123,7 +123,7 @@ public class Patient {
     
     @Override()
     public String toString() {
-        return this.patientID;
+        return this.name;
     }
     
 }
