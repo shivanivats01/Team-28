@@ -94,7 +94,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(hospitalTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 620, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 790, 131));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Hospital Portal");
@@ -150,6 +150,7 @@ public class SystemAdminHospitalPortalJPanel extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
             return;
         }
+       
 
         HospitalDirectory hospitalDirectory = business.getHospitalDirectory();
 
