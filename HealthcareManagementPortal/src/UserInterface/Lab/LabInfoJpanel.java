@@ -43,7 +43,7 @@ public class LabInfoJpanel extends javax.swing.JPanel {
         nameTxt.setEnabled(false);
         addressTxt.setEnabled(false);
         jComboBox1.setEnabled(false);
-        
+        idTxt.setEnabled(false);
         this.saveBtn.setEnabled(false);
         this.UpdateBtn.setEnabled(true);
 

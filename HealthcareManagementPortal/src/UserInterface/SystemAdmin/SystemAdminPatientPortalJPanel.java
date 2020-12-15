@@ -49,8 +49,8 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
         
         for(Patient p : patientList) {
             Object row[] = new Object[8];
-            row[0] = p;
-            row[1] = p.getName();
+            row[0] = p.getPatientID();
+            row[1] = p;
             row[2] = p.getPhoneNo();
             row[3] = p.getEmailId();
             row[4] = p.getAddress();
@@ -162,9 +162,9 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
             return;
         }
         
-        System.out.println("=========== >> " + patientTbl.getValueAt(row, 0));
+        System.out.println("=========== >> " + patientTbl.getValueAt(row, 1));
         
-        Patient viewPatient = (Patient) patientTbl.getValueAt(row, 0);
+        Patient viewPatient = (Patient) patientTbl.getValueAt(row, 1);
         
         
         
@@ -177,7 +177,7 @@ public class SystemAdminPatientPortalJPanel extends javax.swing.JPanel {
     private void deleteBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteBtnActionPerformed
         // TODO add your handling code here:
         int row = patientTbl.getSelectedRow();
-        Patient selectedPatient = (Patient) patientTbl.getValueAt(row, 0);
+        Patient selectedPatient = (Patient) patientTbl.getValueAt(row, 1);
         
         if(row<0) {
             JOptionPane.showMessageDialog(null, "Please select a row from the table first", "Warning", JOptionPane.WARNING_MESSAGE);
