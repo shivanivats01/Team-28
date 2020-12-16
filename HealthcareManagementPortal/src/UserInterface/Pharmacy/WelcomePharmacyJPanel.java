@@ -51,7 +51,6 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         PastPrescriptionsBtn = new javax.swing.JButton();
-        InventoryStockBtn = new javax.swing.JButton();
         pendingPrescriptionsBtn = new javax.swing.JButton();
         logOutBtn = new javax.swing.JButton();
 
@@ -74,14 +73,6 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         });
         add(PastPrescriptionsBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 158, 195, 46));
 
-        InventoryStockBtn.setText("Inventory Stock");
-        InventoryStockBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                InventoryStockBtnActionPerformed(evt);
-            }
-        });
-        add(InventoryStockBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(166, 262, 195, 46));
-
         pendingPrescriptionsBtn.setText("Pending Prescriptions");
         pendingPrescriptionsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -97,7 +88,7 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 15, 110, 40));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 260, 190, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void PastPrescriptionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PastPrescriptionsBtnActionPerformed
@@ -116,14 +107,6 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_pendingPrescriptionsBtnActionPerformed
 
-    private void InventoryStockBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_InventoryStockBtnActionPerformed
-        // TODO add your handling code here:
-        InventoryStockJPanel inventoryStockJPanel = new InventoryStockJPanel(CardLayoutJPanel, account, this.pharmacy);
-        CardLayoutJPanel.add("InventoryStockJPanel", inventoryStockJPanel);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.next(CardLayoutJPanel); 
-    }//GEN-LAST:event_InventoryStockBtnActionPerformed
-
     private void logOutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logOutBtnActionPerformed
         // TODO add your handling code here:
         dB4OUtil.storeSystem(business);
@@ -135,7 +118,6 @@ public class WelcomePharmacyJPanel extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton InventoryStockBtn;
     private javax.swing.JButton PastPrescriptionsBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

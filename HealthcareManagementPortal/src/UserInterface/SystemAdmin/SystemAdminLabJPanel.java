@@ -114,7 +114,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(labTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 600, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 70, 760, 131));
 
         refreshBtn.setText("Refresh");
         refreshBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -122,7 +122,7 @@ public class SystemAdminLabJPanel extends javax.swing.JPanel {
                 refreshBtnActionPerformed(evt);
             }
         });
-        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 213, 170, -1));
+        add(refreshBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 170, -1));
 
         createLabBtn.setText("Sign up New Lab");
         createLabBtn.addActionListener(new java.awt.event.ActionListener() {

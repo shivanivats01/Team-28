@@ -76,7 +76,7 @@ public class CreatePharmacyJPanel extends javax.swing.JPanel {
                 passwordTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 145, 130, 30));
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 145, 200, 30));
 
         jLabel4.setText("Contact Number");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, -1, -1));
@@ -86,7 +86,7 @@ public class CreatePharmacyJPanel extends javax.swing.JPanel {
                 contactNumberTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(contactNumberTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 183, 130, 30));
+        jPanel1.add(contactNumberTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 183, 200, 30));
 
         jLabel5.setText("Email");
         jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 232, -1, -1));
@@ -96,15 +96,15 @@ public class CreatePharmacyJPanel extends javax.swing.JPanel {
                 emailtxtActionPerformed(evt);
             }
         });
-        jPanel1.add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 227, 130, 30));
+        jPanel1.add(emailtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 227, 200, 30));
 
         jLabel6.setText("Name");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 276, -1, -1));
-        jPanel1.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 271, 130, 30));
+        jPanel1.add(nameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 271, 200, 30));
 
         jLabel7.setText("License Number");
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 320, -1, -1));
-        jPanel1.add(licenseTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 311, 130, 30));
+        jPanel1.add(licenseTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 311, 200, 30));
 
         btnBack.setText("< Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -127,7 +127,7 @@ public class CreatePharmacyJPanel extends javax.swing.JPanel {
                 usernameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 113, 130, -1));
+        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 109, 200, 30));
 
         jLabel8.setText("Password:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 153, -1, -1));
@@ -137,13 +137,13 @@ public class CreatePharmacyJPanel extends javax.swing.JPanel {
 
         jLabel10a.setText("Address:");
         jPanel1.add(jLabel10a, new org.netbeans.lib.awtextra.AbsoluteConstraints(138, 358, -1, -1));
-        jPanel1.add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 353, 130, -1));
+        jPanel1.add(addressTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(355, 353, 200, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 664, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

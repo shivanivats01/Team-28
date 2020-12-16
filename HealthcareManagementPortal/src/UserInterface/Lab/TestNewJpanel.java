@@ -123,6 +123,11 @@ public class TestNewJpanel extends javax.swing.JPanel {
 
         Doctor doctor = (Doctor) request.getSender().getDetails();
         Lab lab = (Lab) account.getDetails();
+        
+        if(img == null) {
+           JOptionPane.showMessageDialog(null, "Please upload the test result"); 
+           return;
+        }
 
         this.request.setStatus("lab test completed");
         this.request.setImage(img);

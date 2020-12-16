@@ -96,7 +96,7 @@ public class LabWorkArea extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 63, 112, -1));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, 230, 40));
 
         testInfoBtn.setText("Test Information");
         testInfoBtn.addActionListener(new java.awt.event.ActionListener() {

@@ -106,18 +106,16 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel4 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jButton5 = new javax.swing.JButton();
 
-        jPanel4.setBackground(new java.awt.Color(0, 153, 153));
-        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        setBackground(new java.awt.Color(0, 153, 153));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setFont(new java.awt.Font("Lucida Grande", 1, 36)); // NOI18N
         jLabel4.setText("Patient Medications");
-        jPanel4.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 52, -1, 58));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(135, 52, -1, 58));
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,58 +130,12 @@ public class PhysicianPatientMedicationsJPanel1 extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(jTable4);
 
-        jPanel4.add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 144, 630, 120));
-
-        jButton5.setText("Cancel ");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 101, -1));
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 766, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
+        add(jScrollPane4, new org.netbeans.lib.awtextra.AbsoluteConstraints(23, 144, 630, 120));
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        
-        int rowCount = jTable4.getSelectedRow();
-        
-        if(rowCount < 0) {
-            JOptionPane.showMessageDialog(null, "Please select a row");
-            return;
-        }
-        
-        PharmacyRequest request = (PharmacyRequest) jTable4.getValueAt(rowCount, 2);
-        
-        if(request.getStatus().equals("pending pharmacy approval")) {
-            request.setStatus("physician canceled medication");
-            JOptionPane.showMessageDialog(null, "Appointment canceled");
-        } else {
-            JOptionPane.showMessageDialog(null, "You can only cancel pending requests");
-        }
-        
-        populateTable();
-    }//GEN-LAST:event_jButton5ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables

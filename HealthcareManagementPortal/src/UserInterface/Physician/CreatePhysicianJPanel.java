@@ -100,7 +100,7 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 passwordTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 151, 152, 20));
+        jPanel1.add(passwordTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 141, 150, 30));
 
         jLabel4.setText("Contact Number");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 227, -1, -1));
@@ -130,13 +130,13 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
         jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 341, -1, -1));
         jPanel1.add(licenseTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 336, 152, -1));
 
-        btnBack.setText("< Back");
+        btnBack.setText("< back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
-        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(34, 22, -1, -1));
+        jPanel1.add(btnBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(21, 11, 100, 40));
 
         btnSave.setText("Save");
         btnSave.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +151,7 @@ public class CreatePhysicianJPanel extends javax.swing.JPanel {
                 usernameTxtActionPerformed(evt);
             }
         });
-        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 119, 152, 20));
+        jPanel1.add(usernameTxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(298, 109, 150, 30));
 
         jLabel8.setText("Password:");
         jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(113, 153, -1, -1));

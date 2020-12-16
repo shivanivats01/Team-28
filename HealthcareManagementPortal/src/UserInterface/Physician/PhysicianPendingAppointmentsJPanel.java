@@ -60,7 +60,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
         }
         
         for(WorkRequest w: pendingAppointmentList) {
-            Object row[] = new Object[4];
+            Object row[] = new Object[5];
             
             PhysicianRequest pr = (PhysicianRequest) w;
             
@@ -71,6 +71,7 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
             row[1] = d.getDepartment().getHospital().getName();
             row[2] = pr;
             row[3] = pr.getTime();
+            row[4] = pr.getAppointmentDate();
             
             model.addRow(row);
             
@@ -100,13 +101,13 @@ public class PhysicianPendingAppointmentsJPanel extends javax.swing.JPanel {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null},
+                {null, null, null, null, null}
             },
             new String [] {
-                "Patient", "Hospital", "Date Requested", "Time Slot"
+                "Patient", "Hospital", "Date Requested", "Time Slot", "Appointment Date"
             }
         ));
         jScrollPane4.setViewportView(jTable4);

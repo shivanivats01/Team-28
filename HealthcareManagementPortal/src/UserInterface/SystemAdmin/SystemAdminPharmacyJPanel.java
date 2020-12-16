@@ -86,7 +86,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        viewPharmacyBtn.setBackground(new java.awt.Color(0, 153, 153));
+        viewPharmacyBtn.setBackground(new java.awt.Color(255, 255, 255));
         viewPharmacyBtn.setText("View Details");
         viewPharmacyBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,7 +112,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(pharmacyTbl);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 150, 700, 90));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 150, 770, 90));
 
         deleteBtn.setBackground(new java.awt.Color(255, 255, 255));
         deleteBtn.setText("Delete Existing Pharmacy");
@@ -132,7 +132,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         });
         add(createPharmacyBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 290, 200, 30));
 
-        backBtn.setBackground(new java.awt.Color(0, 153, 153));
+        backBtn.setBackground(new java.awt.Color(255, 255, 255));
         backBtn.setText("<back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,6 +204,7 @@ public class SystemAdminPharmacyJPanel extends javax.swing.JPanel {
         PharmacyDirectory pharmacyDirectory = business.getPharmacyDirectory();
 
         business.getPharmacyDirectory().deletePharmacy(selectedPharmacy.getPharmacyId(), business);
+        
 
         populateTable();
     }//GEN-LAST:event_deleteBtnActionPerformed

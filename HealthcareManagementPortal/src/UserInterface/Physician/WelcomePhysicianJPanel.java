@@ -116,7 +116,7 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(18, 11, 115, -1));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 380, 220, 40));
     }// </editor-fold>//GEN-END:initComponents
 
     private void AppointmentsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AppointmentsBtnActionPerformed
@@ -140,8 +140,8 @@ public class WelcomePhysicianJPanel extends javax.swing.JPanel {
     private void searchPatientBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPatientBtnActionPerformed
         // TODO add your handling code here:
         
-        SearchPatientJPanel searchPatientJPanel = new SearchPatientJPanel(CardLayoutJPanel, this.doctor, this.account, business);
-        CardLayoutJPanel.add("SearchPatientJPanel", searchPatientJPanel);
+        SearchJPanel searchJPanel = new SearchJPanel(CardLayoutJPanel, this.doctor, this.account, business);
+        CardLayoutJPanel.add("SearchPatientJPanel", searchJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
     }//GEN-LAST:event_searchPatientBtnActionPerformed

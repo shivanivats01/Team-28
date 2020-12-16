@@ -98,7 +98,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
                 logOutBtnActionPerformed(evt);
             }
         });
-        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 350, 150, 40));
+        add(logOutBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, 220, 40));
 
         personalinfoBtn1.setText("Reports");
         personalinfoBtn1.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +129,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
 
     private void historyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_historyBtnActionPerformed
         // TODO add your handling code here:
-        PatientHistoryJPanel patientHistoryJPanel = new PatientHistoryJPanel(CardLayoutJPanel, this.patient, this.account);
+        PatientHistoryJPanel patientHistoryJPanel = new PatientHistoryJPanel(CardLayoutJPanel, this.patient, this.account,true);
         CardLayoutJPanel.add("PatientHistoryJPanel", patientHistoryJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 
@@ -148,7 +148,7 @@ public class WelcomePatientJPanel extends javax.swing.JPanel {
     private void personalinfoBtn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_personalinfoBtn1ActionPerformed
         // TODO add your handling code here:
         
-        PatientReportsJPanel patientReportsJPanel = new PatientReportsJPanel(CardLayoutJPanel, this.patient, this.account);
+        PatientReportsJPanel patientReportsJPanel = new PatientReportsJPanel(CardLayoutJPanel, this.patient, this.account,true);
         CardLayoutJPanel.add("PatientReportsJPanel", patientReportsJPanel);
         CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
         layout.next(CardLayoutJPanel); 

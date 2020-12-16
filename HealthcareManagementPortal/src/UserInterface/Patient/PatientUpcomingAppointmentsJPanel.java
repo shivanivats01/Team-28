@@ -92,7 +92,6 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jButton5 = new javax.swing.JButton();
-        backBtn = new javax.swing.JButton();
 
         jPanel4.setBackground(new java.awt.Color(0, 153, 153));
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -123,14 +122,6 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
             }
         });
         jPanel4.add(jButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 355, -1, -1));
-
-        backBtn.setText("<back");
-        backBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backBtnActionPerformed(evt);
-            }
-        });
-        jPanel4.add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 69, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -170,16 +161,8 @@ public class PatientUpcomingAppointmentsJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        // TODO add your handling code here:
-        CardLayoutJPanel.remove(this);
-        CardLayout layout = (CardLayout) CardLayoutJPanel.getLayout();
-        layout.previous(CardLayoutJPanel);
-    }//GEN-LAST:event_backBtnActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backBtn;
     private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel4;

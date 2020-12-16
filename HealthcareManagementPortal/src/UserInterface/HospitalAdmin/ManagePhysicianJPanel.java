@@ -63,6 +63,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
         createPhysiciansBtn = new javax.swing.JButton();
         deleteBtn = new javax.swing.JButton();
         viewPhysicianBtn = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(0, 153, 153));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -73,11 +74,11 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
                 backBtnActionPerformed(evt);
             }
         });
-        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 23, -1, -1));
+        add(backBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 90, 40));
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 24)); // NOI18N
         jLabel1.setText("Manage Physicians");
-        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 17, -1, -1));
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 30, -1, -1));
 
         physicianTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -92,7 +93,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(physicianTable);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 64, 549, 131));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 710, 131));
 
         createPhysiciansBtn.setText("Add New Physician");
         createPhysiciansBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +101,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
                 createPhysiciansBtnActionPerformed(evt);
             }
         });
-        add(createPhysiciansBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(17, 213, -1, -1));
+        add(createPhysiciansBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 160, -1));
 
         deleteBtn.setText("Remove Physician");
         deleteBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -108,7 +109,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
                 deleteBtnActionPerformed(evt);
             }
         });
-        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(198, 213, -1, -1));
+        add(deleteBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, -1));
 
         viewPhysicianBtn.setText("View Details");
         viewPhysicianBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -116,7 +117,15 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
                 viewPhysicianBtnActionPerformed(evt);
             }
         });
-        add(viewPhysicianBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 250, 160, -1));
+        add(viewPhysicianBtn, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 310, 160, -1));
+
+        jButton1.setText("Refresh");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, -1));
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
@@ -143,7 +152,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             return;
         }
         
-        Doctor selectedDoctor = (Doctor) physicianTable.getValueAt(row, 0);
+        Doctor selectedDoctor = (Doctor) physicianTable.getValueAt(row, 1);
         
         selectedDoctor.getDepartment().deleteDoctor(selectedDoctor.getDoctorId(), business);
        
@@ -171,8 +180,8 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
         
         for(Doctor d : doctorList) {
             Object row[] = new Object[6];
-            row[0] = d;
-            row[1] = d.getName();
+            row[0] = d.getDoctorId();
+            row[1] = d;
             row[2] = d.getPhoneNo();
             row[3] = d.getGender();
             row[4] = d.getEmailId();
@@ -192,7 +201,7 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
             return;
         }
 
-        Doctor viewDoctor = (Doctor) physicianTable.getValueAt(row, 0);
+        Doctor viewDoctor = (Doctor) physicianTable.getValueAt(row, 1);
 
         PhysicianInfoJPanel physicianInfoJPanel = new PhysicianInfoJPanel(CardLayoutJPanel, viewDoctor);
         CardLayoutJPanel.add("physicianInfoJPanel", physicianInfoJPanel);
@@ -200,11 +209,18 @@ public class ManagePhysicianJPanel extends javax.swing.JPanel {
         layout.next(CardLayoutJPanel);
     }//GEN-LAST:event_viewPhysicianBtnActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+        populateTable();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton createPhysiciansBtn;
     private javax.swing.JButton deleteBtn;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable physicianTable;
